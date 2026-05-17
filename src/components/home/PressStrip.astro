@@ -1,0 +1,25 @@
+---
+const credentials = [
+  { label: 'USCG Captain · Clint Kendall' },
+  { label: 'BVI Charter Permit' },
+  { label: '5.0 ★ Trustpilot' },
+  { label: '100% All-Inclusive' },
+];
+---
+
+<section class="bg-primary text-ink border-y border-hairline">
+  <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-10">
+    <ul class="flex flex-wrap items-center justify-center md:justify-between gap-x-10 gap-y-4">
+      {
+        credentials.map((c) => (
+          <li class="flex items-center gap-3">
+            <span class="block size-[6px] bg-accent rounded-full" aria-hidden="true"></span>
+            <span class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft">
+              {c.label}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

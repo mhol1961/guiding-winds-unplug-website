@@ -1,0 +1,131 @@
+---
+import { getCollection } from 'astro:content';
+
+const voyages = await getCollection('voyages');
+
+// Sort by region for the "By Region" tab: caribbean → bahamas → mediterranean.
+const order: Record<string, number> = { caribbean: 0, bahamas: 1, mediterranean: 2 };
+const sorted = voyages.sort((a, b) => order[a.data.region] - order[b.data.region]);
+
+// Gradient fallbacks per destination — design must hold without photos
+// (ADR-011). Each gradient evokes the destination's palette.
+const gradientFor: Record<string, string> = {
+  'british-virgin-islands': 'linear-gradient(165deg, #0E3F47 0%, #0A0A0A 70%, #1F1B17 100%)',
+  bahamas: 'linear-gradient(165deg, #C92E1C 0%, #2A1F1A 60%, #0A0A0A 100%)',
+  italy: 'linear-gradient(165deg, #1F1B17 0%, #0A0A0A 50%, #2A1F1A 100%)',
+  greece: 'linear-gradient(165deg, #0E3F47 0%, #1F1B17 60%, #0A0A0A 100%)',
+  croatia: 'linear-gradient(165deg, #161412 0%, #0E3F47 70%, #0A0A0A 100%)',
+};
+---
+
+<section class="bg-primary text-ink border-t border-hairline">
+  <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+      <div class="max-w-xl">
+        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-4">
+          Start your voyage
+        </p>
+        <h2
+          class="font-h2 text-ink leading-[1.05] tracking-[-0.02em] font-normal text-balance"
+          style="font-size: clamp(2rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+        >
+          Five regions. Pick the water you've been thinking about.
+        </h2>
+      </div>
+      <div class="flex flex-wrap items-center gap-8 border-b border-hairline">
+        <button
+          type="button"
+          class="relative pb-3 cursor-pointer font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink after:absolute after:bottom-[-1px] after:left-0 after:right-0 after:h-px after:bg-accent"
+          aria-current="true"
+        >
+          By Region
+        </button>
+        <button
+          type="button"
+          disabled
+          aria-disabled="true"
+          title="Coming soon"
+          class="pb-3 font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-mute/50 cursor-not-allowed"
+        >
+          By Season
+        </button>
+        <button
+          type="button"
+          disabled
+          aria-disabled="true"
+          title="Coming soon"
+          class="pb-3 font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-mute/50 cursor-not-allowed"
+        >
+          By Vibe
+        </button>
+        <button
+          type="button"
+          disabled
+          aria-disabled="true"
+          title="Coming soon"
+          class="pb-3 font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-mute/50 cursor-not-allowed"
+        >
+          Available Soon
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-5">
+      {
+        sorted.map((voyage) => {
+          const weeks = voyage.data.availableWeeks.length;
+          const totalCabins = voyage.data.availableWeeks.reduce(
+            (sum, w) => sum + w.cabinsAvailable,
+            0,
+          );
+          return (
+            <a
+              href={`/voyages/${voyage.data.slug}`}
+              class="group relative aspect-[3/4] overflow-hidden bg-surface focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+              style={`background: ${gradientFor[voyage.data.slug] ?? '#161412'};`}
+              aria-label={`${voyage.data.name} — ${weeks} weeks available`}
+            >
+              {/* Hover overlay shifts gradient warmer */}
+              <div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/30 to-transparent transition-opacity duration-500 group-hover:opacity-60" aria-hidden="true"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-accent/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true"></div>
+
+              {/* Top-left chip */}
+              <span class="absolute top-5 left-5 inline-flex items-center rounded-pill bg-bone/15 backdrop-blur-md px-3 py-1.5 font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-ink">
+                {weeks} week{weeks === 1 ? '' : 's'} · {totalCabins} cabins
+              </span>
+
+              {/* Bottom label */}
+              <div class="absolute bottom-0 left-0 right-0 p-5">
+                <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink/70 mb-2">
+                  {voyage.data.region === 'caribbean'
+                    ? 'Caribbean'
+                    : voyage.data.region === 'bahamas'
+                    ? 'Bahamas'
+                    : 'Mediterranean'}
+                </p>
+                <p
+                  class="font-h3 text-ink text-[1.375rem] leading-[1.1] tracking-[-0.015em] font-medium"
+                  style="font-variation-settings: 'opsz' 36;"
+                >
+                  {voyage.data.name}
+                </p>
+                <p class="mt-3 font-body-sm text-[0.8125rem] text-ink/70">
+                  From ${voyage.data.pricePerGuestUSD.toLocaleString()} / guest
+                </p>
+              </div>
+            </a>
+          );
+        })
+      }
+    </div>
+
+    <div class="mt-12 text-center">
+      <a
+        href="/calendar"
+        class="inline-flex items-center justify-center cursor-pointer bg-transparent text-ink border border-ink/30 font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-8 py-[18px] hover:bg-ink hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+      >
+        View All 14 Weeks
+      </a>
+    </div>
+  </div>
+</section>

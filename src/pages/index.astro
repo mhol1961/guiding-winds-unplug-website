@@ -1,36 +1,72 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import Feeling from '../components/home/Feeling.astro';
+import TestimonialRow from '../components/home/TestimonialRow.astro';
+import Picker from '../components/home/Picker.astro';
+import ExploreCards from '../components/home/ExploreCards.astro';
+import PressStrip from '../components/home/PressStrip.astro';
+import Megatype from '../components/home/Megatype.astro';
+import AboutSplit from '../components/home/AboutSplit.astro';
+import TrustPillars from '../components/home/TrustPillars.astro';
+import GoBlock from '../components/home/GoBlock.astro';
 
-const title = 'Guiding Winds Unplug — Off-Grid Catamaran Voyages';
+const title = 'Off-Grid Catamaran Charters · BVI, Bahamas, Mediterranean | Guiding Winds Unplug';
 const description =
-  'All-inclusive wellness catamaran voyages for 8–12 guests in the British Virgin Islands, Bahamas, and Mediterranean. From $3,550 per guest, per week.';
+  'All-inclusive wellness catamaran voyages for 8–12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia. From $3,550 per guest, per week.';
+
+// Organization + TravelAgency + AggregateRating schema. Phase 8 expands this
+// with a richer @graph; for now this is the v1 cite-able payload.
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TravelAgency',
+  name: 'Guiding Winds Unplug',
+  url: 'https://guidingwinds-unplug.com',
+  logo: 'https://guidingwinds-unplug.com/og/logo.png',
+  description,
+  founder: [
+    { '@type': 'Person', name: 'Clint Kendall' },
+    { '@type': 'Person', name: 'Dodie Kendall' },
+  ],
+  areaServed: [
+    { '@type': 'Place', name: 'British Virgin Islands' },
+    { '@type': 'Place', name: 'The Bahamas' },
+    { '@type': 'Place', name: 'Italy' },
+    { '@type': 'Place', name: 'Greece' },
+    { '@type': 'Place', name: 'Croatia' },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5.0',
+    reviewCount: 4,
+    bestRating: 5,
+  },
+};
 ---
 
-<BaseLayout title={title} description={description}>
-  <main class="min-h-[100dvh] grid place-items-center bg-primary text-ink px-6">
-    <div class="max-w-2xl text-center">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] text-ink-soft mb-8 font-semibold">
-        Phase 1 — Foundation
-      </p>
-      <h1
-        class="font-display leading-display tracking-display font-light text-balance"
-        style="font-size: clamp(2.75rem, 7vw + 1rem, 5.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
-      >
-        The boat is in <span
-          class="font-display-italic italic"
-          style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;"
-        >the slip.</span>
-      </h1>
-      <p class="font-body-lg mt-8 text-ink-soft text-lg leading-relaxed max-w-[52ch] mx-auto">
-        Scaffold complete. Astro 6, Tailwind v4, the Cloudflare adapter and the
-        DESIGN.md token bridge are wired. The home page lives here next.
-      </p>
-      <div class="mt-12 inline-flex items-center gap-3">
-        <span class="block w-2 h-2 rounded-full bg-accent" aria-hidden="true"></span>
-        <span class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] text-ink-soft font-semibold">
-          Ready for Phase 2
-        </span>
-      </div>
-    </div>
-  </main>
+<BaseLayout title={title} description={description} transparentNav schema={orgSchema}>
+  <Hero
+    eyebrow="The Off-Grid Catamaran Experts"
+    headlinePrefix="Every voyage starts with a "
+    headlineEmphasis="feeling."
+    subline="All-inclusive wellness catamaran charters for eight cabins and twelve guests. Caribbean in winter, Mediterranean in summer. From $3,550 per guest, per week."
+    primaryCta={{ label: 'See Available Weeks', href: '/calendar' }}
+    secondaryCta={{ label: 'Watch the Film', href: '/about#film' }}
+    trustItems={[
+      'USCG Captain',
+      'BVI Charter Permit',
+      '5.0 Trustpilot',
+      '100% All-Inclusive',
+      '8 Cabins · 12 Guests',
+    ]}
+  />
+  <Feeling />
+  <TestimonialRow />
+  <Picker />
+  <ExploreCards />
+  <PressStrip />
+  <Megatype />
+  <AboutSplit />
+  <TrustPillars />
+  <GoBlock />
 </BaseLayout>

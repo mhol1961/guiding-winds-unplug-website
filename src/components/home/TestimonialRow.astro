@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+
+const allReviews = await getCollection('reviews', ({ data }) => data.homepageFeature);
+// Sort newest first, take 4.
+const reviews = allReviews
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 4);
+
+const totalReviews = (await getCollection('reviews')).length;
+const avgRating =
+  totalReviews > 0
+    ? ((await getCollection('reviews')).reduce((sum, r) => sum + r.data.rating, 0) / totalReviews).toFixed(1)
+    : '5.0';
+---
+
+<section class="bg-bone text-primary border-t border-primary/10">
+  <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+    {/* Stat header */}
+    <div class="text-center mb-16">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-primary/60 mb-4">
+        From the logbook
+      </p>
+      <p class="font-body-lg text-[1.0625rem] text-primary/70">
+        <span class="font-h3 text-[1.5rem] text-primary mr-2">{avgRating}</span>
+        average · <span class="font-semibold">{totalReviews}+</span> five-star reviews · 14 voyages a year
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+      {
+        reviews.map((review, i) => (
+          <figure
+            class:list={[
+              'flex flex-col',
+              // Asymmetric: offset every other card by 16px to break the grid
+              i % 2 === 1 ? 'lg:mt-12' : '',
+            ]}
+          >
+            <span
+              class="font-serif-quote italic text-accent text-[3rem] leading-none -ml-1 mb-2"
+              style="font-variation-settings: 'opsz' 24, 'SOFT' 50, 'WONK' 1;"
+              aria-hidden="true"
+            >
+              "
+            </span>
+            <blockquote
+              class="font-serif-quote italic text-primary text-[1.125rem] leading-[1.4] tracking-[-0.01em] mb-6"
+              style="font-variation-settings: 'opsz' 24, 'SOFT' 50, 'WONK' 1;"
+            >
+              {review.data.quote}
+            </blockquote>
+            <figcaption class="mt-auto">
+              <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary">
+                {review.data.author}
+              </p>
+              <p class="font-body-sm text-[0.8125rem] text-primary/55 mt-1">
+                {review.data.location} · {review.data.voyage.replace(/-/g, ' ')}
+              </p>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

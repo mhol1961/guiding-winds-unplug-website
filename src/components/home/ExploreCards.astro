@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content';
+
+const voyages = await getCollection('voyages');
+
+// Three editorial cards — one per region (BVI, Bahamas, Med). Title formula:
+// "{verb}: {italic phrase}" per CONTENT-MAP — verbs are Uncover / Drift / Wander.
+const cardSpecs = [
+  {
+    slug: 'british-virgin-islands',
+    verb: 'Uncover',
+    italicPhrase: 'a week off-grid in the British Virgin Islands',
+    accentGradient:
+      'linear-gradient(135deg, #0E3F47 0%, #0A0A0A 70%, #1F1B17 100%)',
+  },
+  {
+    slug: 'bahamas',
+    verb: 'Drift',
+    italicPhrase: 'the slow cays of the Abacos',
+    accentGradient: 'linear-gradient(135deg, #C92E1C 0%, #2A1F1A 65%, #0A0A0A 100%)',
+  },
+  {
+    slug: 'greece',
+    verb: 'Wander',
+    italicPhrase: 'a high-summer drift through Italy, Greece, and Croatia',
+    accentGradient: 'linear-gradient(135deg, #1F1B17 0%, #0E3F47 60%, #0A0A0A 100%)',
+  },
+];
+
+const cards = cardSpecs.map((spec) => {
+  const voyage = voyages.find((v) => v.data.slug === spec.slug);
+  return { ...spec, voyage };
+});
+---
+
+<section class="bg-primary text-ink border-t border-hairline">
+  <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+    <div class="max-w-2xl mb-14">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-4">
+        Explore our voyages
+      </p>
+      <h2
+        class="font-h2 text-ink leading-[1.05] tracking-[-0.02em] font-normal text-balance"
+        style="font-size: clamp(2rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+      >
+        Three regions. One catamaran. Fourteen weeks a year.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
+      {
+        cards.map((card, i) => (
+          <a
+            href={`/voyages/${card.slug}`}
+            class:list={[
+              'group block relative overflow-hidden h-[520px] lg:h-[640px] focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3',
+              // Vary scale — middle card sits proud, sides slightly inset
+              i === 1 ? 'lg:-mt-8' : 'lg:mt-0',
+            ]}
+            style={`background: ${card.accentGradient};`}
+          >
+            <div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/20 to-transparent transition-opacity duration-500 group-hover:opacity-70" aria-hidden="true"></div>
+
+            <div class="absolute top-7 left-7 right-7 flex items-start justify-between">
+              <span class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink/85">
+                {card.voyage?.data.heroEyebrow}
+              </span>
+              <span class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-ink/70">
+                {card.voyage?.data.availableWeeks.length}wk
+              </span>
+            </div>
+
+            <div class="absolute bottom-0 left-0 right-0 p-7 lg:p-8">
+              <h3
+                class="font-h2 text-ink leading-[1.1] tracking-[-0.02em] font-light text-balance"
+                style="font-size: clamp(1.75rem, 2vw + 1.25rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+              >
+                <span class="font-medium">{card.verb}:</span>
+                <span
+                  class="block italic mt-1 text-ink/90"
+                  style="font-variation-settings: 'opsz' 72, 'SOFT' 50, 'WONK' 1;"
+                >
+                  {card.italicPhrase}
+                </span>
+              </h3>
+              <p class="font-body-md text-[0.9375rem] leading-[1.6] text-ink/75 mt-5 max-w-prose">
+                {card.voyage?.data.shortDescription}
+              </p>
+              <div class="mt-7 flex items-center gap-3">
+                <span class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-accent">
+                  Read the voyage →
+                </span>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
