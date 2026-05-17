@@ -2,7 +2,7 @@
 
 The marketing site and lead-capture frontend for **Guiding Winds Unplug**, an all-inclusive wellness catamaran charter business operating in the British Virgin Islands, the Bahamas, and the Mediterranean.
 
-Built on **Astro 5 + Tailwind v4 + shadcn/ui**. Hosted on **Cloudflare Pages**. Lead capture and bookings pipe into the owner's **GoHighLevel** subaccount via the GHL v2 API.
+Built on **Astro 6 + Tailwind v4 + shadcn/ui**. Hosted on **Cloudflare Pages**. Lead capture and bookings pipe into the owner's **GoHighLevel** subaccount via the GHL v2 API.
 
 ---
 
@@ -65,7 +65,7 @@ DESIGN.md         # canonical design tokens (Google DESIGN.md spec)
 
 ## Tech stack
 
-- **Astro 5.x** — static-first with islands for interactive bits
+- **Astro 6.x** — static-first with islands for interactive bits
 - **Tailwind v4** (CSS-first config)
 - **shadcn/ui** — only the primitives we actually use
 - **TypeScript** everywhere, strict mode

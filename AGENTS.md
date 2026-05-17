@@ -8,7 +8,7 @@ If you are an AI agent reading this file: **stop after this section, then read t
 
 ## What this repo is
 
-A custom website for **Guiding Winds Unplug** — a small-group, all-inclusive wellness catamaran charter operation. The site replaces an existing GoHighLevel template; the new build is Astro 5 + Tailwind v4 + shadcn/ui, with lead capture wired to the owner's GoHighLevel account via API.
+A custom website for **Guiding Winds Unplug** — a small-group, all-inclusive wellness catamaran charter operation. The site replaces an existing GoHighLevel template; the new build is Astro 6 + Tailwind v4 + shadcn/ui, with lead capture wired to the owner's GoHighLevel account via API.
 
 ## Read these documents before doing any work
 
@@ -82,7 +82,7 @@ npm run design:export            # regenerate Tailwind theme from DESIGN.md
 
 ## Tools you should reach for
 
-- **Astro 5.x docs**: https://docs.astro.build/
+- **Astro 6.x docs**: https://docs.astro.build/
 - **Tailwind v4 docs**: https://tailwindcss.com/
 - **shadcn/ui docs**: https://ui.shadcn.com/
 - **GoHighLevel API v2 docs**: https://highlevel.stoplight.io/docs/integrations/

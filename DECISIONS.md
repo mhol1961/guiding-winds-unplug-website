@@ -15,7 +15,7 @@ A running log of architectural and product decisions made on this project, in AD
 The site is content-heavy, low-interactivity, SEO-critical, image-heavy, and has no current app surface (no user accounts, no real-time data, no complex client-side state). Mark's default stack is Astro or Next.js + Tailwind + shadcn/ui.
 
 **Decision:**
-Astro 5.x. Next.js is reserved for projects with a real app surface — customer portals, real-time availability with state, deposit checkout flows with retries and webhooks, guest-uploaded media galleries.
+Astro (5.x at adoption; on Astro 6.x as of the Phase 1 scaffold). Next.js is reserved for projects with a real app surface — customer portals, real-time availability with state, deposit checkout flows with retries and webhooks, guest-uploaded media galleries.
 
 **Consequences:**
 - Near-zero JavaScript by default — Lighthouse and Core Web Vitals targets are reachable without extra effort.
@@ -115,7 +115,7 @@ v3 is the working direction. DESIGN.md codifies the full token system for this d
 Need a way to communicate the design system to (a) future AI coding agents working on the project, (b) any human developer joining later, (c) the Tailwind theme generator. Options: Storybook (heavy, separate UI), Figma tokens (separate tool, no AI-agent integration), CSS variables in code only (not human-readable), the new Google DESIGN.md format.
 
 **Decision:**
-DESIGN.md per the Google open-source spec (https://github.com/google-labs-code/design.md). Tokens in YAML frontmatter, rationale in markdown prose, canonical section order, validated by `@google/design.md lint`, exported to Tailwind via `@google/design.md export --format css-tailwind`.
+DESIGN.md per the Google open-source spec (https://github.com/google-labs-code/design.md). Tokens in YAML frontmatter, rationale in markdown prose, canonical section order, validated by `@google/design.md lint`. The Tailwind v4 theme is exported from DESIGN.md via the local `scripts/design-export.mjs` (see ADR-015 — the upstream CLI only emits Tailwind v3 JSON).
 
 **Consequences:**
 - Single source of truth that AI agents read directly without prompt engineering.

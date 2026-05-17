@@ -8,7 +8,7 @@ Run this from top to bottom before flipping DNS. Anything unchecked is a blocker
 
 ## 1. Design system fidelity
 
-- [ ] `npm run design:lint` (alias for `designmd lint DESIGN.md`) returns zero errors.
+- [ ] `npm run design:lint` (alias for `design.md lint DESIGN.md`) returns zero errors.
 - [ ] All component styles use tokens from `DESIGN.md` — no hardcoded hex values in component CSS.
 - [ ] No new color introduced anywhere that isn't in `DESIGN.md`. (`grep -r "#[0-9A-Fa-f]\{6\}" src/components/` returns only token references.)
 - [ ] `prefers-reduced-motion: reduce` disables: hero crossfade, Ken Burns push, marquee, card hover transforms.

@@ -8,8 +8,8 @@ How to get the Guiding Winds Unplug site running on a fresh machine.
 
 | Tool | Version | How to install |
 |---|---|---|
-| Node | ≥ 20 LTS | https://nodejs.org/ or `nvm install --lts` |
-| npm | ≥ 10 | bundled with Node |
+| Node | ≥ 22.12 | https://nodejs.org/ or `nvm install --lts` (Astro 6 requires Node 22+) |
+| npm | ≥ 11 | bundled with Node |
 | Git | latest | https://git-scm.com/ |
 | PowerShell / Terminal | — | built in |
 | VS Code (optional) | latest | https://code.visualstudio.com/ |
@@ -17,8 +17,8 @@ How to get the Guiding Winds Unplug site running on a fresh machine.
 Verify versions:
 
 ```bash
-node --version    # v20.x or higher
-npm --version     # 10.x or higher
+node --version    # v22.12 or higher
+npm --version     # 11.x or higher
 git --version     # 2.x or higher
 ```
 
@@ -37,7 +37,7 @@ cd guidingwinds-unplug
 npm install
 ```
 
-This installs Astro 5, Tailwind v4, the shadcn primitives we use, Zod, and `@google/design.md` (used for linting DESIGN.md).
+This installs Astro 6, Tailwind v4 (via `@tailwindcss/vite`), the shadcn primitives we use, Zod, `@fontsource-variable/fraunces` + `@fontsource-variable/inter` (self-hosted), and `@google/design.md` + `js-yaml` (used to lint DESIGN.md and drive `scripts/design-export.mjs`).
 
 ## 3. Set up environment variables
 
@@ -112,11 +112,11 @@ Equivalent to `astro check` — catches TypeScript errors and Astro template err
 | `npm run build` | Production build to `dist/` |
 | `npm run preview` | Serve the production build locally |
 | `npm run typecheck` | Astro check + TypeScript |
-| `npm run design:lint` | Validate DESIGN.md |
-| `npm run design:export` | Regenerate `src/styles/theme.css` from DESIGN.md |
-| `npm run design:diff` | Compare current DESIGN.md to a previous version (useful in PRs) |
-| `npm run test:a11y` | axe-core a11y scan against built pages (if configured) |
-| `npm run test:lighthouse` | Lighthouse CI against the preview build |
+| `npm run design:lint` | Validate DESIGN.md against the Google spec |
+| `npm run design:export` | Regenerate `src/styles/theme.css` from DESIGN.md (local exporter — ADR-015) |
+| `npm run design:diff` | Compare current DESIGN.md to a previous version (not wired yet; Phase 2+) |
+| `npm run test:a11y` | axe-core a11y scan against built pages (not wired yet; Phase 9+) |
+| `npm run test:lighthouse` | Lighthouse CI against the preview build (not wired yet; Phase 9+) |
 
 ---
 
@@ -132,7 +132,7 @@ npm run dev -- --port 4322
 
 ### "Cannot find module '@google/design.md'"
 
-Either `npm install` didn't complete or the package isn't yet published. The CLI alias on Windows is `designmd` (not `design.md`) — make sure your scripts use `designmd lint DESIGN.md`. See the Windows note in [`DESIGN.md`](./DESIGN.md) lint reference.
+Either `npm install` didn't complete or the package isn't yet published. The CLI binary is `design.md` (not `designmd`) on every platform — see `package.json` scripts for the canonical invocation. The `design:export` script does NOT use the upstream CLI's export command (it only emits Tailwind v3 JSON, which doesn't match our v4 setup); we use a local `scripts/design-export.mjs` instead — see DECISIONS.md ADR-015.
 
 ### "GHL 401" when submitting a test form
 
