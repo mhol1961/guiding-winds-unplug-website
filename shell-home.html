@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Guiding Winds Unplug — All-Inclusive Catamaran Charters | BVI · Bahamas · Mediterranean</title>
+<meta name="description" content="A week off the grid on a private catamaran. All-inclusive wellness charters for 8–12 guests in the BVI, Bahamas, Italy, Greece, and Croatia. From $3,550 per guest." />
+
+<!--
+  Concept shell for proposal review. Fully self-contained — no external scripts or fonts.
+  Production target: Astro + Tailwind + shadcn/ui; this file is a visual proof only.
+  Hero "video" is a Ken-Burns animated still; swap for <video autoplay muted loop playsinline> in production.
+-->
+
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root{
+  --sea: #1B3A4B;
+  --sea-2: #0F2733;
+  --linen: #F4EFE6;
+  --sand: #E2D5C0;
+  --brass: #B08D4A;
+  --brass-2: #8E7037;
+  --glass: #7FA8A0;
+  --ink: #1A1A1A;
+  --hair: rgba(27,58,75,.12);
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --maxw: 1240px;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--ink);background:var(--linen);line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+ul,ol{list-style:none}
+input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3,h4{font-weight:400;line-height:1.05}
+
+/* ============================================================
+   PRIMITIVES
+   ============================================================ */
+.container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+@media(min-width:960px){.container{padding:0 44px}}
+.section{padding:96px 0}
+@media(min-width:960px){.section{padding:140px 0}}
+.eyebrow{display:block;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--brass);margin-bottom:18px;font-weight:600}
+.h-display{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;color:var(--sea)}
+.h-display .ital{font-style:italic}
+.h-xl{font-size:clamp(40px,5.5vw,76px);line-height:1.02;letter-spacing:-.025em}
+.h-lg{font-size:clamp(36px,4.2vw,56px);line-height:1.05;letter-spacing:-.02em}
+.h-md{font-size:clamp(28px,2.6vw,40px);line-height:1.1}
+.h-sm{font-size:22px;line-height:1.25}
+.lead{font-size:17px;line-height:1.65;color:rgba(26,26,26,.78)}
+@media(min-width:960px){.lead{font-size:19px}}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.text-balance{text-wrap:balance}
+
+/* ============================================================
+   BUTTONS / LINKS
+   ============================================================ */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;letter-spacing:.02em;font-size:14px;transition:background .35s ease,color .35s ease,transform .25s ease}
+.btn--brass{background:var(--brass);color:var(--linen)}
+.btn--brass:hover{background:var(--linen);color:var(--sea)}
+.btn--ghost{background:transparent;color:var(--linen);border:1px solid rgba(244,239,230,.4)}
+.btn--ghost:hover{border-color:var(--brass);color:var(--brass)}
+.btn--block{display:flex;justify-content:center;width:100%}
+.link-underline{display:inline-flex;align-items:center;gap:6px;color:var(--sea);border-bottom:1px solid var(--brass);padding-bottom:4px;font-weight:600;font-size:14px;letter-spacing:.02em}
+.link-underline:hover{color:var(--brass)}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s ease,backdrop-filter .3s ease,border-color .3s ease;border-bottom:1px solid transparent}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;height:80px}
+.nav__brand{display:flex;align-items:center;gap:12px;color:var(--linen)}
+.nav__brand-name{font-family:var(--serif);font-size:22px;letter-spacing:-.02em}
+.nav__brand-tag{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);font-weight:600;padding-top:4px}
+.nav__menu{display:none;gap:36px;align-items:center}
+@media(min-width:900px){.nav__menu{display:flex}}
+.nav__menu a{color:var(--linen);font-size:14px;font-weight:500;position:relative;padding:6px 0}
+.nav__menu a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--brass);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.nav__menu a:hover::after{transform:scaleX(1)}
+.nav__cta{display:none}
+@media(min-width:900px){.nav__cta{display:inline-flex}}
+.nav.is-solid{background:rgba(244,239,230,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--hair)}
+.nav.is-solid .nav__brand{color:var(--sea)}
+.nav.is-solid .nav__menu a{color:var(--sea)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;height:100svh;min-height:680px;width:100%;overflow:hidden;background:var(--sea-2)}
+.hero__media{position:absolute;inset:0}
+.hero__media-img{position:absolute;inset:0;animation:kenburns 22s ease-in-out infinite alternate}
+.hero__media-img img{width:100%;height:100%;object-fit:cover}
+.hero__media-fallback{position:absolute;inset:0;background:linear-gradient(135deg,#0F2733 0%,#1B3A4B 40%,#7FA8A0 80%,#B08D4A 100%)}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,39,51,.45) 0%,rgba(15,39,51,.1) 35%,rgba(15,39,51,.85) 100%)}
+.hero__side{position:absolute;inset:0;background:linear-gradient(to right,rgba(15,39,51,.6) 0%,transparent 55%)}
+.hero__inner{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:120px}
+@media(min-width:960px){.hero__inner{padding-bottom:150px}}
+.hero__eyebrow{display:inline-flex;align-items:center;gap:14px;color:rgba(244,239,230,.85);font-size:12px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:24px;font-weight:500}
+.hero__eyebrow .bar{display:block;width:36px;height:1px;background:var(--brass)}
+.hero h1{color:var(--linen);max-width:18ch;font-family:var(--serif);font-weight:400;letter-spacing:-.025em}
+.hero__sub{margin-top:24px;color:rgba(244,239,230,.88);max-width:62ch;font-size:17px;line-height:1.65}
+@media(min-width:960px){.hero__sub{font-size:19px}}
+.hero__sub .accent{color:var(--brass);font-weight:600}
+.hero__ctas{margin-top:36px;display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.hero__secondary{color:rgba(244,239,230,.92);font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.hero__secondary:hover{color:var(--brass)}
+@keyframes kenburns{0%{transform:scale(1)}100%{transform:scale(1.08) translate3d(-1.5%,-1%,0)}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.rise{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.rise-d1{animation-delay:.15s}.rise-d2{animation-delay:.3s}.rise-d3{animation-delay:.45s}.rise-d4{animation-delay:.6s}
+
+/* trust strip across bottom of hero */
+.trust{position:absolute;left:0;right:0;bottom:0;border-top:1px solid rgba(244,239,230,.15);background:rgba(15,39,51,.3);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.trust__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 20px;padding:18px 0;color:rgba(244,239,230,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;text-align:center}
+@media(min-width:760px){.trust__grid{grid-template-columns:repeat(5,1fr);text-align:left}}
+.trust__item{display:flex;align-items:center;justify-content:center;gap:8px}
+@media(min-width:760px){.trust__item{justify-content:flex-start}}
+.dot{width:6px;height:6px;border-radius:999px;background:var(--brass);flex-shrink:0}
+
+/* ============================================================
+   DESTINATIONS
+   ============================================================ */
+.dest__header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:56px}
+.dest__header p{max-width:420px;font-size:15px;line-height:1.7;color:rgba(27,58,75,.78)}
+.dest__grid{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:760px){.dest__grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1080px){.dest__grid{grid-template-columns:repeat(3,1fr)}}
+.dest-card{display:block;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 20px 50px -30px rgba(27,58,75,.28);transition:transform .6s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease}
+.dest-card:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(27,58,75,.4)}
+.dest-card__media{position:relative;height:420px;overflow:hidden}
+.dest-card__media-fallback{position:absolute;inset:0;background:linear-gradient(135deg,#1B3A4B 0%,#7FA8A0 70%,#B08D4A 100%)}
+.dest-card__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.dest-card:hover .dest-card__media img{transform:scale(1.06)}
+.dest-card__veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,39,51,.85) 0%,rgba(15,39,51,.1) 55%,transparent 100%)}
+.dest-card__chip{position:absolute;top:20px;left:20px;background:rgba(244,239,230,.95);color:var(--sea);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;padding:6px 12px;border-radius:999px}
+.dest-card__caption{position:absolute;left:24px;right:24px;bottom:24px;color:var(--linen)}
+.dest-card__caption h3{font-family:var(--serif);font-size:32px;line-height:1.1;letter-spacing:-.02em}
+.dest-card__caption p{margin-top:8px;color:rgba(244,239,230,.85);font-size:14px}
+.dest-card__foot{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:24px 28px}
+.dest-card__foot span:first-child{font-size:14px;color:rgba(27,58,75,.78)}
+.dest-card__arrow{color:var(--brass);font-weight:700;font-size:12px;letter-spacing:.18em;display:inline-flex;align-items:center;gap:6px;transition:transform .3s ease}
+.dest-card:hover .dest-card__arrow{transform:translateX(4px)}
+
+/* ============================================================
+   INCLUDED (deep-sea section)
+   ============================================================ */
+.included{background:var(--sea);color:var(--linen)}
+.included__layout{display:grid;gap:60px;grid-template-columns:1fr}
+@media(min-width:1080px){.included__layout{grid-template-columns:5fr 7fr;gap:80px}}
+.included__intro h2{color:var(--linen);font-family:var(--serif);font-weight:400;letter-spacing:-.02em}
+.included__intro p{margin-top:22px;color:rgba(244,239,230,.78);font-size:15px;line-height:1.75}
+.included__small{margin-top:14px;color:rgba(244,239,230,.55);font-size:13px;font-style:italic}
+.included__items{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 24px}
+@media(min-width:760px){.included__items{grid-template-columns:repeat(4,1fr)}}
+.included__icon{width:48px;height:48px;border-radius:999px;background:rgba(244,239,230,.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.included__icon svg{width:22px;height:22px;stroke:var(--brass);fill:none;stroke-width:1.6}
+.included__label{font-family:var(--serif);font-size:19px;margin-bottom:6px}
+.included__desc{color:rgba(244,239,230,.65);font-size:13px;line-height:1.6}
+
+/* ============================================================
+   STORY
+   ============================================================ */
+.story__layout{display:grid;gap:56px;grid-template-columns:1fr;align-items:center}
+@media(min-width:1080px){.story__layout{grid-template-columns:1fr 1fr;gap:80px}}
+.story__media{position:relative}
+.story__photo{aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#1B3A4B 0%,#7FA8A0 70%,#B08D4A 100%)}
+.story__photo img{width:100%;height:100%;object-fit:cover}
+.story__pullquote{position:absolute;bottom:-32px;right:-24px;max-width:280px;background:var(--sea);color:var(--linen);padding:24px;border-radius:14px;box-shadow:0 30px 60px -30px rgba(27,58,75,.45)}
+@media(min-width:1080px){.story__pullquote{bottom:-44px;right:-44px}}
+.story__pullquote p{font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.3}
+.story__pullquote span{display:block;margin-top:14px;color:rgba(244,239,230,.7);font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+.story__text p{margin-top:18px;font-size:16px;line-height:1.75;color:rgba(26,26,26,.85)}
+.story__text p:first-of-type{margin-top:24px}
+
+/* ============================================================
+   WATCH
+   ============================================================ */
+.watch{background:rgba(226,213,192,.55)}
+.watch__head{max-width:640px;margin:0 auto 48px;text-align:center}
+.watch__head p{margin-top:18px;color:rgba(27,58,75,.78);font-size:15px}
+.watch__player{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(27,58,75,.5);background:linear-gradient(135deg,#1B3A4B 0%,#7FA8A0 70%,#B08D4A 100%)}
+.watch__player img{width:100%;height:100%;object-fit:cover;opacity:.9}
+.watch__player::after{content:"";position:absolute;inset:0;background:rgba(15,39,51,.4)}
+.watch__play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2}
+.watch__play span{width:80px;height:80px;border-radius:999px;background:rgba(244,239,230,.95);display:flex;align-items:center;justify-content:center;transition:transform .3s ease}
+.watch__play:hover span{transform:scale(1.1)}
+.watch__label{position:absolute;left:24px;bottom:24px;color:var(--linen);font-family:var(--serif);font-style:italic;font-size:18px;z-index:2}
+.watch__note{text-align:center;margin-top:20px;color:rgba(27,58,75,.55);font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testi__header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:56px}
+.testi__rating{color:rgba(27,58,75,.7);font-size:14px}
+.testi__rating .num{color:var(--brass);font-weight:700;font-size:22px;font-family:var(--serif);vertical-align:middle}
+.testi__grid{display:grid;gap:28px;grid-template-columns:1fr}
+@media(min-width:760px){.testi__grid{grid-template-columns:repeat(3,1fr)}}
+.testi-card{background:#fff;border-radius:18px;padding:32px;box-shadow:0 20px 50px -30px rgba(27,58,75,.25);display:flex;flex-direction:column}
+.testi-card__stars{color:var(--brass);margin-bottom:18px;letter-spacing:2px}
+.testi-card__quote{font-family:var(--serif);color:var(--sea);font-size:19px;line-height:1.4;flex:1}
+.testi-card__author{margin-top:24px;display:flex;align-items:center;gap:14px}
+.testi-card__avatar{width:48px;height:48px;border-radius:999px;overflow:hidden;background:linear-gradient(135deg,#1B3A4B 0%,#7FA8A0 70%,#B08D4A 100%);flex-shrink:0}
+.testi-card__avatar img{width:100%;height:100%;object-fit:cover}
+.testi-card__name{color:var(--sea);font-weight:600;font-size:14px}
+.testi-card__where{color:rgba(27,58,75,.6);font-size:12px;margin-top:2px}
+
+/* ============================================================
+   JOURNAL
+   ============================================================ */
+.journal{background:rgba(27,58,75,.04);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:80px 0}
+@media(min-width:960px){.journal{padding:112px 0}}
+.journal__head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:44px}
+.journal__head h2{font-family:var(--serif);color:var(--sea);font-size:clamp(28px,3vw,44px);letter-spacing:-.02em}
+.journal__grid{display:grid;gap:32px;grid-template-columns:1fr}
+@media(min-width:760px){.journal__grid{grid-template-columns:repeat(3,1fr)}}
+.journal-card .ph{aspect-ratio:4/3;border-radius:12px;background:linear-gradient(135deg,#1B3A4B 0%,#7FA8A0 70%,#B08D4A 100%);margin-bottom:20px}
+.journal-card .cat{color:var(--brass);font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
+.journal-card h3{font-family:var(--serif);color:var(--sea);font-size:22px;line-height:1.3;transition:color .3s ease}
+.journal-card:hover h3{color:var(--brass)}
+.journal-card p{color:rgba(27,58,75,.7);font-size:14px;margin-top:10px;line-height:1.6}
+
+/* ============================================================
+   CTA (book)
+   ============================================================ */
+.cta{position:relative;background:var(--sea);color:var(--linen);overflow:hidden}
+.cta__bg{position:absolute;inset:0;opacity:.3}
+.cta__bg img{width:100%;height:100%;object-fit:cover}
+.cta__bg-fb{position:absolute;inset:0;background:linear-gradient(135deg,#0F2733 0%,#1B3A4B 60%,#7FA8A0 100%)}
+.cta__veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,39,51,.92) 0%,rgba(15,39,51,.7) 50%,rgba(15,39,51,1) 100%)}
+.cta__inner{position:relative;max-width:720px;margin:0 auto;padding:112px 28px;text-align:center}
+@media(min-width:960px){.cta__inner{padding:140px 28px}}
+.cta h2{font-family:var(--serif);color:var(--linen);font-weight:400;font-size:clamp(40px,4.8vw,64px);line-height:1.05;letter-spacing:-.025em}
+.cta__sub{margin-top:22px;color:rgba(244,239,230,.85);font-size:16px;line-height:1.7;max-width:520px;margin-left:auto;margin-right:auto}
+.cta__form{margin-top:36px;display:grid;grid-template-columns:1fr;gap:12px;max-width:600px;margin-left:auto;margin-right:auto;text-align:left}
+@media(min-width:680px){.cta__form{grid-template-columns:1fr 2fr}}
+.cta__form input,.cta__form select{background:rgba(244,239,230,.08);border:1px solid rgba(244,239,230,.22);color:var(--linen);padding:13px 16px;border-radius:10px;outline:none;transition:border-color .2s ease}
+.cta__form input::placeholder{color:rgba(244,239,230,.55)}
+.cta__form input:focus,.cta__form select:focus{border-color:var(--brass)}
+.cta__form select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23B08D4A' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.cta__form select option{background:var(--sea);color:var(--linen)}
+.cta__col2{grid-column:1/-1}
+@media(min-width:680px){.cta__col2{grid-column:1/-1}}
+.cta__button{background:var(--brass);color:var(--sea);padding:14px 26px;border-radius:10px;font-weight:700;letter-spacing:.02em;font-size:14px;cursor:pointer;transition:background .3s ease}
+.cta__button:hover{background:var(--linen)}
+.cta__legal{color:rgba(244,239,230,.55);font-size:12px;margin-top:18px}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{background:var(--sea);color:rgba(244,239,230,.8);border-top:1px solid rgba(244,239,230,.1)}
+.footer__grid{display:grid;gap:36px;grid-template-columns:1fr;padding:60px 0}
+@media(min-width:760px){.footer__grid{grid-template-columns:2fr 1fr 1fr}}
+.footer__brand{font-family:var(--serif);font-size:24px;color:var(--linen);letter-spacing:-.02em}
+.footer__brand .b{color:var(--brass)}
+.footer__intro{margin-top:18px;color:rgba(244,239,230,.65);font-size:14px;line-height:1.7;max-width:380px}
+.footer__social{margin-top:22px;display:flex;gap:18px}
+.footer__social a{color:rgba(244,239,230,.6);transition:color .2s ease}
+.footer__social a:hover{color:var(--brass)}
+.footer__col h4{color:var(--linen);font-size:13px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:16px;font-weight:700}
+.footer__col li{margin-bottom:8px}
+.footer__col li a{color:rgba(244,239,230,.7);font-size:14px}
+.footer__col li a:hover{color:var(--brass)}
+.footer__bottom{border-top:1px solid rgba(244,239,230,.1)}
+.footer__bottom .container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;padding-bottom:24px;color:rgba(244,239,230,.5);font-size:12px}
+.footer__bottom .ital{font-style:italic}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header id="nav" class="nav">
+  <div class="container nav__inner">
+    <a href="#" class="nav__brand">
+      <span class="nav__brand-name">Guiding Winds</span>
+      <span class="nav__brand-tag">Unplug</span>
+    </a>
+    <nav class="nav__menu">
+      <a href="#destinations">Destinations</a>
+      <a href="#included">What's Included</a>
+      <a href="#story">Our Story</a>
+      <a href="#journal">Journal</a>
+    </nav>
+    <a href="#book" class="btn btn--brass nav__cta">
+      See Available Weeks
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero__media">
+    <div class="hero__media-fallback"></div>
+    <div class="hero__media-img">
+      <img src="https://assets.cdn.filesafe.space/Ytq1Qi48bKj3ZImQ9Ye8/media/698b83f952c9521eecc44540.png" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__side"></div>
+  </div>
+
+  <div class="container hero__inner">
+    <span class="hero__eyebrow rise"><span class="bar"></span>Wellness catamaran charters · est. 2024</span>
+    <h1 class="h-xl rise rise-d1">
+      You don't need another vacation.<br/>
+      <span class="ital" style="color:var(--sand)">You need a week off the grid.</span>
+    </h1>
+    <p class="hero__sub rise rise-d2">
+      All-inclusive wellness catamaran charters for 8 to 12 guests in the British Virgin Islands, the Bahamas, Italy, Greece, and Croatia. From <span class="accent">$3,550</span> per guest, per week.
+    </p>
+    <div class="hero__ctas rise rise-d3">
+      <a href="#book" class="btn btn--brass">
+        See Available Weeks
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#included" class="hero__secondary">
+        What's included
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="trust rise rise-d4">
+    <div class="container">
+      <div class="trust__grid">
+        <div class="trust__item"><span class="dot"></span>USCG-Licensed Captain</div>
+        <div class="trust__item"><span class="dot"></span>BVI Charter Permitted</div>
+        <div class="trust__item"><span class="dot"></span>100% All-Inclusive</div>
+        <div class="trust__item"><span class="dot"></span>45ft+ Catamaran</div>
+        <div class="trust__item"><span class="dot"></span>5★ Guest Average</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DESTINATIONS ===================== -->
+<section id="destinations" class="section">
+  <div class="container">
+    <div class="dest__header">
+      <div style="max-width:560px">
+        <span class="eyebrow">Where We Sail</span>
+        <h2 class="h-display h-lg">Three regions.<br/><span class="ital">Fourteen weeks aboard.</span></h2>
+      </div>
+      <p>Pick a week. We handle the rest — provisioning, route, anchorages, snorkel stops, sunset cocktails, the works. Below is the 2027 sailing calendar.</p>
+    </div>
+
+    <div class="dest__grid">
+      <a class="dest-card" href="shell-destinations.html">
+        <div class="dest-card__media">
+          <div class="dest-card__media-fallback"></div>
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80" alt="British Virgin Islands turquoise water" onerror="this.style.display='none'" />
+          <div class="dest-card__veil"></div>
+          <span class="dest-card__chip">Caribbean</span>
+          <div class="dest-card__caption">
+            <h3>British Virgin Islands</h3>
+            <p>Six weeks · Jan – Mar &amp; Nov – Dec 2027 · From $3,550 / guest</p>
+          </div>
+        </div>
+        <div class="dest-card__foot">
+          <span>7-day itinerary · Norman Island, The Baths, Anegada, Jost Van Dyke</span>
+          <span class="dest-card__arrow">EXPLORE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a class="dest-card" href="#">
+        <div class="dest-card__media">
+          <div class="dest-card__media-fallback"></div>
+          <img src="https://assets.cdn.filesafe.space/Ytq1Qi48bKj3ZImQ9Ye8/media/574814fb-3093-49d4-af05-7ddc4c7eb094.webp" alt="Bahamas sailing scene" onerror="this.style.display='none'" />
+          <div class="dest-card__veil"></div>
+          <span class="dest-card__chip">Bahamas</span>
+          <div class="dest-card__caption">
+            <h3>The Abacos &amp; Marsh Harbour</h3>
+            <p>Three weeks · Mar 27 – May 8, 2027 · From $3,550 / guest</p>
+          </div>
+        </div>
+        <div class="dest-card__foot">
+          <span>7-day itinerary · Hope Town, Man-O-War, Green Turtle Cay</span>
+          <span class="dest-card__arrow">EXPLORE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a class="dest-card" href="#">
+        <div class="dest-card__media">
+          <div class="dest-card__media-fallback"></div>
+          <img src="https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?auto=format&fit=crop&w=1600&q=80" alt="Mediterranean sailing scene" onerror="this.style.display='none'" />
+          <div class="dest-card__veil"></div>
+          <span class="dest-card__chip">Mediterranean</span>
+          <div class="dest-card__caption">
+            <h3>Italy · Greece · Croatia</h3>
+            <p>Five weeks · Jul – Oct 2027 · From $3,850 / guest</p>
+          </div>
+        </div>
+        <div class="dest-card__foot">
+          <span>7-day itineraries · Amalfi, the Cyclades, the Dalmatian Coast</span>
+          <span class="dest-card__arrow">EXPLORE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INCLUDED ===================== -->
+<section id="included" class="section included">
+  <div class="container">
+    <div class="included__layout">
+      <div class="included__intro">
+        <span class="eyebrow">All-Inclusive</span>
+        <h2 class="h-lg">Everything's in.<br/><span class="ital" style="font-style:italic">Bring a swimsuit.</span></h2>
+        <p>One price covers your private cabin and head, all meals and drinks, fuel, dockage, snorkel gear, paddleboards, daily wellness practice, and a captain who knows every reef in the chain.</p>
+        <p class="included__small">Not included: flights to embarkation port, crew gratuity, off-boat dining and excursions, travel insurance.</p>
+      </div>
+
+      <div class="included__items">
+        <div>
+          <div class="included__icon"><svg viewBox="0 0 24 24"><path d="M6 14h12v6H6zM6 14a4 4 0 1 1 .9-7.9 4 4 0 0 1 10.2 0A4 4 0 1 1 18 14"/></svg></div>
+          <div class="included__label">Chef-Prepared Meals</div>
+          <p class="included__desc">Three meals a day, local provisioning, dietary requests welcome.</p>
+        </div>
+        <div>
+          <div class="included__icon"><svg viewBox="0 0 24 24"><path d="M4 4h16l-8 9v7M9 20h6"/></svg></div>
+          <div class="included__label">Premium Bar</div>
+          <p class="included__desc">House wine, beer, cocktails. Sundowners on deck nightly.</p>
+        </div>
+        <div>
+          <div class="included__icon"><svg viewBox="0 0 24 24"><path d="M4 9c0-2 2-3 4-3h8c2 0 4 1 4 3v3a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3v-1H10v1a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3"/><path d="M16 6V3"/></svg></div>
+          <div class="included__label">Snorkel Gear &amp; SUPs</div>
+          <p class="included__desc">Masks, fins, paddleboards, floaties — all on board.</p>
+        </div>
+        <div>
+          <div class="included__icon"><svg viewBox="0 0 24 24"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 14h18M7 9V6h4v3"/></svg></div>
+          <div class="included__label">Private Cabin + Head</div>
+          <p class="included__desc">Your own room and bathroom. No bunking, no shared baths.</p>
+        </div>
+        <div>
+          <div class="included__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v15M5 12h14M5 14a7 7 0 0 0 14 0"/></svg></div>
+          <div class="included__label">Fuel &amp; Dockage</div>
+          <p class="included__desc">Every gallon, every mooring ball, every marina fee. Covered.</p>
+        </div>
+        <div>
+          <div class="included__icon"><svg viewBox="0 0 24 24"><path d="M3 16h18l-1 4H4zM6 16V9l6-3 6 3v7"/></svg></div>
+          <div class="included__label">Captain &amp; Crew</div>
+          <p class="included__desc">Clint at the helm, Dodie hosting. You're never on watch.</p>
+        </div>
+        <div>
+          <div class="included__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
+          <div class="included__label">Daily Wellness</div>
+          <p class="included__desc">Optional sunrise breathwork, sunset meditation, guided journaling.</p>
+        </div>
+        <div>
+          <div class="included__icon"><svg viewBox="0 0 24 24"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0M12 19h.01M2 2l20 20"/></svg></div>
+          <div class="included__label">The Right to Unplug</div>
+          <p class="included__desc">No WiFi pressure. Phones off, eyes up. That's the whole pitch.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STORY ===================== -->
+<section id="story" class="section">
+  <div class="container">
+    <div class="story__layout">
+      <div class="story__media">
+        <div class="story__photo">
+          <img src="https://assets.cdn.filesafe.space/Ytq1Qi48bKj3ZImQ9Ye8/media/6978ff59eb0d1a3cf4c01738.jpeg" alt="Clint and Dodie Kendall — Guiding Winds Unplug" onerror="this.style.display='none'" />
+        </div>
+        <div class="story__pullquote">
+          <p>"The ocean has a way of giving you back the version of yourself you've been missing."</p>
+          <span>— Dodie Kendall</span>
+        </div>
+      </div>
+      <div class="story__text">
+        <span class="eyebrow">Our Story</span>
+        <h2 class="h-display h-lg">Meet Clint &amp; Dodie.</h2>
+        <p>Clint was born in Miami Beach and raised in the Florida Keys. The ocean wasn't a backdrop — it was a way of life. He spent years as a long-liner before he ever guided a guest, and he knows these waters the way most people know their own neighborhoods.</p>
+        <p>Dodie grew up between Fort Lauderdale and Pompano Beach. She shares Clint's love for the sea — and adds something else: a quiet belief that the ocean is one of the most direct paths back to yourself. She runs the wellness side of every charter and is the reason "Unplug" is in the name.</p>
+        <p>Together they've spent years cruising the British Virgin Islands and fell in love with the catamaran lifestyle and the freedom it offers. Guiding Winds is the natural next step — a way to share that freedom with eight to twelve people at a time.</p>
+        <p style="margin-top:30px"><a href="#" class="link-underline">Read the full story <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WATCH ===================== -->
+<section class="section watch">
+  <div class="container">
+    <div class="watch__head">
+      <span class="eyebrow" style="text-align:center;display:block">Watch</span>
+      <h2 class="h-display h-lg text-balance">A day aboard, in three minutes.</h2>
+      <p>Sunrise to sundown — anchorage, snorkel, lunch on deck, the slow afternoon, dinner under the stars.</p>
+    </div>
+    <div class="watch__player">
+      <img src="https://assets.cdn.filesafe.space/Ytq1Qi48bKj3ZImQ9Ye8/media/697291db4a646490ed6c3867.jpg" alt="A day aboard preview" onerror="this.style.display='none'" />
+      <button class="watch__play" aria-label="Play video">
+        <span><svg width="28" height="28" viewBox="0 0 24 24" fill="#1B3A4B"><path d="M8 5v14l11-7z"/></svg></span>
+      </button>
+      <div class="watch__label">3:14 · A Day Aboard — BVI, January</div>
+    </div>
+    <p class="watch__note">YouTube embed slot — supports Google video-rich result &amp; AI search visibility</p>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="testi__header">
+      <div style="max-width:560px">
+        <span class="eyebrow">Guests Aboard</span>
+        <h2 class="h-display h-lg">In their words.</h2>
+      </div>
+      <div class="testi__rating"><span class="num">5.0</span> ★★★★★ &nbsp;average rating across all 2025 charters</div>
+    </div>
+
+    <div class="testi__grid">
+      <article class="testi-card">
+        <div class="testi-card__stars">★★★★★</div>
+        <blockquote class="testi-card__quote">"Our trip with Guiding Winds was nothing short of perfection. Dodie and Clint have mastered the art of hospitality — everything felt effortless. Gorgeous waters, stress-free getaway. We can't wait to come back."</blockquote>
+        <div class="testi-card__author">
+          <div class="testi-card__avatar"><img src="https://storage.googleapis.com/msgsndr/Ytq1Qi48bKj3ZImQ9Ye8/media/698f9ae87d68771184d0932e.jpg" alt="Joe and Danielle Steen" onerror="this.style.display='none'" /></div>
+          <div>
+            <div class="testi-card__name">Joe &amp; Danielle Steen</div>
+            <div class="testi-card__where">St. Augustine, Florida · BVI Jan 2025</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card">
+        <div class="testi-card__stars">★★★★★</div>
+        <blockquote class="testi-card__quote">"Unbelievable experience. The balance of relaxing in the sun and getting some fishing in was perfect. The catamaran is the way to see the islands. Huge thanks to Dodie and Clint — seamless from start to finish."</blockquote>
+        <div class="testi-card__author">
+          <div class="testi-card__avatar"><img src="https://storage.googleapis.com/msgsndr/Ytq1Qi48bKj3ZImQ9Ye8/media/698b383e67d7494f904bbb75.jpg" alt="Tommy Lyn and Alisha" onerror="this.style.display='none'" /></div>
+          <div>
+            <div class="testi-card__name">Tommy Lyn &amp; Alisha</div>
+            <div class="testi-card__where">Tennessee · BVI Mar 2025</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card">
+        <div class="testi-card__stars">★★★★★</div>
+        <blockquote class="testi-card__quote">"I've done a fair share of traveling, but this trip stands out. Island hopping on the catamaran was the highlight of my year. Dodie and Clint are the real deal — they handle the details so you can just enjoy the view. First-class."</blockquote>
+        <div class="testi-card__author">
+          <div class="testi-card__avatar"><img src="https://storage.googleapis.com/msgsndr/Ytq1Qi48bKj3ZImQ9Ye8/media/698f9cb0008498d63a5288d7.jpg" alt="Frank Zuckero" onerror="this.style.display='none'" /></div>
+          <div>
+            <div class="testi-card__name">Frank Zuckero</div>
+            <div class="testi-card__where">Michigan · Bahamas Apr 2025</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== JOURNAL ===================== -->
+<section id="journal" class="journal">
+  <div class="container">
+    <div class="journal__head">
+      <div>
+        <span class="eyebrow">The Journal</span>
+        <h2>Notes from the deck.</h2>
+      </div>
+      <a href="#" class="link-underline">Browse all stories →</a>
+    </div>
+    <div class="journal__grid">
+      <article class="journal-card">
+        <div class="ph"></div>
+        <div class="cat">Guide</div>
+        <h3>What to actually pack for a week off the grid</h3>
+        <p>7 things you need, 9 things you don't, and one thing no one tells you.</p>
+      </article>
+      <article class="journal-card">
+        <div class="ph"></div>
+        <div class="cat">Field Notes</div>
+        <h3>The five anchorages in the BVI we love most</h3>
+        <p>From The Bight to Anegada — where we drop the hook and why.</p>
+      </article>
+      <article class="journal-card">
+        <div class="ph"></div>
+        <div class="cat">Wellness</div>
+        <h3>Why mornings at sea are the best therapy</h3>
+        <p>A short essay on breathwork, sunrise, and the science of slow.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section id="book" class="cta">
+  <div class="cta__bg-fb"></div>
+  <div class="cta__bg"><img src="https://assets.cdn.filesafe.space/Ytq1Qi48bKj3ZImQ9Ye8/media/697292fd2b73e1336ff6a971.jpg" alt="" onerror="this.style.display='none'" /></div>
+  <div class="cta__veil"></div>
+  <div class="cta__inner">
+    <span class="eyebrow" style="color:var(--brass)">Available Now</span>
+    <h2>14 weeks. Eight cabins. <span class="ital">One catamaran.</span></h2>
+    <p class="cta__sub">Tell us which week looks right and we'll hold a cabin while you decide. No pressure, no deposit until you're certain.</p>
+    <form class="cta__form" onsubmit="event.preventDefault()">
+      <input type="text" placeholder="Your name" />
+      <input type="email" placeholder="Email" />
+      <select class="cta__col2">
+        <option>Preferred week</option>
+        <option>BVI · Jan 9–16, 2027</option>
+        <option>BVI · Jan 30–Feb 6, 2027</option>
+        <option>BVI · Feb 20–27, 2027</option>
+        <option>BVI · Mar 13–20, 2027</option>
+        <option>Bahamas · Mar 27–Apr 3, 2027</option>
+        <option>Bahamas · Apr 17–24, 2027</option>
+        <option>Bahamas · May 1–8, 2027</option>
+        <option>Italy · Jul 3–10, 2027</option>
+        <option>Italy · Jul 24–31, 2027</option>
+        <option>Greece · Aug 14–21, 2027</option>
+        <option>Greece · Sep 4–11, 2027</option>
+        <option>Croatia · Sep 18–25, 2027</option>
+        <option>Croatia · Oct 9–16, 2027</option>
+        <option>BVI · Nov 27–Dec 4, 2027</option>
+      </select>
+      <button type="submit" class="cta__button cta__col2">Hold a Cabin</button>
+    </form>
+    <p class="cta__legal">Form submissions route to your GoHighLevel account via API — your existing automations fire as usual.</p>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">Guiding Winds <span class="b">Unplug</span></div>
+        <p class="footer__intro">Wellness catamaran charters across the British Virgin Islands, the Bahamas, and the Mediterranean. Eight to twelve guests. All-inclusive. Captained.</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/profile.php?id=61588279383433" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.5-5.2a3 3 0 0 0-2.1-2.1C18.7 4.3 12 4.3 12 4.3s-6.7 0-8.4.4a3 3 0 0 0-2.1 2.1C1 8.5 1 12 1 12s0 3.5.5 5.2a3 3 0 0 0 2.1 2.1c1.7.4 8.4.4 8.4.4s6.7 0 8.4-.4a3 3 0 0 0 2.1-2.1c.5-1.7.5-5.2.5-5.2zM10 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#destinations">British Virgin Islands</a></li>
+          <li><a href="#destinations">The Bahamas</a></li>
+          <li><a href="#destinations">Mediterranean</a></li>
+          <li><a href="#journal">Journal</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#included">What's Included</a></li>
+          <li><a href="#book">Hold a Cabin</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <div>© 2026 Guiding Winds Unplug · Operating from the Bahamas, BVI, and Europe</div>
+      <div class="ital">Concept shell — design proof for proposal review.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var nav = document.getElementById('nav');
+  function setNavState(){
+    if (window.scrollY > 60) nav.classList.add('is-solid');
+    else nav.classList.remove('is-solid');
+  }
+  setNavState();
+  window.addEventListener('scroll', setNavState, { passive: true });
+</script>
+</body>
+</html>
