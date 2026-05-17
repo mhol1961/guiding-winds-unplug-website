@@ -1,0 +1,55 @@
+/* Project-wide baseline. theme.css is regenerated from DESIGN.md by
+   scripts/design-export.mjs — do not hand-edit it. Add custom utilities,
+   keyframes, and one-off CSS here. */
+
+@import "./theme.css";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    background-color: var(--color-primary);
+    color: var(--color-ink);
+    font-family: var(--font-inter);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-primary);
+    color: var(--color-ink);
+    font-family: var(--font-inter);
+    font-size: var(--text-body-md);
+    line-height: var(--leading-body-md);
+    margin: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-fraunces);
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  /* Respect reduced motion globally — components opt in to animation. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
