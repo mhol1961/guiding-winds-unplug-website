@@ -87,4 +87,30 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-A full week off the grid in the British Virgin Islands. Detail prose lands here in Phase 4 — frontmatter is complete and feeds the home page, picker, calendar, and schema graphs.
+**TL;DR:** Our 7-night BVI all-inclusive catamaran charter sails Saturday to Saturday from Nanny Cay, Tortola, aboard a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. From **$3,550 per guest, all-inclusive** — captained by Clint Kendall (USCG-licensed) and hosted by Dodie. Six weeks in 2027, January through March and one in November.
+
+## The shape of a week
+
+You fly into Beef Island on a Friday or early Saturday, you're aboard by 2pm, and by sundown you're at a quiet anchorage somewhere most charter guests never see on day one. Saturdays in the BVI are noisy at the marina and quiet everywhere else, which is exactly why we leave the dock fast. From there the week opens up: short, easy passages between anchorages, long afternoons in the water, and dinners that run until the stars come out. You'll never be on the boat for more than four hours at a stretch. Most days it's two.
+
+The British Virgin Islands sailing charter circuit is well-trodden for a reason — the islands sit close together, the trade winds are dependable, and the chain shelters you from open Atlantic swell almost everywhere you'd want to drop a hook. What separates one week from another is who's reading the weather, where you anchor when the day boats arrive, and what shows up at dinner. We anchor where the crowd isn't. By Wednesday the catamaran charter Tortola itineraries you'd find in a brochure feel like a different trip entirely.
+
+## The anchorages this trip is known for
+
+The Norman Island catamaran morning is the trip's opening note — the Caves and the Indians, three rock pillars rising from the seabed, snorkeled before the first day-charter boat arrives. The Baths come next, granite boulders the size of small houses with sea pools you can swim between if you time the tide. Then the overnight passage to Anegada, the only coral atoll in the chain, where the Anegada catamaran lobster dinner is exactly what people say it is and the bonefish flats stretch farther than your eyes can follow.
+
+The back half of the week is softer. Jost Van Dyke for a long lunch at White Bay. Sandy Spit for an uninhabited-island swim. Cooper Island at Manchioneel Bay for the last night, a long dinner under the rig lights, and a final sunrise swim before brunch and the short ride back to Nanny Cay.
+
+## Wellness without the air quotes
+
+This isn't a retreat with a schedule. It's a week on a boat with two people who happen to know how to set one up so you actually unwind. Starlink is on by default, and most guests have us turn it off by Wednesday — not because we ask, but because the second drink of the second night is when the phone stops feeling useful. If you want a morning breath sequence or a yoga flow on the foredeck, Dodie leads one most mornings. If you want to sleep until coffee, the coffee will still be there.
+
+Clint reads weather the way other people read the news. He'll change the next day's plan over breakfast because the wind backed two points overnight, and you'll have one of those mornings where the boat is the only one in the anchorage. Dodie runs the galley the way a chef runs a tasting menu — a different cuisine every dinner, sourced from whichever island we provisioned at last, served on the aft deck with the sun going down behind the rig.
+
+> You don't need another vacation. You need a week where Wednesday feels like a Sunday.
+
+## Why the Caribbean, why now
+
+December through April is the window. Trade winds blow steady out of the east at 15 to 20 knots, daytime temperatures sit in the low 80s, and the rain almost always passes in twenty minutes. The water reads 78 to 80 degrees on a thermometer and bluer than that on every other measure. Hurricane season is a non-issue this side of the calendar, which is why we run the BVI from January to March and one shoulder week in mid-November.
+
+Six weeks are open for 2027. Two of them already have fewer than four cabins left. If your week matters more than the date, hold the cabin first — there's no deposit required for the first 72 hours, and we'll talk on the phone before you commit a dollar.

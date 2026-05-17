@@ -76,4 +76,36 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-The Abacos — the slow side of the Caribbean. Full prose lands in Phase 4.
+**TL;DR:** Our 7-night Bahamas catamaran charter sails the Abacos — a 45ft+ private catamaran with 8 ensuite cabins, capped at 12 guests, from **$3,550 per guest, all-inclusive**. Saturday-to-Saturday from the Marsh Harbour / Treasure Cay area, with named anchorages at Hope Town, Tilloo Cay, Man-o-War Cay, Guana Cay, and Little Harbour. Three weeks available in April and early May 2027.
+
+## Why the Abacos, not the Exumas
+
+The Exumas have the postcard. The Abacos have the week. Pig Beach is two hours by tender from anywhere a charter boat can comfortably overnight, and the chain runs long, exposed, and crowded with day-trip traffic out of Nassau and Staniel Cay. The Abacos sit further north, sheltered behind a 120-mile barrier of cays that turns the inside passage — the Sea of Abaco — into something closer to a long, warm lake than an ocean.
+
+The water is shallow enough that you can stand a half-mile from any beach. The passages between anchorages are short — most days are under two hours under sail. There are fewer charter boats at anchor, fewer megayachts, fewer wake-throwing center consoles. The Abacos read as a quieter, lower-key version of the Caribbean — same palette, half the traffic, none of the day-tour density. For a first catamaran charter, or for anyone who's already done the BVI and wants something gentler, this is the trip.
+
+## The shape of the week
+
+You board Saturday afternoon at Marsh Harbour. We provision, you settle into your cabin, and we slip the lines for the short crossing of the Sea of Abaco to Hope Town for the first night under the candy-striped lighthouse — one of only three hand-wound, kerosene-burning lighthouses still operating anywhere in the world. The climb is 101 steps. The view at the top is the whole chain laid out below you.
+
+From Hope Town we drift south through Tilloo Cay and Sandy Cay — two low scraps of land with a sea garden you can swim to from the boat. Sandy Cay's reef is the snorkel of the trip; pillar coral, fans, a resident pair of nurse sharks that have been there longer than the marina at Marsh Harbour. Lunch aboard, afternoon nap on the trampoline, dinner at anchor.
+
+Tuesday is Little Harbour and Pete's Pub — a sand-floor bar at the south end of the chain founded by a sculptor who came in 1951 and never left. The wild beach south of the cut is a good sunset walk. Wednesday we work back up the chain to Man-o-War Cay, a boat-building village with no cars, narrow lanes between clapboard houses, and a bakery that makes the best bread we've found anywhere in the Bahamas. Thursday is Guana Cay — a long beach, a long lunch at Nipper's on the dune above the Atlantic side, and an optional kayak across to Bakers Bay. Friday we anchor at Treasure Cay for the final night in what is, by most counts, one of the most photographed bays in the chain.
+
+Saturday morning, brunch aboard. Off the boat by 11.
+
+## April and early May — the window we run
+
+We sail the Bahamas in a deliberate three-week window. April and early May sit between the high-season crush (which clears out by Easter) and the start of the hurricane window (which doesn't realistically open until mid-June). The water is 78–80°F. The trade winds settle into a steady 10–15 knots from the east. The afternoon squalls that punctuate summer haven't started yet.
+
+You also get longer evenings without the heat — the air drops into the low 70s after sundown, which makes for the kind of long, candle-lit dinner on deck the Bahamas summer doesn't really allow.
+
+## The wellness angle
+
+This is the slowest trip we run. Shorter passages, fewer bar stops, fewer named landmarks to tick off. The pace gives you room to actually unplug — a morning breath practice on the foredeck, a swim before breakfast, an afternoon of nothing in particular. Starlink is aboard and works fine; most guests turn it off on Sunday and don't think about it again until Friday. Dodie cooks taverna-style: long mezze, things off the grill, a glass of something cold on the way. There is no schedule. There is no list of things you'll have missed.
+
+> The Abacos don't ask you to chase a postcard. They ask you to sit still long enough to notice the water change color.
+
+## Booking
+
+Three weeks for 2027 — April 10, April 24, and May 8 — each Saturday to Saturday, each at $3,550 per guest. Eight cabins per week. We hold a cabin for 72 hours, no payment required. If you want the whole boat for a private group, ask — we run private-charter weeks at the same rate with a tailored itinerary.

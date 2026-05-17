@@ -70,4 +70,32 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-Greece — the Cyclades at the pace they were meant to be sailed. Full prose lands in Phase 4.
+**TL;DR:** Our 7-night Greek islands catamaran trip sails one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route threads Kea, Kythnos, Sifnos, Folegandros, Ios, and Santorini — the chain at sailboat pace, not ferry pace. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall (USCG-licensed) and hosted by Dodie. Two 2027 weeks: a July sailing in the Meltemi, and a calmer September week.
+
+## The shape of a week
+
+You fly into Athens, transfer to Alimos by mid-afternoon, and by sundown the city is behind you and Kea is ahead. From there the week opens out island by island — short legs most days, one longer crossing, never more than five or six hours under sail. The Cyclades sit in a loose chain that the catamaran reads naturally: lift the anchor after breakfast, drop it again before lunch, swim, eat, walk a hill town in the late afternoon, sit down to dinner as the wind dies. The Greek islands catamaran trip you book on a ferry-and-hotel itinerary covers the same map at a third of the depth. The water in between is most of what you came for.
+
+Ferries connect the famous islands and skip everything else. Cruise ships dock at two of them and disgorge four thousand people at a time. The catamaran sits in coves neither of them reach — Kythnos's Kolona, Folegandros's cliffside anchorages, a quiet morning at Manganari before the day boats arrive. You'll see Santorini at the end, like everyone else. You'll get there a different way.
+
+## The anchorages this trip is known for
+
+Kythnos opens the week. Kolona is the twin-bay anchorage you've seen on Greek tourism posters — a thin sandbar splitting two crescents of water, the boat lying at anchor in one bay while you swim across to the other. Sifnos is the long day ashore: Kamares as the harbor town, Apollonia climbing the hill above it, and the kind of dinner Greeks recommend to other Greeks. The island has a quiet reputation for its food and earns it without trying.
+
+Folegandros is the dramatic note in the middle of the week. Smaller and steeper than its neighbors, with whitewashed Chora set on a cliff edge two hundred meters above the water. Late afternoon you sail the catamaran along the base of those cliffs with a glass of assyrtiko in your hand and the village invisible somewhere overhead. Santorini at the end is the final overnight — caldera anchorage at Ammoudi or Vlychada depending on wind, sunset from the water instead of shoulder-to-shoulder on Oia's terrace with 4,000 cruise passengers. Morning brings the short transfer to JTR for evening flights home.
+
+## The Meltemi, honestly
+
+July and August in the Cyclades means the Meltemi — the dry northerly that funnels down the Aegean and can push 25 knots for days at a time. We don't pretend it isn't there. We sail the route Clint has built around it, which is a one-way south through the chain so the wind is at our back rather than on our nose. The 45-foot catamaran sits flat where a monohull would heel uncomfortably, and you sleep at anchor in coves that are sheltered from the north. By the second day the boat motion stops registering and the wind becomes the soundtrack.
+
+The September week is the alternative. Same route, same islands, dramatically calmer water, swim temperatures still in the high seventies, and the high-season day boats gone home. If you want the Cyclades quieter, that's the week to hold.
+
+> The Greek islands at ferry speed is a country of post cards. At sailboat speed it's the country in between them.
+
+## The galley and the wine
+
+Dodie runs a Greek-leaning menu through the week — provisioned at each island as we go, which means the lamb is from one place, the cheese from another, and the tomatoes from the village we anchored at this morning. Assyrtiko is featured on the bar by default; the wine grows on volcanic soil sixty miles from where you're drinking it and tastes like the place it came from. Two of the seven dinners are ashore on us at tavernas Clint and Dodie have learned to trust over years in the chain. The other five are on the boat at anchor, served on the aft deck as the sun goes down behind whichever cliff you happen to be tucked under that night.
+
+## Why one-way, why the Cyclades
+
+The Cyclades catamaran charter all-inclusive itinerary is built around a one-way: in to Athens, out from Santorini. It sounds like more logistics than it is — JTR has direct flights to Athens and onward to most of Europe, and the routing means you cover real ground rather than retracing your wake. December through March the Aegean is closed to charter for weather; April through October is the window, and the two weeks we run sit at the high-summer peak and the early-shoulder calm. If your week matters more than the date, hold a cabin first — no deposit required for the first 72 hours, and we'll talk on the phone before you commit anything.

@@ -1,0 +1,94 @@
+---
+import { Check } from 'lucide-react';
+
+interface AvailableWeek {
+  start: string;
+  end: string;
+  cabinsAvailable: number;
+}
+
+interface Props {
+  pricePerGuestUSD: number;
+  availableWeeks: AvailableWeek[];
+  voyageName: string;
+  voyageSlug: string;
+}
+
+const { pricePerGuestUSD, availableWeeks, voyageName, voyageSlug } = Astro.props;
+
+function formatWeek(start: string, end: string): string {
+  const s = new Date(`${start}T12:00:00Z`);
+  const e = new Date(`${end}T12:00:00Z`);
+  const fmt = (d: Date) =>
+    d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const year = s.getUTCFullYear();
+  return `${fmt(s)} – ${fmt(e)}, ${year}`;
+}
+---
+
+<aside class="bg-surface border border-hairline p-7 lg:sticky lg:top-28">
+  <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft mb-3">
+    All-inclusive
+  </p>
+  <div class="flex items-baseline gap-2 mb-1">
+    <span class="font-display text-[3rem] leading-none text-ink tabular-nums" style="font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;">
+      ${pricePerGuestUSD.toLocaleString()}
+    </span>
+    <span class="font-body-md text-[0.9375rem] text-ink-soft">/ guest</span>
+  </div>
+  <p class="font-body-sm text-[0.8125rem] text-ink-mute mb-6">
+    Meals, premium bar, gear, fuel, dockage. No hidden fees.
+  </p>
+
+  <div class="space-y-2 mb-6">
+    {
+      ['Chef-prepared meals, twice daily', 'Premium open bar', 'Snorkel + paddleboards + kayaks', 'Private cabin with ensuite head'].map(
+        (item) => (
+          <div class="flex items-start gap-2">
+            <Check className="size-4 text-accent shrink-0 mt-1" strokeWidth={2} />
+            <span class="font-body-md text-[0.9375rem] text-ink-soft">{item}</span>
+          </div>
+        ),
+      )
+    }
+  </div>
+
+  <div class="border-t border-hairline pt-5 mb-6">
+    <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft mb-4">
+      2027 weeks · {availableWeeks.length} available
+    </p>
+    <ul class="space-y-3">
+      {
+        availableWeeks.map((week) => (
+          <li class="flex items-center justify-between gap-4">
+            <span class="font-body-md text-[0.9375rem] text-ink tabular-nums">
+              {formatWeek(week.start, week.end)}
+            </span>
+            <span
+              class:list={[
+                'inline-flex items-center rounded-pill px-2.5 py-1 font-label-caps uppercase tracking-[0.2em] text-[0.5625rem] font-semibold tabular-nums',
+                week.cabinsAvailable === 0
+                  ? 'bg-ink-mute/20 text-ink-mute'
+                  : week.cabinsAvailable <= 2
+                    ? 'bg-accent/20 text-accent'
+                    : 'bg-bone/15 text-ink-soft',
+              ]}
+            >
+              {week.cabinsAvailable === 0 ? 'Sold out' : `${week.cabinsAvailable} cabins`}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <a
+    href={`/inquire?voyage=${voyageSlug}`}
+    class="block w-full text-center cursor-pointer bg-accent text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-6 py-[18px] hover:bg-accent-hot transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+  >
+    Hold a Cabin
+  </a>
+  <p class="font-body-sm text-[0.75rem] text-ink-mute mt-4 leading-relaxed text-center">
+    72-hour soft hold. No deposit required. Reply when you decide.
+  </p>
+</aside>

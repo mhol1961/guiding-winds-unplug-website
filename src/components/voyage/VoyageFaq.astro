@@ -1,0 +1,35 @@
+---
+import { FaqAccordion } from './FaqAccordion';
+
+interface QA { q: string; a: string }
+interface Props {
+  faq: QA[];
+}
+const { faq } = Astro.props;
+---
+
+<section class="bg-primary text-ink border-t border-hairline">
+  <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-4">
+        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-4">
+          Questions guests ask
+        </p>
+        <h2
+          class="font-h2 text-ink leading-[1.05] tracking-[-0.02em] font-normal text-balance"
+          style="font-size: clamp(1.875rem, 3vw + 1rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+        >
+          Before you go.
+        </h2>
+        <p class="mt-6 font-body-md text-[0.9375rem] leading-[1.65] text-ink-soft">
+          More in the <a href="/faq" class="text-accent hover:underline">full FAQ</a>.
+          Anything not answered here — <a href="/inquire" class="text-accent hover:underline">just ask</a>.
+        </p>
+      </div>
+
+      <div class="lg:col-span-8">
+        <FaqAccordion client:visible items={faq} />
+      </div>
+    </div>
+  </div>
+</section>

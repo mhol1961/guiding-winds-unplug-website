@@ -1,0 +1,67 @@
+---
+interface Image {
+  src: string;
+  alt: string;
+}
+interface Props {
+  images: Image[];
+  /** Gradient fallback used when no photos are provided. */
+  fallbackGradient: string;
+  /** Number of placeholder tiles to show when images is empty. Default 5. */
+  emptyTileCount?: number;
+}
+const { images, fallbackGradient, emptyTileCount = 5 } = Astro.props;
+
+// 5-tile asymmetric layout — large tile spans 2x2 left, four smaller tiles
+// stack on the right. Mobile: single column.
+const hasImages = images.length > 0;
+const tiles = hasImages ? images.slice(0, 5) : Array.from({ length: emptyTileCount });
+---
+
+<section class="bg-primary text-ink border-t border-hairline">
+  <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+    <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-8">
+      What it looks like
+    </p>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 grid-rows-2 gap-3 lg:gap-4 aspect-[5/4] lg:aspect-[3/2]">
+      {
+        tiles.map((tile, i) => {
+          const isFeatured = i === 0;
+          const t = tile as Image | undefined;
+          return (
+            <figure
+              class:list={[
+                'relative overflow-hidden bg-surface',
+                isFeatured ? 'col-span-2 row-span-2' : '',
+              ]}
+              style={!t ? `background: ${fallbackGradient};` : ''}
+            >
+              {t && (
+                <img
+                  src={t.src}
+                  alt={t.alt}
+                  loading="lazy"
+                  decoding="async"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]"
+                />
+              )}
+              {!t && (
+                <span class="absolute bottom-3 right-3 font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-ink/50">
+                  Photo · forthcoming
+                </span>
+              )}
+            </figure>
+          );
+        })
+      }
+    </div>
+
+    {!hasImages && (
+      <p class="font-body-sm text-[0.8125rem] text-ink-mute mt-6 max-w-prose">
+        Photography from the 2026 sailing season is being added through Q1 2027.
+        The boat looks better than it photographs.
+      </p>
+    )}
+  </div>
+</section>

@@ -1,0 +1,179 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  /** Optional preselect from voyage page deep-link. */
+  region?: 'bvi' | 'bahamas' | 'mediterranean';
+  voyageSlug?: string;
+  variant?: 'standalone' | 'embedded';
+}
+
+const { region, voyageSlug, variant = 'standalone' } = Astro.props;
+const voyages = await getCollection('voyages');
+
+// Flatten weeks across voyages for the select.
+const weekOptions = voyages
+  .flatMap((v) =>
+    v.data.availableWeeks.map((w) => ({
+      value: `${v.data.slug}|${w.start}`,
+      label: `${v.data.name} · ${new Date(`${w.start}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}–${new Date(`${w.end}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })} · ${w.cabinsAvailable === 0 ? 'Sold out' : `${w.cabinsAvailable} cabins left`}`,
+      disabled: w.cabinsAvailable === 0,
+      defaultSelected: voyageSlug ? v.data.slug === voyageSlug : false,
+    })),
+  )
+  .sort((a, b) => a.value.localeCompare(b.value));
+
+const isEmbedded = variant === 'embedded';
+---
+
+<form
+  method="POST"
+  action="/api/inquire"
+  data-inquiry-form
+  class:list={[
+    'w-full',
+    isEmbedded ? '' : 'bg-surface border border-hairline p-7 lg:p-10',
+  ]}
+>
+  <input type="hidden" name="region" value={region ?? ''} />
+  <input type="hidden" name="source" value="website-2026" />
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div>
+      <label class="block font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-ink-soft mb-2" for="firstName">
+        First name <span class="text-accent">*</span>
+      </label>
+      <input
+        id="firstName"
+        name="firstName"
+        required
+        autocomplete="given-name"
+        maxlength="60"
+        class="w-full bg-primary text-ink font-body-md text-[0.9375rem] rounded-sm border border-hairline px-3.5 py-3 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+      />
+    </div>
+    <div>
+      <label class="block font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-ink-soft mb-2" for="lastName">
+        Last name <span class="text-accent">*</span>
+      </label>
+      <input
+        id="lastName"
+        name="lastName"
+        required
+        autocomplete="family-name"
+        maxlength="60"
+        class="w-full bg-primary text-ink font-body-md text-[0.9375rem] rounded-sm border border-hairline px-3.5 py-3 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+      />
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <label class="block font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-ink-soft mb-2" for="email">
+      Email <span class="text-accent">*</span>
+    </label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      required
+      autocomplete="email"
+      class="w-full bg-primary text-ink font-body-md text-[0.9375rem] rounded-sm border border-hairline px-3.5 py-3 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+    />
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5">
+    <div>
+      <label class="block font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-ink-soft mb-2" for="phone">
+        Phone <span class="text-ink-mute font-body-sm normal-case tracking-normal">(optional)</span>
+      </label>
+      <input
+        id="phone"
+        name="phone"
+        type="tel"
+        autocomplete="tel"
+        class="w-full bg-primary text-ink font-body-md text-[0.9375rem] rounded-sm border border-hairline px-3.5 py-3 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+      />
+    </div>
+    <div>
+      <label class="block font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-ink-soft mb-2" for="partySize">
+        Party size <span class="text-accent">*</span>
+      </label>
+      <select
+        id="partySize"
+        name="partySize"
+        required
+        class="w-full bg-primary text-ink font-body-md text-[0.9375rem] rounded-sm border border-hairline px-3.5 py-3 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 appearance-none bg-no-repeat bg-[right_14px_center]"
+        style="background-image: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1L6 6L11 1' stroke='%23E13F2A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>&quot;);"
+      >
+        <option value="">Select…</option>
+        <option value="1 (solo)">1 (solo)</option>
+        <option value="2 (couple)">2 (couple)</option>
+        <option value="3–4">3–4</option>
+        <option value="5–8">5–8</option>
+        <option value="9–12 (whole boat)">9–12 (whole boat)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <label class="block font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-ink-soft mb-2" for="week">
+      Preferred week <span class="text-ink-mute font-body-sm normal-case tracking-normal">(or "flexible")</span>
+    </label>
+    <select
+      id="week"
+      name="week"
+      class="w-full bg-primary text-ink font-body-md text-[0.9375rem] rounded-sm border border-hairline px-3.5 py-3 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 appearance-none bg-no-repeat bg-[right_14px_center]"
+      style="background-image: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1L6 6L11 1' stroke='%23E13F2A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>&quot;);"
+    >
+      <option value="flexible">Flexible — recommend a week</option>
+      {
+        weekOptions.map((opt) => (
+          <option value={opt.value} disabled={opt.disabled} selected={opt.defaultSelected}>
+            {opt.label}
+          </option>
+        ))
+      }
+    </select>
+  </div>
+
+  <div class="mt-5">
+    <label class="block font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-ink-soft mb-2" for="notes">
+      Anything we should know? <span class="text-ink-mute font-body-sm normal-case tracking-normal">(dietary, occasion, questions)</span>
+    </label>
+    <textarea
+      id="notes"
+      name="notes"
+      rows="4"
+      maxlength="1000"
+      class="w-full bg-primary text-ink font-body-md text-[0.9375rem] leading-[1.65] rounded-sm border border-hairline px-3.5 py-3 resize-y focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+    ></textarea>
+  </div>
+
+  {/* Honeypot — opacity, not display:none (OWASP). */}
+  <input
+    type="text"
+    name="website"
+    tabindex={-1}
+    autocomplete="off"
+    aria-hidden="true"
+    class="absolute opacity-0 pointer-events-none size-0"
+  />
+
+  <div class="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
+    <button
+      type="submit"
+      class="cursor-pointer bg-accent text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-8 py-[18px] hover:bg-accent-hot transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+    >
+      Send Inquiry
+    </button>
+    <p class="font-body-sm text-[0.8125rem] text-ink-mute">
+      We reply within 24 hours. By submitting you agree to our <a href="/privacy" class="text-accent hover:underline">privacy policy</a>.
+    </p>
+  </div>
+
+  <p
+    class="mt-5 font-body-sm text-[0.8125rem] text-accent"
+    data-inquiry-status
+    aria-live="polite"
+  ></p>
+</form>

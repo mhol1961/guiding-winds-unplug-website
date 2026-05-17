@@ -1,0 +1,208 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = '2027 Voyages · BVI, Bahamas, Italy, Greece, Croatia | Guiding Winds';
+const description =
+  'Fourteen weeks aboard a private catamaran across the British Virgin Islands, Bahamas, and Mediterranean. Pick a region, pick a week, hold a cabin for 72 hours.';
+
+const voyages = await getCollection('voyages');
+
+// Flatten available weeks across all voyages, sort by date ascending.
+const allWeeks = voyages
+  .flatMap((v) =>
+    v.data.availableWeeks.map((w) => ({
+      voyageSlug: v.data.slug,
+      voyageName: v.data.name,
+      region: v.data.region,
+      price: v.data.pricePerGuestUSD,
+      start: w.start,
+      end: w.end,
+      cabinsAvailable: w.cabinsAvailable,
+    })),
+  )
+  .sort((a, b) => a.start.localeCompare(b.start));
+
+const regionLabel: Record<string, string> = {
+  caribbean: 'Caribbean',
+  bahamas: 'Bahamas',
+  mediterranean: 'Mediterranean',
+};
+
+const regionGradient: Record<string, string> = {
+  caribbean: 'linear-gradient(135deg, #0E3F47 0%, #0A0A0A 70%, #1F1B17 100%)',
+  bahamas: 'linear-gradient(135deg, #C92E1C 0%, #2A1F1A 65%, #0A0A0A 100%)',
+  mediterranean: 'linear-gradient(135deg, #1F1B17 0%, #0E3F47 60%, #0A0A0A 100%)',
+};
+
+function formatWeek(start: string, end: string) {
+  const s = new Date(`${start}T12:00:00Z`);
+  const e = new Date(`${end}T12:00:00Z`);
+  const fmt = (d: Date) =>
+    d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  return `${fmt(s)} – ${fmt(e)}, ${s.getUTCFullYear()}`;
+}
+
+const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
+const schemaGraph = [
+  {
+    '@type': 'ItemList',
+    name: '2027 Voyages — Guiding Winds Unplug',
+    numberOfItems: voyages.length,
+    itemListElement: voyages.map((v, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${baseUrl}/voyages/${v.data.slug}`,
+      name: v.data.name,
+    })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${baseUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Voyages', item: `${baseUrl}/voyages` },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schemaGraph}>
+  {/* Hero — small editorial header */}
+  <section class="bg-primary text-ink border-b border-hairline">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 pt-20 pb-20 lg:pt-28 lg:pb-28">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-6">
+        Voyages · 2027
+      </p>
+      <h1
+        class="font-display text-ink leading-[0.95] tracking-[-0.03em] font-light text-balance max-w-4xl"
+        style="font-size: clamp(2.5rem, 6vw + 1rem, 5.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+      >
+        Three regions.
+        <span
+          class="italic"
+          style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;"
+        >
+          Fourteen weeks.
+        </span>
+        One boat.
+      </h1>
+      <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-ink-soft mt-8 max-w-3xl">
+        Caribbean January through March. Bahamas April and May. Mediterranean
+        June through October. We sail every week ourselves — Clint at the
+        helm, Dodie running the galley. Eight cabins, twelve guests, no
+        crowds at anchor.
+      </p>
+    </div>
+  </section>
+
+  {/* The 14 weeks at a glance */}
+  <section class="bg-primary text-ink border-t border-hairline">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+        <h2
+          class="font-h2 text-ink leading-[1.05] tracking-[-0.02em] font-normal"
+          style="font-size: clamp(1.875rem, 3vw + 1rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+        >
+          The full 2027 calendar
+        </h2>
+        <p class="font-body-md text-[0.9375rem] text-ink-soft">
+          {allWeeks.length} weeks total · {allWeeks.reduce((sum, w) => sum + w.cabinsAvailable, 0)} cabins available
+        </p>
+      </div>
+
+      <div class="border-t border-hairline">
+        {
+          allWeeks.map((week) => (
+            <a
+              href={`/voyages/${week.voyageSlug}`}
+              class="group grid grid-cols-12 gap-4 items-baseline py-5 border-b border-hairline hover:bg-surface/40 transition-colors px-2 -mx-2 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+            >
+              <div class="col-span-4 sm:col-span-3">
+                <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-mute">
+                  {regionLabel[week.region]}
+                </p>
+                <p class="font-body-md text-[0.9375rem] text-ink mt-1 group-hover:text-accent transition-colors">
+                  {week.voyageName}
+                </p>
+              </div>
+              <p class="col-span-5 sm:col-span-4 font-body-md text-[0.9375rem] text-ink-soft tabular-nums">
+                {formatWeek(week.start, week.end)}
+              </p>
+              <p class="hidden sm:block sm:col-span-2 font-body-md text-[0.9375rem] text-ink-soft tabular-nums">
+                ${week.price.toLocaleString()}
+              </p>
+              <p class="col-span-3 text-right font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold tabular-nums">
+                <span
+                  class:list={[
+                    week.cabinsAvailable === 0
+                      ? 'text-ink-mute'
+                      : week.cabinsAvailable <= 2
+                        ? 'text-accent'
+                        : 'text-ink-soft',
+                  ]}
+                >
+                  {week.cabinsAvailable === 0 ? 'Sold out' : `${week.cabinsAvailable} cabins`}
+                </span>
+              </p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* Three region cards */}
+  <section class="bg-primary text-ink border-t border-hairline">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-8">
+        By region
+      </p>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        {
+          (['caribbean', 'bahamas', 'mediterranean'] as const).map((region) => {
+            const regionVoyages = voyages.filter((v) => v.data.region === region);
+            const repName =
+              region === 'caribbean'
+                ? 'British Virgin Islands'
+                : region === 'bahamas'
+                  ? 'The Bahamas'
+                  : 'Italy, Greece & Croatia';
+            const repHref = `/voyages/${regionVoyages[0]?.data.slug ?? ''}`;
+            const desc =
+              region === 'caribbean'
+                ? 'January through March. Glass water, low density, six weeks.'
+                : region === 'bahamas'
+                  ? 'April and May. Pink sand, three weeks, the quietest of the chain.'
+                  : 'June through October. Italy, Greece, and Croatia — five weeks.';
+            return (
+              <a
+                href={repHref}
+                class="group relative block h-[420px] overflow-hidden focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+                style={`background: ${regionGradient[region]};`}
+              >
+                <div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent group-hover:from-accent/30 transition-colors duration-500" aria-hidden="true" />
+                <div class="absolute bottom-0 left-0 right-0 p-8">
+                  <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink/75 mb-2">
+                    {regionLabel[region]} · {regionVoyages.length} {regionVoyages.length === 1 ? 'voyage' : 'voyages'}
+                  </p>
+                  <h3
+                    class="font-h2 text-ink leading-[1.05] tracking-[-0.02em] font-light"
+                    style="font-size: clamp(1.5rem, 2vw + 1rem, 2rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+                  >
+                    {repName}
+                  </h3>
+                  <p class="font-body-md text-[0.9375rem] text-ink/75 mt-4 max-w-prose">
+                    {desc}
+                  </p>
+                  <p class="mt-5 font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-accent">
+                    Explore →
+                  </p>
+                </div>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { FaqAccordion } from '../components/voyage/FaqAccordion';
+
+const title = 'FAQ · Guiding Winds Unplug Catamaran Voyages';
+const description =
+  'Cabins, sailing experience, seasickness, weather, dietary needs, kids, cancellation, transfers — answered honestly.';
+
+const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
+
+const groups = [
+  {
+    title: 'Before booking',
+    items: [
+      {
+        q: 'How do I book?',
+        a: 'Hold a cabin from any voyage page or the calendar — no deposit required. We have 72 hours to talk by email or phone. Once you confirm, deposit is 25% to lock the cabin; balance due 60 days before departure. We can take card (Stripe), wire, or check.',
+      },
+      {
+        q: "What if my preferred dates aren't listed?",
+        a: 'Use the inquire form and tell us. We sometimes hold private-charter weeks back from the public calendar and add them based on group interest. We do not run unscheduled weeks for individual cabins.',
+      },
+      {
+        q: 'Can we book the whole boat?',
+        a: 'Yes. Whole-boat (all eight cabins) is the same per-cabin price with two perks: a fully tailored itinerary, and one extra shore dinner on us. We need 6+ months notice for a private-charter week; less if the date is already open on the public calendar.',
+      },
+      {
+        q: 'Cancellation policy.',
+        a: '90+ days from departure: full refund. 90 to 45 days: 50% refund. Under 45 days: no refund, but we will rebook you for any week with availability in the next 12 months at no charge. Travel insurance is strongly recommended; we can refer a broker.',
+      },
+      {
+        q: 'Do you require travel insurance?',
+        a: 'Not required, strongly recommended. We have seen guests need it for weather diversions, missed flights, and a few medical situations. Coverage in the $200–400 range for a $14k–$30k booking is standard.',
+      },
+    ],
+  },
+  {
+    title: 'The boat & cabins',
+    items: [
+      {
+        q: 'What does a cabin look like?',
+        a: 'Eight queens, each with an ensuite head (toilet + separate shower stall) and a hatch directly over the bed for stars at night. The Lagoon 50 was specifically chosen for cabin volume — there is genuinely no "small cabin" on this boat.',
+      },
+      {
+        q: 'Is there air conditioning?',
+        a: 'Yes. AC runs cabin-by-cabin on shore power overnight and from generators or shore-tied power most evenings underway. We run fans during open-anchor nights to keep the generator off after 10pm.',
+      },
+      {
+        q: 'Is there Wi-Fi?',
+        a: 'Starlink onboard, on by default. Coverage is the same as a fast home network most of the trip, slower in shadowed coves. You can ask us to turn it off for the week — most guests do, by Wednesday.',
+      },
+      {
+        q: 'How many guests does the boat actually hold?',
+        a: 'Eight ensuite cabins. We cap at 12 guests total — either 8 singles plus 4 couples, or 12 of any mix. Two crew (Clint and Dodie). Twelve is the max because the salon comfortably seats fourteen for dinner and the water gear is provisioned for that many.',
+      },
+    ],
+  },
+  {
+    title: 'The experience',
+    items: [
+      {
+        q: 'Do I need to know how to sail?',
+        a: 'No. Clint handles every helm decision and crew task. If you want to learn — trimming, helming, anchoring — he will teach you under his eye. If you want to read a book on the trampoline, the boat sails itself with him at the helm.',
+      },
+      {
+        q: 'How flexible is the itinerary?',
+        a: 'Very. The day-by-day on each voyage page is a sample; weather and the group\'s energy get a vote. Most weeks deviate from the published route in small ways — adding an extra anchorage, skipping a shore stop, sleeping in. Major route changes (regional swap) happen rarely and always with reason.',
+      },
+      {
+        q: 'What if I get seasick?',
+        a: 'Catamarans are dramatically more stable than monohulls — most people who get seasick on cruise ships are fine on this boat. We carry scopolamine patches (prescription, brought with us), Bonine, and ginger. The BVI and Bahamas are also among the most protected sailing grounds on earth — you are almost never out of sight of an island.',
+      },
+      {
+        q: 'Can we bring kids?',
+        a: 'Yes. The boat sleeps 12 and kids stack in cabins easily. Two notes: this is an adult-pace trip (long dinners, no kids menu), and there is no formal childcare. If you want a family week, book the whole boat and we will tailor the schedule — earlier dinners, more swim time, fewer long passages.',
+      },
+      {
+        q: 'Are solo travelers welcome?',
+        a: 'Yes. Roughly a quarter of our guests come solo. We will pair you with a same-gender solo guest at the standard per-guest rate, or you can book a cabin to yourself at the per-guest rate × 2 (effectively a single supplement).',
+      },
+      {
+        q: 'How does alcohol work?',
+        a: 'Open premium bar — wine, spirits, beer, sparkling, mixers. Stocked to your preferences from the inquiry call. We do not run a dry boat; we also do not run a hard-partying one. The pace tends to settle around two well-made cocktails before dinner and a bottle with the meal.',
+      },
+      {
+        q: 'Dietary needs and allergies?',
+        a: 'Dodie has run weeks with vegetarian, gluten-free, dairy-free, kosher, halal, low-carb, and serious shellfish allergies on the same boat at the same week. Tell us at inquiry — she shops accordingly.',
+      },
+    ],
+  },
+  {
+    title: 'Logistics',
+    items: [
+      {
+        q: 'Where do I fly into?',
+        a: 'BVI: Beef Island (EIS), short ferry across to Tortola. Bahamas: Marsh Harbour (MHH). Italy: Naples (NAP) on the Amalfi week — fly out of Catania (CTA). Greece: Athens (ATH) — fly out of Santorini (JTR). Croatia: Split (SPU) — fly out of Dubrovnik (DBV).',
+      },
+      {
+        q: 'Do you arrange transfers?',
+        a: 'Caribbean and Bahamas: yes, included, ferry or taxi from the airport to the marina. Mediterranean: not included, but we will book the taxi if you give us your flight number 30 days out.',
+      },
+      {
+        q: 'What should I pack?',
+        a: 'Less than you think. Two swimsuits, a quick-dry sarong or wrap, a hat with a chin strap, reef-safe sunscreen, a small dry bag, water shoes, and one nicer outfit for the shore dinners. We provide all linens, towels, snorkel gear, and rain gear. See the journal post "What to actually pack for a week off the grid" for the full list.',
+      },
+      {
+        q: 'What is the currency situation?',
+        a: 'Caribbean and Bahamas: USD widely accepted. Italy/Greece/Croatia: Euros (Croatia is now on the Euro as of 2023). Bring a small amount of cash for tips and incidentals; credit cards are accepted nearly everywhere we go.',
+      },
+      {
+        q: 'How does tipping work?',
+        a: 'A 10–15% crew gratuity at the end of the week is customary. Most guests pool the tip and hand it to Clint or Dodie on the last morning. Cash is preferred; we can also accept Venmo or Zelle.',
+      },
+    ],
+  },
+  {
+    title: 'Safety',
+    items: [
+      {
+        q: 'What are the captain credentials?',
+        a: 'Clint holds a USCG Master 100-Ton license, an RYA Yachtmaster Offshore certification, and an annual BVI Cruising & Charter Permit. He has 10+ years operating in the Caribbean chain and has crossed the Atlantic three times on delivery runs.',
+      },
+      {
+        q: 'Insurance?',
+        a: 'Fully insured through MarinaPro Risk Group: $2M liability per voyage, hull coverage, and medical evacuation. We can share a certificate of insurance for your travel insurance broker on request.',
+      },
+      {
+        q: 'Emergency procedures?',
+        a: 'Standard offshore safety brief at embarkation: life jackets, throwable PFDs, EPIRB, life raft, fire extinguishers, ditch bag, AED, first aid kit, and a registered satellite communicator. Coast guard radio coverage in every cruising ground we visit.',
+      },
+      {
+        q: 'Weather contingency?',
+        a: 'Clint plans every week with three potential routes depending on weather. If a tropical system threatens during a Caribbean or Bahamas week, we will reroute to the safest anchorage or, in the rare worst case, postpone — full refund or rebook. We have never lost a guest day to weather; we have re-routed plenty.',
+      },
+    ],
+  },
+];
+
+// FAQPage schema — all questions flattened.
+const allItems = groups.flatMap((g) => g.items);
+const schemaGraph = [
+  {
+    '@type': 'FAQPage',
+    mainEntity: allItems.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${baseUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'FAQ', item: `${baseUrl}/faq` },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schemaGraph}>
+  {/* Hero */}
+  <section class="bg-primary text-ink border-b border-hairline">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 pt-20 pb-16 lg:pt-28 lg:pb-20">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-6">
+        Frequently asked
+      </p>
+      <h1
+        class="font-display text-ink leading-[0.95] tracking-[-0.03em] font-light text-balance max-w-4xl"
+        style="font-size: clamp(2.5rem, 6vw + 1rem, 5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+      >
+        Questions, answered
+        <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;">honestly.</span>
+      </h1>
+      <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-ink-soft mt-8 max-w-3xl">
+        If something isn't here, <a href="/inquire" class="text-accent hover:underline">just ask</a>.
+        We'd rather answer one email than have you wonder.
+      </p>
+    </div>
+  </section>
+
+  {/* Grouped FAQ */}
+  {
+    groups.map((group, gi) => (
+      <section class:list={['border-t border-hairline', gi % 2 === 0 ? 'bg-primary' : 'bg-surface/30']}>
+        <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-20 lg:py-24">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <div class="lg:col-span-4">
+              <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-accent mb-4">
+                {String(gi + 1).padStart(2, '0')}
+              </p>
+              <h2
+                class="font-h2 text-ink leading-[1.05] tracking-[-0.02em] font-normal"
+                style="font-size: clamp(1.5rem, 2.5vw + 1rem, 2rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+              >
+                {group.title}
+              </h2>
+            </div>
+            <div class="lg:col-span-8">
+              <FaqAccordion client:visible items={group.items} />
+            </div>
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  {/* CTA */}
+  <section class="bg-bone text-primary border-t border-primary/10">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-20 text-center">
+      <h2
+        class="font-h2 text-primary leading-[1.05] tracking-[-0.02em] font-normal text-balance"
+        style="font-size: clamp(1.5rem, 3vw + 1rem, 2.25rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+      >
+        Still have a question? <span class="italic" style="font-variation-settings: 'opsz' 72, 'SOFT' 50, 'WONK' 1;">Send it over.</span>
+      </h2>
+      <div class="mt-8">
+        <a
+          href="/inquire"
+          class="inline-flex items-center justify-center cursor-pointer bg-primary text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-8 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+        >
+          Ask Dodie
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

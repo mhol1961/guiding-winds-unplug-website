@@ -1,0 +1,60 @@
+---
+interface Day {
+  day: number;
+  label: string;
+  title: string;
+  body: string;
+}
+
+interface Props {
+  itinerary: Day[];
+}
+const { itinerary } = Astro.props;
+---
+
+<section class="bg-primary text-ink border-t border-hairline">
+  <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+    <div class="max-w-2xl mb-16">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-4">
+        The week, day by day
+      </p>
+      <h2
+        class="font-h2 text-ink leading-[1.05] tracking-[-0.02em] font-normal text-balance"
+        style="font-size: clamp(1.875rem, 3vw + 1rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+      >
+        A sample itinerary. Weather and mood get a vote.
+      </h2>
+    </div>
+
+    <ol class="relative max-w-3xl mx-auto lg:ml-0">
+      {/* Vertical rail */}
+      <div class="absolute left-[14px] top-2 bottom-2 w-px bg-hairline" aria-hidden="true"></div>
+
+      {
+        itinerary.map((day) => (
+          <li class="relative pl-12 pb-12 last:pb-0">
+            {/* Coral dot */}
+            <span
+              class="absolute left-0 top-1 inline-flex items-center justify-center size-7 rounded-full bg-primary border border-hairline"
+              aria-hidden="true"
+            >
+              <span class="size-2 rounded-full bg-accent" />
+            </span>
+            <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-mute mb-2">
+              Day {day.day} · {day.label}
+            </p>
+            <h3
+              class="font-h3 text-ink text-[1.5rem] leading-[1.15] tracking-[-0.015em] font-medium mb-3"
+              style="font-variation-settings: 'opsz' 36;"
+            >
+              {day.title}
+            </h3>
+            <p class="font-body-md text-[0.9375rem] leading-[1.65] text-ink-soft max-w-prose">
+              {day.body}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,328 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Play, ShieldCheck, Anchor, Award, FileCheck2, Sun } from 'lucide-react';
+
+const title = 'Meet Clint & Dodie Kendall · Captains of Guiding Winds Unplug';
+const description =
+  'A husband-and-wife crew running fourteen all-inclusive catamaran voyages a year. Clint at the helm, USCG-licensed. Dodie running the galley and everything between meals.';
+
+const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
+
+const schemaGraph = [
+  {
+    '@type': 'Person',
+    '@id': `${baseUrl}/about#clint`,
+    name: 'Clint Kendall',
+    jobTitle: 'Captain',
+    worksFor: { '@type': 'Organization', name: 'Guiding Winds Unplug' },
+    knowsAbout: ['Catamaran sailing', 'Caribbean navigation', 'Mediterranean navigation'],
+    hasCredential: [
+      'USCG Master 100-Ton',
+      'RYA Yachtmaster Offshore',
+      'BVI Charter Permit holder',
+    ],
+  },
+  {
+    '@type': 'Person',
+    '@id': `${baseUrl}/about#dodie`,
+    name: 'Dodie Kendall',
+    jobTitle: 'Host & Galley Lead',
+    worksFor: { '@type': 'Organization', name: 'Guiding Winds Unplug' },
+    knowsAbout: ['Galley provisioning', 'Wellness retreats', 'Guest experience'],
+  },
+  {
+    '@type': 'TravelAgency',
+    '@id': `${baseUrl}/about#org`,
+    name: 'Guiding Winds Unplug',
+    url: baseUrl,
+    founder: [
+      { '@id': `${baseUrl}/about#clint` },
+      { '@id': `${baseUrl}/about#dodie` },
+    ],
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${baseUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Our Story', item: `${baseUrl}/about` },
+    ],
+  },
+];
+
+const credentials = [
+  { Icon: ShieldCheck, label: 'USCG Master 100-Ton license · Clint Kendall' },
+  { Icon: Anchor, label: 'RYA Yachtmaster Offshore — Mediterranean qualified' },
+  { Icon: FileCheck2, label: 'BVI Cruising & Charter Permit (annual renewal)' },
+  { Icon: Award, label: 'Fully insured · $2M liability through MarinaPro Risk Group' },
+  { Icon: Sun, label: 'Annual safety equipment certification — life raft, EPIRB, AED' },
+  { Icon: Anchor, label: '10+ years operating in the Caribbean chain' },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schemaGraph}>
+  {/* Hero */}
+  <section
+    class="relative bg-primary text-ink border-b border-hairline"
+    style="background: linear-gradient(160deg, #1F1B17 0%, #0A0A0A 60%, #0E3F47 100%);"
+  >
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 pt-24 pb-20 lg:pt-32 lg:pb-28">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-6">
+        Our story
+      </p>
+      <h1
+        class="font-display text-ink leading-[0.95] tracking-[-0.03em] font-light text-balance max-w-4xl"
+        style="font-size: clamp(2.5rem, 6vw + 1rem, 5.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+      >
+        Two captains.
+        <span
+          class="italic"
+          style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;"
+        >
+          One slow life.
+        </span>
+      </h1>
+    </div>
+  </section>
+
+  {/* Clint */}
+  <section class="bg-primary text-ink border-t border-hairline">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div class="lg:col-span-7 order-2 lg:order-1">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-accent mb-6">
+            The captain
+          </p>
+          <h2
+            class="font-h2 text-ink leading-[1.05] tracking-[-0.02em] font-normal text-balance"
+            style="font-size: clamp(1.875rem, 3vw + 1rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+          >
+            Clint Kendall.
+          </h2>
+          <div class="mt-8 space-y-5 font-body-lg text-[1.0625rem] leading-[1.7] text-ink-soft">
+            <p>
+              Clint learned to sail on a 22-foot daysailer in Pamlico Sound
+              when he was nine. Most of his late teens and twenties were
+              spent crewing on delivery runs up and down the East Coast for
+              brokers who needed someone who'd actually stand the night
+              watch. He earned his USCG Master 100-Ton ticket in 2013 and
+              his RYA Yachtmaster the year after.
+            </p>
+            <p>
+              Before this boat, he ran charters out of St. Thomas for a
+              fleet operator who measured success in turnover — boats out
+              every Saturday, no questions about who got on. He left that
+              job the year the company added a fourth identical Lagoon 50
+              to its fleet and started referring to weeks as "units."
+            </p>
+            <p>
+              He reads weather the way other people read the news. The route
+              of every voyage is built around what the chain is doing that
+              week, not what a brochure laid out a year ago. He'll teach you
+              to take the helm if you ask. He'll teach you to stay out of his
+              way if you don't.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 order-1 lg:order-2">
+          <figure
+            class="aspect-[4/5] overflow-hidden"
+            style="background: linear-gradient(140deg, #0E3F47 0%, #161412 70%, #0A0A0A 100%);"
+          >
+            <div class="h-full grid place-items-center">
+              <span class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink/40">
+                Photo · forthcoming
+              </span>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Dodie */}
+  <section class="bg-primary text-ink border-t border-hairline">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div class="lg:col-span-5">
+          <figure
+            class="aspect-[4/5] overflow-hidden"
+            style="background: linear-gradient(140deg, #1F1B17 0%, #C92E1C 70%, #0A0A0A 100%);"
+          >
+            <div class="h-full grid place-items-center">
+              <span class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink/40">
+                Photo · forthcoming
+              </span>
+            </div>
+          </figure>
+        </div>
+
+        <div class="lg:col-span-7">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-accent mb-6">
+            The host
+          </p>
+          <h2
+            class="font-h2 text-ink leading-[1.05] tracking-[-0.02em] font-normal text-balance"
+            style="font-size: clamp(1.875rem, 3vw + 1rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+          >
+            Dodie Kendall.
+          </h2>
+          <div class="mt-8 space-y-5 font-body-lg text-[1.0625rem] leading-[1.7] text-ink-soft">
+            <p>
+              Dodie ran restaurants for a decade before she ran a galley.
+              Two reasonable ones in Asheville, then a more ambitious one
+              in Wilmington that closed in 2020 for the obvious reason.
+              She came back to the boat in 2021 to provision for one of
+              Clint's deliveries and never quite went back to land.
+            </p>
+            <p>
+              Most charter operations divide cooking and hosting between
+              two people. Dodie does both because she likes the through-line
+              — the same person who knows what's on the menu also knows
+              what kind of week each guest is having and can shift the
+              third night's dinner accordingly. The galley menu is loosely
+              themed by region; the actual food gets decided most
+              afternoons at whatever market is closest.
+            </p>
+            <p>
+              If you want the morning practice on deck, she leads it. If
+              you want a quiet hour with coffee, she'll set you up with
+              coffee and disappear. The day before disembarkation she
+              quietly puts a bottle of whatever wine the table liked best
+              into your kit so you can take it home.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Why Guiding Winds exists */}
+  <section class="bg-bone text-primary border-t border-primary/10">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-primary/55 mb-6">
+          Why Guiding Winds exists
+        </p>
+        <h2
+          class="font-h2 text-primary leading-[1.05] tracking-[-0.02em] font-normal text-balance"
+          style="font-size: clamp(1.875rem, 3vw + 1rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+        >
+          The market had room for one boat run by the people on it.
+        </h2>
+        <div class="mt-10 space-y-6 font-body-lg text-[1.0625rem] leading-[1.7] text-primary/80 text-left">
+          <p>
+            The Caribbean charter market mostly works one of two ways. Either
+            you bareboat — captain yourself, plan the route, do the
+            provisioning, fix what breaks — or you book through a fleet
+            operator who hands you a different captain each week and a menu
+            written by corporate. The first requires a sailing résumé. The
+            second requires forgetting you ever wanted a real conversation
+            with the captain.
+          </p>
+          <p>
+            We wanted to run something narrower than either. One boat. Two
+            captains. Fourteen weeks a year. The same people on board every
+            week so guests get to know us by name and we get to know what
+            they're celebrating. It's a smaller business by design. We sail
+            every voyage personally because that's the entire premise.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* The boat preview, linking to /aboard */}
+  <section class="bg-primary text-ink border-t border-hairline">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-6">
+            The boat
+          </p>
+          <h2
+            class="font-h2 text-ink leading-[1.05] tracking-[-0.02em] font-normal text-balance"
+            style="font-size: clamp(1.875rem, 3vw + 1rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+          >
+            A 50-foot catamaran. Chosen for the cabin, not the spec sheet.
+          </h2>
+          <p class="mt-6 font-body-lg text-[1.0625rem] leading-[1.65] text-ink-soft">
+            Eight ensuite queens. Full galley. Salon that seats twelve for
+            dinner. We considered every cat from 45 to 60 feet and picked the
+            50 because it was the smallest boat that let every cabin sleep
+            adults comfortably and the largest boat we could sail anywhere we
+            wanted without bringing extra crew.
+          </p>
+          <a
+            href="/aboard"
+            class="inline-flex items-center gap-2 font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-accent hover:text-accent-hot transition-colors mt-8"
+          >
+            See what's aboard →
+          </a>
+        </div>
+        <figure
+          id="film"
+          class="relative aspect-[3/2] overflow-hidden"
+          style="background: linear-gradient(135deg, #0E3F47 0%, #161412 60%, #0A0A0A 100%);"
+        >
+          <div class="absolute inset-0 grid place-items-center">
+            <div class="grid place-items-center size-24 lg:size-32 rounded-full bg-bone/15 backdrop-blur-md">
+              <Play className="size-8 lg:size-10 text-ink fill-ink ml-1" strokeWidth={1} />
+            </div>
+          </div>
+          <p class="absolute bottom-5 left-5 font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink/80">
+            Film · 2:48 · A week aboard
+          </p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  {/* Credentials & Safety */}
+  <section class="bg-primary text-ink border-t border-hairline">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-10">
+        Credentials & safety
+      </p>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+        {
+          credentials.map(({ Icon, label }) => (
+            <li class="flex items-start gap-4 border-b border-hairline pb-5">
+              <Icon className="size-5 text-accent shrink-0 mt-1" strokeWidth={1.5} />
+              <span class="font-body-md text-[0.9375rem] leading-[1.55] text-ink-soft">
+                {label}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section class="bg-accent text-ink">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 text-center">
+      <h2
+        class="font-display text-ink leading-[0.95] tracking-[-0.03em] font-light text-balance"
+        style="font-size: clamp(2rem, 5vw + 1rem, 4rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+      >
+        Come sail with
+        <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;">us.</span>
+      </h2>
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/calendar"
+          class="inline-flex items-center justify-center cursor-pointer bg-primary text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-8 py-[18px] hover:bg-accent-hot hover:outline hover:outline-2 hover:outline-ink hover:outline-offset-[-1px] transition-colors focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-3"
+        >
+          See Available Weeks
+        </a>
+        <a
+          href="#film"
+          class="inline-flex items-center justify-center cursor-pointer bg-transparent text-ink border border-ink/60 font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-8 py-[18px] hover:bg-ink hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-3"
+        >
+          Watch the Film
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
