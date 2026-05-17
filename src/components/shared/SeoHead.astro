@@ -18,7 +18,7 @@ const {
   title,
   description,
   canonical,
-  ogImage = '/og/default.png',
+  ogImage,
   ogType = 'website',
   publishDate,
   modifiedDate,
@@ -29,7 +29,14 @@ const {
 
 const siteOrigin = Astro.site ?? new URL('https://guidingwinds-unplug.com');
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteOrigin).toString();
-const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteOrigin).toString();
+// Only emit og:image if the caller provided one. Real OG images get added
+// per-page when Dodie's photography lands. Without them the link preview
+// falls back to text, which is better than a broken image reference.
+const ogImageUrl = ogImage
+  ? ogImage.startsWith('http')
+    ? ogImage
+    : new URL(ogImage, siteOrigin).toString()
+  : undefined;
 const siteName = 'Guiding Winds Unplug';
 ---
 
@@ -50,7 +57,7 @@ const siteName = 'Guiding Winds Unplug';
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalUrl} />
-<meta property="og:image" content={ogImageUrl} />
+{ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
 <meta property="og:site_name" content={siteName} />
 <meta property="og:locale" content="en_US" />
 {publishDate && <meta property="article:published_time" content={publishDate} />}
@@ -61,7 +68,7 @@ const siteName = 'Guiding Winds Unplug';
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={ogImageUrl} />
+{ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
 
 <!-- Theme color & viewport behavior -->
 <meta name="theme-color" content="#0A0A0A" />
