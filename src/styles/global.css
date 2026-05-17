@@ -2,6 +2,15 @@
    scripts/design-export.mjs — do not hand-edit it. Add custom utilities,
    keyframes, and one-off CSS here. */
 
+/* Self-hosted variable fonts (per DESIGN.md typography note: preload + swap).
+   Self-hosting avoids the render-blocking Google Fonts <link rel="stylesheet">
+   and the extra DNS round-trip to fonts.googleapis.com. The variable axes
+   (opsz, SOFT, WONK on Fraunces; wght on Inter) come for free in the
+   `*-variable` packages. */
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/fraunces/standard-italic.css";
+@import "@fontsource-variable/inter";
+
 @import "./theme.css";
 
 @layer base {
@@ -28,7 +37,6 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-fraunces);
     color: var(--color-ink);
     margin: 0;
   }

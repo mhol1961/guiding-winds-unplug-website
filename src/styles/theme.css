@@ -30,6 +30,16 @@
 
   --font-fraunces: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --font-inter: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-display: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-display-italic: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-h1: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-h2: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-h3: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body-lg: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-body-md: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-body-sm: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-label-caps: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-serif-quote: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 
   --text-display: 7rem;
   --leading-display: 0.92;
