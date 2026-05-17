@@ -1,0 +1,160 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Field Notes · Stories from Catamaran Voyages | Guiding Winds Unplug';
+const description =
+  'Quiet pieces on the slow life on the water — guides, field notes, wellness, and the view from behind the boat.';
+
+const allPosts = await getCollection('journal', ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+
+const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
+
+const categoryLabels: Record<string, string> = {
+  guide: 'Guide',
+  'field-notes': 'Field Notes',
+  wellness: 'Wellness',
+  'behind-the-boat': 'Behind the Boat',
+};
+
+const categoryGradients: Record<string, string> = {
+  guide: 'linear-gradient(135deg, #1F1B17 0%, #0E3F47 100%)',
+  'field-notes': 'linear-gradient(135deg, #0E3F47 0%, #161412 100%)',
+  wellness: 'linear-gradient(135deg, #161412 0%, #1F1B17 100%)',
+  'behind-the-boat': 'linear-gradient(135deg, #C92E1C 0%, #2A1F1A 100%)',
+};
+
+const schemaGraph = [
+  {
+    '@type': 'Blog',
+    name: 'Field Notes — Guiding Winds Unplug',
+    description,
+    url: `${baseUrl}/journal`,
+    blogPost: posts.slice(0, 10).map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.data.title,
+      url: `${baseUrl}/journal/${p.id}`,
+      datePublished: p.data.publishedAt.toISOString(),
+    })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${baseUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Journal', item: `${baseUrl}/journal` },
+    ],
+  },
+];
+
+const categories: Array<keyof typeof categoryLabels> = [
+  'guide',
+  'field-notes',
+  'wellness',
+  'behind-the-boat',
+];
+---
+
+<BaseLayout title={title} description={description} schema={schemaGraph}>
+  {/* Hero */}
+  <section class="bg-primary text-ink border-b border-hairline">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 pt-20 pb-16 lg:pt-28 lg:pb-20">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-6">
+        Journal
+      </p>
+      <h1
+        class="font-display text-ink leading-[0.95] tracking-[-0.03em] font-light text-balance max-w-3xl"
+        style="font-size: clamp(2.5rem, 7vw + 1rem, 5.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+      >
+        Field
+        <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;">Notes.</span>
+      </h1>
+      <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-ink-soft mt-8 max-w-2xl">
+        Quiet pieces on the slow life on the water — packing guides, the
+        anchorages we love, why mornings at sea are the best therapy, and
+        the view from behind the boat. Two posts a month, on average.
+      </p>
+    </div>
+  </section>
+
+  {/* Category strip */}
+  <section class="bg-primary text-ink border-t border-hairline">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-8">
+      <nav aria-label="Category filter" class="flex flex-wrap items-center gap-x-8 gap-y-3">
+        <span class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-mute">
+          Browse:
+        </span>
+        {
+          categories.map((cat) => (
+            <a
+              href={`/journal#${cat}`}
+              class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft hover:text-accent transition-colors"
+            >
+              {categoryLabels[cat]}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+
+  {/* Post grid */}
+  <section class="bg-primary text-ink border-t border-hairline">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-16 lg:py-24">
+      {posts.length === 0 && (
+        <p class="font-body-lg text-ink-mute text-center py-20">
+          New posts arriving through Q3 2026.
+        </p>
+      )}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-14">
+        {
+          posts.map((post) => (
+            <article id={post.data.category} class="flex flex-col">
+              <a
+                href={`/journal/${post.id}`}
+                class="block aspect-[16/10] overflow-hidden mb-5 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+                style={`background: ${categoryGradients[post.data.category]};`}
+              >
+                {post.data.heroImage ? (
+                  <img
+                    src={post.data.heroImage}
+                    alt={post.data.heroImageAlt ?? post.data.title}
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]"
+                  />
+                ) : (
+                  <div class="w-full h-full grid place-items-end p-5">
+                    <span class="font-label-caps uppercase tracking-[0.28em] text-[0.5625rem] font-semibold text-ink/50">
+                      Photo · forthcoming
+                    </span>
+                  </div>
+                )}
+              </a>
+              <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-accent mb-3">
+                {categoryLabels[post.data.category]}
+              </p>
+              <h2
+                class="font-h3 text-ink text-[1.5rem] leading-[1.15] tracking-[-0.015em] font-medium mb-3"
+                style="font-variation-settings: 'opsz' 36;"
+              >
+                <a href={`/journal/${post.id}`} class="hover:text-accent transition-colors">
+                  {post.data.title}
+                </a>
+              </h2>
+              <p class="font-body-md text-[0.9375rem] leading-[1.55] text-ink-soft mb-4">
+                {post.data.excerpt}
+              </p>
+              <p class="font-body-sm text-[0.8125rem] text-ink-mute mt-auto">
+                <time datetime={post.data.publishedAt.toISOString()}>
+                  {post.data.publishedAt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                </time>{' '}
+                · by {post.data.author === 'dodie' ? 'Dodie' : post.data.author === 'clint' ? 'Clint' : 'Guest'}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,136 @@
+---
+// Vanilla TS that progressively enhances any form with [data-inquiry-form]
+// or [data-newsletter] to submit via fetch — so we can render the
+// success/error/mailto-fallback inline without a full page reload.
+// Forms still work without JS via standard form submission to /api/*.
+//
+// XSS safety note: all dynamic strings are placed via textContent;
+// links are constructed with createElement so the href is set via
+// the .href property which the browser auto-encodes. We never use
+// innerHTML or insertAdjacentHTML.
+---
+
+<script>
+  type StatusEl = HTMLElement;
+
+  function clearStatus(el: StatusEl | null) {
+    if (!el) return;
+    el.textContent = '';
+    while (el.firstChild) el.removeChild(el.firstChild);
+    el.classList.remove('text-accent', 'text-ink-soft', 'text-ink-mute');
+  }
+
+  function setStatusText(el: StatusEl | null, msg: string, kind: 'ok' | 'err' | 'info') {
+    if (!el) return;
+    clearStatus(el);
+    el.textContent = msg;
+    el.classList.add(
+      kind === 'ok' ? 'text-accent' : kind === 'err' ? 'text-accent' : 'text-ink-soft',
+    );
+  }
+
+  function setStatusWithMailto(el: StatusEl | null, message: string, mailto: string) {
+    if (!el) return;
+    clearStatus(el);
+    el.append(document.createTextNode(message + ' '));
+    const link = document.createElement('a');
+    link.href = mailto;
+    link.className = 'underline';
+    link.textContent = 'Send by email →';
+    el.append(link);
+    el.classList.add('text-accent');
+  }
+
+  async function postForm(form: HTMLFormElement, endpoint: string): Promise<Response> {
+    const data = new FormData(form);
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: data,
+    });
+  }
+
+  // Inquiry forms
+  document.querySelectorAll<HTMLFormElement>('form[data-inquiry-form]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const status = form.querySelector<HTMLElement>('[data-inquiry-status]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+      }
+      clearStatus(status);
+
+      try {
+        const res = await postForm(form, form.action);
+        const json = (await res.json().catch(() => ({}))) as {
+          ok?: boolean;
+          message?: string;
+          error?: string;
+          mailto?: string;
+        };
+
+        if (res.ok && json.ok !== false) {
+          form.reset();
+          window.location.href = '/inquire/thank-you';
+          return;
+        }
+
+        if (json.mailto && typeof json.mailto === 'string' && json.mailto.startsWith('mailto:')) {
+          setStatusWithMailto(status, json.error ?? 'Form is temporarily down.', json.mailto);
+        } else {
+          setStatusText(status, json.error ?? 'Something went wrong. Try again.', 'err');
+        }
+      } catch {
+        setStatusWithMailto(
+          status,
+          'Network issue.',
+          'mailto:dodie@guidingwinds-unplug.com?subject=Inquiry',
+        );
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Inquiry';
+        }
+      }
+    });
+  });
+
+  // Newsletter forms
+  document.querySelectorAll<HTMLFormElement>('form[data-newsletter]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const status = form.querySelector<HTMLElement>('[data-newsletter-status]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Subscribing…';
+      }
+      clearStatus(status);
+
+      try {
+        const res = await postForm(form, '/api/newsletter');
+        const json = (await res.json().catch(() => ({}))) as {
+          ok?: boolean;
+          message?: string;
+          error?: string;
+        };
+
+        if (res.ok && json.ok !== false) {
+          form.reset();
+          setStatusText(status, json.message ?? 'Subscribed.', 'ok');
+        } else {
+          setStatusText(status, json.error ?? 'Subscription failed. Try again.', 'err');
+        }
+      } catch {
+        setStatusText(status, 'Network issue. Try again in a moment.', 'err');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Subscribe';
+        }
+      }
+    });
+  });
+</script>

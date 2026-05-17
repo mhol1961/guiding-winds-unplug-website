@@ -1,0 +1,293 @@
+---
+// Live 2027 availability. Custom UI on top of the voyage content-collection
+// data (which is the source of truth for what we've planned), with the
+// option for a future enhancement to overlay GHL Calendars API real-time
+// cabin-availability on a 15-minute edge cache. For v1 we render directly
+// from the content collection — Dodie updates `cabinsAvailable` per week
+// in the .md file as bookings come in, and the site rebuilds.
+//
+// Phase 7 design note: the custom UI lives here. The "Hold a Cabin" button
+// per row links to /inquire?voyage=slug — same single inquiry pipeline,
+// no separate hold widget on this page in v1. Phase v2 can add a
+// per-row hold modal that POSTs to /api/hold-cabin once Dodie's GHL
+// calendars are configured and the GHL_CALENDAR_ID_* env vars are set.
+
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = '2027 Sailing Calendar · Guiding Winds Unplug';
+const description =
+  'Fourteen weeks aboard, eight cabins each. Hold one for 72 hours, no payment required.';
+
+const voyages = await getCollection('voyages');
+
+interface CalendarRow {
+  voyageSlug: string;
+  voyageName: string;
+  region: 'caribbean' | 'bahamas' | 'mediterranean';
+  start: string;
+  end: string;
+  cabinsAvailable: number;
+  price: number;
+}
+
+const rows: CalendarRow[] = voyages
+  .flatMap((v) =>
+    v.data.availableWeeks.map((w) => ({
+      voyageSlug: v.data.slug,
+      voyageName: v.data.name,
+      region: v.data.region,
+      start: w.start,
+      end: w.end,
+      cabinsAvailable: w.cabinsAvailable,
+      price: v.data.pricePerGuestUSD,
+    })),
+  )
+  .sort((a, b) => a.start.localeCompare(b.start));
+
+const totalWeeks = rows.length;
+const totalCabins = rows.reduce((s, r) => s + r.cabinsAvailable, 0);
+
+const regionLabel: Record<string, string> = {
+  caribbean: 'Caribbean',
+  bahamas: 'Bahamas',
+  mediterranean: 'Mediterranean',
+};
+
+function formatWeek(start: string, end: string) {
+  const s = new Date(`${start}T12:00:00Z`);
+  const e = new Date(`${end}T12:00:00Z`);
+  const fmt = (d: Date) =>
+    d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  return `${fmt(s)} – ${fmt(e)}, ${s.getUTCFullYear()}`;
+}
+
+const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
+const schemaGraph = [
+  {
+    '@type': 'EventSeries',
+    name: '2027 Sailing Calendar — Guiding Winds Unplug',
+    description,
+  },
+  {
+    '@type': 'ItemList',
+    numberOfItems: rows.length,
+    itemListElement: rows.map((row, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Event',
+        name: `${row.voyageName} · ${formatWeek(row.start, row.end)}`,
+        startDate: row.start,
+        endDate: row.end,
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        location: { '@type': 'Place', name: row.voyageName },
+        offers: {
+          '@type': 'Offer',
+          price: row.price,
+          priceCurrency: 'USD',
+          availability:
+            row.cabinsAvailable > 0
+              ? 'https://schema.org/InStock'
+              : 'https://schema.org/SoldOut',
+        },
+      },
+    })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${baseUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Calendar', item: `${baseUrl}/calendar` },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schemaGraph}>
+  {/* Hero */}
+  <section class="bg-primary text-ink border-b border-hairline">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 pt-20 pb-12 lg:pt-28 lg:pb-16">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-6">
+        2027 Calendar
+      </p>
+      <h1
+        class="font-display text-ink leading-[0.95] tracking-[-0.03em] font-light text-balance max-w-3xl"
+        style="font-size: clamp(2.25rem, 5vw + 1rem, 4.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+      >
+        Fourteen weeks.
+        <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;">Eight cabins each.</span>
+      </h1>
+      <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-ink-soft mt-8 max-w-3xl">
+        Hold one for 72 hours, no payment required. Caribbean January through
+        March. Bahamas April and May. Mediterranean June through October.
+      </p>
+      <p class="font-body-md text-[0.9375rem] text-ink-mute mt-6">
+        {totalWeeks} weeks · <span class="text-ink-soft tabular-nums">{totalCabins}</span> cabins available right now
+      </p>
+    </div>
+  </section>
+
+  {/* Region filter — client JS toggles via .data-region matching */}
+  <section class="bg-primary text-ink border-t border-hairline sticky top-20 z-10 backdrop-blur-md bg-primary/95">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+      <span class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-mute">
+        Filter:
+      </span>
+      {
+        ['all', 'caribbean', 'bahamas', 'mediterranean'].map((r) => (
+          <button
+            type="button"
+            data-region-filter={r}
+            class:list={[
+              'cursor-pointer font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold transition-colors pb-1.5 border-b border-transparent',
+              r === 'all' ? 'text-ink border-accent' : 'text-ink-soft hover:text-ink',
+            ]}
+            aria-pressed={r === 'all'}
+          >
+            {r === 'all' ? 'All' : regionLabel[r]}
+          </button>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* Calendar list */}
+  <section class="bg-primary text-ink">
+    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-16">
+      <div class="border-t border-hairline" id="calendar-list">
+        {
+          rows.map((row) => {
+            const soldOut = row.cabinsAvailable === 0;
+            return (
+              <article
+                data-region={row.region}
+                class="grid grid-cols-12 gap-4 items-center py-6 border-b border-hairline"
+              >
+                <div class="col-span-12 sm:col-span-3">
+                  <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-mute">
+                    {regionLabel[row.region]}
+                  </p>
+                  <p
+                    class="font-h3 text-ink text-[1.25rem] leading-[1.15] tracking-[-0.015em] font-medium mt-1"
+                    style="font-variation-settings: 'opsz' 36;"
+                  >
+                    <a href={`/voyages/${row.voyageSlug}`} class="hover:text-accent transition-colors">
+                      {row.voyageName}
+                    </a>
+                  </p>
+                </div>
+                <p class="col-span-6 sm:col-span-3 font-body-md text-[0.9375rem] text-ink-soft tabular-nums">
+                  {formatWeek(row.start, row.end)}
+                </p>
+                <p class="col-span-3 sm:col-span-2 font-body-md text-[0.9375rem] text-ink-soft tabular-nums">
+                  ${row.price.toLocaleString()}
+                </p>
+                <div class="col-span-3 sm:col-span-2">
+                  <span
+                    class:list={[
+                      'inline-flex items-center rounded-pill px-2.5 py-1 font-label-caps uppercase tracking-[0.2em] text-[0.5625rem] font-semibold tabular-nums whitespace-nowrap',
+                      soldOut
+                        ? 'bg-ink-mute/20 text-ink-mute'
+                        : row.cabinsAvailable <= 2
+                          ? 'bg-accent/20 text-accent'
+                          : 'bg-bone/15 text-ink-soft',
+                    ]}
+                  >
+                    {soldOut ? 'Sold out' : `${row.cabinsAvailable} cabins`}
+                  </span>
+                </div>
+                <div class="col-span-12 sm:col-span-2 sm:text-right">
+                  {soldOut ? (
+                    <span class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-mute">
+                      Waitlist via inquire
+                    </span>
+                  ) : (
+                    <a
+                      href={`/inquire?voyage=${row.voyageSlug}`}
+                      class="inline-flex items-center justify-center cursor-pointer bg-accent text-ink font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold px-5 py-2.5 hover:bg-accent-hot transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+                    >
+                      Hold a Cabin
+                    </a>
+                  )}
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+
+      <p
+        id="empty-state"
+        class="hidden text-center py-20 font-body-lg text-ink-mute"
+      >
+        No weeks match this filter.
+      </p>
+    </div>
+  </section>
+
+  {/* Fallback if they don't see what they want */}
+  <section class="bg-bone text-primary border-t border-primary/10">
+    <div class="max-w-[820px] mx-auto px-7 lg:px-0 py-20 text-center">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-primary/55 mb-4">
+        Don't see the right week?
+      </p>
+      <h2
+        class="font-h2 text-primary leading-[1.05] tracking-[-0.02em] font-normal text-balance"
+        style="font-size: clamp(1.5rem, 3vw + 1rem, 2rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+      >
+        Tell us what you're looking for.
+      </h2>
+      <p class="font-body-md text-[0.9375rem] text-primary/65 mt-5 max-w-xl mx-auto">
+        We sometimes open a private-charter week based on group interest, and
+        we're happy to hold a week from the public calendar for you while you
+        align with your group.
+      </p>
+      <div class="mt-8">
+        <a
+          href="/inquire"
+          class="inline-flex items-center justify-center cursor-pointer bg-primary text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-8 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+        >
+          Send an Inquiry
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Region filter — pure DOM toggle, no framework needed.
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-region-filter]');
+  const rows = document.querySelectorAll<HTMLElement>('article[data-region]');
+  const empty = document.getElementById('empty-state');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.regionFilter ?? 'all';
+
+      // Toggle visual state
+      buttons.forEach((b) => {
+        const active = b === btn;
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        if (active) {
+          b.classList.remove('text-ink-soft');
+          b.classList.add('text-ink', 'border-accent');
+        } else {
+          b.classList.remove('text-ink', 'border-accent');
+          b.classList.add('text-ink-soft');
+        }
+      });
+
+      // Toggle rows
+      let visibleCount = 0;
+      rows.forEach((row) => {
+        const matches = target === 'all' || row.dataset.region === target;
+        row.classList.toggle('hidden', !matches);
+        if (matches) visibleCount++;
+      });
+
+      if (empty) empty.classList.toggle('hidden', visibleCount > 0);
+    });
+  });
+</script>

@@ -1,0 +1,40 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishDate: string;
+  modifiedDate?: string;
+  author: string;
+  category: string;
+  tags: string[];
+  heroImage?: string;
+  schema: object | object[];
+}
+
+const {
+  title,
+  description,
+  publishDate,
+  modifiedDate,
+  author,
+  category,
+  tags,
+  heroImage,
+  schema,
+} = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogType="article"
+  publishDate={publishDate}
+  modifiedDate={modifiedDate}
+  author={author}
+  ogImage={heroImage}
+  schema={schema}
+>
+  <slot />
+</BaseLayout>
