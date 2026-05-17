@@ -1,11 +1,4 @@
 ---
-import { MobileNav } from './MobileNav';
-
-interface Props {
-  transparent?: boolean;
-}
-const { transparent = false } = Astro.props;
-
 const links = [
   { label: 'Voyages', href: '/voyages' },
   { label: 'Aboard', href: '/aboard' },
@@ -14,6 +7,11 @@ const links = [
 ];
 const ctaLabel = 'Hold a Cabin';
 const ctaHref = '/calendar';
+
+interface Props {
+  transparent?: boolean;
+}
+const { transparent = false } = Astro.props;
 ---
 
 <header
@@ -55,15 +53,96 @@ const ctaHref = '/calendar';
       >
         {ctaLabel}
       </a>
-      <MobileNav client:idle links={links} ctaLabel={ctaLabel} ctaHref={ctaHref} />
+
+      {/* Mobile menu trigger — native <dialog>, no React. */}
+      <button
+        type="button"
+        aria-label="Open menu"
+        aria-controls="mobile-menu-dialog"
+        data-mobile-menu-trigger
+        class="md:hidden inline-flex items-center justify-center size-11 cursor-pointer text-ink hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+      >
+        <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
     </div>
   </div>
 </header>
 
+{/* Mobile menu dialog. Native <dialog> = no React, no Radix, ~0KB JS cost. */}
+<dialog
+  id="mobile-menu-dialog"
+  class="bg-primary text-ink p-0 m-0 max-w-none w-full h-full md:hidden backdrop:bg-primary/70 backdrop:backdrop-blur-md"
+  aria-label="Menu"
+>
+  <div class="p-8 sm:p-12 h-full flex flex-col">
+    <div class="flex items-center justify-between mb-10">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft">
+        Menu
+      </p>
+      <button
+        type="button"
+        aria-label="Close menu"
+        data-mobile-menu-close
+        class="inline-flex items-center justify-center size-11 cursor-pointer text-ink-soft hover:text-ink transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+      >
+        <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-6">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            data-mobile-menu-link
+            class="font-h3 text-[1.5rem] leading-[1.1] tracking-[-0.015em] text-ink hover:text-accent transition-colors"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="mt-auto pt-10">
+      <a
+        href={ctaHref}
+        data-mobile-menu-link
+        class="block w-full text-center cursor-pointer bg-accent text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-6 py-[18px] hover:bg-accent-hot transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+      >
+        {ctaLabel}
+      </a>
+    </div>
+  </div>
+</dialog>
+
 <script>
-  // Toggle the transparent header to a solid background on scroll. Idle JS,
-  // small payload; no listener attached when prefers-reduced-motion isn't an
-  // issue here since the change is opacity only.
+  // Native dialog wiring. ~300 bytes vs. 32KB of Radix Dialog.
+  const trigger = document.querySelector<HTMLButtonElement>('[data-mobile-menu-trigger]');
+  const dialog = document.getElementById('mobile-menu-dialog') as HTMLDialogElement | null;
+  const closeBtn = document.querySelector<HTMLButtonElement>('[data-mobile-menu-close]');
+  const links = document.querySelectorAll<HTMLAnchorElement>('[data-mobile-menu-link]');
+
+  if (trigger && dialog) {
+    trigger.addEventListener('click', () => dialog.showModal());
+  }
+  if (closeBtn && dialog) {
+    closeBtn.addEventListener('click', () => dialog.close());
+  }
+  links.forEach((link) => link.addEventListener('click', () => dialog?.close()));
+
+  // Click outside to close.
+  if (dialog) {
+    dialog.addEventListener('click', (event) => {
+      const rect = dialog.getBoundingClientRect();
+      const clicked = event.target as HTMLElement;
+      // Backdrop click — close. Inner click — keep open.
+      if (clicked === dialog) dialog.close();
+    });
+  }
+
+  // Transparent → solid header on scroll.
   const header = document.querySelector('header[data-transparent="true"]');
   if (header) {
     const apply = () => {

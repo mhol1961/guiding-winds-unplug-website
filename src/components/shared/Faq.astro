@@ -1,0 +1,44 @@
+---
+// Native <details>/<summary> accordion. Zero JS framework cost. Semantic.
+// Accessible by default. The browser handles open/close/keyboard. We just
+// style it.
+interface QA { q: string; a: string }
+interface Props {
+  items: QA[];
+  /** When true, every item is closed by default and clicking opens it
+   *  without closing the others. (Browser default behavior of <details>.) */
+}
+const { items } = Astro.props;
+---
+
+<div class="w-full">
+  {
+    items.map((item, i) => (
+      <details
+        class="group border-b border-hairline"
+        data-faq-item={i}
+      >
+        <summary class="flex w-full items-center justify-between gap-6 py-6 cursor-pointer list-none text-left font-h3 text-[1.25rem] sm:text-[1.5rem] leading-[1.15] tracking-[-0.015em] font-medium text-ink transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2" style="font-variation-settings: 'opsz' 36;">
+          <span class="flex-1">{item.q}</span>
+          <span
+            aria-hidden="true"
+            class="shrink-0 inline-flex items-center justify-center size-5 text-accent transition-transform duration-300 group-open:rotate-45"
+          >
+            <svg viewBox="0 0 20 20" class="size-5" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 4v12M4 10h12" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </summary>
+        <div class="pb-6 pr-12 font-body-md text-[0.9375rem] leading-[1.65] text-ink-soft">
+          {item.a}
+        </div>
+      </details>
+    ))
+  }
+</div>
+
+<style>
+  /* Remove the default Safari/Firefox marker arrow. */
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::marker { display: none; content: ''; }
+</style>

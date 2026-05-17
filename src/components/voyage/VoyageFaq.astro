@@ -1,5 +1,5 @@
 ---
-import { FaqAccordion } from './FaqAccordion';
+import Faq from '../shared/Faq.astro';
 
 interface QA { q: string; a: string }
 interface Props {
@@ -28,7 +28,7 @@ const { faq } = Astro.props;
       </div>
 
       <div class="lg:col-span-8">
-        <FaqAccordion client:visible items={faq} />
+        <Faq items={faq} />
       </div>
     </div>
   </div>

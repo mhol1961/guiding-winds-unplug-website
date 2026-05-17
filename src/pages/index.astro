@@ -10,41 +10,42 @@ import Megatype from '../components/home/Megatype.astro';
 import AboutSplit from '../components/home/AboutSplit.astro';
 import TrustPillars from '../components/home/TrustPillars.astro';
 import GoBlock from '../components/home/GoBlock.astro';
+import { organization } from '../lib/schema/organization';
+import { breadcrumbList } from '../lib/schema/breadcrumb';
+import { getCollection } from 'astro:content';
 
 const title = 'Off-Grid Catamaran Charters · BVI, Bahamas, Mediterranean | Guiding Winds Unplug';
 const description =
   'All-inclusive wellness catamaran voyages for 8–12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia. From $3,550 per guest, per week.';
 
-// Organization + TravelAgency + AggregateRating schema. Phase 8 expands this
-// with a richer @graph; for now this is the v1 cite-able payload.
-const orgSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'TravelAgency',
-  name: 'Guiding Winds Unplug',
-  url: 'https://guidingwinds-unplug.com',
-  logo: 'https://guidingwinds-unplug.com/og/logo.png',
-  description,
-  founder: [
-    { '@type': 'Person', name: 'Clint Kendall' },
-    { '@type': 'Person', name: 'Dodie Kendall' },
-  ],
-  areaServed: [
-    { '@type': 'Place', name: 'British Virgin Islands' },
-    { '@type': 'Place', name: 'The Bahamas' },
-    { '@type': 'Place', name: 'Italy' },
-    { '@type': 'Place', name: 'Greece' },
-    { '@type': 'Place', name: 'Croatia' },
-  ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5.0',
-    reviewCount: 4,
-    bestRating: 5,
+const baseUrl = Astro.site?.toString() ?? 'https://guidingwinds-unplug.com';
+const reviews = await getCollection('reviews');
+const ratingAvg = reviews.length
+  ? reviews.reduce((s, r) => s + r.data.rating, 0) / reviews.length
+  : 5;
+
+const schemaGraph = [
+  organization({ baseUrl }),
+  {
+    '@type': 'WebSite',
+    '@id': `${baseUrl.replace(/\/$/, '')}/#website`,
+    url: baseUrl,
+    name: 'Guiding Winds Unplug',
+    publisher: { '@id': `${baseUrl.replace(/\/$/, '')}/#org` },
+    inLanguage: 'en-US',
   },
-};
+  {
+    '@type': 'AggregateRating',
+    itemReviewed: { '@id': `${baseUrl.replace(/\/$/, '')}/#org` },
+    ratingValue: ratingAvg.toFixed(1),
+    bestRating: 5,
+    reviewCount: reviews.length,
+  },
+  breadcrumbList([{ name: 'Home', url: baseUrl.replace(/\/$/, '') + '/' }]),
+];
 ---
 
-<BaseLayout title={title} description={description} transparentNav schema={orgSchema}>
+<BaseLayout title={title} description={description} transparentNav schema={schemaGraph}>
   <Hero
     eyebrow="The Off-Grid Catamaran Experts"
     headlinePrefix="Every voyage starts with a "

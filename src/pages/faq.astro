@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { FaqAccordion } from '../components/voyage/FaqAccordion';
+import Faq from '../components/shared/Faq.astro';
 
 const title = 'FAQ · Guiding Winds Unplug Catamaran Voyages';
 const description =
@@ -196,7 +196,7 @@ const schemaGraph = [
               </h2>
             </div>
             <div class="lg:col-span-8">
-              <FaqAccordion client:visible items={group.items} />
+              <Faq items={group.items} />
             </div>
           </div>
         </div>
