@@ -53,4 +53,10 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
+  security: {
+    // Validate Origin header on all POST/PUT/PATCH/DELETE — blocks the
+    // cross-origin-form-POST attack against /api/* and form actions.
+    // Per Codex security audit pre-launch.
+    checkOrigin: true,
+  },
 });

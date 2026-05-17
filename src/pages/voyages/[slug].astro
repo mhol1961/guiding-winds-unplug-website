@@ -100,8 +100,40 @@ const breadcrumbs = {
   ],
 };
 
-const schemaGraph = [touristTrip, breadcrumbs];
+// Per-voyage reviews → Review + AggregateRating schema (Codex review crit #3).
+const allReviews = await getCollection('reviews');
+const voyageReviews = allReviews.filter((r) => r.data.voyage === voyage.data.slug);
+const reviewSchemas = voyageReviews.map((r) => ({
+  '@type': 'Review',
+  itemReviewed: { '@id': `${pageUrl}#trip` },
+  reviewRating: {
+    '@type': 'Rating',
+    ratingValue: r.data.rating,
+    bestRating: 5,
+  },
+  author: { '@type': 'Person', name: r.data.author },
+  reviewBody: r.data.quote,
+  datePublished: r.data.date.toISOString().split('T')[0],
+}));
+// Only surface AggregateRating when we have meaningful sample size. Single-
+// digit reviewCount on a perfect 5.0 reads as a spam signal to Google's
+// product-results algorithm (per Codex review).
+const aggregateRating =
+  voyageReviews.length >= 3
+    ? {
+        '@type': 'AggregateRating',
+        itemReviewed: { '@id': `${pageUrl}#trip` },
+        ratingValue:
+          voyageReviews.reduce((s, r) => s + r.data.rating, 0) / voyageReviews.length,
+        bestRating: 5,
+        reviewCount: voyageReviews.length,
+      }
+    : null;
+
+const schemaGraph: object[] = [touristTrip, breadcrumbs];
 if (faqSchema) schemaGraph.push(faqSchema);
+for (const r of reviewSchemas) schemaGraph.push(r);
+if (aggregateRating) schemaGraph.push(aggregateRating);
 
 // Cross-link to sibling voyages.
 const allVoyages = await getCollection('voyages');

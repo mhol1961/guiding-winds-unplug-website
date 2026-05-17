@@ -48,15 +48,20 @@ export function rateLimit(
   return { ok: true, retryAfterSec: 0 };
 }
 
-/** Extract a stable client identifier from an Astro request. */
+/** Extract a stable client identifier from an Astro request.
+ *
+ *  Only CF-Connecting-IP is trusted — Cloudflare sets it for every request
+ *  and it cannot be spoofed at the edge. x-forwarded-for / x-real-ip are
+ *  user-supplied and would let an attacker reset the bucket per request
+ *  by rotating the header. When CF-Connecting-IP is absent (local dev or
+ *  a future infra change), everything lands in a shared "anon" bucket
+ *  with tight limits so the bucket can't be abused as a DoS lever.
+ */
 export function clientKey(request: Request, prefix: string): string {
-  // Cloudflare and most proxies set CF-Connecting-IP; fall back to
-  // x-forwarded-for, then to a static "anon" bucket (which only really
-  // protects against local-only hammering).
-  const ip =
-    request.headers.get('cf-connecting-ip') ||
-    request.headers.get('x-real-ip') ||
-    request.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
-    'anon';
+  const ip = request.headers.get('cf-connecting-ip') ?? 'anon';
   return `${prefix}:${ip}`;
 }
+
+/** Tighter limits used for the shared "anon" bucket since one bucket
+ *  represents potentially many clients. Endpoints can opt in. */
+export const ANON_LIMIT = { windowMs: 10_000, max: 1 };

@@ -15,7 +15,12 @@
 const BASE = import.meta.env.GHL_API_BASE ?? 'https://services.leadconnectorhq.com';
 const VERSION = import.meta.env.GHL_API_VERSION ?? '2021-07-28';
 const TOKEN = import.meta.env.GHL_PRIVATE_TOKEN ?? '';
-const DRY_RUN = import.meta.env.DRY_RUN_GHL === 'true' || !TOKEN;
+// Gate DRY_RUN on an EXPLICIT env flag only (per Codex security audit).
+// Previously this also activated when TOKEN was empty — which meant a
+// missing prod env var silently dropped leads while returning 200 OK to
+// the user. The mailto fallback in the API handlers was bypassed.
+// Now: missing token in prod = throw → mailto fallback fires.
+const DRY_RUN = import.meta.env.DRY_RUN_GHL === 'true';
 
 interface GhlRequestOptions extends Omit<RequestInit, 'body'> {
   body?: unknown;
@@ -38,6 +43,16 @@ export async function ghl<T>(path: string, options: GhlRequestOptions = {}): Pro
   if (DRY_RUN) {
     console.log(`[GHL DRY RUN] ${options.method ?? 'GET'} ${path}`, options.body ?? '');
     return { dryRun: true, path } as T;
+  }
+
+  if (!TOKEN) {
+    // Missing token in production. Fail loud so API handlers trip their
+    // mailto-fallback path instead of silently swallowing the lead.
+    throw new GhlError(
+      0,
+      '',
+      'GHL_PRIVATE_TOKEN is not configured. Set it in the deployment environment.',
+    );
   }
 
   const { body, retries = 3, headers: extraHeaders = {}, ...init } = options;

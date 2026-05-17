@@ -28,8 +28,8 @@ export function organization({ baseUrl }: OrgInput) {
       'https://youtube.com/@guidingwinds',
     ],
     founder: [
-      { '@type': 'Person', name: 'Clint Kendall' },
-      { '@type': 'Person', name: 'Dodie Kendall' },
+      { '@type': 'Person', '@id': `${root}/about#clint`, name: 'Clint Kendall' },
+      { '@type': 'Person', '@id': `${root}/about#dodie`, name: 'Dodie Kendall' },
     ],
     areaServed: [
       { '@type': 'Place', name: 'British Virgin Islands' },

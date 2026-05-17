@@ -59,6 +59,7 @@ const { transparent = false } = Astro.props;
         type="button"
         aria-label="Open menu"
         aria-controls="mobile-menu-dialog"
+        aria-expanded="false"
         data-mobile-menu-trigger
         class="md:hidden inline-flex items-center justify-center size-11 cursor-pointer text-ink hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
       >
@@ -124,21 +125,42 @@ const { transparent = false } = Astro.props;
   const closeBtn = document.querySelector<HTMLButtonElement>('[data-mobile-menu-close]');
   const links = document.querySelectorAll<HTMLAnchorElement>('[data-mobile-menu-link]');
 
+  function syncExpanded() {
+    if (trigger && dialog) {
+      trigger.setAttribute('aria-expanded', String(dialog.open));
+    }
+  }
+
   if (trigger && dialog) {
-    trigger.addEventListener('click', () => dialog.showModal());
+    trigger.addEventListener('click', () => {
+      dialog.showModal();
+      syncExpanded();
+    });
   }
   if (closeBtn && dialog) {
-    closeBtn.addEventListener('click', () => dialog.close());
+    closeBtn.addEventListener('click', () => {
+      dialog.close();
+      syncExpanded();
+    });
   }
-  links.forEach((link) => link.addEventListener('click', () => dialog?.close()));
+  links.forEach((link) =>
+    link.addEventListener('click', () => {
+      dialog?.close();
+      syncExpanded();
+    }),
+  );
 
-  // Click outside to close.
   if (dialog) {
+    // Sync the trigger's aria-expanded on Escape/close events too.
+    dialog.addEventListener('close', syncExpanded);
+    dialog.addEventListener('cancel', syncExpanded);
+    // Click outside to close.
     dialog.addEventListener('click', (event) => {
-      const rect = dialog.getBoundingClientRect();
       const clicked = event.target as HTMLElement;
-      // Backdrop click — close. Inner click — keep open.
-      if (clicked === dialog) dialog.close();
+      if (clicked === dialog) {
+        dialog.close();
+        syncExpanded();
+      }
     });
   }
 

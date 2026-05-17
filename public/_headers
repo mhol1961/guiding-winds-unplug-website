@@ -1,0 +1,37 @@
+# Cloudflare Pages native security headers. Loaded automatically at deploy
+# time — no Worker required.
+#
+# Per Codex security audit pre-launch: HSTS, X-Frame-Options, CSP, MIME-
+# sniff prevention, Referrer-Policy, Permissions-Policy.
+# Reviewed for the Astro 6 + inline-script + Plausible + GHL setup we
+# actually run.
+
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-site
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; media-src 'self' https:; font-src 'self'; connect-src 'self' https://plausible.io; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+
+# Long-cache the immutable build hashes.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fonts: long-cache.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Robots and llms — fresh enough to update without a redeploy delay.
+/robots.txt
+  Cache-Control: public, max-age=3600
+
+/llms.txt
+  Cache-Control: public, max-age=3600
+
+# /calendar is dynamically rendered — short cache so cabin counts stay fresh
+# without a full rebuild.
+/calendar
+  Cache-Control: public, max-age=900, s-maxage=900

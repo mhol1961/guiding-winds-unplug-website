@@ -30,8 +30,14 @@ const { transparentNav = false, ...seoProps } = Astro.props;
     <SeoHead {...seoProps} />
   </head>
   <body class="bg-primary text-ink min-h-screen flex flex-col">
+    <a
+      href="#main"
+      class="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-50 focus-visible:bg-primary focus-visible:text-ink focus-visible:px-4 focus-visible:py-3 focus-visible:font-label-caps focus-visible:uppercase focus-visible:tracking-[0.28em] focus-visible:text-[0.6875rem] focus-visible:font-semibold focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+    >
+      Skip to content
+    </a>
     <Nav transparent={transparentNav} />
-    <main class="flex-1 pt-20" data-transparent-nav={transparentNav}>
+    <main id="main" class="flex-1 pt-20" data-transparent-nav={transparentNav}>
       <slot />
     </main>
     <Footer />

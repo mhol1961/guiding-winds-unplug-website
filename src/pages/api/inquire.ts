@@ -70,11 +70,17 @@ export const POST: APIRoute = async ({ request }) => {
 
   const data = parsed.data;
 
-  // Honeypot tripped — return 200 + benign success so bots can't differentiate.
-  // Do NOT create a contact. Log for monitoring.
+  // Honeypot tripped — return 200 but signal ok:false so the client JS
+  // does NOT navigate to /inquire/thank-you (bots polluting analytics
+  // goal completions). The message looks benign so the bot can't tell
+  // it was caught.
   if (data.website && data.website.length > 0) {
     console.log('[inquire] honeypot tripped, ignoring', { email: data.email });
-    return jsonResponse({ ok: true, message: 'Thanks — we will be in touch within 24 hours.' });
+    return jsonResponse({
+      ok: false,
+      silent: true,
+      message: 'Thanks — we will be in touch within 24 hours.',
+    });
   }
 
   const tags = ['inquiry', 'website-2026'];
