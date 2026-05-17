@@ -1,0 +1,81 @@
+---
+import { MobileNav } from './MobileNav';
+
+interface Props {
+  transparent?: boolean;
+}
+const { transparent = false } = Astro.props;
+
+const links = [
+  { label: 'Voyages', href: '/voyages' },
+  { label: 'Aboard', href: '/aboard' },
+  { label: 'Our Story', href: '/about' },
+  { label: 'Journal', href: '/journal' },
+];
+const ctaLabel = 'Hold a Cabin';
+const ctaHref = '/calendar';
+---
+
+<header
+  data-transparent={transparent}
+  class:list={[
+    'fixed top-0 inset-x-0 z-30 transition-all duration-300',
+    transparent
+      ? 'bg-transparent'
+      : 'bg-primary/95 backdrop-blur-md border-b border-hairline',
+  ]}
+>
+  <div class="max-w-[1320px] mx-auto px-7 lg:px-14 h-20 flex items-center justify-between gap-8">
+    <a
+      href="/"
+      class="font-display text-[1.375rem] leading-none tracking-[-0.02em] text-ink hover:text-accent transition-colors"
+      style="font-variation-settings: 'opsz' 60, 'SOFT' 30, 'WONK' 0;"
+      aria-label="Guiding Winds Unplug — home"
+    >
+      Guiding Winds
+    </a>
+
+    <nav class="hidden md:flex items-center gap-10" aria-label="Primary">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft hover:text-ink transition-colors"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={ctaHref}
+        class="hidden md:inline-flex items-center justify-center cursor-pointer bg-accent text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-6 py-3 hover:bg-accent-hot transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+      >
+        {ctaLabel}
+      </a>
+      <MobileNav client:idle links={links} ctaLabel={ctaLabel} ctaHref={ctaHref} />
+    </div>
+  </div>
+</header>
+
+<script>
+  // Toggle the transparent header to a solid background on scroll. Idle JS,
+  // small payload; no listener attached when prefers-reduced-motion isn't an
+  // issue here since the change is opacity only.
+  const header = document.querySelector('header[data-transparent="true"]');
+  if (header) {
+    const apply = () => {
+      if (window.scrollY > 24) {
+        header.classList.remove('bg-transparent');
+        header.classList.add('bg-primary/95', 'backdrop-blur-md', 'border-b', 'border-hairline');
+      } else {
+        header.classList.add('bg-transparent');
+        header.classList.remove('bg-primary/95', 'backdrop-blur-md', 'border-b', 'border-hairline');
+      }
+    };
+    apply();
+    window.addEventListener('scroll', apply, { passive: true });
+  }
+</script>

@@ -1,0 +1,98 @@
+---
+// Two variants: 'inline' (bone background, dark text — for the home Feeling
+// section) and 'footer' (dark background, light text — for the footer).
+// POSTs to /api/newsletter — that endpoint is wired in Phase 7 with the
+// GHL Contacts API.
+interface Props {
+  variant?: 'inline' | 'footer';
+  heading?: string;
+  subtext?: string;
+}
+const {
+  variant = 'footer',
+  heading = 'Field Notes — a quiet newsletter',
+  subtext = 'One or two pieces a month from the water. No urgency, no upsells.',
+} = Astro.props;
+
+const isInline = variant === 'inline';
+---
+
+<form
+  method="POST"
+  action="/api/newsletter"
+  class:list={[
+    'w-full',
+    isInline ? 'bg-bone text-primary p-10 sm:p-12' : 'text-ink',
+  ]}
+  data-newsletter
+>
+  <p
+    class:list={[
+      'font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold mb-3',
+      isInline ? 'text-primary/60' : 'text-ink-soft',
+    ]}
+  >
+    Newsletter
+  </p>
+  <h3
+    class:list={[
+      'font-h3 text-[1.5rem] leading-[1.15] tracking-[-0.015em] mb-3',
+      isInline ? 'text-primary' : 'text-ink',
+    ]}
+  >
+    {heading}
+  </h3>
+  <p
+    class:list={[
+      'font-body-md text-[0.9375rem] leading-[1.65] mb-5',
+      isInline ? 'text-primary/70' : 'text-ink-soft',
+    ]}
+  >
+    {subtext}
+  </p>
+
+  <div class="flex flex-col sm:flex-row gap-2">
+    <label class="sr-only" for={`nl-email-${variant}`}>Email address</label>
+    <input
+      id={`nl-email-${variant}`}
+      type="email"
+      name="email"
+      required
+      autocomplete="email"
+      placeholder="your.email@example.com"
+      class:list={[
+        'flex-1 rounded-sm px-4 py-3 font-body-md text-[0.9375rem] border focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2',
+        isInline
+          ? 'bg-bone text-primary border-primary/20 placeholder:text-primary/40'
+          : 'bg-surface text-ink border-hairline placeholder:text-ink-mute',
+      ]}
+    />
+    {/* Honeypot — bots fill it; humans don't see it. Display:none would be
+        detectable; opacity+tabindex+aria-hidden is the OWASP pattern. */}
+    <input
+      type="text"
+      name="website"
+      tabindex={-1}
+      autocomplete="off"
+      aria-hidden="true"
+      class="absolute opacity-0 pointer-events-none size-0"
+    />
+    <button
+      type="submit"
+      class:list={[
+        'cursor-pointer font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-7 py-3 transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3',
+        isInline ? 'bg-primary text-ink hover:bg-accent' : 'bg-accent text-ink hover:bg-accent-hot',
+      ]}
+    >
+      Subscribe
+    </button>
+  </div>
+  <p
+    class:list={[
+      'mt-3 font-body-sm text-[0.8125rem]',
+      isInline ? 'text-primary/50' : 'text-ink-mute',
+    ]}
+    data-newsletter-status
+    aria-live="polite"
+  ></p>
+</form>

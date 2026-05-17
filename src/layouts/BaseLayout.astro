@@ -1,32 +1,46 @@
 ---
 import '../styles/global.css';
+import SeoHead from '../components/shared/SeoHead.astro';
+import Nav from '../components/shared/Nav.astro';
+import Footer from '../components/shared/Footer.astro';
 
 interface Props {
   title: string;
   description: string;
   canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  publishDate?: string;
+  modifiedDate?: string;
+  author?: string;
+  noindex?: boolean;
+  schema?: object | object[];
+  /** Make the nav transparent over a hero — call sites that have a full-bleed
+   *  hero pass true; everything else uses the default solid nav. */
+  transparentNav?: boolean;
 }
 
-const { title, description, canonical } = Astro.props;
-const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'https://guidingwinds-unplug.com').toString();
+const { transparentNav = false, ...seoProps } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalUrl} />
+    <SeoHead {...seoProps} />
   </head>
-  <body>
-    <slot />
+  <body class="bg-primary text-ink min-h-screen flex flex-col">
+    <Nav transparent={transparentNav} />
+    <main class="flex-1 pt-20" data-transparent-nav={transparentNav}>
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
+
+<style is:global>
+  /* When the nav is transparent over a hero, pull the main content up to
+     sit beneath it. Hero sections opt out of the 80px top padding. */
+  main[data-transparent-nav='true'] {
+    padding-top: 0;
+  }
+</style>

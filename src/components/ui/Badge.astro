@@ -1,0 +1,28 @@
+---
+// Per DESIGN.md §Components.badge: bone background, primary text, label-caps
+// typography, pill rounding. Used for "x cabins left" eyebrow chips and
+// circular metadata pills. Static Astro — no client JS needed.
+interface Props {
+  variant?: 'bone' | 'accent' | 'ghost';
+  class?: string;
+}
+const { variant = 'bone', class: className = '' } = Astro.props;
+
+const variantClass: Record<NonNullable<Props['variant']>, string> = {
+  bone: 'bg-bone text-primary',
+  accent: 'bg-accent text-ink',
+  ghost: 'bg-transparent text-ink border border-hairline',
+};
+---
+
+<span
+  class:list={[
+    'inline-flex items-center justify-center gap-1.5 rounded-pill',
+    'font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold',
+    'px-3 py-1.5',
+    variantClass[variant],
+    className,
+  ]}
+>
+  <slot />
+</span>

@@ -1,0 +1,73 @@
+---
+import SchemaScript from './SchemaScript.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  publishDate?: string;
+  modifiedDate?: string;
+  author?: string;
+  noindex?: boolean;
+  schema?: object | object[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = '/og/default.png',
+  ogType = 'website',
+  publishDate,
+  modifiedDate,
+  author,
+  noindex = false,
+  schema,
+} = Astro.props;
+
+const siteOrigin = Astro.site ?? new URL('https://guidingwinds-unplug.com');
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteOrigin).toString();
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteOrigin).toString();
+const siteName = 'Guiding Winds Unplug';
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Icons -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="alternate icon" href="/favicon.ico" />
+
+<!-- Open Graph -->
+<meta property="og:type" content={ogType} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="en_US" />
+{publishDate && <meta property="article:published_time" content={publishDate} />}
+{modifiedDate && <meta property="article:modified_time" content={modifiedDate} />}
+{author && <meta property="article:author" content={author} />}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- Theme color & viewport behavior -->
+<meta name="theme-color" content="#0A0A0A" />
+<meta name="color-scheme" content="dark" />
+
+<!-- Sitemap link -->
+<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+{schema && <SchemaScript schema={schema} />}

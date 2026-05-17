@@ -1,0 +1,18 @@
+---
+// Emits a JSON-LD <script> for the given schema object. Pass either a single
+// schema or an array (will be flattened into one @graph). The JSON is escaped
+// against </script> injection per the OWASP recommendation.
+interface Props {
+  schema: object | object[];
+}
+const { schema } = Astro.props;
+
+const payload = Array.isArray(schema)
+  ? { '@context': 'https://schema.org', '@graph': schema }
+  : schema;
+
+// Stringify, then escape any </script> sequences so a token can't break out.
+const serialized = JSON.stringify(payload).replace(/</g, '\\u003c');
+---
+
+<script type="application/ld+json" is:inline set:html={serialized} />
