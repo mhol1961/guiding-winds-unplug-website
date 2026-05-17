@@ -2,6 +2,7 @@ export const prerender = false;
 
 import type { APIRoute } from 'astro';
 import { z } from 'zod';
+import { getCollection } from 'astro:content';
 import { upsertContact } from '../../lib/ghl/contacts';
 import { createHoldAppointment } from '../../lib/ghl/calendars';
 import { calendarIds } from '../../lib/ghl/client';
@@ -87,7 +88,43 @@ export const POST: APIRoute = async ({ request }) => {
 
   if (data.website && data.website.length > 0) {
     console.log('[hold] honeypot tripped', { email: data.email });
-    return jsonResponse({ ok: true, message: 'Hold requested.' });
+    return jsonResponse({ ok: false, silent: true, message: 'Hold requested.' });
+  }
+
+  // Authoritative inventory check (per Codex final review): the regex on
+  // weekStart/weekEnd only validates SHAPE. We also need to confirm the
+  // requested week actually exists in the voyage's availableWeeks AND has
+  // cabins remaining. Otherwise a bot can POST any well-formed date pair
+  // and create bogus holds in Dodie's GHL, which then trigger W6 (hold
+  // expiring) workflows for inventory that doesn't exist. Manual recovery
+  // pollutes her inbox.
+  const voyages = await getCollection('voyages');
+  const voyage = voyages.find((v) => v.data.slug === data.voyageSlug);
+  if (!voyage) {
+    return jsonResponse({ ok: false, error: 'Unknown voyage.' }, 422);
+  }
+  const week = voyage.data.availableWeeks.find(
+    (w) => w.start === data.weekStart && w.end === data.weekEnd,
+  );
+  if (!week) {
+    return jsonResponse(
+      {
+        ok: false,
+        error: 'That week is not on the 2027 calendar. See /calendar for available dates.',
+      },
+      422,
+    );
+  }
+  if (week.cabinsAvailable <= 0) {
+    return jsonResponse(
+      {
+        ok: false,
+        error:
+          'That week is sold out. Use the inquiry form to be added to the waitlist.',
+        fallbackUrl: `/inquire?voyage=${data.voyageSlug}`,
+      },
+      409,
+    );
   }
 
   const region = REGION_FOR[data.voyageSlug];

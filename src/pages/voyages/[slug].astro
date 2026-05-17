@@ -72,11 +72,7 @@ const touristTrip = {
     validThrough: week.end,
     inventoryLevel: { '@type': 'QuantitativeValue', value: week.cabinsAvailable },
   })),
-  provider: {
-    '@type': 'TravelAgency',
-    name: 'Guiding Winds Unplug',
-    url: baseUrl,
-  },
+  provider: { '@id': `${baseUrl}/#org` },
 };
 
 const faqSchema = voyage.data.faq.length
