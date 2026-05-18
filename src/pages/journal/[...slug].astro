@@ -114,51 +114,51 @@ const relatedVoyageSlug = post.data.relatedVoyage;
     </header>
 
     {/* TL;DR answer capsule — for AI search engines */}
-    <aside class="bg-bone text-primary border-t border-primary/10">
-      <div class="max-w-[820px] mx-auto px-7 lg:px-0 py-10">
-        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-3">
-          TL;DR
+    <aside class="bg-bone-deep/30 text-primary border-y border-rule">
+      <div class="max-w-[820px] mx-auto px-7 lg:px-0 py-12">
+        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun-deep mb-4">
+          The TL;DR
         </p>
         <p
-          class="font-serif-quote italic text-primary text-[1.25rem] leading-[1.5] tracking-[-0.01em]"
-          style="font-variation-settings: 'opsz' 24, 'SOFT' 50, 'WONK' 1;"
+          class="font-serif-quote italic text-primary text-[1.25rem] lg:text-[1.5rem] leading-[1.45] tracking-[-0.01em] text-balance"
+          style="font-variation-settings: 'opsz' 36, 'SOFT' 60, 'WONK' 1;"
         >
           {post.data.tldr}
         </p>
       </div>
     </aside>
 
-    {/* Body */}
-    <div class="bg-primary text-ink border-t border-hairline">
+    {/* Body — bone bg, dark text */}
+    <div class="bg-bone text-primary">
       <div class="max-w-[720px] mx-auto px-7 lg:px-0 py-20 lg:py-28">
-        <div class="prose prose-invert font-body-lg text-[1.0625rem] leading-[1.75] text-ink-soft max-w-none journal-prose">
+        <div class="font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.75] text-primary/80 max-w-none journal-prose">
           <Content />
         </div>
       </div>
     </div>
 
     {/* Author bio */}
-    <aside class="bg-primary text-ink border-t border-hairline">
+    <aside class="bg-bone text-primary border-t border-rule">
       <div class="max-w-[820px] mx-auto px-7 lg:px-0 py-14 flex flex-col sm:flex-row sm:items-start gap-5">
         <div
-          class="shrink-0 size-16 rounded-full grid place-items-center bg-bone/15 backdrop-blur-md"
+          class="shrink-0 size-16 rounded-full grid place-items-center bg-bone-deep/40"
           aria-hidden="true"
         >
-          <span class="font-display text-[1.5rem] text-ink" style="font-variation-settings: 'opsz' 36;">
+          <span class="font-display text-[1.5rem] text-primary" style="font-variation-settings: 'opsz' 36;">
             {authorName.charAt(0)}
           </span>
         </div>
         <div>
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft mb-2">
+          <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mb-2">
             Written by
           </p>
           <p
-            class="font-h3 text-ink text-[1.25rem] leading-[1.2] font-medium"
+            class="font-display text-[1.25rem] leading-[1.2] font-normal"
             style="font-variation-settings: 'opsz' 36;"
           >
             {authorName}
           </p>
-          <p class="font-body-md text-[0.9375rem] leading-[1.6] text-ink-soft mt-2">
+          <p class="font-body-md text-[1rem] leading-[1.6] text-primary/70 mt-2">
             {
               post.data.author === 'clint'
                 ? 'Captain of Guiding Winds Unplug. USCG Master 100-Ton. 20+ years on the water.'
@@ -173,21 +173,21 @@ const relatedVoyageSlug = post.data.relatedVoyage;
 
     {/* CTA */}
     {relatedVoyageSlug && (
-      <section class="bg-bone text-primary border-t border-primary/10">
+      <section class="bg-bone-deep/30 text-primary border-y border-rule">
         <div class="max-w-[820px] mx-auto px-7 lg:px-0 py-16 text-center">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-primary/55 mb-4">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun-deep mb-4">
             Where this trip happens
           </p>
           <h2
-            class="font-h2 text-primary leading-[1.05] tracking-[-0.02em] font-normal text-balance"
-            style="font-size: clamp(1.5rem, 2.5vw + 1rem, 2rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+            class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
+            style="font-size: clamp(1.625rem, 3vw + 1rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
           >
             See the voyage.
           </h2>
           <div class="mt-8">
             <a
               href={`/voyages/${relatedVoyageSlug}`}
-              class="inline-flex items-center justify-center cursor-pointer bg-primary text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-8 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+              class="inline-flex items-center justify-center cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
             >
               Read the voyage
             </a>
@@ -197,17 +197,17 @@ const relatedVoyageSlug = post.data.relatedVoyage;
     )}
 
     {/* Newsletter */}
-    <section class="bg-primary text-ink border-t border-hairline">
+    <section class="bg-bone text-primary border-t border-rule">
       <div class="max-w-[820px] mx-auto px-7 lg:px-0 py-16">
-        <NewsletterSignup variant="footer" heading="One or two pieces a month from the water." subtext="No urgency, no upsells. Unsubscribe with a click." />
+        <NewsletterSignup variant="inline" heading="One or two pieces a month from the water." subtext="No urgency, no upsells. Unsubscribe with a click." />
       </div>
     </section>
 
     {/* Related posts */}
     {related.length > 0 && (
-      <section class="bg-primary text-ink border-t border-hairline">
-        <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-16 lg:py-20">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-8">
+      <section class="bg-bone text-primary border-t border-rule">
+        <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-16 lg:py-24">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-8">
             More from {categoryLabels[post.data.category]}
           </p>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
@@ -218,10 +218,10 @@ const relatedVoyageSlug = post.data.relatedVoyage;
                   class="group block focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
                 >
                   <div
-                    class="aspect-[16/10] mb-4"
+                    class="relative aspect-[16/10] mb-4 overflow-hidden bg-primary/5"
                     style={`background: ${categoryGradients[p.data.category]};`}
                   />
-                  <h3 class="font-h3 text-ink text-[1.125rem] leading-[1.2] font-medium group-hover:text-accent transition-colors" style="font-variation-settings: 'opsz' 36;">
+                  <h3 class="font-display text-[1.25rem] leading-[1.2] font-normal group-hover:text-accent transition-colors" style="font-variation-settings: 'opsz' 36;">
                     {p.data.title}
                   </h3>
                 </a>
@@ -243,7 +243,7 @@ const relatedVoyageSlug = post.data.relatedVoyage;
     font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
     line-height: 1.15;
     letter-spacing: -0.02em;
-    color: var(--color-ink);
+    color: var(--color-primary);
     margin-top: 3rem;
     margin-bottom: 1.25rem;
     font-weight: 400;
@@ -253,7 +253,7 @@ const relatedVoyageSlug = post.data.relatedVoyage;
     font-family: var(--font-fraunces);
     font-size: 1.375rem;
     line-height: 1.2;
-    color: var(--color-ink);
+    color: var(--color-primary);
     margin-top: 2.5rem;
     margin-bottom: 1rem;
     font-weight: 500;
@@ -274,7 +274,7 @@ const relatedVoyageSlug = post.data.relatedVoyage;
   .journal-prose ul { list-style: disc; }
   .journal-prose ol { list-style: decimal; }
   .journal-prose li { margin-bottom: 0.6em; }
-  .journal-prose strong { color: var(--color-ink); font-weight: 600; }
+  .journal-prose strong { color: var(--color-primary); font-weight: 600; }
   .journal-prose blockquote {
     font-family: var(--font-fraunces);
     font-size: 1.375rem;
@@ -283,18 +283,18 @@ const relatedVoyageSlug = post.data.relatedVoyage;
     border-left: 2px solid var(--color-accent);
     padding-left: 1.5rem;
     margin: 2rem 0;
-    color: var(--color-ink);
+    color: var(--color-primary);
     font-variation-settings: 'opsz' 24, 'SOFT' 50, 'WONK' 1;
   }
   .journal-prose hr {
     border: 0;
-    border-top: 1px solid var(--color-hairline);
+    border-top: 1px solid var(--color-rule);
     margin: 3rem 0;
   }
   .journal-prose code {
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 0.9em;
-    background: var(--color-surface);
+    background: var(--color-bone-deep);
     padding: 0.15em 0.4em;
     border-radius: 2px;
   }

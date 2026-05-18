@@ -4,11 +4,15 @@ const links = [
   { label: 'Aboard', href: '/aboard' },
   { label: 'Our Story', href: '/about' },
   { label: 'Journal', href: '/journal' },
+  { label: 'Calendar', href: '/calendar' },
 ];
 const ctaLabel = 'Hold a Cabin';
-const ctaHref = '/calendar';
+const ctaHref = '/inquire';
 
 interface Props {
+  /** When true, nav starts transparent over a full-bleed hero with white
+   *  type; when scrolled past 24px it solidifies to bone with dark type.
+   *  When false, nav is bone+dark from the start. */
   transparent?: boolean;
 }
 const { transparent = false } = Astro.props;
@@ -19,26 +23,26 @@ const { transparent = false } = Astro.props;
   class:list={[
     'fixed top-0 inset-x-0 z-30 transition-all duration-300',
     transparent
-      ? 'bg-transparent'
-      : 'bg-primary/95 backdrop-blur-md border-b border-hairline',
+      ? 'bg-transparent text-bone'
+      : 'bg-bone/95 backdrop-blur-md border-b border-bone-deep/50 text-primary',
   ]}
 >
-  <div class="max-w-[1320px] mx-auto px-7 lg:px-14 h-20 flex items-center justify-between gap-8">
+  <div class="max-w-[1400px] mx-auto px-7 lg:px-12 h-20 flex items-center justify-between gap-8">
     <a
       href="/"
-      class="font-display text-[1.375rem] leading-none tracking-[-0.02em] text-ink hover:text-accent transition-colors"
-      style="font-variation-settings: 'opsz' 60, 'SOFT' 30, 'WONK' 0;"
+      class="font-display text-[1.5rem] leading-none tracking-[-0.025em] hover:text-accent transition-colors"
+      style="font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
       aria-label="Guiding Winds Unplug — home"
     >
       Guiding Winds
     </a>
 
-    <nav class="hidden md:flex items-center gap-10" aria-label="Primary">
+    <nav class="hidden md:flex items-center gap-9" aria-label="Primary">
       {
         links.map((link) => (
           <a
             href={link.href}
-            class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft hover:text-ink transition-colors"
+            class="font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold opacity-80 hover:opacity-100 hover:text-accent transition-all"
           >
             {link.label}
           </a>
@@ -46,12 +50,15 @@ const { transparent = false } = Astro.props;
       }
     </nav>
 
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-3">
       <a
         href={ctaHref}
-        class="hidden md:inline-flex items-center justify-center cursor-pointer bg-accent text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-6 py-3 hover:bg-accent-hot transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+        class="hidden md:inline-flex items-center gap-2 font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold border-b-2 border-accent pb-0.5 hover:text-accent transition-colors"
       >
         {ctaLabel}
+        <svg viewBox="0 0 16 16" class="size-3" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
       </a>
 
       {/* Mobile menu trigger — native <dialog>, no React. */}
@@ -61,10 +68,10 @@ const { transparent = false } = Astro.props;
         aria-controls="mobile-menu-dialog"
         aria-expanded="false"
         data-mobile-menu-trigger
-        class="md:hidden inline-flex items-center justify-center size-11 cursor-pointer text-ink hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+        class="md:hidden inline-flex items-center justify-center size-11 cursor-pointer hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
       >
         <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M3 7h18M3 17h18" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </button>
     </div>
@@ -74,32 +81,34 @@ const { transparent = false } = Astro.props;
 {/* Mobile menu dialog. Native <dialog> = no React, no Radix, ~0KB JS cost. */}
 <dialog
   id="mobile-menu-dialog"
-  class="bg-primary text-ink p-0 m-0 max-w-none w-full h-full md:hidden backdrop:bg-primary/70 backdrop:backdrop-blur-md"
+  class="bg-primary text-bone p-0 m-0 max-w-none w-full h-full md:hidden backdrop:bg-primary/70 backdrop:backdrop-blur-md"
   aria-label="Menu"
 >
   <div class="p-8 sm:p-12 h-full flex flex-col">
-    <div class="flex items-center justify-between mb-10">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft">
-        Menu
-      </p>
+    <div class="flex items-center justify-between mb-12">
+      <span
+        class="font-display text-[1.25rem] leading-none"
+        style="font-variation-settings: 'opsz' 60, 'SOFT' 30, 'WONK' 0;"
+      >Guiding Winds</span>
       <button
         type="button"
         aria-label="Close menu"
         data-mobile-menu-close
-        class="inline-flex items-center justify-center size-11 cursor-pointer text-ink-soft hover:text-ink transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+        class="inline-flex items-center justify-center size-11 cursor-pointer text-bone hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
       >
         <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </button>
     </div>
-    <nav class="flex flex-col gap-6">
+    <nav class="flex flex-col gap-7" aria-label="Mobile primary">
       {
         links.map((link) => (
           <a
             href={link.href}
             data-mobile-menu-link
-            class="font-h3 text-[1.5rem] leading-[1.1] tracking-[-0.015em] text-ink hover:text-accent transition-colors"
+            class="font-display text-[2rem] leading-[1.05] tracking-[-0.02em] hover:text-accent transition-colors"
+            style="font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
           >
             {link.label}
           </a>
@@ -110,7 +119,7 @@ const { transparent = false } = Astro.props;
       <a
         href={ctaHref}
         data-mobile-menu-link
-        class="block w-full text-center cursor-pointer bg-accent text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-6 py-[18px] hover:bg-accent-hot transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+        class="block w-full text-center cursor-pointer bg-accent text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-6 py-[18px] hover:bg-accent-hot transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
       >
         {ctaLabel}
       </a>
@@ -119,61 +128,45 @@ const { transparent = false } = Astro.props;
 </dialog>
 
 <script>
-  // Native dialog wiring. ~300 bytes vs. 32KB of Radix Dialog.
   const trigger = document.querySelector<HTMLButtonElement>('[data-mobile-menu-trigger]');
   const dialog = document.getElementById('mobile-menu-dialog') as HTMLDialogElement | null;
   const closeBtn = document.querySelector<HTMLButtonElement>('[data-mobile-menu-close]');
   const links = document.querySelectorAll<HTMLAnchorElement>('[data-mobile-menu-link]');
 
   function syncExpanded() {
-    if (trigger && dialog) {
-      trigger.setAttribute('aria-expanded', String(dialog.open));
-    }
+    if (trigger && dialog) trigger.setAttribute('aria-expanded', String(dialog.open));
   }
 
   if (trigger && dialog) {
-    trigger.addEventListener('click', () => {
-      dialog.showModal();
-      syncExpanded();
-    });
+    trigger.addEventListener('click', () => { dialog.showModal(); syncExpanded(); });
   }
   if (closeBtn && dialog) {
-    closeBtn.addEventListener('click', () => {
-      dialog.close();
-      syncExpanded();
-    });
+    closeBtn.addEventListener('click', () => { dialog.close(); syncExpanded(); });
   }
   links.forEach((link) =>
-    link.addEventListener('click', () => {
-      dialog?.close();
-      syncExpanded();
-    }),
+    link.addEventListener('click', () => { dialog?.close(); syncExpanded(); }),
   );
-
   if (dialog) {
-    // Sync the trigger's aria-expanded on Escape/close events too.
     dialog.addEventListener('close', syncExpanded);
     dialog.addEventListener('cancel', syncExpanded);
-    // Click outside to close.
     dialog.addEventListener('click', (event) => {
-      const clicked = event.target as HTMLElement;
-      if (clicked === dialog) {
-        dialog.close();
-        syncExpanded();
-      }
+      if (event.target === dialog) { dialog.close(); syncExpanded(); }
     });
   }
 
-  // Transparent → solid header on scroll.
+  // Transparent header → solid on scroll. When solid, also flip text from
+  // bone (light on dark hero) to primary (dark on bone bg).
   const header = document.querySelector('header[data-transparent="true"]');
   if (header) {
+    const transparentClasses = ['bg-transparent', 'text-bone'];
+    const solidClasses = ['bg-bone/95', 'backdrop-blur-md', 'border-b', 'border-bone-deep/50', 'text-primary'];
     const apply = () => {
       if (window.scrollY > 24) {
-        header.classList.remove('bg-transparent');
-        header.classList.add('bg-primary/95', 'backdrop-blur-md', 'border-b', 'border-hairline');
+        header.classList.remove(...transparentClasses);
+        header.classList.add(...solidClasses);
       } else {
-        header.classList.add('bg-transparent');
-        header.classList.remove('bg-primary/95', 'backdrop-blur-md', 'border-b', 'border-hairline');
+        header.classList.add(...transparentClasses);
+        header.classList.remove(...solidClasses);
       }
     };
     apply();

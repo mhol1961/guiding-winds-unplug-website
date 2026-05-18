@@ -1,16 +1,11 @@
 ---
-// Full-bleed cinematic crossfade hero. Four scenes that loop. When a real
-// video file isn't present, falls back to a CSS gradient that evokes the
-// destination — the site must hold without photography per ADR-011.
-// Honors prefers-reduced-motion via @media in the embedded style block.
+// Full-bleed cinematic hero. Crossfades 4 real photos from Dodie's library
+// (sunset catamaran, anchorage, foredeck, cockpit sunrise). Honors
+// prefers-reduced-motion. Headline overlay sits low-left, magazine-style.
+
 interface Scene {
-  /** Optional video src — when omitted, the gradient + image fallback render. */
-  videoSrc?: string;
-  imageSrc?: string;
-  /** Used for both <img alt> and aria-label on the slide. */
+  src: string;
   alt: string;
-  /** CSS gradient used until a real photo/video arrives. */
-  fallbackGradient: string;
 }
 
 interface Props {
@@ -27,26 +22,10 @@ interface Props {
 
 const {
   scenes = [
-    {
-      alt: 'Glass water in the British Virgin Islands at sunrise',
-      fallbackGradient:
-        'linear-gradient(160deg, #0E3F47 0%, #0A0A0A 55%, #2A1F1A 100%)',
-    },
-    {
-      alt: 'A catamaran anchored off pink sand in the Bahamas',
-      fallbackGradient:
-        'linear-gradient(160deg, #C92E1C 0%, #2A1F1A 55%, #0A0A0A 100%)',
-    },
-    {
-      alt: 'A catamaran in a Greek cove with cliffs above',
-      fallbackGradient:
-        'linear-gradient(180deg, #1F1B17 0%, #0A0A0A 60%, #0E3F47 100%)',
-    },
-    {
-      alt: 'Sunset on deck with two glasses on a teak table',
-      fallbackGradient:
-        'linear-gradient(160deg, #E13F2A 0%, #1F1B17 55%, #0A0A0A 100%)',
-    },
+    { src: '/img/source/hero/02-sunset-catamaran-anchorage.jpg', alt: 'A catamaran at anchor at sunset in the Caribbean, warm orange sky reflecting off glassy water' },
+    { src: '/img/source/hero/01-catamaran-green-headland.jpg', alt: 'A catamaran sailing past a green tropical headland in the British Virgin Islands' },
+    { src: '/img/source/hero/03-foredeck-bow-sun-flare.jpg', alt: 'Looking out from the foredeck of a catamaran toward the horizon, sun flare across the bow' },
+    { src: '/img/source/hero/04-cockpit-sunrise.jpg', alt: 'Coffee on the cockpit bench at sunrise on a sailing catamaran' },
   ],
   eyebrow,
   headlinePrefix,
@@ -58,91 +37,75 @@ const {
   trustItems,
 } = Astro.props;
 
-// Each scene crossfade lasts ~7s; 4 scenes; total cycle ~28s.
 const sceneDuration = 7;
 const totalDuration = sceneDuration * scenes.length;
 ---
 
-<section class="hero relative w-full min-h-[100dvh] overflow-hidden bg-primary text-ink">
+<section class="hero relative w-full min-h-[100dvh] overflow-hidden bg-primary text-bone">
   <div class="absolute inset-0 z-0" aria-hidden="true">
     {
       scenes.map((scene, i) => (
         <div
           class="hero-scene absolute inset-0 opacity-0"
-          style={`
-            --i: ${i};
-            --total: ${scenes.length};
-            --dur: ${totalDuration}s;
-            background: ${scene.fallbackGradient};
-            background-size: cover;
-            background-position: center;
-          `}
+          style={`--i: ${i}; --total: ${scenes.length}; --dur: ${totalDuration}s;`}
         >
-          {scene.imageSrc && (
-            <img
-              src={scene.imageSrc}
-              alt=""
-              loading={i === 0 ? 'eager' : 'lazy'}
-              decoding="async"
-              fetchpriority={i === 0 ? 'high' : 'auto'}
-              class="absolute inset-0 w-full h-full object-cover"
-            />
-          )}
-          {scene.videoSrc && (
-            <video
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              class="absolute inset-0 w-full h-full object-cover"
-            >
-              <source src={scene.videoSrc} type="video/mp4" />
-            </video>
-          )}
+          <img
+            src={scene.src}
+            alt=""
+            loading={i === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+            fetchpriority={i === 0 ? 'high' : 'auto'}
+            class="absolute inset-0 w-full h-full object-cover"
+          />
         </div>
       ))
     }
-    {/* Bottom gradient ramp for legibility — no shadows per DESIGN.md. */}
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/30 to-primary/90"></div>
+    {/* Editorial overlay — darker at the bottom for legibility, lighter top */}
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/10 via-50% to-primary/90"></div>
   </div>
 
   {/* Foreground content */}
   <div class="relative z-10 min-h-[100dvh] flex flex-col">
-    <div class="flex-1 flex items-end pb-32 px-7 lg:px-14 pt-32">
-      <div class="max-w-[1320px] w-full mx-auto">
-        <div class="max-w-3xl">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink/80 mb-8">
+    <div class="flex-1 flex items-end pb-24 lg:pb-32 px-7 lg:px-14 pt-32">
+      <div class="max-w-[1400px] w-full mx-auto">
+        <div class="max-w-4xl">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.75rem] font-semibold text-bone/90 mb-8">
             {eyebrow}
           </p>
           <h1
-            class="font-display text-ink font-light text-balance leading-[0.95] tracking-[-0.03em]"
-            style="font-size: clamp(3rem, 8vw + 1rem, 6.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+            class="font-display text-bone font-light text-pretty leading-[0.95] tracking-[-0.03em]"
+            style="font-size: clamp(2.75rem, 7.5vw + 1rem, 7rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
           >
             {headlinePrefix}
             <span
-              class="italic"
-              style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;"
+              class="italic block sm:inline"
+              style="font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;"
             >
               {headlineEmphasis}
             </span>
             {headlineSuffix}
           </h1>
-          <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-ink/85 mt-8 max-w-[58ch]">
+          <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.6] text-bone/90 mt-8 max-w-[58ch]">
             {subline}
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 mt-12">
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-10 lg:mt-12">
             <a
               href={primaryCta.href}
-              class="inline-flex items-center justify-center cursor-pointer bg-accent text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-8 py-[18px] hover:bg-accent-hot transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+              class="group inline-flex items-center gap-3 cursor-pointer text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold pb-1 border-b-2 border-accent hover:text-accent transition-colors"
             >
               {primaryCta.label}
+              <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </a>
             <a
               href={secondaryCta.href}
-              class="inline-flex items-center justify-center cursor-pointer bg-transparent text-ink border border-ink/30 font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-8 py-[18px] hover:bg-ink hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+              class="group inline-flex items-center gap-3 cursor-pointer text-bone/80 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold pb-1 border-b border-bone/30 hover:text-bone hover:border-bone transition-all"
             >
               {secondaryCta.label}
+              <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </a>
           </div>
         </div>
@@ -150,46 +113,48 @@ const totalDuration = sceneDuration * scenes.length;
     </div>
 
     {/* Trust strip */}
-    <div class="relative">
-      <div class="bg-primary/30 backdrop-blur-md border-t border-ink/10">
-        <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-5 flex flex-wrap items-center gap-x-10 gap-y-3">
-          {
-            trustItems.map((item) => (
-              <span class="inline-flex items-center gap-2 font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink/85">
-                <span class="block size-[6px] bg-accent rounded-full" aria-hidden="true" />
-                {item}
-              </span>
-            ))
-          }
-        </div>
+    <div class="border-t border-bone/15 backdrop-blur-md bg-primary/30">
+      <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-5 flex flex-wrap items-center gap-x-10 gap-y-3">
+        {
+          trustItems.map((item) => (
+            <span class="inline-flex items-center gap-2.5 font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-bone/85">
+              <span class="block size-[6px] bg-accent rounded-full" aria-hidden="true" />
+              {item}
+            </span>
+          ))
+        }
       </div>
     </div>
   </div>
 </section>
 
-<style define:vars={{ totalDuration: `${totalDuration}s`, sceneCount: scenes.length, sceneDuration: `${sceneDuration}s` }}>
-  /* Crossfade: each scene fades in for ~15% of its slot, holds, fades out.
-     Ken Burns layered on top via scale transform. */
+<style>
+  /* Crossfade keyframes — each scene visible ~25% of the cycle */
   .hero-scene {
     animation: hero-fade var(--dur) infinite;
     animation-delay: calc(var(--i) * (var(--dur) / var(--total) * -1));
-    will-change: opacity, transform;
+    will-change: opacity;
   }
-
   @keyframes hero-fade {
-    0% { opacity: 0; transform: scale(1); }
+    0% { opacity: 0; }
     5% { opacity: 1; }
-    25% { opacity: 1; transform: scale(1.06); }
-    30% { opacity: 0; transform: scale(1.06); }
-    100% { opacity: 0; transform: scale(1); }
+    25% { opacity: 1; }
+    30% { opacity: 0; }
+    100% { opacity: 0; }
   }
-
   @media (prefers-reduced-motion: reduce) {
-    .hero-scene {
-      animation: none;
-    }
-    .hero-scene:first-child {
-      opacity: 1;
-    }
+    .hero-scene { animation: none; }
+    .hero-scene:first-child { opacity: 1; }
+  }
+  /* Hero img Ken Burns — independent of crossfade so motion stays even */
+  .hero-scene img {
+    animation: hero-zoom calc(var(--dur) / var(--total) * 2) ease-out infinite alternate;
+  }
+  @keyframes hero-zoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scene img { animation: none; }
   }
 </style>

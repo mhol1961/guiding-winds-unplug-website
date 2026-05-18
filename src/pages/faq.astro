@@ -158,39 +158,39 @@ const schemaGraph = [
 ---
 
 <BaseLayout title={title} description={description} schema={schemaGraph}>
-  {/* Hero */}
-  <section class="bg-primary text-ink border-b border-hairline">
-    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 pt-20 pb-16 lg:pt-28 lg:pb-20">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-6">
+  {/* Hero — bone */}
+  <section class="bg-bone text-primary pt-32 lg:pt-40 pb-16 lg:pb-20 border-b border-rule">
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-6">
         Frequently asked
       </p>
       <h1
-        class="font-display text-ink leading-[0.95] tracking-[-0.03em] font-light text-balance max-w-4xl"
+        class="font-display font-light leading-[0.95] tracking-[-0.03em] text-balance max-w-4xl"
         style="font-size: clamp(2.5rem, 6vw + 1rem, 5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
       >
         Questions, answered
-        <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;">honestly.</span>
+        <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;">honestly.</span>
       </h1>
-      <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-ink-soft mt-8 max-w-3xl">
-        If something isn't here, <a href="/inquire" class="text-accent hover:underline">just ask</a>.
+      <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.6] text-primary/70 mt-8 max-w-3xl">
+        If something isn't here, <a href="/inquire" class="text-accent border-b border-accent/40 hover:border-accent transition-colors">just ask</a>.
         We'd rather answer one email than have you wonder.
       </p>
     </div>
   </section>
 
-  {/* Grouped FAQ */}
+  {/* Grouped FAQ — alternating bone / bone-deep accent strip */}
   {
     groups.map((group, gi) => (
-      <section class:list={['border-t border-hairline', gi % 2 === 0 ? 'bg-primary' : 'bg-surface/30']}>
-        <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-20 lg:py-24">
+      <section class:list={['border-t border-rule', gi % 2 === 0 ? 'bg-bone' : 'bg-bone-deep/30']}>
+        <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-20 lg:py-24">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div class="lg:col-span-4">
-              <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-accent mb-4">
+              <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-sun-deep mb-4">
                 {String(gi + 1).padStart(2, '0')}
               </p>
               <h2
-                class="font-h2 text-ink leading-[1.05] tracking-[-0.02em] font-normal"
-                style="font-size: clamp(1.5rem, 2.5vw + 1rem, 2rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+                class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
+                style="font-size: clamp(1.625rem, 2.5vw + 1rem, 2.25rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
               >
                 {group.title}
               </h2>
@@ -205,18 +205,19 @@ const schemaGraph = [
   }
 
   {/* CTA */}
-  <section class="bg-bone text-primary border-t border-primary/10">
-    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-20 text-center">
+  <section class="bg-bone text-primary border-t border-rule">
+    <div class="max-w-[820px] mx-auto px-7 lg:px-0 py-20 text-center">
       <h2
-        class="font-h2 text-primary leading-[1.05] tracking-[-0.02em] font-normal text-balance"
-        style="font-size: clamp(1.5rem, 3vw + 1rem, 2.25rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+        class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
+        style="font-size: clamp(1.625rem, 3vw + 1rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
       >
-        Still have a question? <span class="italic" style="font-variation-settings: 'opsz' 72, 'SOFT' 50, 'WONK' 1;">Send it over.</span>
+        Still have a question?
+        <span class="italic" style="font-variation-settings: 'opsz' 72, 'SOFT' 60, 'WONK' 1;">Send it over.</span>
       </h2>
       <div class="mt-8">
         <a
           href="/inquire"
-          class="inline-flex items-center justify-center cursor-pointer bg-primary text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-8 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+          class="inline-flex items-center justify-center cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
         >
           Ask Dodie
         </a>

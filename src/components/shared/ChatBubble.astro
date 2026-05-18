@@ -1,0 +1,139 @@
+---
+// Floating chat bubble — bottom-right on desktop, above sticky CTA on mobile.
+// Opens an inline contact panel rather than a real chat service for v1;
+// when Mark integrates Tawk.to or Crisp, swap the panel for the live widget.
+// Self-contained, vanilla JS, no React.
+---
+
+<div id="chat-bubble-root" class="fixed bottom-6 right-6 z-40 hidden lg:block">
+  <button
+    type="button"
+    aria-label="Open chat with Dodie"
+    aria-controls="chat-panel"
+    aria-expanded="false"
+    data-chat-trigger
+    class="group relative flex items-center gap-3 cursor-pointer bg-primary text-bone hover:bg-accent transition-colors px-5 py-3.5 shadow-[0_8px_24px_-8px_rgba(15,15,15,0.4)] focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+  >
+    <span class="relative grid place-items-center size-6">
+      <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+        <path d="M21 12c0 4.418-4.03 8-9 8-1.4 0-2.728-.282-3.917-.787L3 20l1.27-3.81C3.473 15.029 3 13.563 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span class="absolute -top-1 -right-1 size-2.5 rounded-full bg-sun ring-2 ring-primary group-hover:ring-accent transition-colors" aria-hidden="true"></span>
+    </span>
+    <span class="font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold whitespace-nowrap">
+      Chat with Dodie
+    </span>
+  </button>
+</div>
+
+<dialog
+  id="chat-panel"
+  class="fixed bottom-24 right-6 lg:right-6 m-0 ml-auto bg-bone text-primary border border-rule p-0 w-[min(360px,calc(100vw-3rem))] max-h-[calc(100vh-8rem)] backdrop:bg-primary/30 backdrop:backdrop-blur-sm"
+  aria-label="Chat with Dodie"
+  style="border-radius: 0;"
+>
+  <div class="flex flex-col">
+    <div class="flex items-center justify-between p-5 border-b border-rule">
+      <div class="flex items-center gap-3">
+        <span class="size-9 rounded-full bg-sun/20 grid place-items-center font-display text-[1rem] text-sun-deep" style="font-variation-settings: 'opsz' 36;">D</span>
+        <div>
+          <p class="font-display text-[1rem] leading-tight" style="font-variation-settings: 'opsz' 36;">Dodie Kendall</p>
+          <p class="font-label-caps uppercase tracking-[0.18em] text-[0.5625rem] text-primary/55 mt-0.5">Usually replies within 4 hours</p>
+        </div>
+      </div>
+      <button
+        type="button"
+        aria-label="Close chat"
+        data-chat-close
+        class="inline-flex items-center justify-center size-9 cursor-pointer text-primary/60 hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+      >
+        <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="p-5">
+      <p class="font-serif-quote italic text-[1.0625rem] leading-[1.45] text-primary text-balance" style="font-variation-settings: 'opsz' 24, 'SOFT' 60, 'WONK' 1;">
+        Hi — I'm Dodie. Ask me anything about a voyage, the boat, a specific week, or the best week for your group.
+      </p>
+      <p class="font-body-sm text-[0.875rem] text-primary/65 mt-4">
+        Send a quick message and I'll reply by email within the day. (We'll have live chat soon.)
+      </p>
+    </div>
+
+    <form
+      method="POST"
+      action="/api/inquire"
+      data-inquiry-form
+      class="p-5 pt-0 space-y-4 relative"
+    >
+      <input type="hidden" name="region" value="" />
+      <input type="hidden" name="partySize" value="(via chat)" />
+      <input type="hidden" name="week" value="flexible" />
+      <input type="hidden" name="firstName" value="Chat" />
+      <input type="hidden" name="lastName" value="Visitor" />
+      <input type="hidden" name="source" value="website-2026-chat" />
+      <div>
+        <label class="sr-only" for="chat-email">Your email</label>
+        <input
+          id="chat-email" type="email" name="email" required autocomplete="email"
+          placeholder="Your email"
+          class="w-full bg-bone-deep/20 text-primary font-body-md text-[0.9375rem] border-b border-primary/30 focus:border-accent transition-colors px-1 py-2.5 focus:outline-none"
+        />
+      </div>
+      <div>
+        <label class="sr-only" for="chat-message">Your message</label>
+        <textarea
+          id="chat-message" name="notes" required rows="3" maxlength="600"
+          placeholder="Quick question…"
+          class="w-full bg-bone-deep/20 text-primary font-body-md text-[0.9375rem] leading-[1.55] border-b border-primary/30 focus:border-accent transition-colors px-1 py-2.5 resize-none focus:outline-none"
+        ></textarea>
+      </div>
+      {/* Honeypot */}
+      <input type="text" name="website" tabindex={-1} autocomplete="off" aria-hidden="true" class="absolute opacity-0 pointer-events-none size-0" />
+      <button
+        type="submit"
+        class="group w-full cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold px-5 py-3 hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3 inline-flex items-center justify-center gap-3"
+      >
+        Send
+        <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+      <p class="font-body-sm text-[0.75rem] text-primary/55" data-inquiry-status aria-live="polite"></p>
+    </form>
+  </div>
+</dialog>
+
+<script>
+  const trigger = document.querySelector<HTMLButtonElement>('[data-chat-trigger]');
+  const dialog = document.getElementById('chat-panel') as HTMLDialogElement | null;
+  const closeBtn = document.querySelector<HTMLButtonElement>('[data-chat-close]');
+
+  function syncExpanded() {
+    if (trigger && dialog) trigger.setAttribute('aria-expanded', String(dialog.open));
+  }
+
+  if (trigger && dialog) {
+    trigger.addEventListener('click', () => {
+      if (dialog.open) dialog.close(); else dialog.show();
+      syncExpanded();
+    });
+  }
+  if (closeBtn && dialog) {
+    closeBtn.addEventListener('click', () => { dialog.close(); syncExpanded(); });
+  }
+  if (dialog) {
+    dialog.addEventListener('close', syncExpanded);
+    dialog.addEventListener('cancel', syncExpanded);
+  }
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && dialog?.open) {
+      dialog.close();
+      syncExpanded();
+    }
+  });
+</script>

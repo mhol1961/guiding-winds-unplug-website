@@ -3,6 +3,8 @@ import '../styles/global.css';
 import SeoHead from '../components/shared/SeoHead.astro';
 import Nav from '../components/shared/Nav.astro';
 import Footer from '../components/shared/Footer.astro';
+import ChatBubble from '../components/shared/ChatBubble.astro';
+import MobileCta from '../components/shared/MobileCta.astro';
 import FormHandlers from '../components/shared/form-handlers.astro';
 
 interface Props {
@@ -19,9 +21,12 @@ interface Props {
   /** Make the nav transparent over a hero — call sites that have a full-bleed
    *  hero pass true; everything else uses the default solid nav. */
   transparentNav?: boolean;
+  /** Hide the floating chat bubble and the sticky mobile CTA (used on
+   *  /inquire to avoid covering the form). */
+  hideFloatingCta?: boolean;
 }
 
-const { transparentNav = false, ...seoProps } = Astro.props;
+const { transparentNav = false, hideFloatingCta = false, ...seoProps } = Astro.props;
 ---
 
 <!doctype html>
@@ -29,10 +34,10 @@ const { transparentNav = false, ...seoProps } = Astro.props;
   <head>
     <SeoHead {...seoProps} />
   </head>
-  <body class="bg-primary text-ink min-h-screen flex flex-col">
+  <body class="bg-bone text-primary min-h-screen flex flex-col">
     <a
       href="#main"
-      class="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-50 focus-visible:bg-primary focus-visible:text-ink focus-visible:px-4 focus-visible:py-3 focus-visible:font-label-caps focus-visible:uppercase focus-visible:tracking-[0.28em] focus-visible:text-[0.6875rem] focus-visible:font-semibold focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+      class="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-50 focus-visible:bg-primary focus-visible:text-bone focus-visible:px-4 focus-visible:py-3 focus-visible:font-label-caps focus-visible:uppercase focus-visible:tracking-[0.28em] focus-visible:text-[0.6875rem] focus-visible:font-semibold focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
     >
       Skip to content
     </a>
@@ -41,14 +46,21 @@ const { transparentNav = false, ...seoProps } = Astro.props;
       <slot />
     </main>
     <Footer />
+    {!hideFloatingCta && <ChatBubble />}
+    {!hideFloatingCta && <MobileCta />}
     <FormHandlers />
   </body>
 </html>
 
 <style is:global>
   /* When the nav is transparent over a hero, pull the main content up to
-     sit beneath it. Hero sections opt out of the 80px top padding. */
+     sit beneath it. */
   main[data-transparent-nav='true'] {
     padding-top: 0;
+  }
+  /* Add bottom padding on mobile so the sticky CTA bar doesn't cover
+     footer content. */
+  @media (max-width: 1023px) {
+    body { padding-bottom: 60px; }
   }
 </style>

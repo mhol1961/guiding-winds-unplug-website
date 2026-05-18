@@ -7,9 +7,14 @@ heroEyebrow: 'Salerno · Tyrrhenian Sea'
 nights: 7
 pricePerGuestUSD: 3850
 shortDescription: 'Capri at sunrise, Positano on the water, the volcanic Aeolian chain — dinners ashore that ruin you for hotel restaurants forever.'
-heroImage: /media/voyages/italy-hero.jpg
-heroImageAlt: A catamaran anchored off the Amalfi coast at golden hour
-galleryImages: []
+heroImage: /img/stock/voyages/italy/italy-amalfi-coast-hero.jpg
+heroImageAlt: Pastel houses of an Amalfi coast village seen from the water
+galleryImages:
+  - { src: /img/stock/voyages/italy/italy-amalfi-coast-hero.jpg, alt: Pastel houses of an Amalfi coast village seen from the water }
+  - { src: /img/stock/voyages/italy/gallery/italy-positano-01.jpg, alt: Positano cliffs and pastel houses rising above the Tyrrhenian }
+  - { src: /img/stock/voyages/italy/gallery/italy-amalfi-village-02.jpg, alt: Amalfi village clinging to a cliff above the sea }
+  - { src: /img/stock/voyages/italy/gallery/italy-positano-coast-03.jpg, alt: Positano coastline at golden hour from a sailboat }
+  - { src: /img/stock/food/food-mediterranean-spread-02.jpg, alt: Mediterranean dinner spread on a yacht deck }
 availableWeeks:
   - { start: '2027-06-19', end: '2027-06-26', cabinsAvailable: 6 }
   - { start: '2027-07-03', end: '2027-07-10', cabinsAvailable: 8 }

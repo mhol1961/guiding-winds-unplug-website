@@ -1,4 +1,8 @@
 ---
+// Full-bleed destination photo hero with editorial overlay. The hero
+// img is REQUIRED — every voyage now has a real photo (BVI: Dodie's,
+// others: licensed stock). No gradient fallback; this section just shows
+// the photo with a dark overlay for legibility.
 import { ChevronRight } from 'lucide-react';
 
 interface Props {
@@ -7,13 +11,10 @@ interface Props {
   heroEyebrow: string;
   heroImage: string;
   heroImageAlt: string;
-  /** Headline italic emphasis word/phrase. */
   emphasis: string;
   pricePerGuestUSD: number;
   nights: number;
-  /** Number of anchorages mentioned in the itinerary — derived by caller. */
   anchorages: number;
-  fallbackGradient: string;
 }
 const {
   region,
@@ -25,73 +26,70 @@ const {
   pricePerGuestUSD,
   nights,
   anchorages,
-  fallbackGradient,
 } = Astro.props;
 ---
 
-<section
-  class="relative min-h-[80dvh] lg:min-h-[88dvh] overflow-hidden bg-primary text-ink"
-  style={`background: ${fallbackGradient};`}
->
-  {/* Hero image — only rendered if file exists; designed to render on
-       the fallback gradient when not. */}
+<section class="relative bg-primary text-ink overflow-hidden min-h-[88dvh] flex flex-col">
   <img
     src={heroImage}
     alt={heroImageAlt}
-    class="absolute inset-0 w-full h-full object-cover opacity-90"
-    onerror="this.style.display='none'"
+    class="absolute inset-0 w-full h-full object-cover"
     fetchpriority="high"
     decoding="async"
   />
-  <div class="absolute inset-0 bg-gradient-to-b from-primary/50 via-transparent to-primary/95" aria-hidden="true"></div>
+  {/* Editorial overlay — darker at the bottom for the stat row + headline */}
+  <div class="absolute inset-0 bg-gradient-to-b from-primary/30 via-transparent to-primary/95" aria-hidden="true"></div>
 
-  <div class="relative z-10 min-h-[80dvh] lg:min-h-[88dvh] flex flex-col">
+  <div class="relative z-10 min-h-[88dvh] flex flex-col">
     {/* Breadcrumb */}
     <nav aria-label="Breadcrumb" class="pt-28 px-7 lg:px-14">
-      <ol class="max-w-[1320px] mx-auto flex items-center gap-2 font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-ink/70">
-        <li><a href="/" class="hover:text-ink transition-colors">Home</a></li>
-        <li aria-hidden="true"><ChevronRight className="size-3 inline" strokeWidth={2} /></li>
-        <li><a href="/voyages" class="hover:text-ink transition-colors">Voyages</a></li>
-        <li aria-hidden="true"><ChevronRight className="size-3 inline" strokeWidth={2} /></li>
+      <ol class="max-w-[1400px] mx-auto flex items-center gap-2 font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-ink/80">
+        <li><a href="/" class="hover:text-sun transition-colors">Home</a></li>
+        <li aria-hidden="true"><ChevronRight className="size-3 inline opacity-60" strokeWidth={2} /></li>
+        <li><a href="/voyages" class="hover:text-sun transition-colors">Voyages</a></li>
+        <li aria-hidden="true"><ChevronRight className="size-3 inline opacity-60" strokeWidth={2} /></li>
         <li class="text-ink" aria-current="page">{name}</li>
       </ol>
     </nav>
 
-    <div class="flex-1 flex items-end pb-20 px-7 lg:px-14 pt-20">
-      <div class="max-w-[1320px] w-full mx-auto">
-        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink/80 mb-6">
+    <div class="flex-1 flex items-end pb-16 lg:pb-20 px-7 lg:px-14 pt-20">
+      <div class="max-w-[1400px] w-full mx-auto">
+        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.75rem] font-semibold text-ink/90 mb-6">
           {heroEyebrow} · {region}
         </p>
         <h1
-          class="font-display text-ink leading-[0.95] tracking-[-0.03em] font-light text-balance max-w-4xl"
-          style="font-size: clamp(2.5rem, 6vw + 1rem, 5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+          class="font-display text-ink font-light text-pretty leading-[0.95] tracking-[-0.03em] max-w-5xl"
+          style="font-size: clamp(2.5rem, 6vw + 1rem, 5.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
         >
           {name}.
           <span
-            class="block italic mt-2 text-ink/95"
-            style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;"
+            class="block italic text-ink/95 mt-2"
+            style="font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;"
           >
             {emphasis}
           </span>
         </h1>
 
-        {/* Stat row */}
-        <div class="mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-3 max-w-3xl">
+        {/* Stat row — sun-gold separator dots */}
+        <div class="mt-10 lg:mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-3 max-w-3xl">
           <div>
-            <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft">Length</p>
-            <p class="font-h3 text-[1.5rem] leading-none text-ink mt-1">{nights} nights</p>
+            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-ink-soft">Length</p>
+            <p class="font-display text-[1.5rem] leading-none text-ink mt-1.5" style="font-variation-settings: 'opsz' 36;">{nights} nights</p>
           </div>
+          <span class="block size-1 bg-sun rounded-full self-center mt-3" aria-hidden="true"></span>
           <div>
-            <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft">Anchorages</p>
-            <p class="font-h3 text-[1.5rem] leading-none text-ink mt-1">{anchorages}+</p>
+            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-ink-soft">Anchorages</p>
+            <p class="font-display text-[1.5rem] leading-none text-ink mt-1.5" style="font-variation-settings: 'opsz' 36;">{anchorages}+</p>
           </div>
+          <span class="block size-1 bg-sun rounded-full self-center mt-3" aria-hidden="true"></span>
           <div>
-            <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft">Guests</p>
-            <p class="font-h3 text-[1.5rem] leading-none text-ink mt-1">8–12</p>
+            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-ink-soft">Guests</p>
+            <p class="font-display text-[1.5rem] leading-none text-ink mt-1.5" style="font-variation-settings: 'opsz' 36;">8–12</p>
           </div>
+          <span class="block size-1 bg-sun rounded-full self-center mt-3" aria-hidden="true"></span>
           <div>
-            <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft">From</p>
-            <p class="font-h3 text-[1.5rem] leading-none text-ink mt-1 tabular-nums">${pricePerGuestUSD.toLocaleString()}<span class="text-ink/60 text-[0.875rem] font-body-md ml-1.5">/ guest</span></p>
+            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-ink-soft">From</p>
+            <p class="font-display text-[1.5rem] leading-none text-ink mt-1.5 tabular-nums" style="font-variation-settings: 'opsz' 36;">${pricePerGuestUSD.toLocaleString()}<span class="text-ink/60 text-[0.875rem] font-body-md ml-1.5">/ guest</span></p>
           </div>
         </div>
       </div>

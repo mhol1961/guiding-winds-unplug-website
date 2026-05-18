@@ -18,11 +18,20 @@ const categoryLabels: Record<string, string> = {
   'behind-the-boat': 'Behind the Boat',
 };
 
-const categoryGradients: Record<string, string> = {
-  guide: 'linear-gradient(135deg, #1F1B17 0%, #0E3F47 100%)',
-  'field-notes': 'linear-gradient(135deg, #0E3F47 0%, #161412 100%)',
-  wellness: 'linear-gradient(135deg, #161412 0%, #1F1B17 100%)',
-  'behind-the-boat': 'linear-gradient(135deg, #C92E1C 0%, #2A1F1A 100%)',
+const categoryFallback: Record<string, string> = {
+  guide: '/img/stock/journal/journal-packing-flatlay-01.jpg',
+  'field-notes': '/img/stock/journal/journal-bvi-anchorage-aerial-02.jpg',
+  wellness: '/img/stock/journal/journal-sunrise-meditation-03.jpg',
+  'behind-the-boat': '/img/stock/journal/journal-catamaran-comparison-04.jpg',
+};
+
+// Map specific posts to their best-fit hero image from the stock library.
+const postHero: Record<string, string> = {
+  'what-to-actually-pack': '/img/stock/journal/journal-packing-flatlay-01.jpg',
+  'five-bvi-anchorages': '/img/stock/journal/journal-bvi-anchorage-aerial-02.jpg',
+  'mornings-at-sea': '/img/stock/journal/journal-sunrise-meditation-03.jpg',
+  'catamaran-vs-monohull': '/img/stock/journal/journal-catamaran-comparison-04.jpg',
+  'anegada-lobster': '/img/stock/journal/journal-lobster-plate-05.jpg',
 };
 
 const schemaGraph = [
@@ -53,42 +62,45 @@ const categories: Array<keyof typeof categoryLabels> = [
   'wellness',
   'behind-the-boat',
 ];
+
+const featured = posts[0];
+const rest = posts.slice(1);
 ---
 
 <BaseLayout title={title} description={description} schema={schemaGraph}>
-  {/* Hero */}
-  <section class="bg-primary text-ink border-b border-hairline">
-    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 pt-20 pb-16 lg:pt-28 lg:pb-20">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-6">
+  {/* Editorial hero — bone, narrow centered */}
+  <section class="bg-bone text-primary pt-32 lg:pt-40 pb-16 lg:pb-20 border-b border-rule">
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-6">
         Journal
       </p>
       <h1
-        class="font-display text-ink leading-[0.95] tracking-[-0.03em] font-light text-balance max-w-3xl"
-        style="font-size: clamp(2.5rem, 7vw + 1rem, 5.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+        class="font-display font-light leading-[0.95] tracking-[-0.03em] text-balance max-w-3xl"
+        style="font-size: clamp(2.75rem, 7vw + 1rem, 6rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
       >
         Field
-        <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;">Notes.</span>
+        <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;">Notes.</span>
       </h1>
-      <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-ink-soft mt-8 max-w-2xl">
+      <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.6] text-primary/70 mt-8 max-w-2xl">
         Quiet pieces on the slow life on the water — packing guides, the
         anchorages we love, why mornings at sea are the best therapy, and
-        the view from behind the boat. Two posts a month, on average.
+        the view from behind the boat.
       </p>
     </div>
   </section>
 
   {/* Category strip */}
-  <section class="bg-primary text-ink border-t border-hairline">
-    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-8">
+  <section class="bg-bone text-primary py-6 border-b border-rule">
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
       <nav aria-label="Category filter" class="flex flex-wrap items-center gap-x-8 gap-y-3">
-        <span class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-mute">
-          Browse:
+        <span class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-primary/55">
+          Browse
         </span>
         {
           categories.map((cat) => (
             <a
-              href={`/journal#${cat}`}
-              class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft hover:text-accent transition-colors"
+              href={`#${cat}`}
+              class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/75 hover:text-accent transition-colors"
             >
               {categoryLabels[cat]}
             </a>
@@ -98,54 +110,86 @@ const categories: Array<keyof typeof categoryLabels> = [
     </div>
   </section>
 
-  {/* Post grid */}
-  <section class="bg-primary text-ink border-t border-hairline">
-    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-16 lg:py-24">
-      {posts.length === 0 && (
-        <p class="font-body-lg text-ink-mute text-center py-20">
-          New posts arriving through Q3 2026.
+  {/* Featured post — editorial split */}
+  {featured && (
+    <section class="bg-bone text-primary py-20 lg:py-28 border-b border-rule">
+      <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
+        <a href={`/journal/${featured.id}`} class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center group">
+          <div class="lg:col-span-7 lg:order-2">
+            <figure class="relative aspect-[17/10] overflow-hidden bg-primary/5">
+              <img src={postHero[featured.id] ?? categoryFallback[featured.data.category]} alt={featured.data.title} loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]" />
+            </figure>
+          </div>
+          <div class="lg:col-span-5 lg:order-1">
+            <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-sun-deep mb-5">
+              Latest · {categoryLabels[featured.data.category]}
+            </p>
+            <h2
+              class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance group-hover:text-accent transition-colors"
+              style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
+            >
+              {featured.data.title}
+            </h2>
+            <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-primary/70 mt-6">
+              {featured.data.excerpt}
+            </p>
+            <p class="font-body-sm text-[0.875rem] text-primary/55 mt-6">
+              <time datetime={featured.data.publishedAt.toISOString()}>
+                {featured.data.publishedAt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              </time>{' '}
+              · by {featured.data.author === 'dodie' ? 'Dodie' : featured.data.author === 'clint' ? 'Clint' : 'Guest'}
+            </p>
+            <span class="mt-7 inline-flex items-center gap-3 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold text-primary border-b-2 border-accent pb-1 group-hover:text-accent transition-colors">
+              Read the piece
+              <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+
+  {/* Rest of posts — 3-col grid */}
+  <section class="bg-bone text-primary py-20 lg:py-28">
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
+      {rest.length === 0 && (
+        <p class="font-body-lg text-primary/55 text-center py-20">
+          More posts arriving through Q3 2026.
         </p>
       )}
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-14">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-16">
         {
-          posts.map((post) => (
+          rest.map((post) => (
             <article id={post.data.category} class="flex flex-col">
               <a
                 href={`/journal/${post.id}`}
-                class="block aspect-[16/10] overflow-hidden mb-5 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
-                style={`background: ${categoryGradients[post.data.category]};`}
+                class="block aspect-[16/10] overflow-hidden mb-5 bg-primary/5 group focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
               >
-                {post.data.heroImage ? (
-                  <img
-                    src={post.data.heroImage}
-                    alt={post.data.heroImageAlt ?? post.data.title}
-                    loading="lazy"
-                    decoding="async"
-                    class="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]"
-                  />
-                ) : (
-                  <div class="w-full h-full grid place-items-end p-5">
-                    <span class="font-label-caps uppercase tracking-[0.28em] text-[0.5625rem] font-semibold text-ink/50">
-                      Photo · forthcoming
-                    </span>
-                  </div>
-                )}
+                <img
+                  src={postHero[post.id] ?? categoryFallback[post.data.category]}
+                  alt={post.data.title}
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                />
               </a>
-              <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-accent mb-3">
+              <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-sun-deep mb-3">
                 {categoryLabels[post.data.category]}
               </p>
-              <h2
-                class="font-h3 text-ink text-[1.5rem] leading-[1.15] tracking-[-0.015em] font-medium mb-3"
+              <h3
+                class="font-display text-[1.5rem] leading-[1.15] tracking-[-0.015em] font-normal mb-3"
                 style="font-variation-settings: 'opsz' 36;"
               >
                 <a href={`/journal/${post.id}`} class="hover:text-accent transition-colors">
                   {post.data.title}
                 </a>
-              </h2>
-              <p class="font-body-md text-[0.9375rem] leading-[1.55] text-ink-soft mb-4">
+              </h3>
+              <p class="font-body-md text-[0.9375rem] leading-[1.55] text-primary/70 mb-4 text-balance">
                 {post.data.excerpt}
               </p>
-              <p class="font-body-sm text-[0.8125rem] text-ink-mute mt-auto">
+              <p class="font-body-sm text-[0.8125rem] text-primary/55 mt-auto">
                 <time datetime={post.data.publishedAt.toISOString()}>
                   {post.data.publishedAt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                 </time>{' '}

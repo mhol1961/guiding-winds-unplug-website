@@ -7,9 +7,14 @@ heroEyebrow: 'Split · Adriatic'
 nights: 7
 pricePerGuestUSD: 3850
 shortDescription: 'Split to Dubrovnik through the Dalmatian island chain. Hvar, Vis, Korčula — quiet coves with Roman ruins above and clear water below.'
-heroImage: /media/voyages/croatia-hero.jpg
-heroImageAlt: A catamaran in a Croatian cove with stone houses on a cliff above
-galleryImages: []
+heroImage: /img/stock/voyages/croatia/croatia-hvar-harbor-hero.jpg
+heroImageAlt: Stone harbor town on the Dalmatian coast of Croatia
+galleryImages:
+  - { src: /img/stock/voyages/croatia/croatia-hvar-harbor-hero.jpg, alt: Stone harbor town on the Dalmatian coast of Croatia }
+  - { src: /img/stock/voyages/croatia/gallery/croatia-korcula-walls-01.jpg, alt: Stone walls of Korcula seen from the sea }
+  - { src: /img/stock/voyages/croatia/gallery/croatia-dalmatian-cove-02.jpg, alt: Quiet Dalmatian cove with pine forest to the waterline }
+  - { src: /img/stock/voyages/croatia/gallery/croatia-harbor-town-03.jpg, alt: Croatian harbor town at golden hour }
+  - { src: /img/stock/people/people-serving-deck-02.jpg, alt: Host serving wine on the deck of a catamaran }
 availableWeeks:
   - { start: '2027-08-14', end: '2027-08-21', cabinsAvailable: 5 }
   - { start: '2027-10-02', end: '2027-10-09', cabinsAvailable: 8 }

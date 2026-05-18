@@ -2,9 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import Feeling from '../components/home/Feeling.astro';
-import TestimonialRow from '../components/home/TestimonialRow.astro';
 import Picker from '../components/home/Picker.astro';
 import ExploreCards from '../components/home/ExploreCards.astro';
+import TestimonialRow from '../components/home/TestimonialRow.astro';
 import PressStrip from '../components/home/PressStrip.astro';
 import Megatype from '../components/home/Megatype.astro';
 import AboutSplit from '../components/home/AboutSplit.astro';
@@ -47,24 +47,24 @@ const schemaGraph = [
 
 <BaseLayout title={title} description={description} transparentNav schema={schemaGraph}>
   <Hero
-    eyebrow="The Off-Grid Catamaran Experts"
+    eyebrow="The Off-Grid Catamaran Experts · Established 2021"
     headlinePrefix="Every voyage starts with a "
     headlineEmphasis="feeling."
     subline="All-inclusive wellness catamaran charters for eight cabins and twelve guests. Caribbean in winter, Mediterranean in summer. From $3,550 per guest, per week."
     primaryCta={{ label: 'See Available Weeks', href: '/calendar' }}
-    secondaryCta={{ label: 'Watch the Film', href: '/about#film' }}
+    secondaryCta={{ label: 'How a Week Aboard Works', href: '/aboard' }}
     trustItems={[
       'USCG Captain',
       'BVI Charter Permit',
-      '5.0 Trustpilot',
+      '5.0 Verified Reviews',
       '100% All-Inclusive',
       '8 Cabins · 12 Guests',
     ]}
   />
   <Feeling />
-  <TestimonialRow />
   <Picker />
   <ExploreCards />
+  <TestimonialRow />
   <PressStrip />
   <Megatype />
   <AboutSplit />

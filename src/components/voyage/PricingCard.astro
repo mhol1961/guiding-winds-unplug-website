@@ -14,7 +14,7 @@ interface Props {
   voyageSlug: string;
 }
 
-const { pricePerGuestUSD, availableWeeks, voyageName, voyageSlug } = Astro.props;
+const { pricePerGuestUSD, availableWeeks, voyageSlug } = Astro.props;
 
 function formatWeek(start: string, end: string): string {
   const s = new Date(`${start}T12:00:00Z`);
@@ -26,52 +26,52 @@ function formatWeek(start: string, end: string): string {
 }
 ---
 
-<aside class="bg-surface border border-hairline p-7 lg:sticky lg:top-28">
-  <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft mb-3">
-    All-inclusive
+<aside class="bg-bone border border-rule p-7 lg:p-8 lg:sticky lg:top-28">
+  <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mb-4">
+    All-inclusive · From
   </p>
   <div class="flex items-baseline gap-2 mb-1">
-    <span class="font-display text-[3rem] leading-none text-ink tabular-nums" style="font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;">
+    <span class="font-display text-[3.25rem] leading-none text-primary tabular-nums" style="font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;">
       ${pricePerGuestUSD.toLocaleString()}
     </span>
-    <span class="font-body-md text-[0.9375rem] text-ink-soft">/ guest</span>
+    <span class="font-body-md text-[1rem] text-primary/65">/ guest</span>
   </div>
-  <p class="font-body-sm text-[0.8125rem] text-ink-mute mb-6">
+  <p class="font-body-sm text-[0.875rem] text-primary/55 mb-7">
     Meals, premium bar, gear, fuel, dockage. No hidden fees.
   </p>
 
-  <div class="space-y-2 mb-6">
+  <div class="space-y-2.5 mb-7">
     {
       ['Chef-prepared meals, twice daily', 'Premium open bar', 'Snorkel + paddleboards + kayaks', 'Private cabin with ensuite head'].map(
         (item) => (
-          <div class="flex items-start gap-2">
-            <Check className="size-4 text-accent shrink-0 mt-1" strokeWidth={2} />
-            <span class="font-body-md text-[0.9375rem] text-ink-soft">{item}</span>
+          <div class="flex items-start gap-2.5">
+            <Check className="size-4 text-sun shrink-0 mt-[3px]" strokeWidth={2} />
+            <span class="font-body-md text-[0.9375rem] text-primary/80">{item}</span>
           </div>
         ),
       )
     }
   </div>
 
-  <div class="border-t border-hairline pt-5 mb-6">
-    <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft mb-4">
+  <div class="border-t border-rule pt-6 mb-6">
+    <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mb-4">
       2027 weeks · {availableWeeks.length} available
     </p>
     <ul class="space-y-3">
       {
         availableWeeks.map((week) => (
           <li class="flex items-center justify-between gap-4">
-            <span class="font-body-md text-[0.9375rem] text-ink tabular-nums">
+            <span class="font-body-md text-[0.9375rem] text-primary tabular-nums">
               {formatWeek(week.start, week.end)}
             </span>
             <span
               class:list={[
-                'inline-flex items-center rounded-pill px-2.5 py-1 font-label-caps uppercase tracking-[0.2em] text-[0.5625rem] font-semibold tabular-nums',
+                'font-label-caps uppercase tracking-[0.2em] text-[0.5625rem] font-semibold tabular-nums whitespace-nowrap',
                 week.cabinsAvailable === 0
-                  ? 'bg-ink-mute/20 text-ink-mute'
+                  ? 'text-primary/40'
                   : week.cabinsAvailable <= 2
-                    ? 'bg-accent/20 text-accent'
-                    : 'bg-bone/15 text-ink-soft',
+                    ? 'text-accent'
+                    : 'text-primary/70',
               ]}
             >
               {week.cabinsAvailable === 0 ? 'Sold out' : `${week.cabinsAvailable} cabins`}
@@ -84,11 +84,11 @@ function formatWeek(start: string, end: string): string {
 
   <a
     href={`/inquire?voyage=${voyageSlug}`}
-    class="block w-full text-center cursor-pointer bg-accent text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-6 py-[18px] hover:bg-accent-hot transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+    class="block w-full text-center cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-6 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
   >
     Hold a Cabin
   </a>
-  <p class="font-body-sm text-[0.75rem] text-ink-mute mt-4 leading-relaxed text-center">
+  <p class="font-body-sm text-[0.75rem] text-primary/55 mt-4 leading-relaxed text-center">
     72-hour soft hold. No deposit required. Reply when you decide.
   </p>
 </aside>

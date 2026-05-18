@@ -7,9 +7,14 @@ heroEyebrow: 'Athens · Aegean'
 nights: 7
 pricePerGuestUSD: 3850
 shortDescription: 'Mykonos at the start, Santorini at the end, three quiet Cyclades in between — the chain at the pace it was meant to be sailed.'
-heroImage: /media/voyages/greece-hero.jpg
-heroImageAlt: A catamaran in a Cycladic cove with white houses on a cliff above
-galleryImages: []
+heroImage: /img/stock/voyages/greece/greece-santorini-caldera-hero.jpg
+heroImageAlt: Whitewashed Cycladic village above the Santorini caldera at sunset
+galleryImages:
+  - { src: /img/stock/voyages/greece/greece-santorini-caldera-hero.jpg, alt: Whitewashed Cycladic village above the Santorini caldera at sunset }
+  - { src: /img/stock/voyages/greece/gallery/greece-cyclades-cove-01.jpg, alt: Catamaran anchored in a quiet Cycladic cove }
+  - { src: /img/stock/voyages/greece/gallery/greece-sailing-02.jpg, alt: Sailing through the Greek islands in clear blue water }
+  - { src: /img/stock/voyages/greece/gallery/greece-taverna-dinner-03.jpg, alt: Taverna dinner table set at a Greek harbor }
+  - { src: /img/stock/food/food-breakfast-water-03.jpg, alt: Breakfast served on a yacht deck above clear water }
 availableWeeks:
   - { start: '2027-07-17', end: '2027-07-24', cabinsAvailable: 8 }
   - { start: '2027-09-04', end: '2027-09-11', cabinsAvailable: 6 }

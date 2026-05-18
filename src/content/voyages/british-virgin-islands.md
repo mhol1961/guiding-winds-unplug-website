@@ -7,9 +7,14 @@ heroEyebrow: 'Tortola · Caribbean'
 nights: 7
 pricePerGuestUSD: 3550
 shortDescription: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Quiet anchorages day-trippers never reach, on glass water at sunrise.'
-heroImage: /media/voyages/bvi-hero.jpg
-heroImageAlt: A catamaran at anchor in turquoise BVI water at sunrise
-galleryImages: []
+heroImage: /img/stock/voyages/bvi/bvi-the-baths-hero.jpg
+heroImageAlt: Granite boulders of The Baths at Virgin Gorda, BVI
+galleryImages:
+  - { src: /img/stock/voyages/bvi/bvi-the-baths-hero.jpg, alt: Granite boulders of The Baths at Virgin Gorda }
+  - { src: /img/stock/voyages/bvi/gallery/bvi-sailing-01.jpg, alt: Catamaran sailing in the British Virgin Islands }
+  - { src: /img/stock/voyages/bvi/gallery/bvi-anchorage-aerial-02.jpg, alt: Aerial view of a BVI anchorage with the catamaran below }
+  - { src: /img/stock/voyages/bvi/gallery/bvi-cove-snorkel-03.jpg, alt: Snorkelers in a Caribbean cove with clear water }
+  - { src: /img/source/hero/02-sunset-catamaran-anchorage.jpg, alt: Catamaran at anchor at sunset in the BVI }
 availableWeeks:
   - { start: '2027-01-09', end: '2027-01-16', cabinsAvailable: 6 }
   - { start: '2027-01-23', end: '2027-01-30', cabinsAvailable: 4 }

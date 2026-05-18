@@ -15,12 +15,12 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html {
-    background-color: var(--color-primary);
-    color: var(--color-ink);
+    background-color: var(--color-bone);
+    color: var(--color-primary);
     font-family: var(--font-inter);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -28,22 +28,22 @@
   }
 
   body {
-    background-color: var(--color-primary);
-    color: var(--color-ink);
+    background-color: var(--color-bone);
+    color: var(--color-primary);
     font-family: var(--font-inter);
-    font-size: var(--text-body-md);
-    line-height: var(--leading-body-md);
+    font-size: 1.0625rem;
+    line-height: 1.7;
     margin: 0;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: var(--color-ink);
+    color: inherit;
     margin: 0;
   }
 
   ::selection {
     background-color: var(--color-accent);
-    color: var(--color-ink);
+    color: var(--color-bone);
   }
 
   *:focus-visible {

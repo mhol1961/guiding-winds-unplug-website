@@ -1,0 +1,48 @@
+---
+// Sticky mobile CTA bar — visible on lg:hidden viewports. Pushes the
+// primary conversion action (Hold a Cabin) into the thumb zone per CRO
+// best practice. Hidden once the user scrolls into the footer.
+---
+
+<div
+  id="mobile-cta-bar"
+  class="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-bone/95 backdrop-blur-md border-t border-rule px-4 py-3 flex items-center justify-between gap-3 transition-transform duration-300"
+  data-mobile-cta
+>
+  <div class="flex-1 min-w-0">
+    <p class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/55">
+      From $3,550 per guest
+    </p>
+    <p class="font-display text-[0.9375rem] leading-tight text-primary truncate" style="font-variation-settings: 'opsz' 36;">
+      Hold a cabin — 72-hr soft hold
+    </p>
+  </div>
+  <a
+    href="/inquire"
+    class="shrink-0 inline-flex items-center justify-center cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold px-5 py-3 hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+  >
+    Hold
+  </a>
+</div>
+
+<script>
+  // Hide the CTA bar when the footer is fully in view (avoids covering the
+  // contact info there).
+  const bar = document.querySelector<HTMLElement>('[data-mobile-cta]');
+  const footer = document.querySelector('footer');
+  if (bar && footer && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            bar.style.transform = 'translateY(100%)';
+          } else {
+            bar.style.transform = '';
+          }
+        }
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(footer);
+  }
+</script>

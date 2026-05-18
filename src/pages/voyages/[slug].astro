@@ -25,12 +25,15 @@ const regionLabel: Record<string, string> = {
   mediterranean: 'Mediterranean',
 };
 
+// Per-voyage fallback gradients (ADR-011: design must hold without photos).
+// Top stops use a lifted, saturated destination color so the page reads
+// "Caribbean" / "Bahamas" / etc. at first glance instead of a black slab.
 const fallbackGradients: Record<string, string> = {
-  'british-virgin-islands': 'linear-gradient(165deg, #0E3F47 0%, #0A0A0A 70%, #1F1B17 100%)',
-  bahamas: 'linear-gradient(165deg, #C92E1C 0%, #2A1F1A 60%, #0A0A0A 100%)',
-  italy: 'linear-gradient(165deg, #1F1B17 0%, #0A0A0A 50%, #2A1F1A 100%)',
-  greece: 'linear-gradient(165deg, #0E3F47 0%, #1F1B17 60%, #0A0A0A 100%)',
-  croatia: 'linear-gradient(165deg, #161412 0%, #0E3F47 70%, #0A0A0A 100%)',
+  'british-virgin-islands': 'linear-gradient(165deg, #1E7A8C 0%, #0E3F47 45%, #0A0A0A 100%)',
+  bahamas: 'linear-gradient(165deg, #E58A4D 0%, #C92E1C 35%, #1F1B17 100%)',
+  italy: 'linear-gradient(165deg, #C9633C 0%, #5F2F1A 45%, #0A0A0A 100%)',
+  greece: 'linear-gradient(165deg, #4A8FA3 0%, #0E3F47 45%, #0A0A0A 100%)',
+  croatia: 'linear-gradient(165deg, #4D7A78 0%, #1F1B17 50%, #0A0A0A 100%)',
 };
 
 const emphasis: Record<string, string> = {
@@ -152,39 +155,38 @@ const siblings = allVoyages.filter((v) => v.data.slug !== voyage.data.slug).slic
     pricePerGuestUSD={voyage.data.pricePerGuestUSD}
     nights={voyage.data.nights}
     anchorages={voyage.data.itinerary.length}
-    fallbackGradient={fallbackGradients[voyage.data.slug] ?? '#161412'}
   />
 
-  {/* Overview + sticky PricingCard */}
-  <section class="bg-primary text-ink border-t border-hairline">
-    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+  {/* Overview + sticky PricingCard — bone bg, dark text */}
+  <section class="bg-bone text-primary border-t border-rule">
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <div class="lg:col-span-8">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-4">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-5">
             The voyage
           </p>
           <h2
-            class="font-h2 text-ink leading-[1.05] tracking-[-0.02em] font-normal text-balance"
-            style="font-size: clamp(1.875rem, 3vw + 1rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+            class="font-display font-light leading-[1.1] tracking-[-0.025em] text-balance"
+            style="font-size: clamp(1.875rem, 3vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
           >
             {voyage.data.shortDescription}
           </h2>
 
-          <div class="prose prose-invert mt-10 font-body-lg text-[1.0625rem] leading-[1.7] text-ink-soft max-w-prose">
+          <div class="mt-12 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-primary/80 max-w-[68ch] journal-prose">
             <Content />
           </div>
 
           {/* Inclusions / Exclusions split */}
-          <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-10 border-t border-rule pt-12">
             <div>
-              <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft mb-5">
+              <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mb-6">
                 In the price
               </p>
-              <ul class="space-y-3">
+              <ul class="space-y-3.5">
                 {
                   voyage.data.inclusions.map((item) => (
-                    <li class="flex items-start gap-3 font-body-md text-[0.9375rem] text-ink-soft">
-                      <Check className="size-4 text-accent shrink-0 mt-1" strokeWidth={2} />
+                    <li class="flex items-start gap-3 font-body-md text-[1rem] text-primary/80">
+                      <Check className="size-4 text-sun shrink-0 mt-1" strokeWidth={2} />
                       {item}
                     </li>
                   ))
@@ -192,14 +194,14 @@ const siblings = allVoyages.filter((v) => v.data.slug !== voyage.data.slug).slic
               </ul>
             </div>
             <div>
-              <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink-soft mb-5">
+              <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mb-6">
                 Not included
               </p>
-              <ul class="space-y-3">
+              <ul class="space-y-3.5">
                 {
                   voyage.data.exclusions.map((item) => (
-                    <li class="flex items-start gap-3 font-body-md text-[0.9375rem] text-ink-mute">
-                      <X className="size-4 text-ink-mute shrink-0 mt-1" strokeWidth={2} />
+                    <li class="flex items-start gap-3 font-body-md text-[1rem] text-primary/55">
+                      <X className="size-4 text-primary/40 shrink-0 mt-1" strokeWidth={2} />
                       {item}
                     </li>
                   ))
@@ -222,25 +224,43 @@ const siblings = allVoyages.filter((v) => v.data.slug !== voyage.data.slug).slic
   </section>
 
   <Timeline itinerary={voyage.data.itinerary} />
-  <Gallery images={voyage.data.galleryImages} fallbackGradient={fallbackGradients[voyage.data.slug] ?? '#161412'} />
+  <Gallery images={voyage.data.galleryImages} fallbackGradient="" />
   {voyage.data.faq.length > 0 && <VoyageFaq faq={voyage.data.faq} />}
 
-  {/* Cross-link siblings */}
-  <section class="bg-primary text-ink border-t border-hairline">
-    <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-24">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-8">
-        Or see another week
+  {/* Cross-link siblings — image-led portrait cards on bone */}
+  <section class="bg-bone text-primary border-t border-rule">
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-24">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-10">
+        Or see another voyage
       </p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
         {
           siblings.map((sibling) => (
             <a
               href={`/voyages/${sibling.data.slug}`}
-              class="group relative block aspect-[3/2] overflow-hidden focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
-              style={`background: ${fallbackGradients[sibling.data.slug] ?? '#161412'};`}
+              class="group flex flex-col focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
             >
-              <div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/20 to-transparent transition-opacity duration-500 group-hover:opacity-60" aria-hidden="true" />
-              <div class="absolute bottom-6 left-6 right-6">
+              <div class="relative aspect-[16/10] overflow-hidden mb-5 bg-primary/5">
+                <img
+                  src={sibling.data.heroImage}
+                  alt={sibling.data.heroImageAlt}
+                  loading="lazy"
+                  decoding="async"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                />
+                <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/40 to-transparent pointer-events-none" aria-hidden="true"></div>
+                <span class="absolute top-4 left-4 font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-bone bg-primary/40 backdrop-blur-sm px-2.5 py-1.5">
+                  {regionLabel[sibling.data.region]}
+                </span>
+              </div>
+              <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/55">
+                {sibling.data.nights} nights · From ${sibling.data.pricePerGuestUSD.toLocaleString()}
+              </p>
+              <h3 class="font-display text-[1.5rem] leading-[1.1] tracking-[-0.015em] font-normal mt-2 group-hover:text-accent transition-colors" style="font-variation-settings: 'opsz' 36;">
+                {sibling.data.name}
+              </h3>
+              {/* legacy bottom-overlay text — preserved below for graceful degradation but visually hidden */}
+              <div class="hidden">
                 <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink/80 mb-2">
                   {regionLabel[sibling.data.region]}
                 </p>

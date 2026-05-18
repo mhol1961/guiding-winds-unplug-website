@@ -7,9 +7,14 @@ heroEyebrow: 'Marsh Harbour · Abacos'
 nights: 7
 pricePerGuestUSD: 3550
 shortDescription: 'Hope Town, Tilloo Cay, Man-o-War. Pink-sand spits, shallow water you can stand up in a half-mile from shore, the slow side of the Caribbean.'
-heroImage: /media/voyages/bahamas-hero.jpg
-heroImageAlt: A catamaran anchored off pink sand in the Abacos at sunrise
-galleryImages: []
+heroImage: /img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg
+heroImageAlt: Hope Town candy-striped lighthouse rising above the Abacos waterfront
+galleryImages:
+  - { src: /img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg, alt: Hope Town candy-striped lighthouse rising above the Abacos waterfront }
+  - { src: /img/stock/voyages/bahamas/gallery/bahamas-clear-water-02.jpg, alt: Shallow Bahamian water with sand visible through the surface }
+  - { src: /img/stock/voyages/bahamas/gallery/bahamas-anchorage-01.jpg, alt: Catamaran at anchor in a Bahamian cove }
+  - { src: /img/stock/voyages/bahamas/gallery/bahamas-beach-aerial-03.jpg, alt: Aerial view of a Bahamian beach and pink sand spit }
+  - { src: /img/stock/food/food-seafood-platter-01.jpg, alt: Fresh seafood platter on a boat deck }
 availableWeeks:
   - { start: '2027-04-10', end: '2027-04-17', cabinsAvailable: 7 }
   - { start: '2027-04-24', end: '2027-05-01', cabinsAvailable: 5 }

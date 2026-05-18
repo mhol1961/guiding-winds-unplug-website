@@ -4,18 +4,25 @@ name: Guiding Winds Unplug
 description: Cinematic editorial design for an off-grid catamaran company. The camera is always running.
 
 # ── Colors ──────────────────────────────────────────────────────────
+# Bone-first (Black Tomato aesthetic), with a sunshine twist — every
+# warm tone is pushed slightly toward golden-hour, the body is a
+# sun-bleached cream rather than cool paper, and a soft sun-gold
+# accent supplements coral at icon scale only.
 colors:
-  primary:       "#0A0A0A"   # near-black — site canvas, dominant
-  ink:           "#EFE9DC"   # warm bone — all text on primary
-  ink-soft:      "#9C988E"   # bone at fade — secondary text
-  ink-mute:      "#6E6A62"   # tertiary text, metadata
-  accent:        "#E13F2A"   # coral — interaction only, never decoration
-  accent-hot:    "#C92E1C"   # coral pressed/hover-deep
-  surface:       "#161412"   # elevated cards/inset blocks on primary
-  surface-warm:  "#1F1B17"   # alternate surface for variety
-  bone:          "#EFE9DC"   # alias of ink for non-text usage (matches Black Tomato cream-on-coral CTA pattern)
-  bone-deep:     "#D9D1BD"   # darker bone for borders on light moments
-  hairline:      "#2A2622"   # near-invisible divider on primary
+  primary:       "#0F0F0F"   # near-black for inverted sections (hero, footer, megatype)
+  ink:           "#FAF6EC"   # warm cream — text on dark sections
+  ink-soft:      "#A8A49B"   # warm grey at fade — secondary text on dark
+  ink-mute:      "#6E6A62"   # tertiary text on dark, metadata
+  accent:        "#E5402B"   # tomato red — interaction only, never decoration (Black Tomato exactly)
+  accent-hot:    "#C92E1C"   # pressed/hover-deep
+  sun:           "#E8A340"   # warm sun-gold — sparing use for golden-hour highlights, hairlines, micro-accents
+  sun-deep:      "#C8862E"   # pressed sun-gold for hover
+  surface:       "#161412"   # elevated cards on dark sections only
+  surface-warm:  "#1F1B17"   # alternate dark surface
+  bone:          "#F4EFE0"   # the DOMINANT page surface — sun-bleached cream paper
+  bone-deep:     "#E3DBC4"   # warmer bone for borders / dividers on light
+  hairline:      "#2A2622"   # divider on dark surfaces only
+  rule:          "#D9D1BD"   # divider on bone surfaces (lighter)
   teal-shadow:   "#0E3F47"   # used only as a gradient base for hero fallbacks — never UI
 
 # ── Typography ──────────────────────────────────────────────────────
@@ -26,14 +33,14 @@ colors:
 # Load via @import or <link rel="preload" as="font"> in the BaseLayout.
 typography:
   display:
-    fontFamily: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif
+    fontFamily: '"Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif'
     fontSize: 7rem
     fontWeight: 300
     lineHeight: 0.92
     letterSpacing: -0.035em
     fontVariation: '"opsz" 144, "SOFT" 30, "WONK" 0'
   display-italic:
-    fontFamily: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif
+    fontFamily: '"Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif'
     fontSize: 7rem
     fontWeight: 400
     fontFeature: "ital"
@@ -41,52 +48,52 @@ typography:
     letterSpacing: -0.02em
     fontVariation: '"opsz" 144, "SOFT" 50, "WONK" 1'
   h1:
-    fontFamily: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif
+    fontFamily: '"Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif'
     fontSize: 3.5rem
     fontWeight: 400
     lineHeight: 1.02
     letterSpacing: -0.025em
     fontVariation: '"opsz" 96'
   h2:
-    fontFamily: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif
+    fontFamily: '"Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif'
     fontSize: 2.5rem
     fontWeight: 400
     lineHeight: 1.05
     letterSpacing: -0.02em
     fontVariation: '"opsz" 72'
   h3:
-    fontFamily: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif
+    fontFamily: '"Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif'
     fontSize: 1.75rem
     fontWeight: 500
     lineHeight: 1.1
     letterSpacing: -0.015em
     fontVariation: '"opsz" 36'
   body-lg:
-    fontFamily: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif
+    fontFamily: '"Inter Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif'
     fontSize: 1.0625rem
     fontWeight: 400
     lineHeight: 1.65
     letterSpacing: 0
   body-md:
-    fontFamily: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif
+    fontFamily: '"Inter Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif'
     fontSize: 0.9375rem
     fontWeight: 400
     lineHeight: 1.65
     letterSpacing: 0
   body-sm:
-    fontFamily: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif
+    fontFamily: '"Inter Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif'
     fontSize: 0.8125rem
     fontWeight: 400
     lineHeight: 1.6
     letterSpacing: 0
   label-caps:
-    fontFamily: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif
+    fontFamily: '"Inter Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif'
     fontSize: 0.6875rem
     fontWeight: 600
     lineHeight: 1.5
     letterSpacing: 0.28em
   serif-quote:
-    fontFamily: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif
+    fontFamily: '"Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif'
     fontSize: 1.5rem
     fontWeight: 400
     fontFeature: "ital"

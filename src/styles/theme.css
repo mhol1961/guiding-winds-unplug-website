@@ -3,17 +3,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0A0A0A;
-  --color-ink: #EFE9DC;
-  --color-ink-soft: #9C988E;
+  --color-primary: #0F0F0F;
+  --color-ink: #FAF6EC;
+  --color-ink-soft: #A8A49B;
   --color-ink-mute: #6E6A62;
-  --color-accent: #E13F2A;
+  --color-accent: #E5402B;
   --color-accent-hot: #C92E1C;
+  --color-sun: #E8A340;
+  --color-sun-deep: #C8862E;
   --color-surface: #161412;
   --color-surface-warm: #1F1B17;
-  --color-bone: #EFE9DC;
-  --color-bone-deep: #D9D1BD;
+  --color-bone: #F4EFE0;
+  --color-bone-deep: #E3DBC4;
   --color-hairline: #2A2622;
+  --color-rule: #D9D1BD;
   --color-teal-shadow: #0E3F47;
 
   --spacing-xs: 4px;
@@ -28,18 +31,18 @@
   --radius-sm: 2px;
   --radius-pill: 999px;
 
-  --font-fraunces: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --font-inter: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  --font-display: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --font-display-italic: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --font-h1: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --font-h2: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --font-h3: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --font-body-lg: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  --font-body-md: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  --font-body-sm: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  --font-label-caps: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  --font-serif-quote: Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-fraunces: "Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-inter: "Inter Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-display-italic: "Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-h1: "Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-h2: "Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-h3: "Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body-lg: "Inter Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-body-md: "Inter Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-body-sm: "Inter Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-label-caps: "Inter Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-serif-quote: "Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 
   --text-display: 7rem;
   --leading-display: 0.92;

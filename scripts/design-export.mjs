@@ -77,17 +77,29 @@ for (const [name, value] of Object.entries(fm.rounded)) {
 }
 lines.push('');
 
-// Emit `--font-{family}` for every unique font-family stack in DESIGN.md
-// (typically two: Fraunces, Inter).
+// Emit `--font-{slug}` for every unique font-family stack in DESIGN.md
+// (typically two: Fraunces, Inter). Slugify the var-name token: strip
+// quotes, lowercase, replace whitespace with hyphens, and drop the
+// "-variable" suffix that fontsource adds — so `"Fraunces Variable"`
+// becomes `--font-fraunces`, not the invalid `--font-fraunces variable`.
+function slugifyFamily(name) {
+  return name
+    .replace(/['"]/g, '')
+    .trim()
+    .toLowerCase()
+    .replace(/\s+variable$/, '')
+    .replace(/\s+/g, '-');
+}
 const familySet = new Map();
 for (const scale of Object.values(fm.typography)) {
   if (scale?.fontFamily) {
-    const first = scale.fontFamily.split(',')[0].trim().toLowerCase();
-    familySet.set(first, scale.fontFamily);
+    const first = scale.fontFamily.split(',')[0];
+    const slug = slugifyFamily(first);
+    familySet.set(slug, scale.fontFamily);
   }
 }
-for (const [first, family] of familySet) {
-  lines.push(`  --font-${first}: ${family};`);
+for (const [slug, family] of familySet) {
+  lines.push(`  --font-${slug}: ${family};`);
 }
 
 // Also emit `--font-{role}` aliases (display, h1, h2, h3, body-lg, body-md,

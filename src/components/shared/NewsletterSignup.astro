@@ -1,8 +1,7 @@
 ---
-// Two variants: 'inline' (bone background, dark text — for the home Feeling
-// section) and 'footer' (dark background, light text — for the footer).
-// POSTs to /api/newsletter — that endpoint is wired in Phase 7 with the
-// GHL Contacts API.
+// Two variants:
+// 'footer' — on dark primary bg, ink type with sun-gold accent
+// 'inline' — on bone bg with dark type (for embedding in editorial pages)
 interface Props {
   variant?: 'inline' | 'footer';
   heading?: string;
@@ -28,24 +27,25 @@ const isInline = variant === 'inline';
 >
   <p
     class:list={[
-      'font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold mb-3',
-      isInline ? 'text-primary/60' : 'text-ink-soft',
+      'font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold mb-4',
+      isInline ? 'text-primary/55' : 'text-ink-soft',
     ]}
   >
     Newsletter
   </p>
   <h3
     class:list={[
-      'font-h3 text-[1.5rem] leading-[1.15] tracking-[-0.015em] mb-3',
+      'font-display text-[1.5rem] lg:text-[1.75rem] leading-[1.15] tracking-[-0.02em] mb-3',
       isInline ? 'text-primary' : 'text-ink',
     ]}
+    style="font-variation-settings: 'opsz' 36, 'SOFT' 30, 'WONK' 0;"
   >
     {heading}
   </h3>
   <p
     class:list={[
-      'font-body-md text-[0.9375rem] leading-[1.65] mb-5',
-      isInline ? 'text-primary/70' : 'text-ink-soft',
+      'font-body-md text-[0.9375rem] leading-[1.65] mb-6',
+      isInline ? 'text-primary/70' : 'text-ink/70',
     ]}
   >
     {subtext}
@@ -61,14 +61,13 @@ const isInline = variant === 'inline';
       autocomplete="email"
       placeholder="your.email@example.com"
       class:list={[
-        'flex-1 rounded-sm px-4 py-3 font-body-md text-[0.9375rem] border focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2',
+        'flex-1 px-4 py-3.5 font-body-md text-[0.9375rem] border-b transition-colors focus-visible:outline-none',
         isInline
-          ? 'bg-bone text-primary border-primary/20 placeholder:text-primary/40'
-          : 'bg-surface text-ink border-hairline placeholder:text-ink-mute',
+          ? 'bg-transparent text-primary border-primary/30 focus:border-accent placeholder:text-primary/40'
+          : 'bg-transparent text-ink border-ink/30 focus:border-sun placeholder:text-ink-mute',
       ]}
     />
-    {/* Honeypot — bots fill it; humans don't see it. Display:none would be
-        detectable; opacity+tabindex+aria-hidden is the OWASP pattern. */}
+    {/* Honeypot — opacity+tabindex+aria-hidden (OWASP) */}
     <input
       type="text"
       name="website"
@@ -80,16 +79,21 @@ const isInline = variant === 'inline';
     <button
       type="submit"
       class:list={[
-        'cursor-pointer font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-7 py-3 transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3',
-        isInline ? 'bg-primary text-ink hover:bg-accent' : 'bg-accent text-ink hover:bg-accent-hot',
+        'group inline-flex items-center justify-center gap-3 cursor-pointer font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-6 py-3.5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-3',
+        isInline
+          ? 'bg-primary text-bone hover:bg-accent focus-visible:outline-accent'
+          : 'bg-bone text-primary hover:bg-sun focus-visible:outline-sun',
       ]}
     >
       Subscribe
+      <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
     </button>
   </div>
   <p
     class:list={[
-      'mt-3 font-body-sm text-[0.8125rem]',
+      'mt-4 font-body-sm text-[0.8125rem]',
       isInline ? 'text-primary/50' : 'text-ink-mute',
     ]}
     data-newsletter-status

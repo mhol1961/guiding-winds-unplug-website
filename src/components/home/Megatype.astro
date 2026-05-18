@@ -1,38 +1,50 @@
 ---
-// Cinematic dark background with massive ultra-light "UNPLUG" type overlaid.
-// The signature moment in the lower-third of the page.
+// The one signature dark moment in the home page rhythm. Full-bleed
+// real-photo background, dark overlay for legibility, giant ultra-light
+// "UNPLUG" type. Per Black Tomato's "Footsteps sub-brand panel" — the
+// page-turn moment that interrupts the editorial rhythm.
 ---
 
-<section
-  class="relative bg-primary text-ink overflow-hidden border-y border-hairline"
-  style="background: radial-gradient(ellipse at 50% 30%, #1F1B17 0%, #0A0A0A 65%);"
->
-  <div class="max-w-[1320px] mx-auto px-7 lg:px-14 py-40 sm:py-56 text-center relative z-10">
-    <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-ink-soft mb-8">
+<section class="relative bg-primary text-ink overflow-hidden">
+  <img
+    src="/img/source/hero/05-caribbean-night-moonlit.jpg"
+    alt=""
+    loading="lazy"
+    decoding="async"
+    class="absolute inset-0 w-full h-full object-cover opacity-50"
+  />
+  <div
+    class="absolute inset-0"
+    style="background: radial-gradient(ellipse at 50% 50%, rgba(15,15,15,0.65) 0%, rgba(15,15,15,0.92) 70%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative max-w-[1400px] mx-auto px-7 lg:px-14 py-32 sm:py-44 lg:py-56 text-center">
+    <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink/65 mb-8">
       The point of all of this
     </p>
     <h2
       class="font-display text-ink font-extralight leading-[0.85] tracking-[-0.05em]"
-      style="font-size: clamp(5rem, 18vw, 16rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+      style="font-size: clamp(4.5rem, 18vw, 16rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
     >
       UNPLUG
     </h2>
     <p
-      class="font-serif-quote italic mt-12 text-[1.5rem] leading-[1.4] tracking-[-0.015em] text-ink/85 max-w-2xl mx-auto"
-      style="font-variation-settings: 'opsz' 24, 'SOFT' 50, 'WONK' 1;"
+      class="font-serif-quote italic mt-10 lg:mt-14 text-[1.375rem] lg:text-[1.625rem] leading-[1.45] tracking-[-0.015em] text-ink/85 max-w-2xl mx-auto text-balance"
+      style="font-variation-settings: 'opsz' 36, 'SOFT' 60, 'WONK' 1;"
     >
       The life you've been putting off — it starts the moment the lines come off the dock.
     </p>
-    <div class="mt-14">
+    <div class="mt-14 lg:mt-16">
       <a
         href="/calendar"
-        class="inline-flex items-center justify-center cursor-pointer bg-accent text-ink font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-8 py-[18px] hover:bg-accent-hot transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+        class="group inline-flex items-center gap-3 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold text-ink border-b-2 border-sun pb-1 hover:text-sun transition-colors"
       >
         Find Your Week
+        <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
       </a>
     </div>
   </div>
-
-  {/* Faint hairline ribbon along the bottom edge */}
-  <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-hairline to-transparent" aria-hidden="true"></div>
 </section>
