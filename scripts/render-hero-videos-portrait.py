@@ -24,9 +24,19 @@ import sys
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-ENV_PATH = pathlib.Path('/mnt/c/business-suite-portal/apps/api/.env')
-OUTPUT_DIR = pathlib.Path(__file__).resolve().parent.parent / 'public' / 'media' / 'hero'
+REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
+OUTPUT_DIR = REPO_ROOT / 'public' / 'media' / 'hero'
 ENDPOINT = 'fal-ai/bytedance/seedance/v1/pro/text-to-video'
+
+# FAL_KEY resolution order:
+#   1. FAL_KEY in the process environment
+#   2. .env at the repo root (FAL_KEY="...")
+#   3. Path supplied via --env-file <path> on the command line
+#   4. Shared fallback at /mnt/c/business-suite-portal/apps/api/.env (Mark's box)
+FALLBACK_ENV_PATHS = [
+    REPO_ROOT / '.env',
+    pathlib.Path('/mnt/c/business-suite-portal/apps/api/.env'),
+]
 
 SCENES = [
     {
@@ -114,13 +124,39 @@ SCENES = [
 ]
 
 
-def load_fal_key() -> str:
-    env_text = ENV_PATH.read_text()
+def _extract_fal_key(env_text: str) -> str | None:
     match = re.search(r'FAL_KEY="?([^"\n]+)"?', env_text)
-    if not match:
-        print(f"ERROR: FAL_KEY not found in {ENV_PATH}", file=sys.stderr)
-        sys.exit(1)
-    return match.group(1)
+    return match.group(1) if match else None
+
+
+def load_fal_key(cli_env_path: pathlib.Path | None = None) -> str:
+    # 1. process env
+    env_key = os.environ.get('FAL_KEY')
+    if env_key:
+        return env_key
+
+    # 2. --env-file on CLI
+    search_paths: list[pathlib.Path] = []
+    if cli_env_path is not None:
+        search_paths.append(cli_env_path)
+    # 3. + 4. repo-local then shared fallback
+    search_paths.extend(FALLBACK_ENV_PATHS)
+
+    for path in search_paths:
+        if path.exists():
+            key = _extract_fal_key(path.read_text())
+            if key:
+                return key
+
+    tried = '\n  '.join(str(p) for p in search_paths)
+    print(
+        "ERROR: FAL_KEY not set in environment and not found in any .env file.\n"
+        f"Tried:\n  {tried}\n"
+        "Set FAL_KEY=... in your shell, drop a .env at the repo root, "
+        "or pass --env-file <path>.",
+        file=sys.stderr,
+    )
+    sys.exit(1)
 
 
 def render_scene(scene: dict, *, fal_client_module) -> dict:
@@ -161,7 +197,14 @@ def render_scene(scene: dict, *, fal_client_module) -> dict:
 
 
 def main() -> int:
-    os.environ['FAL_KEY'] = load_fal_key()
+    cli_env: pathlib.Path | None = None
+    args = sys.argv[1:]
+    if '--env-file' in args:
+        idx = args.index('--env-file')
+        if idx + 1 < len(args):
+            cli_env = pathlib.Path(args[idx + 1]).expanduser().resolve()
+
+    os.environ['FAL_KEY'] = load_fal_key(cli_env)
     print(f"FAL_KEY loaded ({len(os.environ['FAL_KEY'])} chars)")
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
