@@ -34,6 +34,18 @@ const categoryGradients: Record<string, string> = {
 const authorName =
   post.data.author === 'dodie' ? 'Dodie Kendall' : post.data.author === 'clint' ? 'Clint Kendall' : 'Guest';
 
+// Real hero photo per post — same mapping the hub uses, fall back to a
+// category-appropriate stock image if the specific post hero isn't mapped.
+const postHero: Record<string, string> = {
+  'what-to-actually-pack': '/img/stock/journal/journal-packing-flatlay-01.jpg',
+  'five-bvi-anchorages': '/img/stock/journal/journal-bvi-anchorage-aerial-02.jpg',
+  'mornings-at-sea': '/img/stock/journal/journal-sunrise-meditation-03.jpg',
+  'catamaran-vs-monohull': '/img/stock/journal/journal-catamaran-comparison-04.jpg',
+  'anegada-lobster': '/img/stock/journal/journal-lobster-plate-05.jpg',
+};
+const heroSrc = postHero[post.id] ?? post.data.heroImage ?? '/img/source/hero/02-sunset-catamaran-anchorage.jpg';
+const heroAlt = post.data.heroImageAlt ?? post.data.title;
+
 // Related posts — same category, exclude self, max 3.
 const allPosts = await getCollection('journal', ({ data }) => !data.draft);
 const related = allPosts
@@ -88,28 +100,38 @@ const relatedVoyageSlug = post.data.relatedVoyage;
   heroImage={post.data.heroImage}
   schema={schemaGraph}
 >
-  {/* Article hero */}
+  {/* Article hero — full-bleed real photo with editorial overlay */}
   <article>
-    <header
-      class="relative bg-primary text-ink border-b border-hairline"
-      style={`background: ${categoryGradients[post.data.category]};`}
-    >
-      <div class="max-w-[820px] mx-auto px-7 lg:px-0 pt-24 lg:pt-32 pb-20 lg:pb-24">
-        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-accent mb-6">
-          {categoryLabels[post.data.category]}
-        </p>
-        <h1
-          class="font-display text-ink leading-[1] tracking-[-0.025em] font-light text-balance"
-          style="font-size: clamp(2rem, 4vw + 1rem, 3.75rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
-        >
-          {post.data.title}
-        </h1>
-        <p class="font-body-md text-[0.9375rem] text-ink/70 mt-8">
-          <time datetime={post.data.publishedAt.toISOString()}>
-            {post.data.publishedAt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-          </time>{' '}
-          · by {authorName}
-        </p>
+    <header class="relative bg-primary text-ink overflow-hidden min-h-[70dvh] lg:min-h-[75dvh] flex flex-col">
+      <img
+        src={heroSrc}
+        alt={heroAlt}
+        class="absolute inset-0 w-full h-full object-cover"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-primary/35 via-primary/10 via-45% to-primary/90" aria-hidden="true"></div>
+      <div class="relative z-10 flex-1 flex flex-col">
+        <div class="flex-1 flex items-end pb-12 lg:pb-16 px-7 lg:px-14 pt-32">
+          <div class="max-w-[1200px] w-full mx-auto">
+            <p class="font-label-caps uppercase tracking-[0.28em] text-[0.75rem] font-semibold text-sun mb-6">
+              {categoryLabels[post.data.category]}
+            </p>
+            <h1
+              class="font-display text-ink font-light text-pretty leading-[0.98] tracking-[-0.025em] max-w-4xl"
+              style="font-size: clamp(2rem, 5vw + 1rem, 4.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+            >
+              {post.data.title}
+            </h1>
+            <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-ink/75 mt-8">
+              <time datetime={post.data.publishedAt.toISOString()}>
+                {post.data.publishedAt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              </time>
+              <span class="opacity-50 mx-2">·</span>
+              By {authorName}
+            </p>
+          </div>
+        </div>
       </div>
     </header>
 

@@ -1,0 +1,77 @@
+---
+// Shared full-bleed photo hero used by the simpler pages (voyages hub,
+// journal hub, calendar, inquire, faq, legal). Editorial overlay,
+// magazine-style headline placement, optional sub + meta line.
+// Heights tuned shorter than the home hero (75dvh vs 100dvh) so the
+// section feels editorial, not landing-page bombastic.
+
+interface Props {
+  eyebrow: string;
+  headlinePrefix: string;
+  headlineEmphasis?: string;
+  headlineSuffix?: string;
+  subline?: string;
+  heroImage: string;
+  heroImageAlt: string;
+  /** Smaller hero variant — 60dvh — for utility pages like /faq. */
+  compact?: boolean;
+}
+
+const {
+  eyebrow,
+  headlinePrefix,
+  headlineEmphasis,
+  headlineSuffix = '',
+  subline,
+  heroImage,
+  heroImageAlt,
+  compact = false,
+} = Astro.props;
+
+const minH = compact ? 'min-h-[55dvh] lg:min-h-[60dvh]' : 'min-h-[70dvh] lg:min-h-[75dvh]';
+const headlineSize = compact
+  ? 'clamp(2.25rem, 5vw + 1rem, 4.5rem)'
+  : 'clamp(2.75rem, 6.5vw + 1rem, 6rem)';
+---
+
+<section class={`relative bg-primary text-ink overflow-hidden ${minH} flex flex-col`}>
+  <img
+    src={heroImage}
+    alt={heroImageAlt}
+    class="absolute inset-0 w-full h-full object-cover"
+    fetchpriority="high"
+    decoding="async"
+  />
+  {/* Editorial overlay — lighter at top, darker at bottom for headline legibility */}
+  <div class="absolute inset-0 bg-gradient-to-b from-primary/35 via-primary/10 via-45% to-primary/90" aria-hidden="true"></div>
+
+  <div class={`relative z-10 ${minH} flex flex-col`}>
+    <div class="flex-1 flex items-end pb-14 lg:pb-20 px-7 lg:px-14 pt-32">
+      <div class="max-w-[1400px] w-full mx-auto">
+        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.75rem] font-semibold text-ink/90 mb-6">
+          {eyebrow}
+        </p>
+        <h1
+          class="font-display text-ink font-light text-pretty leading-[0.95] tracking-[-0.03em] max-w-5xl"
+          style={`font-size: ${headlineSize}; font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;`}
+        >
+          {headlinePrefix}
+          {headlineEmphasis && (
+            <span
+              class="italic block sm:inline"
+              style="font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;"
+            >
+              {headlineEmphasis}
+            </span>
+          )}
+          {headlineSuffix}
+        </h1>
+        {subline && (
+          <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.6] text-ink/85 mt-8 max-w-3xl">
+            {subline}
+          </p>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

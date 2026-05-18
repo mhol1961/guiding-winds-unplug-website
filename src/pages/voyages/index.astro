@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/shared/PageHero.astro';
 
 const title = '2027 Voyages · BVI, Bahamas, Italy, Greece, Croatia | Guiding Winds';
 const description =
@@ -62,31 +63,16 @@ const schemaGraph = [
 ];
 ---
 
-<BaseLayout title={title} description={description} schema={schemaGraph}>
-  {/* Editorial hero — bone bg, big display headline, no dark slab */}
-  <section class="bg-bone text-primary pt-32 lg:pt-40 pb-20 lg:pb-28 border-b border-rule">
-    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-6">
-        Voyages · 2027
-      </p>
-      <h1
-        class="font-display font-light leading-[0.95] tracking-[-0.03em] text-balance max-w-5xl"
-        style="font-size: clamp(2.75rem, 7vw + 1rem, 6rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
-      >
-        Three regions.
-        <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;">
-          Fourteen weeks.
-        </span>
-        One boat.
-      </h1>
-      <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.6] text-primary/70 mt-10 max-w-3xl">
-        Caribbean January through March. Bahamas April and May. Mediterranean
-        June through October. We sail every week ourselves — Clint at the
-        helm, Dodie running the galley. Eight cabins, twelve guests, no
-        crowds at anchor.
-      </p>
-    </div>
-  </section>
+<BaseLayout title={title} description={description} transparentNav schema={schemaGraph}>
+  <PageHero
+    eyebrow="Voyages · 2027"
+    headlinePrefix="Three regions."
+    headlineEmphasis="Fourteen weeks."
+    headlineSuffix="One boat."
+    subline="Caribbean January through March. Bahamas April and May. Mediterranean June through October. We sail every week ourselves — Clint at the helm, Dodie running the galley. Eight cabins, twelve guests, no crowds at anchor."
+    heroImage="/img/stock/hero/hero-sunset-teak-deck-04.jpg"
+    heroImageAlt="Sunset over a teak boat deck with the horizon line glowing gold"
+  />
 
   {/* Voyage card grid — portrait 9:16, magazine-cover style */}
   <section class="bg-bone text-primary py-24 sm:py-32">

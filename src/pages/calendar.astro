@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/shared/PageHero.astro';
 
 const title = '2027 Sailing Calendar · Guiding Winds Unplug';
 const description =
@@ -64,32 +65,15 @@ const schemaGraph = [
 ];
 ---
 
-<BaseLayout title={title} description={description} schema={schemaGraph}>
-  {/* Hero — bone */}
-  <section class="bg-bone text-primary pt-32 lg:pt-40 pb-16 lg:pb-20 border-b border-rule">
-    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-6">
-        2027 Calendar
-      </p>
-      <h1
-        class="font-display font-light leading-[0.95] tracking-[-0.03em] text-balance max-w-4xl"
-        style="font-size: clamp(2.5rem, 6vw + 1rem, 5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
-      >
-        Fourteen weeks.
-        <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;">
-          Eight cabins each.
-        </span>
-      </h1>
-      <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.6] text-primary/70 mt-8 max-w-3xl">
-        Hold one for 72 hours, no payment required. Caribbean January through
-        March. Bahamas April and May. Mediterranean June through October.
-      </p>
-      <p class="font-body-md text-[1rem] text-primary/55 mt-6">
-        <span class="font-display text-[1.5rem] mr-2" style="font-variation-settings: 'opsz' 36;">{totalCabins}</span>
-        cabins available right now · {totalWeeks} weeks total
-      </p>
-    </div>
-  </section>
+<BaseLayout title={title} description={description} transparentNav schema={schemaGraph}>
+  <PageHero
+    eyebrow={`2027 Calendar · ${totalCabins} cabins available now`}
+    headlinePrefix="Fourteen weeks."
+    headlineEmphasis="Eight cabins each."
+    subline="Hold one for 72 hours, no payment required. Caribbean January through March. Bahamas April and May. Mediterranean June through October."
+    heroImage="/img/source/destinations/catamaran-anchorage-sunset-bvi-01.jpg"
+    heroImageAlt="Our catamaran at anchor at sunset, the kind of week the calendar holds"
+  />
 
   {/* Region filter — sticky */}
   <section class="bg-bone text-primary sticky top-20 z-10 backdrop-blur-md bg-bone/95 border-b border-rule">

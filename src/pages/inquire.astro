@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import InquiryForm from '../components/shared/InquiryForm.astro';
+import PageHero from '../components/shared/PageHero.astro';
 import { Mail, Clock } from 'lucide-react';
 
 const title = 'Inquire · Hold a Cabin for 72 Hours | Guiding Winds Unplug';
@@ -30,28 +31,16 @@ const schemaGraph = [
 ];
 ---
 
-<BaseLayout title={title} description={description} schema={schemaGraph} hideFloatingCta>
-  {/* Hero — bone, narrow editorial */}
-  <section class="bg-bone text-primary pt-32 lg:pt-40 pb-12 lg:pb-16 border-b border-rule">
-    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-6">
-        Inquire
-      </p>
-      <h1
-        class="font-display font-light leading-[0.95] tracking-[-0.03em] text-balance max-w-4xl"
-        style="font-size: clamp(2.25rem, 5vw + 1rem, 4.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
-      >
-        Tell us which week.
-        <span class="italic block" style="font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;">
-          We'll hold a cabin for seventy-two hours.
-        </span>
-      </h1>
-      <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.6] text-primary/70 mt-8 max-w-3xl">
-        No payment required. Dodie or Clint will reply within 24 hours with
-        availability and the next step.
-      </p>
-    </div>
-  </section>
+<BaseLayout title={title} description={description} schema={schemaGraph} hideFloatingCta transparentNav>
+  <PageHero
+    compact
+    eyebrow="Inquire · No payment to hold"
+    headlinePrefix="Tell us which week."
+    headlineEmphasis="We'll hold a cabin for seventy-two hours."
+    subline="No payment required. Dodie or Clint will reply within 24 hours with availability and the next step."
+    heroImage="/img/source/people/couple-foredeck-embrace-bvi-01.jpg"
+    heroImageAlt="A couple on the foredeck of a catamaran at golden hour in the British Virgin Islands"
+  />
 
   {/* Form + side panel */}
   <section class="bg-bone text-primary py-16 lg:py-24">
