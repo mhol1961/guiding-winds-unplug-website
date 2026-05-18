@@ -13,6 +13,40 @@
 
 @import "./theme.css";
 
+/* Section-alternation palette — additive @theme tokens for the cream-
+   alternation rebuild (Stage 4). Tailwind v4 merges multiple @theme
+   blocks, so these generate bg-paper / bg-sage / bg-teal-soft etc.
+   utilities alongside the DESIGN.md core palette. Kept here (not in
+   the auto-generated theme.css) so the design-export round-trip stays
+   clean. THIS BLOCK MUST NOT BE REMOVED — every alternating section
+   bg across the site depends on these tokens. */
+@theme {
+  /* Off-whites — lighter than bone, used to alternate between cream
+     sections on long pages. Slightly warm so they sit with bone. */
+  --color-paper: #FBFAF5;
+  --color-paper-deep: #F0EBDD;
+
+  /* Soft sage — green-grey for the pre-footer "lighter" sections.
+     Reads as natural, calm, marine-adjacent. */
+  --color-sage: #D4DCD0;
+  --color-sage-deep: #A8B9A7;
+
+  /* Lighter teal complements bg-teal-shadow without the heavy dark.
+     Used for editorial breaks where teal-shadow would feel aggressive. */
+  --color-teal-soft: #B9CFD3;
+  --color-teal-mist: #DCE7E9;
+
+  /* Premium card backlight — the "lift" color when a card surface
+     gets focus/hover (aboard.astro "In the price" cards). */
+  --color-card-lift: #FFFDF7;
+
+  /* Lighter warm cocoa for the "In the price" section bg. Mark wanted
+     bg-surface-warm (#1F1B17, near-black) lightened so the 8 cream
+     cards land against a richer cocoa instead of near-black. */
+  --color-warm-mid: #3A2F25;
+  --color-warm-mid-deep: #2A221C;
+}
+
 /* CRITICAL OVERRIDE — fix max-w-* collision with DESIGN.md's spacing
    scale. Tailwind v4's max-w-{key} utilities resolve to var(--spacing-{key})
    when --spacing-{key} is defined, regardless of --container-{key} also

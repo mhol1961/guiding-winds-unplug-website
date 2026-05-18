@@ -54,9 +54,9 @@ const included = [
 ];
 
 const boatAreas = [
-  { label: 'The salon', body: 'Wraparound bench seating, a table that doubles for long dinners and chart sessions. Most of the week is lived here when you are not in the water.', img: '/img/stock/boat/boat-salon-01.jpg', alt: 'Wraparound salon seating on a sailing catamaran' },
+  { label: 'The salon', body: 'Wraparound bench seating, a table that doubles for long dinners and chart sessions. Most of the week is lived here when you are not in the water.', img: '/img/stock/boat/boat-salon-ai.jpg', alt: 'Wraparound salon seating on a sailing catamaran with set dinner table and golden-hour light through the windows' },
   { label: 'The galley', body: 'Full-size induction cooktop, twin fridges, freezer for the long passages, a wine cooler. Dodie runs a tight kitchen — you should not feel obligated to help.', img: '/img/stock/boat/boat-galley-real.jpg', alt: 'White cabinetry galley on a yacht with sink, stainless beverage fridge, and espresso machine' },
-  { label: 'The cabins', body: 'Eight queens, each with an ensuite head and a hatch over the bed. The Lagoon 50 has no "small cabin" — every cabin is the same generous footprint.', img: '/img/stock/boat/boat-cabin-03.jpg', alt: 'Queen cabin on a sailing catamaran with hatch above the bed' },
+  { label: 'The cabins', body: 'Eight queens, each with an ensuite head and a hatch over the bed. The Lagoon 50 has no "small cabin" — every cabin is the same generous footprint.', img: '/img/stock/boat/boat-cabin-ai.jpg', alt: 'Ensuite queen cabin on a sailing catamaran with crisp white linens, overhead hatch admitting bright daylight, porthole showing turquoise water' },
   { label: 'The foredeck', body: 'The trampoline is the social spot of the boat. Where the morning practice happens, where the afternoon naps happen, where the sundowner conversations happen.', img: '/img/source/boat/foredeck-bow-trampoline-sun-flare-01.jpg', alt: 'Foredeck trampoline of a catamaran in sun flare' },
 ];
 
@@ -110,7 +110,7 @@ const notIncluded = [
        on hover, gradient border shift, gentle lift, and a staggered
        on-load rise animation. Defined in global.css (@keyframes card-rise)
        so the reduced-motion guard neutralizes it automatically. */}
-  <section class="bg-surface-warm text-ink py-28 lg:py-36 border-t border-hairline">
+  <section class="bg-warm-mid text-ink py-28 lg:py-36 border-t border-hairline">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
       <div class="mb-16 lg:mb-20 max-w-3xl">
         <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun mb-5">
@@ -126,21 +126,38 @@ const notIncluded = [
           </span>
         </h2>
       </div>
+      {/* Premium 8-card grid. Cards: cream surface on lighter cocoa for
+          stronger contrast, sun-gold ring + icon-tile, bigger icon
+          (size-7) on its own gold-tinted square so the eye reads it
+          first, animated card-rise stagger, hover lifts -translate-y-1
+          AND brightens the icon tile + drops a sun-tinted backlight
+          shadow. Focus-within mirrors hover for keyboard parity. */}
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
         {
           included.map(({ Icon, label, body }, i) => (
             <li
-              class="card-rise group bg-bone text-primary border border-bone-deep/40 p-7 lg:p-8 flex flex-col transition-all duration-300 ease-out hover:-translate-y-1 hover:border-sun hover:bg-card-lift hover:shadow-[0_8px_32px_rgba(232,163,64,0.15)] focus-within:-translate-y-1 focus-within:border-sun focus-within:bg-card-lift focus-within:shadow-[0_8px_32px_rgba(232,163,64,0.15)]"
+              class="card-rise group relative bg-bone text-primary border border-bone-deep p-7 lg:p-8 flex flex-col shadow-[0_4px_16px_rgba(0,0,0,0.25)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-sun hover:bg-card-lift hover:shadow-[0_16px_44px_rgba(232,163,64,0.32),0_2px_8px_rgba(232,163,64,0.18)] focus-within:-translate-y-1.5 focus-within:border-sun focus-within:bg-card-lift focus-within:shadow-[0_16px_44px_rgba(232,163,64,0.32),0_2px_8px_rgba(232,163,64,0.18)]"
               style={`animation-delay: ${i * 80}ms;`}
             >
-              <Icon
-                className="size-5 text-sun mb-5 transition-colors duration-300 ease-out group-hover:text-accent group-focus-within:text-accent"
-                strokeWidth={1.5}
+              {/* Top sun-gold rail — appears on hover, gives the cards
+                   a backlit ribbon affordance. */}
+              <span
+                class="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-sun to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300"
+                aria-hidden="true"
               />
+              <span
+                class="inline-flex items-center justify-center size-12 bg-sun/15 border border-sun/30 mb-6 transition-all duration-300 ease-out group-hover:bg-sun/30 group-hover:border-sun group-focus-within:bg-sun/30 group-focus-within:border-sun"
+                aria-hidden="true"
+              >
+                <Icon
+                  className="size-7 text-sun-deep transition-colors duration-300 ease-out group-hover:text-accent-hot group-focus-within:text-accent-hot"
+                  strokeWidth={1.75}
+                />
+              </span>
               <p class="font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold text-primary mb-3">
                 {label}
               </p>
-              <p class="font-body-md text-[0.9375rem] leading-[1.6] text-primary/70 text-balance">{body}</p>
+              <p class="font-body-md text-[0.9375rem] leading-[1.6] text-primary/75 text-balance">{body}</p>
             </li>
           ))
         }
@@ -249,43 +266,63 @@ const notIncluded = [
     ctaHref="/inquire"
   />
 
-  {/* Typical day — paper (off-white) to alternate against the bone-heavy
-       sections above and the teal-soft pre-footer CTA below. */}
+  {/* Typical day — paper (off-white) with Dodie's IG "Good morning"
+       deck-coffee photo set up top so the section opens with an actual
+       sunrise scene before the words describe one. Asymmetric 7-5 grid:
+       portrait photo on the right, copy on the left. */}
   <section class="bg-paper text-primary py-24 sm:py-32 border-t border-hairline">
-    <div class="max-w-[820px] mx-auto px-7 lg:px-0">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-5 text-center">
-        A typical day
-      </p>
-      <h2
-        class="font-display font-light leading-[1.05] tracking-[-0.025em] mb-12 text-balance text-center"
-        style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
-      >
-        Sunrise to sundown,
-        <span class="italic block" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
-          what it actually looks like.
-        </span>
-      </h2>
-      <div class="space-y-6 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.75] text-primary/75 text-balance">
-        <p>
-          Coffee on deck at first light for whoever's up. Optional morning
-          breath sequence or yoga flow on the foredeck around seven, twenty
-          minutes, no announcement. Breakfast at eight — eggs, fruit, fresh
-          bread from whatever village we were in yesterday. Dive in off the
-          swim platform whenever.
-        </p>
-        <p>
-          By ten we've usually pulled the anchor for a short, easy passage
-          to the next stop. Most legs are under two hours. You can sit at
-          the helm with Clint, lie on the trampoline, read in the salon —
-          the day is yours. Lunch on the boat at one — light, mostly off
-          the grill, always with a cold something.
-        </p>
-        <p>
-          Afternoon is the long open block. Snorkel, paddle, kayak, nap,
-          read, walk ashore if we're tied up. By five we're on a sundowner.
-          By seven Dodie's brought dinner up — long meal, long stars, no
-          schedule for tomorrow until tomorrow.
-        </p>
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="lg:col-span-7 order-2 lg:order-1">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-5">
+            A typical day
+          </p>
+          <h2
+            class="font-display font-light leading-[1.05] tracking-[-0.025em] mb-10 text-balance"
+            style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
+          >
+            Sunrise to sundown,
+            <span class="italic block" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
+              what it actually looks like.
+            </span>
+          </h2>
+          <div class="space-y-6 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.75] text-primary/75 text-balance">
+            <p>
+              Coffee on deck at first light for whoever's up. Optional morning
+              breath sequence or yoga flow on the foredeck around seven, twenty
+              minutes, no announcement. Breakfast at eight — eggs, fruit, fresh
+              bread from whatever village we were in yesterday. Dive in off the
+              swim platform whenever.
+            </p>
+            <p>
+              By ten we've usually pulled the anchor for a short, easy passage
+              to the next stop. Most legs are under two hours. You can sit at
+              the helm with Clint, lie on the trampoline, read in the salon —
+              the day is yours. Lunch on the boat at one — light, mostly off
+              the grill, always with a cold something.
+            </p>
+            <p>
+              Afternoon is the long open block. Snorkel, paddle, kayak, nap,
+              read, walk ashore if we're tied up. By five we're on a sundowner.
+              By seven Dodie's brought dinner up — long meal, long stars, no
+              schedule for tomorrow until tomorrow.
+            </p>
+          </div>
+        </div>
+        <div class="lg:col-span-5 order-1 lg:order-2">
+          <figure class="relative aspect-[3/4] overflow-hidden bg-primary/5">
+            <img
+              src="/img/source/ig/cockpit-coffee-sunrise-portrait.jpg"
+              alt="First-person view from the cockpit at sunrise — coffee mug nearby, bare feet on the bench, sailing catamarans silhouetted against a pink and orange dawn sky over the anchorage"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          </figure>
+          <figcaption class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/55 mt-3">
+            Plate · Sunrise · From Dodie's logbook
+          </figcaption>
+        </div>
       </div>
     </div>
   </section>
