@@ -48,13 +48,16 @@
       </div>
 
       <div class="lg:col-span-7">
-        <figure class="relative aspect-[17/10] overflow-hidden bg-primary/5">
+        {/* 4:5 portrait keeps the original photo's framing — switching from
+            the 17:10 landscape crop that was cutting Clint and Dodie's
+            heads off the top of the image. */}
+        <figure class="relative aspect-[4/5] overflow-hidden bg-primary/5">
           <img
             src="/img/source/people/clint-dodie-foredeck-portrait-sunset-01.jpg"
             alt="Clint and Dodie Kendall on the foredeck of their catamaran at sunset"
             loading="lazy"
             decoding="async"
-            class="absolute inset-0 w-full h-full object-cover"
+            class="absolute inset-0 w-full h-full object-cover object-[center_top]"
           />
         </figure>
         <figcaption class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/45 mt-3 text-right">

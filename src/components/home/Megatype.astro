@@ -1,40 +1,72 @@
 ---
-// The one signature dark moment in the home page rhythm. Full-bleed
-// real-photo background, dark overlay for legibility, giant ultra-light
-// "UNPLUG" type. Per Black Tomato's "Footsteps sub-brand panel" — the
-// page-turn moment that interrupts the editorial rhythm.
+// Brand-promise signature moment. The big UNPLUG type isn't decoration —
+// it's the literal name of the company AND the promise the rest of the
+// page is selling. This rebuild puts it in context: what unplug actually
+// means here, three proof points, and a direct CTA.
+//
+// Dark full-bleed photo backdrop, sun-gold accent rule above the headline,
+// proof grid with rule dividers, dark-on-dark CTA with sun-gold outline.
 ---
 
 <section class="relative bg-primary text-ink overflow-hidden">
   <img
-    src="/img/source/hero/05-caribbean-night-moonlit.jpg"
+    src="/img/source/destinations/catamaran-anchorage-sunset-bvi-01.jpg"
     alt=""
     loading="lazy"
     decoding="async"
-    class="absolute inset-0 w-full h-full object-cover opacity-50"
+    class="absolute inset-0 w-full h-full object-cover opacity-40"
   />
   <div
     class="absolute inset-0"
-    style="background: radial-gradient(ellipse at 50% 50%, rgba(15,15,15,0.65) 0%, rgba(15,15,15,0.92) 70%);"
+    style="background: radial-gradient(ellipse at 50% 40%, rgba(15,15,15,0.55) 0%, rgba(15,15,15,0.95) 75%);"
     aria-hidden="true"
   ></div>
 
-  <div class="relative max-w-[1400px] mx-auto px-7 lg:px-14 py-32 sm:py-44 lg:py-56 text-center">
-    <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink/65 mb-8">
-      The point of all of this
+  <div class="relative max-w-[1400px] mx-auto px-7 lg:px-14 py-28 sm:py-36 lg:py-44 text-center">
+    <span class="block w-12 h-px bg-sun mx-auto mb-8" aria-hidden="true"></span>
+    <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun mb-10">
+      What you actually get when you do
     </p>
+
+    {/* The brand wordmark at maximum scale — this IS the company name AND
+         the promise the site is built around. */}
     <h2
       class="font-display text-ink font-extralight leading-[0.85] tracking-[-0.05em]"
-      style="font-size: clamp(4.5rem, 18vw, 16rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+      style="font-size: clamp(5rem, 16vw, 14rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
     >
       UNPLUG
     </h2>
+
     <p
-      class="font-serif-quote italic mt-10 lg:mt-14 text-[1.375rem] lg:text-[1.625rem] leading-[1.45] tracking-[-0.015em] text-ink/85 max-w-2xl mx-auto text-balance"
+      class="font-serif-quote italic mt-10 lg:mt-12 text-[1.25rem] lg:text-[1.625rem] leading-[1.45] tracking-[-0.015em] text-ink/90 max-w-2xl mx-auto text-balance"
       style="font-variation-settings: 'opsz' 36, 'SOFT' 60, 'WONK' 1;"
     >
-      The life you've been putting off — it starts the moment the lines come off the dock.
+      No notifications. No agendas. No upsells. Just water, weather, and a galley running on what we found at this morning's market.
     </p>
+
+    {/* Three concrete proof points — what "unplug" actually looks like
+         in practice. Hairline dividers in sun-gold tint. */}
+    <ul class="mt-14 lg:mt-16 grid grid-cols-1 sm:grid-cols-3 max-w-3xl mx-auto divide-y sm:divide-y-0 sm:divide-x divide-ink/15 border-y border-ink/15">
+      <li class="px-6 py-8">
+        <p class="font-display text-[2rem] text-sun leading-none" style="font-variation-settings: 'opsz' 36, 'SOFT' 30, 'WONK' 0;">Wednesday</p>
+        <p class="font-label-caps uppercase tracking-[0.2em] text-[0.5625rem] font-semibold text-ink/70 mt-3">
+          The day your Starlink gets turned off
+        </p>
+      </li>
+      <li class="px-6 py-8">
+        <p class="font-display text-[2rem] text-sun leading-none" style="font-variation-settings: 'opsz' 36, 'SOFT' 30, 'WONK' 0;">4 hours</p>
+        <p class="font-label-caps uppercase tracking-[0.2em] text-[0.5625rem] font-semibold text-ink/70 mt-3">
+          Longest passage you'll ever sit through
+        </p>
+      </li>
+      <li class="px-6 py-8">
+        <p class="font-display text-[2rem] text-sun leading-none" style="font-variation-settings: 'opsz' 36, 'SOFT' 30, 'WONK' 0;">Zero</p>
+        <p class="font-label-caps uppercase tracking-[0.2em] text-[0.5625rem] font-semibold text-ink/70 mt-3">
+          Items billed after the deposit
+        </p>
+      </li>
+    </ul>
+
     <div class="mt-14 lg:mt-16">
       <a
         href="/calendar"

@@ -1,8 +1,8 @@
 ---
-// Final CTA — bone-led, text-only, hairline-divided. NOT a coral wall
-// (that violates "accent at icon scale only" per Black Tomato). Single
-// dark CTA, restrained, magazine-finale energy. Hairline dividers
-// flanking the headline tie it to the trust-pillar pattern above.
+// Final CTA — bone, hairline-flanked, no coral wall. Magazine-finale
+// energy. Restructured per CRO research: single primary CTA per
+// viewport (was double), generous padding so the type doesn't crowd
+// the buttons.
 ---
 
 <section class="bg-bone text-primary py-28 sm:py-40 border-t border-rule">
@@ -12,34 +12,38 @@
       The 2027 calendar is open
     </p>
     <h2
-      class="font-display font-light leading-[1.0] tracking-[-0.025em] text-balance"
-      style="font-size: clamp(2.5rem, 6vw + 1rem, 4.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+      class="font-display font-light leading-[0.95] tracking-[-0.025em] text-balance"
+      style="font-size: clamp(2.5rem, 5.5vw + 1rem, 4.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
     >
       So, ready
-      <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;">
-        to sail?
-      </span>
+      <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;">to sail?</span>
     </h2>
     <p class="font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.65] text-primary/65 mt-8 max-w-xl mx-auto text-balance">
       Hold a cabin for 72 hours, no payment required. Dodie or Clint will reply within 24 hours with the next steps.
     </p>
-    <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+
+    {/* Primary CTA only — secondary text-link sits below so it doesn't
+        compete with the primary action for tap target. */}
+    <div class="mt-12">
       <a
         href="/calendar"
-        class="inline-flex items-center justify-center cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+        class="inline-flex items-center justify-center gap-3 cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-10 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3 group"
       >
         Browse Available Weeks
-      </a>
-      <a
-        href="/inquire"
-        class="group inline-flex items-center gap-3 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold text-primary border-b border-primary/40 pb-1 hover:text-accent hover:border-accent transition-colors"
-      >
-        Or send an inquiry
         <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </a>
     </div>
+    <p class="mt-6">
+      <a
+        href="/inquire"
+        class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/55 border-b border-primary/30 pb-0.5 hover:text-accent hover:border-accent transition-colors"
+      >
+        Or send an inquiry
+      </a>
+    </p>
+
     <span class="block w-12 h-px bg-sun mx-auto mt-16" aria-hidden="true"></span>
   </div>
 </section>
