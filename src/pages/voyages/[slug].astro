@@ -6,7 +6,7 @@ import PricingCard from '../../components/voyage/PricingCard.astro';
 import Timeline from '../../components/voyage/Timeline.astro';
 import Gallery from '../../components/voyage/Gallery.astro';
 import VoyageFaq from '../../components/voyage/VoyageFaq.astro';
-import VoyageInterrupt from '../../components/voyage/VoyageInterrupt.astro';
+import SectionInterrupt from '../../components/shared/SectionInterrupt.astro';
 import { Check, X } from 'lucide-react';
 
 export async function getStaticPaths() {
@@ -290,7 +290,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
   </section>
 
   {/* Interrupt 1 (teal) — mood-setter, breaks the bone after Overview */}
-  <VoyageInterrupt
+  <SectionInterrupt
     variant="teal"
     eyebrow={tealEyebrow[voyage.data.slug]}
     headline={tealCopy.lead}
@@ -302,7 +302,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
   {/* Interrupt 2 (quote) — full-bleed photo + guest review after Timeline.
       Hidden if no review exists for this voyage. */}
   {voyageReviewForInterrupt && (
-    <VoyageInterrupt
+    <SectionInterrupt
       variant="quote"
       eyebrow={`From the logbook · ${regionLabel[voyage.data.region]}`}
       headline={voyageReviewForInterrupt.data.quote}
@@ -319,7 +319,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
 
   {/* Interrupt 3 (stat) — dark scarcity / season window after FAQ */}
   {statCopy && (
-    <VoyageInterrupt
+    <SectionInterrupt
       variant="stat"
       eyebrow="The season"
       headline={statCopy.headline}

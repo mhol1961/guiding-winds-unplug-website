@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/shared/PageHero.astro';
+import SectionInterrupt from '../../components/shared/SectionInterrupt.astro';
 
 const title = 'Field Notes · Stories from Catamaran Voyages | Guiding Winds Unplug';
 const description =
@@ -139,6 +140,14 @@ const rest = posts.slice(1);
       </div>
     </section>
   )}
+
+  <SectionInterrupt
+    variant="teal"
+    eyebrow="Words from the boat"
+    headline="Stories from the chain,"
+    headlineItalic="the galley, and the swells."
+    body="Not a content marketing engine. Notes from actual weeks, written between charters."
+  />
 
   {/* Rest of posts — 3-col grid */}
   <section class="bg-bone text-primary py-20 lg:py-28">

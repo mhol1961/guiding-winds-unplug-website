@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
 import {
   UtensilsCrossed,
   Wine,
@@ -218,6 +219,17 @@ const notIncluded = [
       </div>
     </div>
   </section>
+
+  {/* Interrupt AB1 — stat break between bone-deep and bone sections */}
+  <SectionInterrupt
+    variant="stat"
+    eyebrow="The numbers"
+    headline="8 cabins"
+    headlineItalic="· 50 feet · 12 guests max"
+    body="Bigger boats lose the through-line. Smaller ones don't have the galley to do dinner the way Dodie does it. The Lagoon 50 is the boat that sits in between."
+    ctaLabel="Hold a Cabin"
+    ctaHref="/inquire"
+  />
 
   {/* Typical day */}
   <section class="bg-bone text-primary py-24 sm:py-32 border-t border-rule">

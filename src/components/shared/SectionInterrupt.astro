@@ -1,23 +1,21 @@
 ---
-// Mid-page pattern interrupt for voyage detail pages. The voyage template
-// is a long stack of bone (#F4EFE0) sections — Overview, Timeline, Gallery,
-// FAQ, siblings — which compounds into 6,000-7,000px of unbroken cream
-// when measured page-height. The eye flatlines on a single hue for that
-// long, then bounces. This component breaks the stretch with three
-// distinct moods so the same page can land 2-3 interrupts without
-// feeling repetitive.
+// Site-wide mid-page pattern interrupt. Breaks long stretches of bone
+// (#F4EFE0) with a distinct surface — used across home, about, aboard,
+// voyages-hub, journal-hub, and voyage detail pages where extended
+// cream runs flatlined the eye. Four variants by mood and weight:
 //
-// Variants:
+//   photo  — FULL-BLEED hero-style image with overlay headline. Image
+//            IS the section. Highest visual impact, heaviest payload
+//            (lazy-loaded). Use as the strongest break — once per page max.
 //   quote  — full-bleed photo + italic guest quote + optional CTA.
 //            Models LogbookQuote.astro. Use for emotional proof.
-//   stat   — dark surface, big-type single statistic + sun-gold rule.
-//            Models MidCta right-rail. Use for credibility / scarcity.
+//   stat   — dark surface (surface-warm), big-type single statistic +
+//            sun-gold rule. No image. Use for credibility / scarcity.
 //   teal   — bright teal panel (#0E3F47), italic eyebrow phrase.
-//            No photo. Lighter weight than dark sections — use for
-//            mood-setting between the Overview and Timeline.
+//            No image. Lightest break — use freely between bone sections.
 
 interface Props {
-  variant: 'quote' | 'stat' | 'teal';
+  variant: 'photo' | 'quote' | 'stat' | 'teal';
   eyebrow?: string;
   /** Display headline; can be split into a leading phrase + italic emphasis. */
   headline: string;
@@ -27,11 +25,13 @@ interface Props {
   body?: string;
   ctaLabel?: string;
   ctaHref?: string;
-  /** Only used by the `quote` variant. */
+  /** Used by `quote` and `photo` variants. Required for `photo`. */
   image?: string;
   imageAlt?: string;
   /** Attribution shown under the quote (e.g., "Emily R. · Portland, OR"). */
   attribution?: string;
+  /** Photo variant text alignment. Default 'left' (editorial). */
+  photoAlign?: 'left' | 'center';
 }
 
 const {
@@ -45,8 +45,88 @@ const {
   image,
   imageAlt,
   attribution,
+  photoAlign = 'left',
 } = Astro.props;
 ---
+
+{
+  variant === 'photo' && image && (
+    <section class="relative bg-primary text-ink overflow-hidden border-t border-hairline min-h-[70dvh] lg:min-h-[78dvh] flex">
+      <img
+        src={image}
+        alt={imageAlt ?? ''}
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      {/* Two-layer overlay: vertical (top→bottom) + horizontal rake from the chosen side */}
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-primary/45 via-primary/15 to-primary/85"
+        aria-hidden="true"
+      />
+      <div
+        class:list={[
+          'absolute inset-0',
+          photoAlign === 'center'
+            ? 'bg-gradient-to-b from-primary/20 via-primary/10 to-primary/55'
+            : 'bg-gradient-to-r from-primary/70 via-primary/30 to-transparent',
+        ]}
+        aria-hidden="true"
+      />
+      <div
+        class:list={[
+          'relative max-w-[1400px] w-full mx-auto px-7 lg:px-14 py-28 lg:py-36 flex flex-col justify-end',
+          photoAlign === 'center' && 'items-center text-center',
+        ]}
+      >
+        <div class:list={['w-full', photoAlign === 'center' ? 'max-w-3xl' : 'max-w-3xl']}>
+          {eyebrow && (
+            <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun mb-7">
+              {eyebrow}
+            </p>
+          )}
+          <h2
+            class="font-display font-light text-ink leading-[0.98] tracking-[-0.025em] text-balance"
+            style="font-size: clamp(2.25rem, 5vw + 1rem, 4.25rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+          >
+            {headline}
+            {headlineItalic && (
+              <span
+                class="italic block mt-2"
+                style="font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;"
+              >
+                {headlineItalic}
+              </span>
+            )}
+          </h2>
+          {body && (
+            <p
+              class:list={[
+                'mt-7 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.65] text-ink/85 text-balance',
+                photoAlign === 'center' ? 'mx-auto max-w-xl' : 'max-w-xl',
+              ]}
+            >
+              {body}
+            </p>
+          )}
+          {ctaLabel && ctaHref && (
+            <div class="mt-9">
+              <a
+                href={ctaHref}
+                class="group inline-flex items-center justify-center gap-3 cursor-pointer bg-bone text-primary font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-sun transition-colors focus-visible:outline-2 focus-visible:outline-sun focus-visible:outline-offset-3"
+              >
+                {ctaLabel}
+                <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}
 
 {
   variant === 'quote' && (

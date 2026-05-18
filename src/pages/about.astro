@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
 import { Play, ShieldCheck, Anchor, Award, FileCheck2, Sun } from 'lucide-react';
 
 const title = 'Meet Clint & Dodie Kendall · Captains of Guiding Winds Unplug';
@@ -127,6 +128,15 @@ const credentials = [
       </div>
     </div>
   </section>
+
+  {/* Interrupt A1 — teal break between Clint and Dodie sections */}
+  <SectionInterrupt
+    variant="teal"
+    eyebrow="The crew"
+    headline="Two people."
+    headlineItalic="One boat."
+    body="Clint reads the weather and the chain. Dodie reads the guests and the galley. The week works because neither of us is doing the other's job."
+  />
 
   {/* Dodie — right image, left text (alternating) */}
   <section class="bg-bone text-primary py-24 sm:py-32 border-t border-rule">
@@ -270,6 +280,17 @@ const credentials = [
       </div>
     </div>
   </section>
+
+  {/* Interrupt A2 — full-bleed photo break before credentials */}
+  <SectionInterrupt
+    variant="photo"
+    image="/img/source/hero/05-caribbean-night-moonlit.jpg"
+    imageAlt="Catamaran at anchor in a quiet Caribbean cove under a moonlit sky"
+    eyebrow="On any given night"
+    headline="Quiet anchorages."
+    headlineItalic="No crowd to be part of."
+    photoAlign="left"
+  />
 
   {/* Credentials & safety */}
   <section class="bg-bone text-primary py-24 sm:py-32 border-t border-rule">

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/shared/PageHero.astro';
+import SectionInterrupt from '../../components/shared/SectionInterrupt.astro';
 
 const title = '2027 Voyages · BVI, Bahamas, Italy, Greece, Croatia | Guiding Winds';
 const description =
@@ -131,6 +132,18 @@ const schemaGraph = [
       </div>
     </div>
   </section>
+
+  <SectionInterrupt
+    variant="photo"
+    image="/img/source/hero/03-foredeck-bow-sun-flare.jpg"
+    imageAlt="Foredeck of the catamaran with sun flare across the bow, open water ahead"
+    eyebrow="The 2027 calendar"
+    headline="Pick the water."
+    headlineItalic="We'll handle the rest."
+    photoAlign="center"
+    ctaLabel="View Full Calendar"
+    ctaHref="/calendar"
+  />
 
   {/* Full 2027 calendar */}
   <section class="bg-bone text-primary py-24 border-t border-rule">
