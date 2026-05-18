@@ -1,10 +1,11 @@
 ---
-// Full-bleed cinematic hero. Crossfades 4 real photos from Dodie's library
-// (sunset catamaran, anchorage, foredeck, cockpit sunrise). Honors
-// prefers-reduced-motion. Headline overlay sits low-left, magazine-style.
+// Full-bleed cinematic hero. Crossfades 4 Seedance 2 video reels with
+// real-photo poster fallbacks. Honors prefers-reduced-motion (videos
+// don't autoplay; the first scene's poster image is shown still).
 
 interface Scene {
-  src: string;
+  videoSrc?: string;
+  posterSrc: string;
   alt: string;
 }
 
@@ -22,10 +23,26 @@ interface Props {
 
 const {
   scenes = [
-    { src: '/img/source/hero/02-sunset-catamaran-anchorage.jpg', alt: 'A catamaran at anchor at sunset in the Caribbean, warm orange sky reflecting off glassy water' },
-    { src: '/img/source/hero/01-catamaran-green-headland.jpg', alt: 'A catamaran sailing past a green tropical headland in the British Virgin Islands' },
-    { src: '/img/source/hero/03-foredeck-bow-sun-flare.jpg', alt: 'Looking out from the foredeck of a catamaran toward the horizon, sun flare across the bow' },
-    { src: '/img/source/hero/04-cockpit-sunrise.jpg', alt: 'Coffee on the cockpit bench at sunrise on a sailing catamaran' },
+    {
+      videoSrc: '/media/hero/hero-bvi-01.mp4',
+      posterSrc: '/img/source/hero/02-sunset-catamaran-anchorage.jpg',
+      alt: 'A catamaran at anchor at sunset in the Caribbean, warm orange sky reflecting off glassy water',
+    },
+    {
+      videoSrc: '/media/hero/hero-bahamas-02.mp4',
+      posterSrc: '/img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg',
+      alt: 'Dawn approach to a pink-sand spit in the Abacos',
+    },
+    {
+      videoSrc: '/media/hero/hero-greece-03.mp4',
+      posterSrc: '/img/stock/voyages/greece/greece-santorini-caldera-hero.jpg',
+      alt: 'A catamaran reflected in a glassy Cycladic cove with a whitewashed village above',
+    },
+    {
+      videoSrc: '/media/hero/hero-deck-04.mp4',
+      posterSrc: '/img/stock/hero/hero-sunset-teak-deck-04.jpg',
+      alt: 'Two wine glasses on a teak deck at sunset with anamorphic lens flare',
+    },
   ],
   eyebrow,
   headlinePrefix,
@@ -37,7 +54,9 @@ const {
   trustItems,
 } = Astro.props;
 
-const sceneDuration = 7;
+// Seedance renders are 5s; crossfade duration matches so each scene
+// plays once before fading to the next.
+const sceneDuration = 5.5;
 const totalDuration = sceneDuration * scenes.length;
 ---
 
@@ -49,22 +68,34 @@ const totalDuration = sceneDuration * scenes.length;
           class="hero-scene absolute inset-0 opacity-0"
           style={`--i: ${i}; --total: ${scenes.length}; --dur: ${totalDuration}s;`}
         >
-          <img
-            src={scene.src}
-            alt=""
-            loading={i === 0 ? 'eager' : 'lazy'}
-            decoding="async"
-            fetchpriority={i === 0 ? 'high' : 'auto'}
-            class="absolute inset-0 w-full h-full object-cover"
-          />
+          {scene.videoSrc ? (
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              preload={i === 0 ? 'auto' : 'metadata'}
+              poster={scene.posterSrc}
+              class="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src={scene.videoSrc} type="video/mp4" />
+            </video>
+          ) : (
+            <img
+              src={scene.posterSrc}
+              alt=""
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+              fetchpriority={i === 0 ? 'high' : 'auto'}
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          )}
         </div>
       ))
     }
-    {/* Editorial overlay — darker at the bottom for legibility, lighter top */}
     <div class="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/10 via-50% to-primary/90"></div>
   </div>
 
-  {/* Foreground content */}
   <div class="relative z-10 min-h-[100dvh] flex flex-col">
     <div class="flex-1 flex items-end pb-24 lg:pb-32 px-7 lg:px-14 pt-32">
       <div class="max-w-[1400px] w-full mx-auto">
@@ -112,7 +143,6 @@ const totalDuration = sceneDuration * scenes.length;
       </div>
     </div>
 
-    {/* Trust strip */}
     <div class="border-t border-bone/15 backdrop-blur-md bg-primary/30">
       <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-5 flex flex-wrap items-center gap-x-10 gap-y-3">
         {
@@ -129,7 +159,9 @@ const totalDuration = sceneDuration * scenes.length;
 </section>
 
 <style>
-  /* Crossfade keyframes — each scene visible ~25% of the cycle */
+  /* Crossfade: each scene fades in for ~10% of the cycle and out at the
+     end of its window. Scenes are staggered via animation-delay so they
+     play one at a time. */
   .hero-scene {
     animation: hero-fade var(--dur) infinite;
     animation-delay: calc(var(--i) * (var(--dur) / var(--total) * -1));
@@ -137,24 +169,14 @@ const totalDuration = sceneDuration * scenes.length;
   }
   @keyframes hero-fade {
     0% { opacity: 0; }
-    5% { opacity: 1; }
-    25% { opacity: 1; }
-    30% { opacity: 0; }
+    3% { opacity: 1; }
+    23% { opacity: 1; }
+    28% { opacity: 0; }
     100% { opacity: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
     .hero-scene { animation: none; }
     .hero-scene:first-child { opacity: 1; }
-  }
-  /* Hero img Ken Burns — independent of crossfade so motion stays even */
-  .hero-scene img {
-    animation: hero-zoom calc(var(--dur) / var(--total) * 2) ease-out infinite alternate;
-  }
-  @keyframes hero-zoom {
-    from { transform: scale(1); }
-    to { transform: scale(1.08); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-scene img { animation: none; }
+    .hero-scene video { display: none; }
   }
 </style>
