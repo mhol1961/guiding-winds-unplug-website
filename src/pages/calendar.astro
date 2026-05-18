@@ -78,7 +78,7 @@ const schemaGraph = [
   {/* Region filter — sticky */}
   <section class="bg-bone text-primary sticky top-20 z-10 backdrop-blur-md bg-bone/95 border-b border-rule">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-5 flex flex-wrap items-center gap-x-7 gap-y-3">
-      <span class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-primary/55">
+      <span class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-primary/70">
         Filter
       </span>
       {
@@ -88,7 +88,7 @@ const schemaGraph = [
             data-region-filter={r}
             class:list={[
               'cursor-pointer font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold transition-colors pb-1.5 border-b',
-              r === 'all' ? 'text-primary border-accent' : 'text-primary/55 border-transparent hover:text-primary',
+              r === 'all' ? 'text-primary border-accent' : 'text-primary/70 border-transparent hover:text-primary',
             ]}
             aria-pressed={r === 'all'}
           >
@@ -115,7 +115,7 @@ const schemaGraph = [
                   <img src={row.heroImage} alt={row.voyageName} loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]" />
                 </a>
                 <div class="col-span-9 sm:col-span-3">
-                  <p class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/55">
+                  <p class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/70">
                     {regionLabel[row.region]}
                   </p>
                   <p class="font-display text-[1.25rem] lg:text-[1.5rem] leading-[1.1] text-primary mt-1 group-hover:text-accent transition-colors" style="font-variation-settings: 'opsz' 36;">
@@ -135,7 +135,7 @@ const schemaGraph = [
                 </p>
                 <div class="col-span-3 sm:col-span-2 text-right">
                   {soldOut ? (
-                    <a href={`/inquire?voyage=${row.voyageSlug}`} class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/55 hover:text-accent transition-colors">
+                    <a href={`/inquire?voyage=${row.voyageSlug}`} class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70 hover:text-accent transition-colors">
                       Join waitlist
                     </a>
                   ) : (
@@ -153,7 +153,7 @@ const schemaGraph = [
         }
       </div>
 
-      <p id="empty-state" class="hidden text-center py-20 font-body-lg text-primary/55">
+      <p id="empty-state" class="hidden text-center py-20 font-body-lg text-primary/70">
         No weeks match this filter.
       </p>
     </div>
@@ -162,7 +162,7 @@ const schemaGraph = [
   {/* Fallback CTA */}
   <section class="bg-bone-deep/30 text-primary py-24 sm:py-32 border-t border-rule">
     <div class="max-w-[820px] mx-auto px-7 lg:px-0 text-center">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-5">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-5">
         Don't see the right week?
       </p>
       <h2
@@ -200,11 +200,11 @@ const schemaGraph = [
         const active = b === btn;
         b.setAttribute('aria-pressed', active ? 'true' : 'false');
         if (active) {
-          b.classList.remove('text-primary/55', 'border-transparent');
+          b.classList.remove('text-primary/70', 'border-transparent');
           b.classList.add('text-primary', 'border-accent');
         } else {
           b.classList.remove('text-primary', 'border-accent');
-          b.classList.add('text-primary/55', 'border-transparent');
+          b.classList.add('text-primary/70', 'border-transparent');
         }
       });
       let visibleCount = 0;

@@ -83,7 +83,7 @@ const rest = posts.slice(1);
   <section class="bg-bone text-primary py-6 border-b border-rule">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
       <nav aria-label="Category filter" class="flex flex-wrap items-center gap-x-8 gap-y-3">
-        <span class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-primary/55">
+        <span class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-primary/70">
           Browse
         </span>
         {
@@ -123,7 +123,7 @@ const rest = posts.slice(1);
             <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-primary/70 mt-6">
               {featured.data.excerpt}
             </p>
-            <p class="font-body-sm text-[0.875rem] text-primary/55 mt-6">
+            <p class="font-body-sm text-[0.875rem] text-primary/70 mt-6">
               <time datetime={featured.data.publishedAt.toISOString()}>
                 {featured.data.publishedAt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
               </time>{' '}
@@ -153,7 +153,7 @@ const rest = posts.slice(1);
   <section class="bg-bone text-primary py-20 lg:py-28">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
       {rest.length === 0 && (
-        <p class="font-body-lg text-primary/55 text-center py-20">
+        <p class="font-body-lg text-primary/70 text-center py-20">
           More posts arriving through Q3 2026.
         </p>
       )}
@@ -187,7 +187,7 @@ const rest = posts.slice(1);
               <p class="font-body-md text-[0.9375rem] leading-[1.55] text-primary/70 mb-4 text-balance">
                 {post.data.excerpt}
               </p>
-              <p class="font-body-sm text-[0.8125rem] text-primary/55 mt-auto">
+              <p class="font-body-sm text-[0.8125rem] text-primary/70 mt-auto">
                 <time datetime={post.data.publishedAt.toISOString()}>
                   {post.data.publishedAt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                 </time>{' '}

@@ -228,7 +228,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-20 sm:py-24">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <div class="lg:col-span-8">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-5">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-5">
             The voyage
           </p>
           <h2
@@ -245,7 +245,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
           {/* Inclusions / Exclusions split */}
           <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-10 border-t border-rule pt-12">
             <div>
-              <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mb-6">
+              <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/70 mb-6">
                 In the price
               </p>
               <ul class="space-y-3.5">
@@ -260,13 +260,13 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
               </ul>
             </div>
             <div>
-              <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mb-6">
+              <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/70 mb-6">
                 Not included
               </p>
               <ul class="space-y-3.5">
                 {
                   voyage.data.exclusions.map((item) => (
-                    <li class="flex items-start gap-3 font-body-md text-[1rem] text-primary/55">
+                    <li class="flex items-start gap-3 font-body-md text-[1rem] text-primary/70">
                       <X className="size-4 text-primary/40 shrink-0 mt-1" strokeWidth={2} />
                       {item}
                     </li>
@@ -333,7 +333,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
   {/* Cross-link siblings — image-led portrait cards on bone */}
   <section class="bg-bone text-primary border-t border-rule">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-20 sm:py-24">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-10">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-10">
         Or see another voyage
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
@@ -356,7 +356,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
                   {regionLabel[sibling.data.region]}
                 </span>
               </div>
-              <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/55">
+              <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70">
                 {sibling.data.nights} nights · From ${sibling.data.pricePerGuestUSD.toLocaleString()}
               </p>
               <h3 class="font-display text-[1.5rem] leading-[1.1] tracking-[-0.015em] font-normal mt-2 group-hover:text-accent transition-colors" style="font-variation-settings: 'opsz' 36;">

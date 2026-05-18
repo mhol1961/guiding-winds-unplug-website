@@ -6,8 +6,7 @@ import PageHero from '../../components/shared/PageHero.astro';
 import SectionInterrupt from '../../components/shared/SectionInterrupt.astro';
 
 const title = '2027 Voyages · BVI, Bahamas, Italy, Greece, Croatia | Guiding Winds';
-const description =
-  'Fourteen weeks aboard a private catamaran across the British Virgin Islands, Bahamas, and Mediterranean. Pick a region, pick a week, hold a cabin for 72 hours.';
+// Description is set after grandTotalWeeks is computed below.
 
 const voyages = await getCollection('voyages');
 
@@ -17,48 +16,83 @@ const regionLabel: Record<string, string> = {
   mediterranean: 'Mediterranean',
 };
 
-// Region theme map — drives the colored pill on each row, the divider
-// rule, the eyebrow on each region group, and the hover accent border.
-// Caribbean = sun-gold, Bahamas = coral (accent), Mediterranean = teal.
+// Region theme map — colors + season-blurb only. The month-range label
+// is DERIVED from the actual availableWeeks data below, so it can never
+// drift from inventory (Codex caught a contradiction where Caribbean
+// hardcoded "Jan – Mar" but BVI also had a November week).
 const regionTheme: Record<
   string,
   {
     label: string;
-    blurb: string;
+    seasonBlurb: string;
     pillBg: string;
     pillText: string;
     rule: string;
     accentBorder: string;
-    months: string;
   }
 > = {
   caribbean: {
     label: 'Caribbean',
-    blurb: 'January through March · trade-wind season',
+    seasonBlurb: 'trade-wind season',
     pillBg: 'bg-sun-deep',
     pillText: 'text-bone',
     rule: 'before:bg-sun-deep',
     accentBorder: 'group-hover:border-sun-deep',
-    months: 'Jan – Mar',
   },
   bahamas: {
     label: 'Bahamas',
-    blurb: 'April and May · shoulder season, glass mornings',
+    seasonBlurb: 'shoulder season, glass mornings',
     pillBg: 'bg-accent',
     pillText: 'text-bone',
     rule: 'before:bg-accent',
     accentBorder: 'group-hover:border-accent',
-    months: 'Apr – May',
   },
   mediterranean: {
     label: 'Mediterranean',
-    blurb: 'June through October · long blue evenings',
+    seasonBlurb: 'long blue evenings',
     pillBg: 'bg-teal-shadow',
     pillText: 'text-bone',
     rule: 'before:bg-teal-shadow',
     accentBorder: 'group-hover:border-teal-shadow',
-    months: 'Jun – Oct',
   },
+};
+
+// Derive a "Jan – Mar, Nov" style month range from the actual weeks in
+// a region. Groups consecutive months into runs; non-consecutive
+// months trail as comma-separated items.
+const monthShort = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+];
+function monthRangeFor(weeks: { start: string }[]): string {
+  if (weeks.length === 0) return '';
+  const months = new Set<number>();
+  for (const w of weeks) {
+    months.add(new Date(`${w.start}T12:00:00Z`).getUTCMonth());
+  }
+  const sortedMonths = [...months].sort((a, b) => a - b);
+  const runs: number[][] = [];
+  for (const m of sortedMonths) {
+    const last = runs[runs.length - 1];
+    if (last && last[last.length - 1] === m - 1) last.push(m);
+    else runs.push([m]);
+  }
+  return runs
+    .map((r) =>
+      r.length === 1
+        ? monthShort[r[0]]
+        : `${monthShort[r[0]]} – ${monthShort[r[r.length - 1]]}`,
+    )
+    .join(', ');
+}
+
+// "Fourteen" / "Fifteen" word forms for 2–20 — editorial preference
+// over digits in headline copy. Falls back to the digit for >20.
+const numberWord: Record<number, string> = {
+  2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five', 6: 'Six', 7: 'Seven',
+  8: 'Eight', 9: 'Nine', 10: 'Ten', 11: 'Eleven', 12: 'Twelve',
+  13: 'Thirteen', 14: 'Fourteen', 15: 'Fifteen', 16: 'Sixteen',
+  17: 'Seventeen', 18: 'Eighteen', 19: 'Nineteen', 20: 'Twenty',
 };
 
 const order: Record<string, number> = { caribbean: 0, bahamas: 1, mediterranean: 2 };
@@ -144,11 +178,13 @@ const regionGroups: RegionGroup[] = regionKeys.map((key) => {
   );
 
   const theme = regionTheme[key];
+  const allRegionWeeks = voyageGroups.flatMap((vg) => vg.weeks);
+  const months = monthRangeFor(allRegionWeeks);
   return {
     key,
     label: theme.label,
-    blurb: theme.blurb,
-    months: theme.months,
+    blurb: months ? `${months} · ${theme.seasonBlurb}` : theme.seasonBlurb,
+    months,
     pillBg: theme.pillBg,
     pillText: theme.pillText,
     rule: theme.rule,
@@ -161,6 +197,16 @@ const regionGroups: RegionGroup[] = regionKeys.map((key) => {
 
 const grandTotalWeeks = regionGroups.reduce((s, r) => s + r.totalWeeks, 0);
 const grandTotalCabins = regionGroups.reduce((s, r) => s + r.totalCabins, 0);
+const grandTotalWeeksWord = numberWord[grandTotalWeeks] ?? String(grandTotalWeeks);
+const description = `${grandTotalWeeksWord} weeks aboard a private catamaran across the British Virgin Islands, Bahamas, and Mediterranean. Pick a region, pick a week, hold a cabin for 72 hours.`;
+
+// Hero subline assembled from per-region derived month ranges so it
+// stays in sync with inventory regardless of week edits.
+const heroSubline = regionGroups
+  .filter((r) => r.totalWeeks > 0)
+  .map((r) => `${r.label} ${r.months}.`)
+  .join(' ') +
+  ' We sail every week ourselves — Clint at the helm, Dodie running the galley. Eight cabins, twelve guests, no crowds at anchor.';
 
 function formatWeek(start: string, end: string) {
   const s = new Date(`${start}T12:00:00Z`);
@@ -208,9 +254,9 @@ const schemaGraph = [
   <PageHero
     eyebrow="Voyages · 2027"
     headlinePrefix="Three regions."
-    headlineEmphasis="Fourteen weeks."
+    headlineEmphasis={`${grandTotalWeeksWord} weeks.`}
     headlineSuffix="One boat."
-    subline="Caribbean January through March. Bahamas April and May. Mediterranean June through October. We sail every week ourselves — Clint at the helm, Dodie running the galley. Eight cabins, twelve guests, no crowds at anchor."
+    subline={heroSubline}
     heroImage="/img/stock/hero/hero-sunset-teak-deck-04.jpg"
     heroImageAlt="Sunset over a teak boat deck with the horizon line glowing gold"
   />
@@ -250,7 +296,7 @@ const schemaGraph = [
                     {totalCabins} cabins · {weeks} {weeks === 1 ? 'wk' : 'wks'}
                   </span>
                 </div>
-                <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/55">
+                <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70">
                   {voyage.data.nights} nights · {voyage.data.country}
                 </p>
                 <h2
@@ -299,7 +345,7 @@ const schemaGraph = [
       {/* Section header */}
       <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
         <div class="max-w-3xl">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-primary/55 mb-4">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-primary/70 mb-4">
             The full 2027 calendar
           </p>
           <h2
@@ -320,7 +366,7 @@ const schemaGraph = [
             <p class="font-display text-[2.5rem] leading-none text-primary tabular-nums" style="font-variation-settings: 'opsz' 96;">
               {grandTotalWeeks}
             </p>
-            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mt-2">
+            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/70 mt-2">
               Weeks
             </p>
           </div>
@@ -329,7 +375,7 @@ const schemaGraph = [
             <p class="font-display text-[2.5rem] leading-none text-primary tabular-nums" style="font-variation-settings: 'opsz' 96;">
               {grandTotalCabins}
             </p>
-            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mt-2">
+            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/70 mt-2">
               Cabins open
             </p>
           </div>
@@ -360,7 +406,7 @@ const schemaGraph = [
                       {region.blurb}
                     </p>
                   </div>
-                  <div class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 tabular-nums lg:pb-2">
+                  <div class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/70 tabular-nums lg:pb-2">
                     {region.totalWeeks} {region.totalWeeks === 1 ? 'week' : 'weeks'} · {region.totalCabins} cabins
                   </div>
                 </div>
@@ -378,7 +424,7 @@ const schemaGraph = [
                           >
                             {voyage.name}
                           </h4>
-                          <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mt-2">
+                          <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/70 mt-2">
                             {voyage.country} · {voyage.nights} nights · From ${voyage.price.toLocaleString()}
                           </p>
                         </div>
@@ -401,12 +447,20 @@ const schemaGraph = [
                           const soldOut = week.cabinsAvailable === 0;
                           const low = !soldOut && week.cabinsAvailable < 3;
                           const rowBg = idx % 2 === 0 ? 'bg-bone' : 'bg-paper';
+                          // Sold-out rows render as a plain <div>, not an <a> —
+                          // pointer-events-none alone left them keyboard-
+                          // activatable (Codex flagged the inaccessible disabled
+                          // state). Bookable rows stay as anchors with all
+                          // hover/focus affordances.
+                          const RowTag = (soldOut ? 'div' : 'a') as 'a';
+                          const rowProps = soldOut
+                            ? ({ 'aria-disabled': 'true', role: 'group' } as const)
+                            : ({ href: `/voyages/${voyage.slug}` } as const);
                           return (
                             <li>
-                              <a
-                                href={`/voyages/${voyage.slug}`}
-                                aria-disabled={soldOut}
-                                class={`group grid grid-cols-12 gap-4 items-center px-5 lg:px-7 py-5 lg:py-6 ${rowBg} border-l-2 border-transparent ${soldOut ? 'opacity-60 cursor-default pointer-events-none' : `hover:bg-bone-deep/40 ${region.accentBorder} transition-all duration-300`} focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2`}
+                              <RowTag
+                                {...rowProps}
+                                class={`group grid grid-cols-12 gap-4 items-center px-5 lg:px-7 py-5 lg:py-6 ${rowBg} border-l-2 border-transparent ${soldOut ? 'opacity-60 cursor-default' : `hover:bg-bone-deep/40 ${region.accentBorder} transition-all duration-300`} focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2`}
                               >
                                 {/* Region pill (small) */}
                                 <div class="col-span-12 sm:col-span-2 order-1">
@@ -480,7 +534,7 @@ const schemaGraph = [
                                     </svg>
                                   )}
                                 </div>
-                              </a>
+                              </RowTag>
                             </li>
                           );
                         })}
