@@ -35,10 +35,16 @@ const headlineSize = compact
 ---
 
 <section class={`relative bg-primary text-ink overflow-hidden ${minH} flex flex-col`}>
+  {/* Hero image with a slow Ken Burns drift — 24s zoom-in + tiny diagonal
+       pan, alternating reverse on the next loop so it never snaps back to
+       the start. Tranquil, barely-perceptible, anchored by the bottom-left
+       so the overlay headline area stays visually stable. The animation
+       opt-out from global.css's prefers-reduced-motion rule applies
+       automatically. */}
   <img
     src={heroImage}
     alt={heroImageAlt}
-    class="absolute inset-0 w-full h-full object-cover"
+    class="absolute inset-0 w-full h-full object-cover hero-kenburns origin-bottom-left will-change-transform"
     fetchpriority="high"
     decoding="async"
   />

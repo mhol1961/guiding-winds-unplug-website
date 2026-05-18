@@ -141,3 +141,22 @@
   opacity: 0;
   animation: card-rise 600ms ease-out forwards;
 }
+
+/* Hero Ken Burns — slow tranquil drift on full-bleed photo heroes.
+   24s zoom (1.0 -> 1.08) + tiny diagonal pan, alternates direction on
+   each iteration so the photo never snaps back. Anchored bottom-left
+   via origin-bottom-left utility on the consuming element so the
+   overlay headline column stays visually stable. The
+   prefers-reduced-motion guard above neutralizes this automatically. */
+@keyframes hero-kenburns {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.08) translate3d(-1.5%, -1%, 0);
+  }
+}
+
+.hero-kenburns {
+  animation: hero-kenburns 24s ease-in-out infinite alternate;
+}
