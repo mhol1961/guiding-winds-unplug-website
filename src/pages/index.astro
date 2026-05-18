@@ -64,13 +64,15 @@ const schemaGraph = [
       '8 Cabins · 12 Guests',
     ]}
   />
-  {/* Section rhythm: dark hero → bone feeling → bone picker → DARK
-       logbook quote (image-led interrupt) → bone explore → bone-deep
-       testimonials → DARK mid-CTA (conversion interrupt with social
-       proof) → bone press strip → DARK Megatype (brand promise) → bone
-       about → bone pillars → bone GoBlock finale. Four dark interrupts
-       across twelve sections — visitor's eye never rests on bone for
-       more than two sections in a row. */}
+  {/* Section rhythm (Stage 5 — alternation pass): dark hero → bone
+       Feeling → teal interrupt → paper Picker → DARK LogbookQuote
+       photo interrupt → bone ExploreCards → bone-deep TestimonialRow
+       → dark stat interrupt → paper MidCta → bone PressStrip →
+       DARK Megatype (the brand-promise centerpiece) → teal interrupt
+       → paper AboutSplit → bone TrustPillars → light-TEAL GoBlock
+       finale → dark footer. No two adjacent sections share the same
+       surface. Inspired by Black Tomato + Inspirato section-bg
+       cadence. */}
   <Feeling />
   <SectionInterrupt
     variant="teal"
@@ -80,15 +82,6 @@ const schemaGraph = [
     body="Seven nights at anchor, mooring to mooring, on a schedule the wind writes."
   />
   <Picker />
-  <SectionInterrupt
-    variant="photo"
-    image="/img/source/hero/02-sunset-catamaran-anchorage.jpg"
-    imageAlt="Catamaran at anchor in a quiet cove, golden hour, hills in soft silhouette beyond the rigging."
-    eyebrow="The week at anchor"
-    headline="Sunset is a place"
-    headlineItalic="you sail to."
-    photoAlign="left"
-  />
   <LogbookQuote />
   <ExploreCards />
   <TestimonialRow />

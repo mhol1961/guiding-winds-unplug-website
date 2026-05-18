@@ -86,3 +86,24 @@
     }
   }
 }
+
+/* Premium card stagger reveal — used by aboard.astro "In the price"
+   cards on the dark surface-warm panel. Cards start translated down 8px
+   and faded out, slide up + fade in over 600ms. Stagger applied per-card
+   via inline animation-delay. Reduced-motion guard above neutralizes
+   this automatically (animation-duration becomes 0.001ms). */
+@keyframes card-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-rise {
+  opacity: 0;
+  animation: card-rise 600ms ease-out forwards;
+}

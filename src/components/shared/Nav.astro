@@ -16,6 +16,14 @@ interface Props {
   transparent?: boolean;
 }
 const { transparent = false } = Astro.props;
+
+// Current-page detection for visible active state. Compare path prefix so
+// /voyages, /voyages/bahamas, and /voyages/italy all light "Voyages".
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath === href || currentPath.startsWith(href + '/');
+}
 ---
 
 <header
@@ -39,14 +47,23 @@ const { transparent = false } = Astro.props;
 
     <nav class="hidden md:flex items-center gap-9" aria-label="Primary">
       {
-        links.map((link) => (
-          <a
-            href={link.href}
-            class="font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold opacity-80 hover:opacity-100 hover:text-accent transition-all"
-          >
-            {link.label}
-          </a>
-        ))
+        links.map((link) => {
+          const active = isActive(link.href);
+          return (
+            <a
+              href={link.href}
+              aria-current={active ? 'page' : undefined}
+              class:list={[
+                'relative font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold pb-1 hover:text-accent transition-all',
+                active
+                  ? 'opacity-100 border-b-2 border-accent text-accent'
+                  : 'opacity-80 hover:opacity-100',
+              ]}
+            >
+              {link.label}
+            </a>
+          );
+        })
       }
     </nav>
 
@@ -103,16 +120,23 @@ const { transparent = false } = Astro.props;
     </div>
     <nav class="flex flex-col gap-7" aria-label="Mobile primary">
       {
-        links.map((link) => (
-          <a
-            href={link.href}
-            data-mobile-menu-link
-            class="font-display text-[2rem] leading-[1.05] tracking-[-0.02em] hover:text-accent transition-colors"
-            style="font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
-          >
-            {link.label}
-          </a>
-        ))
+        links.map((link) => {
+          const active = isActive(link.href);
+          return (
+            <a
+              href={link.href}
+              aria-current={active ? 'page' : undefined}
+              data-mobile-menu-link
+              class:list={[
+                'font-display text-[2rem] leading-[1.05] tracking-[-0.02em] hover:text-accent transition-colors',
+                active && 'text-accent',
+              ]}
+              style="font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+            >
+              {link.label}
+            </a>
+          );
+        })
       }
     </nav>
     <div class="mt-auto pt-10">

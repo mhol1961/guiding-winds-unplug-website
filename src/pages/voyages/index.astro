@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { Fragment } from 'astro/jsx-runtime';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/shared/PageHero.astro';
 import SectionInterrupt from '../../components/shared/SectionInterrupt.astro';
@@ -10,35 +11,174 @@ const description =
 
 const voyages = await getCollection('voyages');
 
-const allWeeks = voyages
-  .flatMap((v) =>
-    v.data.availableWeeks.map((w) => ({
-      voyageSlug: v.data.slug,
-      voyageName: v.data.name,
-      region: v.data.region,
-      price: v.data.pricePerGuestUSD,
-      start: w.start,
-      end: w.end,
-      cabinsAvailable: w.cabinsAvailable,
-    })),
-  )
-  .sort((a, b) => a.start.localeCompare(b.start));
-
 const regionLabel: Record<string, string> = {
   caribbean: 'Caribbean',
   bahamas: 'Bahamas',
   mediterranean: 'Mediterranean',
 };
 
+// Region theme map — drives the colored pill on each row, the divider
+// rule, the eyebrow on each region group, and the hover accent border.
+// Caribbean = sun-gold, Bahamas = coral (accent), Mediterranean = teal.
+const regionTheme: Record<
+  string,
+  {
+    label: string;
+    blurb: string;
+    pillBg: string;
+    pillText: string;
+    rule: string;
+    accentBorder: string;
+    months: string;
+  }
+> = {
+  caribbean: {
+    label: 'Caribbean',
+    blurb: 'January through March · trade-wind season',
+    pillBg: 'bg-sun-deep',
+    pillText: 'text-bone',
+    rule: 'before:bg-sun-deep',
+    accentBorder: 'group-hover:border-sun-deep',
+    months: 'Jan – Mar',
+  },
+  bahamas: {
+    label: 'Bahamas',
+    blurb: 'April and May · shoulder season, glass mornings',
+    pillBg: 'bg-accent',
+    pillText: 'text-bone',
+    rule: 'before:bg-accent',
+    accentBorder: 'group-hover:border-accent',
+    months: 'Apr – May',
+  },
+  mediterranean: {
+    label: 'Mediterranean',
+    blurb: 'June through October · long blue evenings',
+    pillBg: 'bg-teal-shadow',
+    pillText: 'text-bone',
+    rule: 'before:bg-teal-shadow',
+    accentBorder: 'group-hover:border-teal-shadow',
+    months: 'Jun – Oct',
+  },
+};
+
 const order: Record<string, number> = { caribbean: 0, bahamas: 1, mediterranean: 2 };
 const sorted = voyages.sort((a, b) => order[a.data.region] - order[b.data.region]);
+
+// Build grouped structure: region -> voyages -> weeks
+// Each row is one available week, attached to its voyage and region. Rows
+// inside a voyage are sorted by start date. Voyages inside a region are
+// sorted by their earliest available week so the timeline reads naturally.
+type WeekRow = {
+  voyageSlug: string;
+  voyageName: string;
+  country: string;
+  nights: number;
+  price: number;
+  start: string;
+  end: string;
+  cabinsAvailable: number;
+};
+
+type VoyageGroup = {
+  slug: string;
+  name: string;
+  country: string;
+  nights: number;
+  price: number;
+  weeks: WeekRow[];
+};
+
+type RegionGroup = {
+  key: string;
+  label: string;
+  blurb: string;
+  months: string;
+  pillBg: string;
+  pillText: string;
+  rule: string;
+  accentBorder: string;
+  voyages: VoyageGroup[];
+  totalWeeks: number;
+  totalCabins: number;
+};
+
+const regionKeys: Array<'caribbean' | 'bahamas' | 'mediterranean'> = [
+  'caribbean',
+  'bahamas',
+  'mediterranean',
+];
+
+const regionGroups: RegionGroup[] = regionKeys.map((key) => {
+  const voyagesInRegion = voyages.filter((v) => v.data.region === key);
+
+  const voyageGroups: VoyageGroup[] = voyagesInRegion
+    .map((v) => {
+      const weeks: WeekRow[] = v.data.availableWeeks
+        .map((w) => ({
+          voyageSlug: v.data.slug,
+          voyageName: v.data.name,
+          country: v.data.country,
+          nights: v.data.nights,
+          price: v.data.pricePerGuestUSD,
+          start: w.start,
+          end: w.end,
+          cabinsAvailable: w.cabinsAvailable,
+        }))
+        .sort((a, b) => a.start.localeCompare(b.start));
+      return {
+        slug: v.data.slug,
+        name: v.data.name,
+        country: v.data.country,
+        nights: v.data.nights,
+        price: v.data.pricePerGuestUSD,
+        weeks,
+      };
+    })
+    // Sort voyages inside a region by earliest week
+    .sort((a, b) => (a.weeks[0]?.start ?? '').localeCompare(b.weeks[0]?.start ?? ''));
+
+  const totalWeeks = voyageGroups.reduce((sum, vg) => sum + vg.weeks.length, 0);
+  const totalCabins = voyageGroups.reduce(
+    (sum, vg) => sum + vg.weeks.reduce((s, w) => s + w.cabinsAvailable, 0),
+    0,
+  );
+
+  const theme = regionTheme[key];
+  return {
+    key,
+    label: theme.label,
+    blurb: theme.blurb,
+    months: theme.months,
+    pillBg: theme.pillBg,
+    pillText: theme.pillText,
+    rule: theme.rule,
+    accentBorder: theme.accentBorder,
+    voyages: voyageGroups,
+    totalWeeks,
+    totalCabins,
+  };
+});
+
+const grandTotalWeeks = regionGroups.reduce((s, r) => s + r.totalWeeks, 0);
+const grandTotalCabins = regionGroups.reduce((s, r) => s + r.totalCabins, 0);
 
 function formatWeek(start: string, end: string) {
   const s = new Date(`${start}T12:00:00Z`);
   const e = new Date(`${end}T12:00:00Z`);
-  const fmt = (d: Date) =>
-    d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
-  return `${fmt(s)} – ${fmt(e)}, ${s.getUTCFullYear()}`;
+  const sameMonth = s.getUTCMonth() === e.getUTCMonth();
+  const monthFmt = (d: Date) =>
+    d.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
+  const dayFmt = (d: Date) =>
+    d.toLocaleDateString('en-US', { day: 'numeric', timeZone: 'UTC' });
+  if (sameMonth) {
+    return `${monthFmt(s)} ${dayFmt(s)}–${dayFmt(e)}`;
+  }
+  return `${monthFmt(s)} ${dayFmt(s)} – ${monthFmt(e)} ${dayFmt(e)}`;
+}
+
+function weekdayLabel(start: string) {
+  const s = new Date(`${start}T12:00:00Z`);
+  return s.toLocaleDateString('en-US', { weekday: 'short', timeZone: 'UTC' });
 }
 
 const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
@@ -75,8 +215,11 @@ const schemaGraph = [
     heroImageAlt="Sunset over a teak boat deck with the horizon line glowing gold"
   />
 
-  {/* Voyage card grid — portrait 9:16, magazine-cover style */}
-  <section class="bg-bone text-primary py-24 sm:py-32">
+  {/* Voyage card grid — portrait 9:16, magazine-cover style.
+      Stage 4 bg switch: bg-bone -> bg-paper. Cuts the wall-of-tan effect
+      and lets the calendar section below (also paper-family but warmer)
+      step down naturally. */}
+  <section class="bg-paper text-primary py-24 sm:py-32">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 lg:gap-6">
         {
@@ -145,58 +288,255 @@ const schemaGraph = [
     ctaHref="/calendar"
   />
 
-  {/* Full 2027 calendar */}
-  <section class="bg-bone text-primary py-24 border-t border-rule">
+  {/* Full 2027 calendar — premium destination-list treatment.
+      Stage 4 rebuild per owner direction: was a long flat list on bone that
+      interleaved regions. Now grouped by region with colored pills, row-
+      level alternation (bone <-> paper), hover lift, and explicit sold-out
+      states. Black-Tomato / Inspirato adjacency: each row is a destination
+      object, not a CSV cell. */}
+  <section class="bg-bone text-primary py-24 sm:py-32 border-t border-rule">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
-      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-        <h2
-          class="font-display font-light leading-[1.05] tracking-[-0.025em]"
-          style="font-size: clamp(1.875rem, 3vw + 1rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
-        >
-          The full 2027 calendar.
-        </h2>
-        <p class="font-body-md text-[1rem] text-primary/65">
-          {allWeeks.length} weeks · {allWeeks.reduce((sum, w) => sum + w.cabinsAvailable, 0)} cabins available
-        </p>
+      {/* Section header */}
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+        <div class="max-w-3xl">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-primary/55 mb-4">
+            The full 2027 calendar
+          </p>
+          <h2
+            class="font-display font-light leading-[1.02] tracking-[-0.025em] text-balance"
+            style="font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
+          >
+            Every week, every region.
+            <span
+              class="italic font-normal"
+              style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;"
+            >
+              One catamaran.
+            </span>
+          </h2>
+        </div>
+        <div class="flex items-center gap-8 lg:pb-3 shrink-0">
+          <div>
+            <p class="font-display text-[2.5rem] leading-none text-primary tabular-nums" style="font-variation-settings: 'opsz' 96;">
+              {grandTotalWeeks}
+            </p>
+            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mt-2">
+              Weeks
+            </p>
+          </div>
+          <div class="w-px h-12 bg-rule" aria-hidden="true"></div>
+          <div>
+            <p class="font-display text-[2.5rem] leading-none text-primary tabular-nums" style="font-variation-settings: 'opsz' 96;">
+              {grandTotalCabins}
+            </p>
+            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mt-2">
+              Cabins open
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div class="border-t border-rule">
+      {/* Region groups */}
+      <div class="space-y-20 lg:space-y-24">
         {
-          allWeeks.map((week) => (
-            <a
-              href={`/voyages/${week.voyageSlug}`}
-              class="group grid grid-cols-12 gap-4 items-baseline py-6 border-b border-rule hover:bg-bone-deep/30 transition-colors px-3 -mx-3 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
-            >
-              <div class="col-span-12 sm:col-span-3">
-                <p class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-primary/55">
-                  {regionLabel[week.region]}
-                </p>
-                <p class="font-display text-[1.125rem] text-primary mt-1 group-hover:text-accent transition-colors" style="font-variation-settings: 'opsz' 36;">
-                  {week.voyageName}
-                </p>
+          regionGroups.map((region) => (
+            <div class="relative">
+              {/* Region header — colored top rule + label + meta */}
+              <div class={`relative pt-10 before:absolute before:top-0 before:left-0 before:h-[3px] before:w-16 ${region.rule}`}>
+                <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-10">
+                  <div>
+                    <span
+                      class={`inline-flex items-center font-label-caps uppercase tracking-[0.26em] text-[0.625rem] font-semibold px-3 py-1.5 ${region.pillBg} ${region.pillText} mb-4`}
+                    >
+                      {region.label} · {region.months}
+                    </span>
+                    <h3
+                      class="font-display font-light leading-[1.05] tracking-[-0.02em]"
+                      style="font-size: clamp(1.75rem, 2.5vw + 0.75rem, 2.25rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
+                    >
+                      {region.label}.
+                    </h3>
+                    <p class="font-body-md text-[1rem] text-primary/65 mt-2 leading-[1.5]">
+                      {region.blurb}
+                    </p>
+                  </div>
+                  <div class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 tabular-nums lg:pb-2">
+                    {region.totalWeeks} {region.totalWeeks === 1 ? 'week' : 'weeks'} · {region.totalCabins} cabins
+                  </div>
+                </div>
+
+                {/* Voyage subgroups inside the region */}
+                <div class="space-y-12">
+                  {region.voyages.map((voyage) => (
+                    <div>
+                      {/* Voyage subheader */}
+                      <div class="flex items-end justify-between gap-6 mb-4 pb-4 border-b border-rule">
+                        <div>
+                          <h4
+                            class="font-display text-[1.5rem] leading-[1.1] tracking-[-0.015em] text-primary"
+                            style="font-variation-settings: 'opsz' 48, 'SOFT' 30;"
+                          >
+                            {voyage.name}
+                          </h4>
+                          <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/55 mt-2">
+                            {voyage.country} · {voyage.nights} nights · From ${voyage.price.toLocaleString()}
+                          </p>
+                        </div>
+                        <a
+                          href={`/voyages/${voyage.slug}`}
+                          class="hidden sm:inline-flex items-center gap-2 font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-accent hover:gap-3 transition-all whitespace-nowrap shrink-0"
+                        >
+                          Voyage detail
+                          <svg viewBox="0 0 16 16" class="size-3" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                        </a>
+                      </div>
+
+                      {/* Week rows — alternating bg-bone / bg-paper.
+                          Each is a link to the voyage detail. Hover lifts
+                          a region-colored left border and shifts the arrow. */}
+                      <ul class="divide-y divide-rule/60">
+                        {voyage.weeks.map((week, idx) => {
+                          const soldOut = week.cabinsAvailable === 0;
+                          const low = !soldOut && week.cabinsAvailable < 3;
+                          const rowBg = idx % 2 === 0 ? 'bg-bone' : 'bg-paper';
+                          return (
+                            <li>
+                              <a
+                                href={`/voyages/${voyage.slug}`}
+                                aria-disabled={soldOut}
+                                class={`group grid grid-cols-12 gap-4 items-center px-5 lg:px-7 py-5 lg:py-6 ${rowBg} border-l-2 border-transparent ${soldOut ? 'opacity-60 cursor-default pointer-events-none' : `hover:bg-bone-deep/40 ${region.accentBorder} transition-all duration-300`} focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2`}
+                              >
+                                {/* Region pill (small) */}
+                                <div class="col-span-12 sm:col-span-2 order-1">
+                                  <span
+                                    class={`inline-flex font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold px-2 py-1 ${region.pillBg} ${region.pillText}`}
+                                  >
+                                    {region.label}
+                                  </span>
+                                </div>
+
+                                {/* Date — primary content */}
+                                <div class="col-span-7 sm:col-span-4 order-2">
+                                  <p
+                                    class={`font-display text-[1.25rem] lg:text-[1.375rem] leading-[1.1] tabular-nums text-primary ${soldOut ? 'line-through decoration-1' : 'group-hover:text-accent transition-colors'}`}
+                                    style="font-variation-settings: 'opsz' 36, 'SOFT' 30;"
+                                  >
+                                    {formatWeek(week.start, week.end)}
+                                  </p>
+                                  <p class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/50 mt-1.5 tabular-nums">
+                                    {weekdayLabel(week.start)} → {weekdayLabel(week.end)} · {voyage.nights} nights
+                                  </p>
+                                </div>
+
+                                {/* Price */}
+                                <div class="hidden sm:block sm:col-span-2 order-3">
+                                  <p class="font-body-md text-[0.9375rem] text-primary/70 tabular-nums">
+                                    ${week.price.toLocaleString()}
+                                  </p>
+                                  <p class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/45 mt-1">
+                                    per guest
+                                  </p>
+                                </div>
+
+                                {/* Cabin status */}
+                                <div class="col-span-4 sm:col-span-3 order-4 flex items-center gap-2 justify-end sm:justify-start">
+                                  <span
+                                    class={`inline-flex items-center font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold tabular-nums ${
+                                      soldOut
+                                        ? 'text-primary/45 border border-rule px-2 py-1'
+                                        : low
+                                          ? 'text-accent'
+                                          : 'text-primary/65'
+                                    }`}
+                                  >
+                                    {soldOut ? (
+                                      <Fragment>Held / Sold out</Fragment>
+                                    ) : (
+                                      <Fragment>
+                                        <span
+                                          class={`inline-block size-1.5 rounded-full mr-2 ${low ? 'bg-accent' : 'bg-sun-deep/80'}`}
+                                          aria-hidden="true"
+                                        ></span>
+                                        {week.cabinsAvailable} of 8 cabins{low ? ' · low' : ''}
+                                      </Fragment>
+                                    )}
+                                  </span>
+                                </div>
+
+                                {/* Arrow — slides right on hover */}
+                                <div class="col-span-1 order-5 flex justify-end">
+                                  {!soldOut && (
+                                    <svg
+                                      viewBox="0 0 24 24"
+                                      class="size-4 text-primary/40 group-hover:text-accent group-hover:translate-x-1 transition-all duration-300"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      stroke-width="1.75"
+                                      aria-hidden="true"
+                                    >
+                                      <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                  )}
+                                </div>
+                              </a>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <p class="col-span-6 sm:col-span-4 font-body-md text-[1rem] text-primary/70 tabular-nums">
-                {formatWeek(week.start, week.end)}
-              </p>
-              <p class="hidden sm:block sm:col-span-2 font-body-md text-[1rem] text-primary/70 tabular-nums">
-                ${week.price.toLocaleString()}
-              </p>
-              <p class="col-span-6 sm:col-span-3 text-right font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold tabular-nums">
-                <span
-                  class:list={[
-                    week.cabinsAvailable === 0
-                      ? 'text-primary/40'
-                      : week.cabinsAvailable <= 2
-                        ? 'text-accent'
-                        : 'text-primary/65',
-                  ]}
-                >
-                  {week.cabinsAvailable === 0 ? 'Sold out' : `${week.cabinsAvailable} cabins`}
-                </span>
-              </p>
-            </a>
+            </div>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  {/* Pre-footer CTA — light teal panel so the page doesn't dump straight
+      from bone into the near-black footer. Replaces the "dark slab" feel
+      Mark called out. */}
+  <section class="bg-teal-soft text-primary py-24 sm:py-28 border-t border-teal-shadow/15">
+    <div class="max-w-[1100px] mx-auto px-7 lg:px-14 text-center">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-teal-shadow mb-5">
+        Hold a cabin
+      </p>
+      <h2
+        class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance text-primary"
+        style="font-size: clamp(2rem, 3.5vw + 1rem, 3rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
+      >
+        Found your week?
+        <span
+          class="italic font-normal"
+          style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;"
+        >
+          Hold it for seventy-two hours.
+        </span>
+      </h2>
+      <p class="font-body-lg text-[1.0625rem] text-primary/75 mt-6 leading-[1.6] max-w-2xl mx-auto">
+        No deposit yet. We block the cabin, send the itinerary and the prep
+        notes, and you decide before the hold expires. Most guests confirm
+        inside a day.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/inquire"
+          class="inline-flex items-center gap-3 bg-primary text-bone font-label-caps uppercase tracking-[0.24em] text-[0.6875rem] font-semibold px-7 py-4 hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+        >
+          Hold a cabin
+          <svg viewBox="0 0 16 16" class="size-3" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a
+          href="/aboard"
+          class="inline-flex items-center gap-3 text-primary border-b border-primary/40 hover:border-primary font-label-caps uppercase tracking-[0.24em] text-[0.6875rem] font-semibold pb-1 transition-colors"
+        >
+          See what's aboard
+        </a>
       </div>
     </div>
   </section>

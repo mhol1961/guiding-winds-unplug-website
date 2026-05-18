@@ -104,15 +104,20 @@ const notIncluded = [
     </div>
   </section>
 
-  {/* 8-icon inclusion grid — hairline-divided, bone bg */}
-  <section class="bg-bone text-primary py-24 sm:py-32 border-t border-rule">
+  {/* 8-icon inclusion grid — PREMIUM treatment.
+       Section sits on dark surface-warm so the cream cards POP with
+       editorial contrast. Each card has a soft sun-gold backlit shadow
+       on hover, gradient border shift, gentle lift, and a staggered
+       on-load rise animation. Defined in global.css (@keyframes card-rise)
+       so the reduced-motion guard neutralizes it automatically. */}
+  <section class="bg-surface-warm text-ink py-28 lg:py-36 border-t border-hairline">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
-      <div class="mb-16 max-w-3xl">
-        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-5">
+      <div class="mb-16 lg:mb-20 max-w-3xl">
+        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun mb-5">
           In the price
         </p>
         <h2
-          class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
+          class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance text-ink"
           style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
         >
           Eight things you don't pay for again,
@@ -121,11 +126,17 @@ const notIncluded = [
           </span>
         </h2>
       </div>
-      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-rule border-y border-rule">
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
         {
-          included.map(({ Icon, label, body }) => (
-            <li class="p-7 lg:p-8 flex flex-col">
-              <Icon className="size-5 text-sun mb-5" strokeWidth={1.5} />
+          included.map(({ Icon, label, body }, i) => (
+            <li
+              class="card-rise group bg-bone text-primary border border-bone-deep/40 p-7 lg:p-8 flex flex-col transition-all duration-300 ease-out hover:-translate-y-1 hover:border-sun hover:bg-card-lift hover:shadow-[0_8px_32px_rgba(232,163,64,0.15)] focus-within:-translate-y-1 focus-within:border-sun focus-within:bg-card-lift focus-within:shadow-[0_8px_32px_rgba(232,163,64,0.15)]"
+              style={`animation-delay: ${i * 80}ms;`}
+            >
+              <Icon
+                className="size-5 text-sun mb-5 transition-colors duration-300 ease-out group-hover:text-accent group-focus-within:text-accent"
+                strokeWidth={1.5}
+              />
               <p class="font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold text-primary mb-3">
                 {label}
               </p>
@@ -137,15 +148,19 @@ const notIncluded = [
     </div>
   </section>
 
-  {/* The boat — 4 image-led sections, alternating left/right */}
-  <section class="bg-bone text-primary py-24 sm:py-32 border-t border-rule">
+  {/* The boat — 4 image-led sections, alternating left/right.
+       Mark's pick: bg-teal-shadow as the page's chapter break — the
+       editorial centerpiece. Text colors shift to ink-on-teal. Photo
+       containers keep a subtle bone wash so images don't bleed into
+       the teal. */}
+  <section class="bg-teal-shadow text-ink py-24 sm:py-32 border-t border-hairline">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
       <div class="mb-16 max-w-3xl">
-        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-5">
+        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun mb-5">
           The boat
         </p>
         <h2
-          class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
+          class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance text-ink"
           style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
         >
           A Lagoon 50.
@@ -159,21 +174,21 @@ const notIncluded = [
           boatAreas.map((area, i) => (
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
               <div class={`lg:col-span-7 ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
-                <figure class="relative aspect-[17/10] overflow-hidden bg-primary/5">
+                <figure class="relative aspect-[17/10] overflow-hidden bg-bone/10 ring-1 ring-ink/10">
                   <img src={area.img} alt={area.alt} loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" />
                 </figure>
               </div>
               <div class={`lg:col-span-5 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-sun-deep mb-4">
+                <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-sun mb-4">
                   Plate 0{i + 1} · {area.label}
                 </p>
                 <h3
-                  class="font-display text-[1.75rem] leading-[1.15] tracking-[-0.015em] font-normal mb-4"
+                  class="font-display text-[1.75rem] leading-[1.15] tracking-[-0.015em] font-normal mb-4 text-ink"
                   style="font-variation-settings: 'opsz' 36;"
                 >
                   {area.label}
                 </h3>
-                <p class="font-body-lg text-[1.0625rem] leading-[1.7] text-primary/75 text-balance">
+                <p class="font-body-lg text-[1.0625rem] leading-[1.7] text-ink/85 text-balance">
                   {area.body}
                 </p>
               </div>
@@ -184,8 +199,11 @@ const notIncluded = [
     </div>
   </section>
 
-  {/* What's NOT included — numbered list on bone-deep accent panel */}
-  <section class="bg-bone-deep/30 text-primary py-24 sm:py-32 border-t border-rule">
+  {/* What's NOT included — numbered list on sage accent panel.
+       Was bg-bone-deep/30 (basically tan-on-tan). Sage gives a clean
+       natural break against the teal above and the paper "typical day"
+       section below. */}
+  <section class="bg-sage text-primary py-24 sm:py-32 border-t border-hairline">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div class="lg:col-span-4">
@@ -206,7 +224,7 @@ const notIncluded = [
           <ol class="space-y-6 font-body-lg text-[1.0625rem] leading-[1.65] text-primary/80">
             {
               notIncluded.map((item, i) => (
-                <li class="flex gap-6 pb-6 border-b border-rule last:border-0">
+                <li class="flex gap-6 pb-6 border-b border-primary/15 last:border-0">
                   <span class="font-display text-[1.75rem] text-sun-deep shrink-0 leading-none mt-1 tabular-nums" style="font-variation-settings: 'opsz' 36;">
                     {String(i + 1).padStart(2, '0')}
                   </span>
@@ -220,7 +238,7 @@ const notIncluded = [
     </div>
   </section>
 
-  {/* Interrupt AB1 — stat break between bone-deep and bone sections */}
+  {/* Interrupt AB1 — stat break (already dark surface-warm in component) */}
   <SectionInterrupt
     variant="stat"
     eyebrow="The numbers"
@@ -231,8 +249,9 @@ const notIncluded = [
     ctaHref="/inquire"
   />
 
-  {/* Typical day */}
-  <section class="bg-bone text-primary py-24 sm:py-32 border-t border-rule">
+  {/* Typical day — paper (off-white) to alternate against the bone-heavy
+       sections above and the teal-soft pre-footer CTA below. */}
+  <section class="bg-paper text-primary py-24 sm:py-32 border-t border-hairline">
     <div class="max-w-[820px] mx-auto px-7 lg:px-0">
       <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-5 text-center">
         A typical day
@@ -268,16 +287,52 @@ const notIncluded = [
           schedule for tomorrow until tomorrow.
         </p>
       </div>
-      <div class="mt-14 text-center">
-        <a
-          href="/calendar"
-          class="group inline-flex items-center gap-3 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold text-primary border-b-2 border-accent pb-1 hover:text-accent transition-colors"
+    </div>
+  </section>
+
+  {/* Pre-footer CTA — teal-soft per Mark's note: the section right above
+       the dark footer must be LIGHTER, not match it. Carries the "See
+       Available Weeks" CTA that used to live in the typical-day section. */}
+  <section class="bg-teal-soft text-primary py-24 sm:py-28 border-t border-hairline">
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/60 mb-6">
+          Hold a cabin
+        </p>
+        <h2
+          class="font-display font-light leading-[1.05] tracking-[-0.025em] mb-8 text-balance"
+          style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
         >
-          See Available Weeks
-          <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </a>
+          Weeks fill in the order they're held,
+          <span class="italic block" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
+            not the order they're inquired about.
+          </span>
+        </h2>
+        <p class="font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.65] text-primary/75 max-w-2xl mx-auto mb-10 text-balance">
+          A no-cost 72-hour soft hold puts a week in your name while you
+          read the itinerary and talk to whoever you're traveling with. No
+          card on file. No follow-up if you let it lapse.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="/calendar"
+            class="group inline-flex items-center justify-center gap-3 cursor-pointer bg-primary text-ink font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-surface-warm transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+          >
+            See Available Weeks
+            <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a
+            href="/inquire"
+            class="group inline-flex items-center gap-3 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold text-primary border-b-2 border-accent pb-1 hover:text-accent transition-colors"
+          >
+            Ask a Question
+            <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
