@@ -5,6 +5,7 @@
 
 interface Scene {
   videoSrc?: string;
+  videoSrcPortrait?: string;
   posterSrc: string;
   alt: string;
 }
@@ -25,21 +26,25 @@ const {
   scenes = [
     {
       videoSrc: '/media/hero/hero-bvi-01.mp4',
+      videoSrcPortrait: '/media/hero/hero-bvi-01-portrait.mp4',
       posterSrc: '/img/source/hero/02-sunset-catamaran-anchorage.jpg',
       alt: 'A catamaran at anchor at sunset in the Caribbean, warm orange sky reflecting off glassy water',
     },
     {
       videoSrc: '/media/hero/hero-bahamas-02.mp4',
+      videoSrcPortrait: '/media/hero/hero-bahamas-02-portrait.mp4',
       posterSrc: '/img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg',
       alt: 'Dawn approach to a pink-sand spit in the Abacos',
     },
     {
       videoSrc: '/media/hero/hero-greece-03.mp4',
+      videoSrcPortrait: '/media/hero/hero-greece-03-portrait.mp4',
       posterSrc: '/img/stock/voyages/greece/greece-santorini-caldera-hero.jpg',
       alt: 'A catamaran reflected in a glassy Cycladic cove with a whitewashed village above',
     },
     {
       videoSrc: '/media/hero/hero-deck-04.mp4',
+      videoSrcPortrait: '/media/hero/hero-deck-04-portrait.mp4',
       posterSrc: '/img/stock/hero/hero-sunset-teak-deck-04.jpg',
       alt: 'Two wine glasses on a teak deck at sunset with anamorphic lens flare',
     },
@@ -78,6 +83,9 @@ const totalDuration = sceneDuration * scenes.length;
               poster={scene.posterSrc}
               class="absolute inset-0 w-full h-full object-cover"
             >
+              {scene.videoSrcPortrait && (
+                <source media="(max-aspect-ratio: 1/1)" src={scene.videoSrcPortrait} type="video/mp4" />
+              )}
               <source src={scene.videoSrc} type="video/mp4" />
             </video>
           ) : (
@@ -122,7 +130,7 @@ const totalDuration = sceneDuration * scenes.length;
           <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-10 lg:mt-12">
             <a
               href={primaryCta.href}
-              class="group inline-flex items-center gap-3 cursor-pointer text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold pb-1 border-b-2 border-accent hover:text-accent transition-colors"
+              class="group inline-flex items-center justify-center gap-3 cursor-pointer bg-accent text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-accent-hot transition-colors focus-visible:outline-2 focus-visible:outline-bone focus-visible:outline-offset-3"
             >
               {primaryCta.label}
               <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

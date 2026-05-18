@@ -72,6 +72,34 @@ for (const [name, value] of Object.entries(fm.spacing)) {
 }
 lines.push('');
 
+// CRITICAL: emit Tailwind v4's --container-* scale explicitly. Otherwise
+// max-w-{xs|sm|md|lg|xl|2xl|3xl} utilities fall back to var(--spacing-{key})
+// — and since DESIGN.md defines a spacing scale with the SAME keys
+// (xs/sm/md/lg/xl/2xl/3xl), max-w-xl resolves to 64px instead of 576px,
+// max-w-md to 16px instead of 448px, etc. This caused every body
+// paragraph using max-w-{md,xl,2xl,3xl} to collapse to a 4-144px column
+// and wrap one word per line across 23 components site-wide. (See
+// /tmp/gw-audit/AUDIT.md root-cause section.)
+const containers = [
+  ['3xs', '16rem'],   // 256px
+  ['2xs', '18rem'],   // 288px
+  ['xs',  '20rem'],   // 320px
+  ['sm',  '24rem'],   // 384px
+  ['md',  '28rem'],   // 448px
+  ['lg',  '32rem'],   // 512px
+  ['xl',  '36rem'],   // 576px
+  ['2xl', '42rem'],   // 672px
+  ['3xl', '48rem'],   // 768px
+  ['4xl', '56rem'],   // 896px
+  ['5xl', '64rem'],   // 1024px
+  ['6xl', '72rem'],   // 1152px
+  ['7xl', '80rem'],   // 1280px
+];
+for (const [name, value] of containers) {
+  lines.push(`  --container-${name}: ${value};`);
+}
+lines.push('');
+
 for (const [name, value] of Object.entries(fm.rounded)) {
   lines.push(`  --radius-${name}: ${value};`);
 }

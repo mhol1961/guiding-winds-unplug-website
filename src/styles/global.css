@@ -13,6 +13,31 @@
 
 @import "./theme.css";
 
+/* CRITICAL OVERRIDE — fix max-w-* collision with DESIGN.md's spacing
+   scale. Tailwind v4's max-w-{key} utilities resolve to var(--spacing-{key})
+   when --spacing-{key} is defined, regardless of --container-{key} also
+   being present. Because DESIGN.md defines a spacing scale on the SAME
+   xs/sm/md/lg/xl/2xl/3xl keys, max-w-xl was rendering at 64px instead of
+   576px across the entire site, collapsing body paragraphs to one-word-
+   per-line columns. This @layer utilities block forces the correct
+   max-width values explicitly, with higher specificity than the auto-
+   generated tailwind utilities. */
+@layer utilities {
+  .max-w-3xs { max-width: 16rem; }
+  .max-w-2xs { max-width: 18rem; }
+  .max-w-xs  { max-width: 20rem; }
+  .max-w-sm  { max-width: 24rem; }
+  .max-w-md  { max-width: 28rem; }
+  .max-w-lg  { max-width: 32rem; }
+  .max-w-xl  { max-width: 36rem; }
+  .max-w-2xl { max-width: 42rem; }
+  .max-w-3xl { max-width: 48rem; }
+  .max-w-4xl { max-width: 56rem; }
+  .max-w-5xl { max-width: 64rem; }
+  .max-w-6xl { max-width: 72rem; }
+  .max-w-7xl { max-width: 80rem; }
+}
+
 @layer base {
   :root {
     color-scheme: light;

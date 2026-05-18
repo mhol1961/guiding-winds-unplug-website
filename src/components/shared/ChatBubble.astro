@@ -5,7 +5,10 @@
 // Self-contained, vanilla JS, no React.
 ---
 
-<div id="chat-bubble-root" class="fixed bottom-6 right-6 z-40 hidden lg:block">
+{/* Sits above the trust-strip overlay on the home hero (bottom-strip is
+     ~70px tall + 24px margin = 94px). Repositioned per the 2026-05-18
+     audit which found it covering the right-hand trust items at 1649px. */}
+<div id="chat-bubble-root" class="fixed bottom-24 right-6 z-40 hidden lg:block">
   <button
     type="button"
     aria-label="Open chat with Dodie"
@@ -28,7 +31,7 @@
 
 <dialog
   id="chat-panel"
-  class="fixed bottom-24 right-6 lg:right-6 m-0 ml-auto bg-bone text-primary border border-rule p-0 w-[min(360px,calc(100vw-3rem))] max-h-[calc(100vh-8rem)] backdrop:bg-primary/30 backdrop:backdrop-blur-sm"
+  class="fixed bottom-44 right-6 lg:right-6 m-0 ml-auto bg-bone text-primary border border-rule p-0 w-[min(360px,calc(100vw-3rem))] max-h-[calc(100vh-12rem)] backdrop:bg-primary/30 backdrop:backdrop-blur-sm"
   aria-label="Chat with Dodie"
   style="border-radius: 0;"
 >

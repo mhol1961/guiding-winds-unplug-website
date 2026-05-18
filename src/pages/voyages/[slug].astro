@@ -6,6 +6,7 @@ import PricingCard from '../../components/voyage/PricingCard.astro';
 import Timeline from '../../components/voyage/Timeline.astro';
 import Gallery from '../../components/voyage/Gallery.astro';
 import VoyageFaq from '../../components/voyage/VoyageFaq.astro';
+import VoyageInterrupt from '../../components/voyage/VoyageInterrupt.astro';
 import { Check, X } from 'lucide-react';
 
 export async function getStaticPaths() {
@@ -137,6 +138,71 @@ if (aggregateRating) schemaGraph.push(aggregateRating);
 // Cross-link to sibling voyages.
 const allVoyages = await getCollection('voyages');
 const siblings = allVoyages.filter((v) => v.data.slug !== voyage.data.slug).slice(0, 2);
+
+// ── Mid-page interrupt copy (Section S1 audit fix) ────────────────────────
+// The voyage detail page used to be 6,000-7,000px of unbroken cream — one
+// giant wall of tan. These three interrupt sections break the stretch at
+// ~1,500-2,000px intervals so the eye gets rhythm.
+
+// Teal mood-setter, lands between Overview and Timeline.
+const tealEyebrow: Record<string, string> = {
+  'british-virgin-islands': 'The water · January through March',
+  bahamas: 'The water · April and May',
+  italy: 'The coast · June through September',
+  greece: 'The Aegean · May through October',
+  croatia: 'The Adriatic · June through September',
+};
+const tealHeadline: Record<string, { lead: string; italic: string }> = {
+  'british-virgin-islands': {
+    lead: 'Glass water at sunrise.',
+    italic: 'Anchorages day-trippers never reach.',
+  },
+  bahamas: {
+    lead: 'Pink sand, shallow water,',
+    italic: 'the slow Caribbean.',
+  },
+  italy: {
+    lead: 'Capri at sunrise.',
+    italic: 'Anchorages that ruin you for hotels.',
+  },
+  greece: {
+    lead: 'The Cyclades',
+    italic: 'at the pace they were meant to be sailed.',
+  },
+  croatia: {
+    lead: 'Stone villages on cliffs.',
+    italic: 'Adriatic water clear to twenty meters.',
+  },
+};
+const tealCopy = tealHeadline[voyage.data.slug] ?? {
+  lead: voyage.data.shortDescription,
+  italic: '',
+};
+
+// Stat interrupt, lands between FAQ and cross-link siblings.
+const weekCount = voyage.data.availableWeeks.length;
+const statCopyByRegion: Record<string, { headline: string; italic: string; body: string }> = {
+  caribbean: {
+    headline: `${weekCount} weeks open`,
+    italic: 'January through March + one in November',
+    body: 'Caribbean weather closes our window to a narrow band of dry-season weeks. When they\'re gone they\'re gone — we don\'t add cabins or stretch the season.',
+  },
+  bahamas: {
+    headline: `${weekCount} weeks open`,
+    italic: 'April and May, between high-season and hurricane window',
+    body: 'A short shoulder season between the Caribbean high season and the start of hurricane window. Two months, then we leave the boat for the Mediterranean.',
+  },
+  mediterranean: {
+    headline: `${weekCount} weeks open`,
+    italic: 'the Mediterranean season is short and we sail every one',
+    body: 'The Mediterranean season runs from late spring to early autumn. We sail every week we\'re open — by October the boat is on its way back across the Atlantic.',
+  },
+};
+const statCopy = statCopyByRegion[voyage.data.region];
+
+// Quote interrupt, lands between Timeline and Gallery. Hidden if no review
+// for this voyage exists.
+const voyageReviewForInterrupt = voyageReviews[0] ?? null;
 ---
 
 <BaseLayout
@@ -159,7 +225,7 @@ const siblings = allVoyages.filter((v) => v.data.slug !== voyage.data.slug).slic
 
   {/* Overview + sticky PricingCard — bone bg, dark text */}
   <section class="bg-bone text-primary border-t border-rule">
-    <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-24 sm:py-32">
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-20 sm:py-24">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <div class="lg:col-span-8">
           <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-5">
@@ -223,13 +289,50 @@ const siblings = allVoyages.filter((v) => v.data.slug !== voyage.data.slug).slic
     </div>
   </section>
 
+  {/* Interrupt 1 (teal) — mood-setter, breaks the bone after Overview */}
+  <VoyageInterrupt
+    variant="teal"
+    eyebrow={tealEyebrow[voyage.data.slug]}
+    headline={tealCopy.lead}
+    headlineItalic={tealCopy.italic}
+  />
+
   <Timeline itinerary={voyage.data.itinerary} />
+
+  {/* Interrupt 2 (quote) — full-bleed photo + guest review after Timeline.
+      Hidden if no review exists for this voyage. */}
+  {voyageReviewForInterrupt && (
+    <VoyageInterrupt
+      variant="quote"
+      eyebrow={`From the logbook · ${regionLabel[voyage.data.region]}`}
+      headline={voyageReviewForInterrupt.data.quote}
+      image={voyage.data.heroImage}
+      imageAlt={voyage.data.heroImageAlt}
+      attribution={`${voyageReviewForInterrupt.data.author} · ${voyageReviewForInterrupt.data.location} · ${voyage.data.name}`}
+      ctaLabel="See available weeks"
+      ctaHref="/calendar"
+    />
+  )}
+
   <Gallery images={voyage.data.galleryImages} fallbackGradient="" />
   {voyage.data.faq.length > 0 && <VoyageFaq faq={voyage.data.faq} />}
 
+  {/* Interrupt 3 (stat) — dark scarcity / season window after FAQ */}
+  {statCopy && (
+    <VoyageInterrupt
+      variant="stat"
+      eyebrow="The season"
+      headline={statCopy.headline}
+      headlineItalic={statCopy.italic}
+      body={statCopy.body}
+      ctaLabel="Hold a cabin"
+      ctaHref="/inquire"
+    />
+  )}
+
   {/* Cross-link siblings — image-led portrait cards on bone */}
   <section class="bg-bone text-primary border-t border-rule">
-    <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-24">
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-20 sm:py-24">
       <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/55 mb-10">
         Or see another voyage
       </p>
