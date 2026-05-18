@@ -14,8 +14,10 @@
 //   teal   — bright teal panel (#0E3F47), italic eyebrow phrase.
 //            No image. Lightest break — use freely between bone sections.
 
-interface Props {
-  variant: 'photo' | 'quote' | 'stat' | 'teal';
+// Discriminated union so `variant: 'photo'` forces an `image` at compile
+// time (Codex review caught the silent-disappearance failure mode when
+// the photo variant rendered with no image).
+interface BaseProps {
   eyebrow?: string;
   /** Display headline; can be split into a leading phrase + italic emphasis. */
   headline: string;
@@ -25,28 +27,38 @@ interface Props {
   body?: string;
   ctaLabel?: string;
   ctaHref?: string;
-  /** Used by `quote` and `photo` variants. Required for `photo`. */
+}
+interface PhotoProps extends BaseProps {
+  variant: 'photo';
+  /** REQUIRED for photo variant — full-bleed background image. */
+  image: string;
+  imageAlt: string;
+  /** Photo variant text alignment. Default 'left' (editorial). */
+  photoAlign?: 'left' | 'center';
+}
+interface QuoteProps extends BaseProps {
+  variant: 'quote';
+  /** Optional background image for the quote variant. */
   image?: string;
   imageAlt?: string;
   /** Attribution shown under the quote (e.g., "Emily R. · Portland, OR"). */
   attribution?: string;
-  /** Photo variant text alignment. Default 'left' (editorial). */
-  photoAlign?: 'left' | 'center';
 }
+interface StatProps extends BaseProps {
+  variant: 'stat';
+}
+interface TealProps extends BaseProps {
+  variant: 'teal';
+}
+type Props = PhotoProps | QuoteProps | StatProps | TealProps;
 
-const {
-  variant,
-  eyebrow,
-  headline,
-  headlineItalic,
-  body,
-  ctaLabel,
-  ctaHref,
-  image,
-  imageAlt,
-  attribution,
-  photoAlign = 'left',
-} = Astro.props;
+const props = Astro.props;
+const { variant, eyebrow, headline, headlineItalic, body, ctaLabel, ctaHref } = props;
+// Variant-only fields — narrow inside each rendered branch.
+const image = 'image' in props ? props.image : undefined;
+const imageAlt = 'imageAlt' in props ? props.imageAlt : undefined;
+const attribution = 'attribution' in props ? props.attribution : undefined;
+const photoAlign = 'photoAlign' in props ? (props.photoAlign ?? 'left') : 'left';
 ---
 
 {
@@ -59,18 +71,30 @@ const {
         decoding="async"
         class="absolute inset-0 w-full h-full object-cover"
       />
-      {/* Two-layer overlay: vertical (top→bottom) + horizontal rake from the chosen side */}
+      {/* Overlay built for legibility over ANY photo (sunset, night, sun-flare,
+         pastel buildings). Codex review found the prior gradient ratios
+         dipped below AA on bright/centered images. New strategy: 3 layers —
+         (1) strong base vertical darken so the bottom band where the headline
+         sits is ≥4.5:1 against text-ink on every photo, (2) directional rake
+         for editorial weight, (3) a near-opaque scrim band hugging the
+         headline column for guaranteed AA. */}
       <div
-        class="absolute inset-0 bg-gradient-to-b from-primary/45 via-primary/15 to-primary/85"
+        class="absolute inset-0 bg-gradient-to-b from-primary/55 via-primary/35 to-primary/92"
         aria-hidden="true"
       />
       <div
         class:list={[
           'absolute inset-0',
           photoAlign === 'center'
-            ? 'bg-gradient-to-b from-primary/20 via-primary/10 to-primary/55'
-            : 'bg-gradient-to-r from-primary/70 via-primary/30 to-transparent',
+            ? 'bg-gradient-to-b from-primary/35 via-primary/25 to-primary/75'
+            : 'bg-gradient-to-r from-primary/80 via-primary/50 to-primary/10',
         ]}
+        aria-hidden="true"
+      />
+      {/* Scrim band — bottom 60% gets a near-opaque dark wash so headline +
+         body always clear AA, regardless of photo content beneath. */}
+      <div
+        class="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-primary/85 via-primary/60 to-transparent"
         aria-hidden="true"
       />
       <div
@@ -81,7 +105,10 @@ const {
       >
         <div class:list={['w-full', photoAlign === 'center' ? 'max-w-3xl' : 'max-w-3xl']}>
           {eyebrow && (
-            <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun mb-7">
+            /* text-bone (not text-sun) — gold-on-photo fails AA. The eyebrow
+               sits above the scrim band, so it needs the highest-contrast
+               ink color. */
+            <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-bone mb-7">
               {eyebrow}
             </p>
           )}
