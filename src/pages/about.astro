@@ -92,13 +92,17 @@ const credentials = [
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <div class="lg:col-span-6">
-          <figure class="relative aspect-[4/5] overflow-hidden bg-primary/5">
+          {/* Clint portrait — the original /img/source/people/clint-peace-sunset-portico-01.jpg
+              was actually a photo of the front of the boat, not Clint. New
+              real photo is landscape (~1.87:1) so the container is
+              aspect-[3/2] with object-cover centered — minimal side crop. */}
+          <figure class="relative aspect-[3/2] overflow-hidden bg-primary/5">
             <img
-              src="/img/source/people/clint-peace-sunset-portico-01.jpg"
-              alt="Clint Kendall at sunset, peace sign at the portico"
+              src="/img/source/people/clint-kendall-pier-portrait.jpg"
+              alt="Clint Kendall on a pier in the British Virgin Islands, white yacht moored in the bay behind him"
               loading="lazy"
               decoding="async"
-              class="absolute inset-0 w-full h-full object-cover"
+              class="absolute inset-0 w-full h-full object-cover object-center"
             />
           </figure>
         </div>
@@ -186,23 +190,17 @@ const credentials = [
           </div>
         </div>
         <div class="lg:col-span-6 order-1 lg:order-2">
-          {/* Framed portrait card — the IG selfie is small (325x388) so we
-              show it at its native scale inside a larger paper-deep mat
-              rather than stretching/cropping it full-bleed. Reads as a
-              "polaroid on the wall" treatment. */}
-          <figure class="relative aspect-[4/5] overflow-hidden bg-paper-deep flex items-center justify-center">
-            <div class="relative w-[78%] max-w-[420px] aspect-[325/388] bg-bone shadow-[0_18px_44px_-22px_rgba(20,28,36,0.45)] p-3">
-              <img
-                src="/img/source/ig/clint-dodie-beach-table-selfie.jpg"
-                alt="Clint and Dodie Kendall smiling at a beach-side table on a recent voyage"
-                loading="lazy"
-                decoding="async"
-                class="block w-full h-full object-cover"
-              />
-            </div>
-            <figcaption class="absolute bottom-5 left-1/2 -translate-x-1/2 font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/70">
-              From a recent week aboard
-            </figcaption>
+          {/* Dodie portrait — was a cropped Clint+Dodie selfie, swapped for
+              a real solo portrait of her on the beach (1122x1402, fits
+              aspect-[4/5] cleanly). */}
+          <figure class="relative aspect-[4/5] overflow-hidden bg-primary/5">
+            <img
+              src="/img/source/people/dodie-kendall-beach-portrait.jpg"
+              alt="Dodie Kendall smiling on the beach, the Caribbean surf behind her"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 w-full h-full object-cover object-center"
+            />
           </figure>
         </div>
       </div>
