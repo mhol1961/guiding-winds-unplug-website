@@ -106,6 +106,11 @@ const reviews = defineCollection({
     date: z.coerce.date(),
     /** Whether to surface on the home page. */
     homepageFeature: z.boolean().default(false),
+    /** Optional guest photo path under /public — used as the avatar in
+     *  the TestimonialRow card footer and (for featured) as the card
+     *  background. When absent the component falls back to a monogram. */
+    photo: z.string().optional(),
+    photoAlt: z.string().optional(),
   }),
 });
 

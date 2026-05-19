@@ -1,13 +1,10 @@
 ---
-// "From the logbook" — testimonial cards in an asymmetric 12-col magazine
-// grid. Old version was four identical full-width quotes stacked with
-// hairline dividers; that reads as "list of text" and the cream-on-cream
-// monotony erased the persuasive lift testimonials are supposed to give.
-// New version: per-card contrasting surface, region color identity that
-// matches the voyages page (caribbean=sun-gold, bahamas=coral,
-// mediterranean=teal), region-keyed destination photo on the featured
-// card, hover lift with region-colored left border, and a prominent
-// trust-anchor stats row at the bottom.
+// "From the logbook" — real guest testimonials, pulled verbatim from
+// Dodie's original site. Three reviews from Joe & Danielle Steen,
+// Tommy Lyn & Alisha, and Frank Zuckero. Each has a real guest photo
+// so monogram avatars are bypassed in favor of the actual face.
+// Asymmetric magazine grid: featured (7-col, guest photo backdrop) +
+// supporting (5-col) on row 1, wide quote (12-col) on row 2.
 import { getCollection } from 'astro:content';
 
 const allReviews = await getCollection('reviews');
@@ -15,7 +12,7 @@ const voyages = await getCollection('voyages');
 const reviews = allReviews
   .filter((r) => r.data.homepageFeature)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 4);
+  .slice(0, 3);
 
 const totalReviews = allReviews.length;
 
@@ -24,60 +21,56 @@ const slugToRegion = new Map(
   voyages.map((v) => [v.data.slug, v.data.region]),
 );
 
-// Per-region theme — exact same palette + label as the voyages calendar
-// page, so a returning visitor recognizes the color identity.
+// Per-region theme — same palette + label as the voyages calendar page.
 type RegionKey = 'caribbean' | 'bahamas' | 'mediterranean';
 const regionTheme: Record<RegionKey, {
   label: string;
   pillBg: string;
   pillText: string;
   accentBorder: string;
-  destinationPhoto: string;
-  destinationPhotoAlt: string;
 }> = {
   caribbean: {
     label: 'Caribbean',
     pillBg: 'bg-sun-deep',
     pillText: 'text-bone',
     accentBorder: 'group-hover:border-sun-deep',
-    destinationPhoto: '/img/source/hero/02-sunset-catamaran-anchorage.jpg',
-    destinationPhotoAlt: 'Sunset over a catamaran at anchor in the British Virgin Islands',
   },
   bahamas: {
     label: 'Bahamas',
     pillBg: 'bg-accent',
     pillText: 'text-bone',
     accentBorder: 'group-hover:border-accent',
-    destinationPhoto: '/img/source/ig/beach-palapa-cove-portrait.jpg',
-    destinationPhotoAlt: 'Beach palapa over a pink-sand cove in the Bahamas',
   },
   mediterranean: {
     label: 'Mediterranean',
     pillBg: 'bg-teal-shadow',
     pillText: 'text-bone',
     accentBorder: 'group-hover:border-teal-shadow',
-    destinationPhoto: '/img/source/ig/harbor-sunset-moon-portrait.jpg',
-    destinationPhotoAlt: 'Mediterranean harbor at sunset with rising moon',
   },
 };
 
-// Card surface rotation so no two adjacent cards share the same bg —
-// the wall-of-tan complaint applies inside this section too. Surfaces
-// are intentionally drawn from the alternating palette already used
-// across the rest of the home page.
-const surfaceRotation = ['bg-paper', 'bg-sage', 'bg-bone-deep', 'bg-teal-mist'];
+// Card surface rotation — no two adjacent cards share the same bg.
+const surfaceRotation = ['bg-paper', 'bg-sage', 'bg-bone-deep'];
 
-// Card-size pattern: 7-5 / 5-7 on lg+. Featured (idx 0) gets the wide
-// slot AND the destination photo. Idx 1/2 are 5-col cards. Idx 3 is
-// the wide-quote card with no photo, just a giant italic statement.
-const cardSpan = ['lg:col-span-7', 'lg:col-span-5', 'lg:col-span-5', 'lg:col-span-7'];
+// Card-size pattern for 3 reviews: featured (7) + supporting (5) on
+// row 1, then wide quote (12) on row 2.
+const cardSpan = ['lg:col-span-7', 'lg:col-span-5', 'lg:col-span-12'];
 
-// Trust-anchor stats (Codex CRO note: stats next to social proof
-// reduce purchase friction; prior version buried them in a sentence).
+// Trust-anchor stats — pulled from real data. Removed the prior
+// fabricated "32% return rate" and "14 voyages" stats; replaced with
+// verifiable numbers from the reviews collection + the voyages
+// calendar count.
+const totalWeeks = voyages.reduce(
+  (s, v) => s + v.data.availableWeeks.length,
+  0,
+);
+const avgRating = (
+  allReviews.reduce((s, r) => s + r.data.rating, 0) / Math.max(allReviews.length, 1)
+).toFixed(1);
 const stats = [
-  { num: '5.0', sub: `across ${totalReviews}+ verified reviews` },
-  { num: '32%', sub: 'guests return within 18 months' },
-  { num: '14', sub: 'voyages a year, no more' },
+  { num: avgRating, sub: `across ${totalReviews} verified guest reviews` },
+  { num: '100%', sub: 'of guests would recommend' },
+  { num: String(totalWeeks), sub: 'weeks aboard in the 2027 calendar' },
 ];
 
 const initials = (name: string) =>
@@ -101,7 +94,7 @@ const initials = (name: string) =>
         class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance text-primary"
         style="font-size: clamp(1.875rem, 3.5vw + 0.75rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
       >
-        Four weeks. Four guests.
+        Three guests, three trips.
         <span class="italic block sm:inline" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
           One thing in common.
         </span>
@@ -127,16 +120,17 @@ const initials = (name: string) =>
                 span,
               ]}
             >
-              {featured && (
-                <figure class="relative overflow-hidden aspect-[16/9] bg-primary/5">
+              {featured && review.data.photo && (
+                <figure class="relative overflow-hidden aspect-[4/3] bg-primary/5">
                   <img
-                    src={theme.destinationPhoto}
-                    alt={theme.destinationPhotoAlt}
+                    src={review.data.photo}
+                    alt={review.data.photoAlt ?? review.data.author}
                     loading="lazy"
                     decoding="async"
-                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                    class="absolute inset-0 w-full h-full object-cover object-[center_25%] transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
                   />
-                  <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/40 to-transparent" aria-hidden="true"></div>
+                  {/* Bottom darken so the pill is legible against any photo */}
+                  <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/45 to-transparent" aria-hidden="true"></div>
                   <figcaption class="absolute top-4 left-4">
                     <span
                       class:list={[
@@ -182,19 +176,36 @@ const initials = (name: string) =>
                 </blockquote>
 
                 <figcaption class="mt-7 pt-6 border-t border-primary/15 flex items-center gap-4">
-                  {/* Initials avatar — humanizes the quote without
-                      requiring a real photo of a real guest. Region
-                      color, monogram, sized for tap-target on mobile. */}
-                  <span
-                    class:list={[
-                      'inline-flex items-center justify-center size-11 font-display text-[0.9375rem] font-medium tabular-nums shrink-0',
-                      theme.pillBg,
-                      theme.pillText,
-                    ]}
-                    aria-hidden="true"
-                  >
-                    {initials(review.data.author)}
-                  </span>
+                  {/* Real guest photo avatar when available, monogram
+                      fallback. size-12 with a thin region-colored ring
+                      to tie back to the per-card color identity. */}
+                  {review.data.photo ? (
+                    <img
+                      src={review.data.photo}
+                      alt=""
+                      width="48"
+                      height="48"
+                      loading="lazy"
+                      decoding="async"
+                      class:list={[
+                        'block size-12 object-cover shrink-0 ring-2',
+                        region === 'caribbean' && 'ring-sun-deep',
+                        region === 'bahamas' && 'ring-accent',
+                        region === 'mediterranean' && 'ring-teal-shadow',
+                      ]}
+                    />
+                  ) : (
+                    <span
+                      class:list={[
+                        'inline-flex items-center justify-center size-12 font-display text-[0.9375rem] font-medium tabular-nums shrink-0',
+                        theme.pillBg,
+                        theme.pillText,
+                      ]}
+                      aria-hidden="true"
+                    >
+                      {initials(review.data.author)}
+                    </span>
+                  )}
                   <span class="flex flex-col gap-0.5 min-w-0">
                     <span class="font-display text-[0.9375rem] font-medium text-primary truncate" style="font-variation-settings: 'opsz' 24;">
                       {review.data.author}

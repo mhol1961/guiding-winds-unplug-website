@@ -5,7 +5,7 @@ import { ShieldCheck, Anchor, Award, FileCheck2, Sun } from 'lucide-react';
 
 const title = 'Meet Clint & Dodie Kendall · Captains of Guiding Winds Unplug';
 const description =
-  'A husband-and-wife crew running fourteen all-inclusive catamaran voyages a year. Clint at the helm, USCG-licensed. Dodie running the galley and everything between meals.';
+  'A husband-and-wife crew running all-inclusive catamaran voyages from the British Virgin Islands. Clint at the helm, born in Miami Beach and raised in the Florida Keys. Dodie running the galley and the guest experience.';
 
 const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
 
@@ -16,8 +16,8 @@ const schemaGraph = [
     name: 'Clint Kendall',
     jobTitle: 'Captain',
     worksFor: { '@type': 'Organization', name: 'Guiding Winds Unplug' },
-    knowsAbout: ['Catamaran sailing', 'Caribbean navigation', 'Mediterranean navigation'],
-    hasCredential: ['USCG Master 100-Ton', 'RYA Yachtmaster Offshore', 'BVI Charter Permit holder'],
+    birthPlace: 'Miami Beach, Florida',
+    knowsAbout: ['Catamaran sailing', 'Caribbean navigation', 'Long-line fishing', 'Florida Keys waters'],
   },
   {
     '@type': 'Person',
@@ -25,7 +25,8 @@ const schemaGraph = [
     name: 'Dodie Kendall',
     jobTitle: 'Host & Galley Lead',
     worksFor: { '@type': 'Organization', name: 'Guiding Winds Unplug' },
-    knowsAbout: ['Galley provisioning', 'Wellness retreats', 'Guest experience'],
+    birthPlace: 'Fort Lauderdale, Florida',
+    knowsAbout: ['Galley provisioning', 'Wellness hosting', 'Guest experience'],
   },
   {
     '@type': 'BreadcrumbList',
@@ -36,13 +37,18 @@ const schemaGraph = [
   },
 ];
 
+// Credentials block — kept intentionally generic. Specific cert names,
+// ticket levels, insurance providers, and renewal cadences were removed
+// because they were placeholder copy from the prior pass and would be
+// false claims about real people if shipped. Replace with verified
+// specifics before launch; until then this block describes the kind
+// of coverage in place without inventing details.
 const credentials = [
-  { Icon: ShieldCheck, label: 'USCG Master 100-Ton license · Clint Kendall' },
-  { Icon: Anchor, label: 'RYA Yachtmaster Offshore — Mediterranean qualified' },
-  { Icon: FileCheck2, label: 'BVI Cruising & Charter Permit (annual renewal)' },
-  { Icon: Award, label: 'Fully insured · $2M liability through MarinaPro Risk Group' },
-  { Icon: Sun, label: 'Annual safety equipment certification — life raft, EPIRB, AED' },
-  { Icon: Anchor, label: '10+ years operating in the Caribbean chain' },
+  { Icon: ShieldCheck, label: 'USCG-licensed captain · documentation on request' },
+  { Icon: FileCheck2, label: 'Current BVI cruising and charter permits' },
+  { Icon: Award, label: 'Charter liability insurance in force' },
+  { Icon: Sun, label: 'Annual safety-equipment certification — life raft, EPIRB, AED' },
+  { Icon: Anchor, label: 'Years of working Florida Keys and Caribbean waters' },
 ];
 ---
 
@@ -118,24 +124,23 @@ const credentials = [
           </h2>
           <div class="mt-8 space-y-5 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-primary/75 text-balance">
             <p>
-              Clint learned to sail on a 22-foot daysailer in Pamlico Sound
-              when he was nine. Most of his late teens and twenties were
-              spent crewing on delivery runs up and down the East Coast for
-              brokers who needed someone who'd actually stand the night
-              watch. He earned his USCG Master 100-Ton ticket in 2013 and
-              his RYA Yachtmaster the year after.
+              Born in Miami Beach, raised in the Florida Keys — the kind
+              of place where you know the channel markers before you know
+              your address. Clint spent years as a long-liner fisherman
+              before he ever ran a charter, and the salt-life knowledge
+              shows up in everything from how he reads weather to where
+              he finds a quiet anchorage when the day-charter fleet is on
+              the chain.
             </p>
             <p>
-              Before this boat, he ran charters out of St. Thomas for a
-              fleet operator who measured success in turnover — boats out
-              every Saturday, no questions about who got on. He left that
-              job the year the company added a fourth identical Lagoon 50
-              to its fleet and started referring to weeks as "units."
+              His reputation in the Keys was simple: catch fish, bring
+              everyone home, and don't make it complicated. He runs the
+              boat the same way.
             </p>
             <p>
-              He reads weather the way other people read the news. The route
-              of every voyage is built around what the chain is doing that
-              week, not what a brochure laid out a year ago.
+              The route of every voyage is built around what the water is
+              actually doing that week, not what a brochure laid out a
+              year ago.
             </p>
           </div>
         </div>
@@ -169,18 +174,19 @@ const credentials = [
           </h2>
           <div class="mt-8 space-y-5 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-primary/75 text-balance">
             <p>
-              Dodie ran restaurants for a decade before she ran a galley.
-              Two reasonable ones in Asheville, then a more ambitious one
-              in Wilmington that closed in 2020 for the obvious reason.
-              She came back to the boat in 2021 to provision for one of
-              Clint's deliveries and never quite went back to land.
+              Born in Fort Lauderdale, raised in Pompano Beach. Dodie has
+              spent most of her life within walking distance of the water
+              and most of her career helping people reconnect with
+              themselves — work she now does on the boat, where the
+              schedule is the tide and the only obligation is to be where
+              you are.
             </p>
             <p>
-              Most charter operations divide cooking and hosting between
-              two people. Dodie does both because she likes the through-line
-              — the same person who knows what's on the menu also knows
-              what kind of week each guest is having and can shift the
-              third night's dinner accordingly.
+              Most charter operations split cooking and hosting between
+              two people. Dodie does both because she likes the
+              through-line — the same person who knows what's on the menu
+              also knows what kind of week each guest is having, and can
+              shift the third night's dinner accordingly.
             </p>
             <p>
               If you want the morning practice on deck, she leads it. If
