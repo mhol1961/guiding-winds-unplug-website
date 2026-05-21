@@ -27,3 +27,15 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Review screenshots — any PNG/JPG dropped at the public/ root is
+# almost always a review capture (full-page screenshots, debug
+# annotations, reference images). Real production assets live in
+# public/img/, public/media/, public/og/ — those stay tracked.
+public/*.png
+public/*.jpg
+public/*.jpeg
+!public/img/
+!public/media/
+!public/og/
+
