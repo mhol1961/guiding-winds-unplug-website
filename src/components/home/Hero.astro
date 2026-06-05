@@ -59,10 +59,9 @@ const {
   trustItems,
 } = Astro.props;
 
-// Seedance renders are 5s; crossfade duration matches so each scene
-// plays once before fading to the next.
-const sceneDuration = 5.5;
-const totalDuration = sceneDuration * scenes.length;
+// Each Seedance reel is ~5s. The crossfade is driven from the <script>
+// below (not CSS timing) so every clip plays once from frame 0 and never
+// loops mid-window. Keep SCENE_MS there in sync with the clip length.
 ---
 
 <section class="hero relative w-full min-h-[100dvh] overflow-hidden bg-primary text-bone">
@@ -70,18 +69,17 @@ const totalDuration = sceneDuration * scenes.length;
     {
       scenes.map((scene, i) => (
         <div
-          class="hero-scene absolute inset-0 opacity-0"
-          style={`--i: ${i}; --total: ${scenes.length}; --dur: ${totalDuration}s;`}
+          class:list={['hero-scene absolute inset-0', { 'is-active': i === 0 }]}
+          data-hero-scene
         >
           {scene.videoSrc ? (
             <video
-              autoplay
               muted
-              loop
               playsinline
               preload={i === 0 ? 'auto' : 'metadata'}
               poster={scene.posterSrc}
               class="absolute inset-0 w-full h-full object-cover"
+              data-hero-video
             >
               {scene.videoSrcPortrait && (
                 <source media="(max-aspect-ratio: 1/1)" src={scene.videoSrcPortrait} type="video/mp4" />
@@ -167,24 +165,90 @@ const totalDuration = sceneDuration * scenes.length;
 </section>
 
 <style>
-  /* Crossfade: each scene fades in for ~10% of the cycle and out at the
-     end of its window. Scenes are staggered via animation-delay so they
-     play one at a time. */
+  /* JS-driven crossfade (see <script> below). Opacity is toggled via the
+     .is-active class in sync with video playback, so a clip never visibly
+     loops mid-window. */
   .hero-scene {
-    animation: hero-fade var(--dur) infinite;
-    animation-delay: calc(var(--i) * (var(--dur) / var(--total) * -1));
+    opacity: 0;
+    transition: opacity 900ms ease-in-out;
     will-change: opacity;
   }
-  @keyframes hero-fade {
-    0% { opacity: 0; }
-    3% { opacity: 1; }
-    23% { opacity: 1; }
-    28% { opacity: 0; }
-    100% { opacity: 0; }
+  .hero-scene.is-active {
+    opacity: 1;
   }
   @media (prefers-reduced-motion: reduce) {
-    .hero-scene { animation: none; }
-    .hero-scene:first-child { opacity: 1; }
-    .hero-scene video { display: none; }
+    .hero-scene { transition: none; }
   }
 </style>
+
+<script>
+  // Drive the hero crossfade in sync with playback: only the active scene's
+  // video plays, always from frame 0, exactly once — then we fade to the
+  // next. This eliminates the mid-window loop restart that made every clip
+  // look like it was repeating, and avoids drift from 4 videos looping
+  // independently. The next clip is pre-warmed so it doesn't flash a poster.
+  const SCENE_MS = 5000; // ~clip length; all reels are ~5s
+  const scenes = Array.from(document.querySelectorAll('[data-hero-scene]'));
+
+  if (scenes.length > 1) {
+    const videos = scenes.map((s) => s.querySelector('video'));
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let i = 0;
+    let timer = 0;
+
+    const warm = (k) => {
+      const v = videos[k];
+      if (v && v.preload !== 'auto') {
+        v.preload = 'auto';
+        try { v.load(); } catch {}
+      }
+    };
+
+    const activate = (idx) => {
+      scenes.forEach((s, k) => s.classList.toggle('is-active', k === idx));
+      videos.forEach((v, k) => {
+        if (!v) return;
+        if (k === idx) {
+          try { v.currentTime = 0; } catch {}
+          const p = v.play();
+          if (p && p.catch) p.catch(() => {});
+        } else {
+          v.pause();
+        }
+      });
+      warm((idx + 1) % scenes.length); // pre-buffer the next clip
+    };
+
+    const start = () => {
+      if (timer) return;
+      activate(i);
+      timer = window.setInterval(() => {
+        i = (i + 1) % scenes.length;
+        activate(i);
+      }, SCENE_MS);
+    };
+    const stop = () => {
+      if (timer) { clearInterval(timer); timer = 0; }
+      videos.forEach((v) => v && v.pause());
+    };
+    const showStatic = () => {
+      stop();
+      scenes.forEach((s, k) => s.classList.toggle('is-active', k === 0));
+    };
+
+    if (reduce.matches) showStatic();
+    else start();
+
+    reduce.addEventListener?.('change', (e) => {
+      if (e.matches) showStatic();
+      else { i = 0; start(); }
+    });
+
+    // Pause cycling while the tab is hidden (battery + keeps clips in sync).
+    document.addEventListener('visibilitychange', () => {
+      if (reduce.matches) return;
+      if (document.hidden) stop();
+      else start();
+    });
+  }
+</script>
