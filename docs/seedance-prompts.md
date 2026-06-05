@@ -64,35 +64,47 @@ Low gimbal-stabilized POV from the bow of a tender dinghy gliding toward an empt
 
 ---
 
-## Scene 3 — Greek Cycladic cove
+## Scene 3 — Greek Cycladic cove (REVISED — village-forward, no centered catamaran)
+
+> **Revised 2026-06-05.** The original Scene 3 put a centered white catamaran on mirror-flat water — too close to Scene 1 (BVI catamaran at anchor), so the reel read as "the same boat twice at a different zoom." This version leads with the village architecture and drops the hero boat for variety. Render at `duration: 5` to match scenes 1–2 (~5s) so each plays once in the 5.5s crossfade window.
 
 **16:9 desktop (`hero-greece-03.mp4`)**
 
 ```
-Wide locked-off camera at sea level looking into a Cycladic cove on a Greek island, anchored 50 yards offshore. A 50-foot white catamaran sits in the middle of the frame, its hull and sails reflected perfectly in mirror-flat aquamarine water. Above the cove, a whitewashed village climbs a stepped hillside, blue-domed church visible at the highest point, bougainvillea spilling over a stone retaining wall. Late afternoon Aegean light, warm but not yet golden — sun is high and slightly behind the village so the catamaran is lit and the hillside is in soft shadow. Quiet, classic Mediterranean atmosphere, no boat traffic, no swimmers. Subtle slow dolly-right movement of about 6 inches across the 8 seconds, just enough to create parallax between the catamaran and the village behind. Shot on Arri Alexa Mini LF, 35mm equivalent, gentle teal-and-orange grade. No people visible. Photorealistic, editorial travel cinematography.
+Slow cinematic dolly push-in toward a whitewashed Cycladic village climbing a stepped hillside on a Greek island. A blue-domed church stands at the highest point, deep-magenta bougainvillea spilling over a sun-bleached stone retaining wall, narrow whitewashed staircases and cubic houses stacked up the slope. Calm aquamarine Aegean water fills the lower third, gently lapping bare rocks, no boats in the foreground or centre of frame. Late afternoon Aegean light, warm and golden raking across the white architecture from screen-right, soft shadows in the alleys. Quiet, classic Mediterranean atmosphere, no boat traffic. Slow steady dolly push-in toward the blue dome across 8 seconds, gentle parallax between the foreground stone wall and the village behind. Shot on Arri Alexa Mini LF, 40mm equivalent, gentle teal-and-orange grade. No people visible. Photorealistic, editorial travel cinematography in the Black Tomato / Cereal magazine register.
 ```
 
 **9:16 mobile (`hero-greece-03-portrait.mp4`)**
 
 ```
-Vertical framing of a Cycladic cove on a Greek island. The 50-foot white catamaran sits in the lower third of the frame, reflected in mirror-flat aquamarine water; the whitewashed village climbs the stepped hillside above, blue-domed church near the top. Late afternoon Aegean light, sun high and behind the village. Quiet, classic Mediterranean atmosphere, no boat traffic. Subtle slow vertical pan from village down to catamaran across 8 seconds. Shot on Arri Alexa Mini LF in 9:16 portrait crop. No people visible. Photorealistic, gentle teal-and-orange grade.
+Vertical framing of a whitewashed Cycladic village climbing a stepped hillside on a Greek island, blue-domed church near the top, deep-magenta bougainvillea spilling over a sun-bleached stone wall, cubic white houses stacked up the slope. Calm aquamarine Aegean water in the lower quarter, no boats. Late afternoon Aegean light raking warm across the white architecture, soft shadows in the alleys. Quiet, classic Mediterranean atmosphere, no people, no boats. Slow steady gentle tilt up toward the blue dome across 8 seconds. Shot on Arri Alexa Mini LF in 9:16 portrait crop. No people visible. Photorealistic, gentle teal-and-orange grade.
 ```
 
 ---
 
-## Scene 4 — Sunset teak deck, two glasses
+## Scene 4 — Sunset teak deck, two glasses (REMOVED — do not render)
+
+> Clint and Dodie asked to drop the wine glasses on the 2026-06-02 call: they don't want a "booze cruise" impression. The original wine-glass prompt has been deleted to prevent an accidental re-render. **Use the "Scene 4 — REVISED" prompt below**, which renders to the same filenames (`hero-deck-04.mp4` / `hero-deck-04-portrait.mp4`).
+
+---
+
+## Scene 4 — REVISED (no alcohol) — sunset teak deck, lantern + book
+
+Same intimate end-of-day detail shot as the original Scene 4, minus any glasses, bottles, or alcohol. Keeps the magic-hour warmth and anamorphic flare. **Render to the same filenames** (`hero-deck-04.mp4` / `hero-deck-04-portrait.mp4`) so `Hero.astro` needs no edit.
 
 **16:9 desktop (`hero-deck-04.mp4`)**
 
 ```
-Medium close-up at table level. A teak boat-deck table with two stemmed wine glasses (one white wine, one rosé) sits in the foreground, weather-aged teak grain catching the warm light, the curve of the boat's gunwale and the open horizon visible behind. Late golden hour fading to magic hour, sun setting just out of frame screen-left casting strong warm side-light across the table and producing a soft anamorphic lens flare across the upper-left third of the frame. Slight breeze visible in the wine surface — micro-ripples. Romantic, intimate, end-of-day mood, the boat at rest at anchor, soft orange-and-purple sky in the background. Slow dolly-in toward the glasses across 8 seconds, just under a foot of travel. Shot on Arri Alexa with vintage anamorphic glass (Cooke Anamorphic /i), 65mm equivalent, rich teal-and-orange Hollywood grade. No people visible. Photorealistic, editorial travel cinematography in the Black Tomato / Cereal magazine register.
+Medium close-up at table level. A weather-aged teak boat-deck table in the foreground holds a lit brass hurricane lantern with a soft warm flame and an open cloth-bound book laid face-down beside it, a coiled length of natural rope at the edge of frame; the curve of the boat's gunwale and the open horizon visible behind. Late golden hour fading to magic hour, sun setting just out of frame screen-left casting strong warm side-light across the table and producing a soft anamorphic lens flare across the upper-left third of the frame. Faint breeze stirring the lantern flame. Calm, intimate, unplugged end-of-day mood, the boat at rest at anchor, soft orange-and-purple sky in the background. Slow dolly-in toward the lantern across 8 seconds, just under a foot of travel. Shot on Arri Alexa with vintage anamorphic glass (Cooke Anamorphic /i), 65mm equivalent, rich teal-and-orange Hollywood grade. No people visible, no alcohol, no glasses or bottles of any kind. Photorealistic, editorial travel cinematography in the Black Tomato / Cereal magazine register.
 ```
 
 **9:16 mobile (`hero-deck-04-portrait.mp4`)**
 
 ```
-Medium close-up at table level, vertical framing. A teak boat-deck table with two stemmed wine glasses (one white, one rosé) in the lower third; the curve of the boat's gunwale and open horizon in the upper two-thirds. Late golden hour fading to magic hour, warm side-light, soft anamorphic lens flare. Slight micro-ripples in the wine. Romantic, intimate, end-of-day mood. Slow dolly-in across 8 seconds. Shot on Arri Alexa with vintage anamorphic glass in 9:16 portrait crop. No people visible. Photorealistic, rich teal-and-orange grade.
+Medium close-up at table level, vertical framing. A weather-aged teak boat-deck table in the lower third holds a lit brass hurricane lantern with a soft warm flame and an open cloth-bound book laid face-down beside it; the curve of the boat's gunwale and open horizon fill the upper two-thirds. Late golden hour fading to magic hour, warm side-light, soft anamorphic lens flare. Faint breeze stirring the flame. Calm, intimate, unplugged end-of-day mood. Slow dolly-in across 8 seconds. Shot on Arri Alexa with vintage anamorphic glass in 9:16 portrait crop. No people visible, no alcohol, no glasses or bottles of any kind. Photorealistic, rich teal-and-orange grade.
 ```
+
+**Poster note:** the current Scene 4 poster fallback is `/img/stock/hero/hero-sunset-teak-deck-04.jpg`. If that still shows wine glasses, swap it for a glass-free magic-hour deck still (or a frame grab from the new render) so the reduced-motion / pre-load state matches.
 
 ---
 
@@ -102,8 +114,8 @@ Medium close-up at table level, vertical framing. A teak boat-deck table with tw
 |---|---|---|
 | 1 — BVI catamaran at anchor | `public/media/hero/hero-bvi-01.mp4` | `public/media/hero/hero-bvi-01-portrait.mp4` |
 | 2 — Bahamas pink-sand approach | `public/media/hero/hero-bahamas-02.mp4` | `public/media/hero/hero-bahamas-02-portrait.mp4` |
-| 3 — Greek Cycladic cove | `public/media/hero/hero-greece-03.mp4` | `public/media/hero/hero-greece-03-portrait.mp4` |
-| 4 — Sunset teak deck + glasses | `public/media/hero/hero-deck-04.mp4` | `public/media/hero/hero-deck-04-portrait.mp4` |
+| 3 — Greek village (revised, no centered boat) | `public/media/hero/hero-greece-03.mp4` | `public/media/hero/hero-greece-03-portrait.mp4` |
+| 4 — Sunset teak deck, lantern + book (no alcohol) | `public/media/hero/hero-deck-04.mp4` | `public/media/hero/hero-deck-04-portrait.mp4` |
 
 Encode each MP4 with `+faststart` so the browser plays without
 buffering the whole file:
@@ -114,7 +126,15 @@ ffmpeg -i input.mp4 -c:v libx264 -crf 23 -preset slow \
 ```
 
 Target file size per scene: **2–4 MB**. Drop a `.webm` companion if
-you want even tighter compression for Chrome/Firefox.
+you want even tighter compression for Chrome/Firefox. (The deck scene
+compresses below 2 MB at crf 23 because it's a dark, low-detail
+magic-hour shot — that's expected, not over-compression.)
+
+**Keep all scenes ~5 seconds.** `Hero.astro` crossfades on a 5.5s window
+per scene; a clip longer than that gets truncated and loops underneath.
+Render with `duration: 5` (Seedance 2 honors it), or trim to 5s on encode
+with `-t 5`. Scenes 1–2 are Seedance v1 Pro (~5.04s); scenes 3–4 are
+Seedance 2 at `duration: 5`.
 
 ---
 
