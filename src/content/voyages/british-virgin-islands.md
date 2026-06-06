@@ -5,6 +5,7 @@ name: British Virgin Islands
 country: British Virgin Islands
 heroEyebrow: 'Tortola · Caribbean'
 nights: 7
+nightsLabel: '4 to 7'
 pricePerGuestUSD: 3550
 shortDescription: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Quiet anchorages day-trippers never reach, on glass water at sunrise.'
 heroImage: /img/stock/voyages/bvi/bvi-the-baths-hero.jpg
@@ -57,11 +58,10 @@ itinerary:
     body: 'Brunch aboard, off the boat by 11am. Most guests grab a ferry to Beef Island for the afternoon flight home.'
 inclusions:
   - All meals aboard, chef-prepared
-  - Premium open bar (wine, spirits, mixers, sparkling)
   - Snorkel gear, paddleboards, kayaks
   - Private cabin with ensuite head
   - Fuel and dockage
-  - USCG-licensed captain (Clint) and host (Dodie)
+  - Captain (Clint) and host (Dodie)
   - Daily breath / yoga practice on deck (optional)
 exclusions:
   - Flights to/from Beef Island (EIS)
@@ -92,7 +92,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night BVI all-inclusive catamaran charter sails Saturday to Saturday from Nanny Cay, Tortola, aboard a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. From **$3,550 per guest, all-inclusive** — captained by Clint Kendall (USCG-licensed) and hosted by Dodie. Six weeks in 2027, January through March and one in November.
+**TL;DR:** Our 7-night BVI all-inclusive catamaran charter sails Saturday to Saturday from Nanny Cay, Tortola, aboard a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. From **$3,550 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Six weeks in 2027, January through March and one in November.
 
 ## The shape of a week
 

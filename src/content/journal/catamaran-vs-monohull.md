@@ -16,7 +16,7 @@ Every charter operator picks a boat. Some inherit one, some buy what the bank wi
 
 ## The brief that selected the boat
 
-When Dodie and I started shopping for the boat, we wrote down the brief before we wrote down a budget. Eight to twelve guests for a week at a time. All-inclusive. Three regions a year — Caribbean winter, Bahamas spring, Mediterranean summer. We considered cats from 45 to 60 feet and monohulls in the same range. We sat on Beneteaus, Jeanneaus, Bavarias, and Hallberg-Rassys. We sat on Lagoons, Leopards, Bali, and Fountaine Pajots.
+When Dodie and I started shopping for the boat, we wrote down the brief before we wrote down a budget. Eight to twelve guests for a week at a time. All-inclusive. Three regions a year — Caribbean winter, Bahamas spring, Mediterranean summer. We considered cats from 40 to 60 feet and monohulls in the same range. We sat on Beneteaus, Jeanneaus, Bavarias, and Hallberg-Rassys. We sat on Lagoons, Leopards, Bali, and Fountaine Pajots.
 
 The selection criteria, in order:
 

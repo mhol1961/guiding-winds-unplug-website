@@ -74,6 +74,25 @@ const fishingItems = [
   { Icon: Compass, label: 'Clint at the helm', body: 'A long-liner background brought to deep-water trolling. He reads the bottom and the bird sign the way other people read forecasts.' },
   { Icon: Sun, label: 'Catch-driven dinners', body: "What the boat brings in is what Dodie cooks that night. Crudo, blackened, grilled whole — the kitchen flexes around the day." },
 ];
+
+// "From aboard" gallery — Clint's own footage and photos from recent
+// weeks. Videos are click-to-play (poster + preload=none) so they cost
+// nothing on page load until a visitor presses play.
+const galleryClips = [
+  { src: '/media/gallery/sailing-islands.mp4', poster: '/media/gallery/posters/sailing-islands.jpg', title: 'Underway between anchorages' },
+  { src: '/media/gallery/big-fish-jumping.mp4', poster: '/media/gallery/posters/big-fish-jumping.jpg', title: 'A fish on, off the stern' },
+  { src: '/media/gallery/catching-mahi-mahi.mp4', poster: '/media/gallery/posters/catching-mahi-mahi.jpg', title: 'Mahi-mahi on the troll' },
+  { src: '/media/gallery/clint-big-fish.mp4', poster: '/media/gallery/posters/clint-big-fish.jpg', title: 'Clint works one to the boat' },
+  { src: '/media/gallery/flamingos.mp4', poster: '/media/gallery/posters/flamingos.jpg', title: 'A flamingo flat, up close' },
+  { src: '/media/gallery/clint-boats-portrait.mp4', poster: '/media/gallery/posters/clint-boats-portrait.jpg', title: 'Harbor, fishing boats astern' },
+];
+
+const galleryPhotos = [
+  { src: '/gorgeous-sunset-from-island-beach.png', alt: 'A vivid sunset seen from an island beach, sky in deep orange and violet over calm water', title: 'Sunset off the island beach' },
+  { src: '/clint-relaxing-on-boat-islands-background.png', alt: 'Clint relaxing aboard the boat with green island headlands in the background', title: 'At anchor, islands behind' },
+  { src: '/beautiful-scene-from-boat-with-client.png', alt: 'A bright morning scene shot from aboard the boat, open water and distant shoreline', title: 'A morning underway' },
+  { src: '/clint-with-boats-background.png', alt: 'Clint in a harbor with fishing and sailing boats moored behind him', title: 'In the harbor' },
+];
 ---
 
 <BaseLayout title={title} description={description} transparentNav schema={schemaGraph}>
@@ -311,6 +330,77 @@ const fishingItems = [
         </span>
         Mornings on the foredeck for the practice, afternoons on the troll. Dinner is whatever the boat caught.
       </p>
+    </div>
+  </section>
+
+  {/* From aboard — real footage + photos gallery (click-to-play) */}
+  <section id="from-aboard" class="bg-bone text-primary py-24 sm:py-32 border-t border-rule">
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
+      <div class="max-w-2xl mb-14 lg:mb-16">
+        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-accent-hot mb-5">
+          From aboard
+        </p>
+        <h2
+          class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
+          style="font-size: clamp(2rem, 4vw + 0.75rem, 3rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
+        >
+          Real days on the water,
+          <span class="italic block" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
+            caught on the way past.
+          </span>
+        </h2>
+        <p class="mt-6 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-primary/75 text-balance">
+          No stock footage here — these are Clint's own clips and photos from recent weeks aboard. Tap any clip to play.
+        </p>
+      </div>
+
+      {/* Clips — click-to-play, nothing downloads until you press play */}
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+        {
+          galleryClips.map(({ src, poster, title }) => (
+            <li class="card-rise group bg-bone-deep border border-bone-deep overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-accent-hot hover:shadow-[0_16px_44px_rgba(229,64,43,0.16),0_2px_8px_rgba(229,64,43,0.10)]">
+              <figure class="relative aspect-video overflow-hidden bg-primary/10">
+                <video
+                  class="absolute inset-0 w-full h-full object-cover"
+                  preload="none"
+                  poster={poster}
+                  controls
+                  playsinline
+                >
+                  <source src={src} type="video/mp4" />
+                </video>
+              </figure>
+              <figcaption class="px-5 py-4 font-label-caps uppercase tracking-[0.18em] text-[0.625rem] font-semibold text-primary/70">
+                {title}
+              </figcaption>
+            </li>
+          ))
+        }
+      </ul>
+
+      {/* Photos — click to open full size */}
+      <ul class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 mt-6 lg:mt-8">
+        {
+          galleryPhotos.map(({ src, alt, title }) => (
+            <li class="card-rise group bg-bone-deep border border-bone-deep overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-sun hover:shadow-[0_16px_44px_rgba(232,163,64,0.22),0_2px_8px_rgba(232,163,64,0.12)]">
+              <a href={src} target="_blank" rel="noreferrer">
+                <figure class="relative aspect-[4/5] overflow-hidden bg-primary/10">
+                  <img
+                    src={src}
+                    alt={alt}
+                    loading="lazy"
+                    decoding="async"
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                  />
+                </figure>
+              </a>
+              <figcaption class="px-4 py-3 font-label-caps uppercase tracking-[0.16em] text-[0.5625rem] font-semibold text-primary/65">
+                {title}
+              </figcaption>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 

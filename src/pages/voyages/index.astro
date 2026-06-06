@@ -107,6 +107,7 @@ type WeekRow = {
   voyageName: string;
   country: string;
   nights: number;
+  nightsLabel?: string;
   price: number;
   start: string;
   end: string;
@@ -118,6 +119,7 @@ type VoyageGroup = {
   name: string;
   country: string;
   nights: number;
+  nightsLabel?: string;
   price: number;
   weeks: WeekRow[];
 };
@@ -153,6 +155,7 @@ const regionGroups: RegionGroup[] = regionKeys.map((key) => {
           voyageName: v.data.name,
           country: v.data.country,
           nights: v.data.nights,
+          nightsLabel: v.data.nightsLabel,
           price: v.data.pricePerGuestUSD,
           start: w.start,
           end: w.end,
@@ -164,6 +167,7 @@ const regionGroups: RegionGroup[] = regionKeys.map((key) => {
         name: v.data.name,
         country: v.data.country,
         nights: v.data.nights,
+        nightsLabel: v.data.nightsLabel,
         price: v.data.pricePerGuestUSD,
         weeks,
       };
@@ -297,7 +301,7 @@ const schemaGraph = [
                   </span>
                 </div>
                 <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70">
-                  {voyage.data.nights} nights · {voyage.data.country}
+                  {voyage.data.nightsLabel ?? voyage.data.nights} nights · {voyage.data.country}
                 </p>
                 <h2
                   class="font-display text-[1.375rem] leading-[1.1] tracking-[-0.015em] font-normal mt-2 group-hover:text-accent transition-colors text-balance"
@@ -425,7 +429,7 @@ const schemaGraph = [
                             {voyage.name}
                           </h4>
                           <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/70 mt-2">
-                            {voyage.country} · {voyage.nights} nights · From ${voyage.price.toLocaleString()}
+                            {voyage.country} · {voyage.nightsLabel ?? voyage.nights} nights · From ${voyage.price.toLocaleString()}
                           </p>
                         </div>
                         <a
@@ -480,7 +484,7 @@ const schemaGraph = [
                                     {formatWeek(week.start, week.end)}
                                   </p>
                                   <p class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/50 mt-1.5 tabular-nums">
-                                    {weekdayLabel(week.start)} → {weekdayLabel(week.end)} · {voyage.nights} nights
+                                    {weekdayLabel(week.start)} → {weekdayLabel(week.end)} · {voyage.nightsLabel ?? voyage.nights} nights
                                   </p>
                                 </div>
 

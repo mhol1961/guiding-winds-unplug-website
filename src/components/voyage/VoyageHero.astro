@@ -14,6 +14,7 @@ interface Props {
   emphasis: string;
   pricePerGuestUSD: number;
   nights: number;
+  nightsLabel?: string;
   anchorages: number;
 }
 const {
@@ -25,6 +26,7 @@ const {
   emphasis,
   pricePerGuestUSD,
   nights,
+  nightsLabel,
   anchorages,
 } = Astro.props;
 ---
@@ -76,7 +78,7 @@ const {
         <div class="mt-10 lg:mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-3 max-w-3xl">
           <div>
             <p class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-ink-soft">Length</p>
-            <p class="font-display text-[1.5rem] leading-none text-ink mt-1.5" style="font-variation-settings: 'opsz' 36;">{nights} nights</p>
+            <p class="font-display text-[1.5rem] leading-none text-ink mt-1.5" style="font-variation-settings: 'opsz' 36;">{nightsLabel ?? nights} nights</p>
           </div>
           <span class="block size-1 bg-sun rounded-full self-center mt-3" aria-hidden="true"></span>
           <div>

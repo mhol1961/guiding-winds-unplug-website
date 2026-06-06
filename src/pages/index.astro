@@ -7,7 +7,6 @@ import LogbookQuote from '../components/home/LogbookQuote.astro';
 import ExploreCards from '../components/home/ExploreCards.astro';
 import TestimonialRow from '../components/home/TestimonialRow.astro';
 import MidCta from '../components/home/MidCta.astro';
-import PressStrip from '../components/home/PressStrip.astro';
 import Megatype from '../components/home/Megatype.astro';
 import AboutSplit from '../components/home/AboutSplit.astro';
 import TrustPillars from '../components/home/TrustPillars.astro';
@@ -19,7 +18,7 @@ import { getCollection } from 'astro:content';
 
 const title = 'Off-Grid Catamaran Charters · BVI, Bahamas, Mediterranean | Guiding Winds Unplug';
 const description =
-  'All-inclusive wellness catamaran voyages for 8–12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia. From $3,550 per guest, per week.';
+  'All-inclusive wellness catamaran voyages for four to six cabins and eight to twelve guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia.';
 
 const baseUrl = Astro.site?.toString() ?? 'https://guidingwinds-unplug.com';
 const reviews = await getCollection('reviews');
@@ -53,15 +52,13 @@ const schemaGraph = [
     eyebrow="The Off-Grid Catamaran Experts · Established 2021"
     headlinePrefix="Every voyage starts with a "
     headlineEmphasis="feeling."
-    subline="All-inclusive wellness catamaran charters for eight cabins and twelve guests. Caribbean in winter, Mediterranean in summer. From $3,550 per guest, per week."
+    subline="All-inclusive wellness catamaran charters for four to six cabins and eight to twelve guests, sailing the Caribbean, the Bahamas, and the Mediterranean."
     primaryCta={{ label: 'See Available Weeks', href: '/calendar' }}
     secondaryCta={{ label: 'How a Week Aboard Works', href: '/aboard' }}
     trustItems={[
-      'USCG Captain',
-      'BVI Charter Permit',
       '5.0 Verified Reviews',
       '100% All-Inclusive',
-      '8 Cabins · 12 Guests',
+      '4-6 Cabins · 8-12 Guests',
     ]}
   />
   {/* Section rhythm (Stage 5 — alternation pass): dark hero → bone
@@ -76,10 +73,10 @@ const schemaGraph = [
   <Feeling />
   <SectionInterrupt
     variant="teal"
-    eyebrow="Five regions · 14 weeks · 2027"
+    eyebrow="Five regions · 12+ weeks a year"
     headline="The boat goes"
     headlineItalic="where day-charter crowds don't."
-    body="Seven nights at anchor, mooring to mooring, on a schedule the wind writes."
+    body="Four to seven nights at anchor, mooring to mooring, on a schedule the wind writes."
   />
   <Picker />
   <LogbookQuote />
@@ -87,19 +84,18 @@ const schemaGraph = [
   <TestimonialRow />
   <SectionInterrupt
     variant="stat"
-    eyebrow="2027 inventory"
-    headline="8 cabins"
-    headlineItalic="· 14 weeks · sold flat"
-    body="Fourteen weeks total across 2027. Caribbean dry season fills first; Mediterranean by April."
+    eyebrow="Limited inventory"
+    headline="Up to 6 cabins"
+    headlineItalic="· a dozen-plus weeks a year"
+    body="A limited run of sailing weeks each year. Caribbean dry season fills first."
     ctaLabel="See Available Weeks"
     ctaHref="/calendar"
   />
   <MidCta />
-  <PressStrip />
   <Megatype />
   <SectionInterrupt
     variant="teal"
-    eyebrow="Two captains"
+    eyebrow="Your hosts"
     headline="One catamaran."
     headlineItalic="A husband-and-wife crew."
     ctaLabel="Meet Clint & Dodie"

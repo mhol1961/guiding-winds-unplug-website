@@ -44,7 +44,7 @@ const regionLabel: Record<string, string> = {
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 lg:mb-20 max-w-4xl">
       <div>
         <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-5">
-          The 2027 voyages
+          The voyages
         </p>
         <h2
           class="font-display font-light text-balance leading-[1.05] tracking-[-0.025em]"
@@ -98,7 +98,7 @@ const regionLabel: Record<string, string> = {
 
               {/* Below-image type — magazine-cover style */}
               <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70">
-                {voyage.data.nights} nights · {voyage.data.country}
+                {voyage.data.nightsLabel ?? voyage.data.nights} nights · {voyage.data.country}
               </p>
               <h3
                 class="font-display text-[1.375rem] leading-[1.1] tracking-[-0.015em] font-normal mt-2 group-hover:text-accent transition-colors text-balance"
@@ -123,7 +123,7 @@ const regionLabel: Record<string, string> = {
 
     <div class="mt-16 pt-10 border-t border-primary/10 flex items-center justify-between flex-wrap gap-5">
       <p class="font-body-md text-[1rem] text-primary/65">
-        14 weeks total across the 2027 calendar.
+        A dozen-plus sailing weeks a year.
       </p>
       <a
         href="/calendar"

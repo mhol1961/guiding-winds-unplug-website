@@ -5,6 +5,7 @@ name: Croatia · Dalmatian Coast
 country: Croatia
 heroEyebrow: 'Split · Adriatic'
 nights: 7
+nightsLabel: '4 to 7'
 pricePerGuestUSD: 3850
 shortDescription: 'Split to Dubrovnik through the Dalmatian island chain. Hvar, Vis, Korčula — quiet coves with Roman ruins above and clear water below.'
 heroImage: /img/stock/voyages/croatia/croatia-hvar-harbor-hero.jpg
@@ -53,11 +54,10 @@ itinerary:
     body: 'One-way charter. Off by 10am, transfer to Dubrovnik for evening flight.'
 inclusions:
   - All meals aboard, chef-prepared (Croatian-leaning galley menu)
-  - Premium open bar
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and dockage
-  - USCG / RYA Yachtmaster captain and host
+  - Captain and host
 exclusions:
   - Flights to Split (SPU) / from Dubrovnik (DBV)
   - Travel insurance
@@ -75,7 +75,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Croatian coast sailing charter runs one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route threads the Dalmatian chain — Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites — and finishes with a transfer to Dubrovnik for the flight home. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall (USCG-licensed) and hosted by Dodie. Two weeks in 2027: a mid-August high-season sailing and an early-October shoulder week.
+**TL;DR:** Our 7-night Croatian coast sailing charter runs one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route threads the Dalmatian chain — Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites — and finishes with a transfer to Dubrovnik for the flight home. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Two weeks in 2027: a mid-August high-season sailing and an early-October shoulder week.
 
 ## The Dalmatian coast is not a beach coast
 

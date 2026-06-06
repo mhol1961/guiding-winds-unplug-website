@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
 import {
   UtensilsCrossed,
-  Wine,
   Waves,
   BedDouble,
   Fuel,
@@ -14,7 +13,7 @@ import {
 
 const title = 'What is Aboard · All-Inclusive Catamaran Charter Inclusions | Guiding Winds Unplug';
 const description =
-  'Chef-prepared meals, premium open bar, snorkel gear, paddleboards, private cabins with ensuite heads, fuel and dockage. Everything is in. Bring a swimsuit.';
+  'Chef-prepared meals, snorkel gear, private cabins with ensuite heads, fuel and dockage. Everything is in. Bring a swimsuit.';
 
 const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
 
@@ -44,11 +43,10 @@ const schemaGraph = [
 
 const included = [
   { Icon: UtensilsCrossed, label: 'Chef-prepared meals', body: 'Breakfast, lunch, dinner. Dodie runs the galley. Cuisine shifts by destination — Caribbean breakfasts, Mediterranean dinners, a different theme most nights.' },
-  { Icon: Wine, label: 'Premium open bar', body: 'Wine, spirits, beer, sparkling, mixers, coffee, the works. No upsell at sundown. Stocked to your preferences from the inquiry call.' },
-  { Icon: Waves, label: 'Snorkel gear & SUPs', body: 'Masks, fins, snorkels in every size. Two paddleboards, two kayaks. A noodle for the people who just want a noodle.' },
+  { Icon: Waves, label: 'Snorkel gear included', body: 'Masks, fins, snorkels in every size, plus a noodle for the people who just want a noodle. Paddleboards and kayaks available as an add-on.' },
   { Icon: BedDouble, label: 'Private cabin + head', body: 'Eight ensuite queens. Hatch over the bed. AC on shore power, fans underway. Linens and towels provided.' },
   { Icon: Fuel, label: 'Fuel & dockage', body: 'No itemized fuel surcharge. Dockage included at every overnight, including the mooring fees at the busier anchorages.' },
-  { Icon: Anchor, label: 'Captain & host', body: 'Clint at the helm, USCG-licensed. Dodie running the boat. We sail every voyage personally — no rotating skippers.' },
+  { Icon: Anchor, label: 'Captain & host', body: 'Clint at the helm, Dodie running the boat. We sail every voyage personally, no rotating skippers.' },
   { Icon: Sunrise, label: 'Daily wellness', body: 'Optional morning breath sequence or yoga flow on the foredeck. Optional, not announced. Skip without comment.' },
   { Icon: WifiOff, label: 'The right to unplug', body: 'Starlink on by default. Off the moment you ask. Most guests have us flip it Wednesday and forget about it.' },
 ];

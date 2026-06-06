@@ -5,6 +5,7 @@ name: Greece · Cyclades
 country: Greece
 heroEyebrow: 'Athens · Aegean'
 nights: 7
+nightsLabel: '4 to 7'
 pricePerGuestUSD: 3850
 shortDescription: 'Mykonos at the start, Santorini at the end, three quiet Cyclades in between — the chain at the pace it was meant to be sailed.'
 heroImage: /img/stock/voyages/greece/greece-santorini-caldera-hero.jpg
@@ -53,11 +54,10 @@ itinerary:
     body: 'One-way charter. Off by 10am, transfer to JTR for evening flight.'
 inclusions:
   - All meals aboard, chef-prepared (Greek-leaning galley menu)
-  - Premium open bar (assyrtiko featured)
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and dockage
-  - USCG / RYA Yachtmaster captain and host
+  - Captain and host
 exclusions:
   - Flights to Athens (ATH) / from Santorini (JTR)
   - Travel insurance
@@ -75,7 +75,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Greek islands catamaran trip sails one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route threads Kea, Kythnos, Sifnos, Folegandros, Ios, and Santorini — the chain at sailboat pace, not ferry pace. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall (USCG-licensed) and hosted by Dodie. Two 2027 weeks: a July sailing in the Meltemi, and a calmer September week.
+**TL;DR:** Our 7-night Greek islands catamaran trip sails one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route threads Kea, Kythnos, Sifnos, Folegandros, Ios, and Santorini — the chain at sailboat pace, not ferry pace. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Two 2027 weeks: a July sailing in the Meltemi, and a calmer September week.
 
 ## The shape of a week
 

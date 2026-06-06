@@ -5,6 +5,7 @@ name: Italy · Amalfi & Aeolian
 country: Italy
 heroEyebrow: 'Salerno · Tyrrhenian Sea'
 nights: 7
+nightsLabel: '4 to 7'
 pricePerGuestUSD: 3850
 shortDescription: 'Capri at sunrise, Positano on the water, the volcanic Aeolian chain — dinners ashore that ruin you for hotel restaurants forever.'
 heroImage: /img/stock/voyages/italy/italy-amalfi-coast-hero.jpg
@@ -53,11 +54,10 @@ itinerary:
     body: 'One-way charter ends in Sicily. Off by 11am, train to Catania for evening flight, or stay on for a few nights ashore.'
 inclusions:
   - All meals aboard, chef-prepared (Italian-leaning galley menu)
-  - Premium open bar (local wine emphasized)
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and dockage
-  - USCG / RYA Yachtmaster captain and host
+  - Captain and host
 exclusions:
   - Flights to Naples (NAP) / from Catania (CTA)
   - Travel insurance
@@ -76,7 +76,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route threads the Amalfi coast — Amalfi, Positano, Capri — then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall (USCG-licensed) and hosted by Dodie. Two weeks in 2027, mid-June and early July.
+**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route threads the Amalfi coast — Amalfi, Positano, Capri — then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Two weeks in 2027, mid-June and early July.
 
 ## The arc no one else sails in a week
 

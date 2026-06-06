@@ -5,6 +5,7 @@ name: The Bahamas
 country: The Bahamas
 heroEyebrow: 'Marsh Harbour · Abacos'
 nights: 7
+nightsLabel: '4 to 7'
 pricePerGuestUSD: 3550
 shortDescription: 'Hope Town, Tilloo Cay, Man-o-War. Pink-sand spits, shallow water you can stand up in a half-mile from shore, the slow side of the Caribbean.'
 heroImage: /img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg
@@ -54,11 +55,10 @@ itinerary:
     body: 'Brunch aboard, off the boat by 11am.'
 inclusions:
   - All meals aboard, chef-prepared
-  - Premium open bar
   - Snorkel gear, paddleboards, kayaks
   - Private cabin with ensuite head
   - Fuel and dockage
-  - USCG-licensed captain and host
+  - Captain and host
   - Daily breath / yoga practice on deck (optional)
 exclusions:
   - Flights to/from Marsh Harbour (MHH)

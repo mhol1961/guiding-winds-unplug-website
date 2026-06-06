@@ -220,6 +220,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
     emphasis={emphasis[voyage.data.slug] ?? 'Seven nights off the grid.'}
     pricePerGuestUSD={voyage.data.pricePerGuestUSD}
     nights={voyage.data.nights}
+    nightsLabel={voyage.data.nightsLabel}
     anchorages={voyage.data.itinerary.length}
   />
 
@@ -357,7 +358,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
                 </span>
               </div>
               <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70">
-                {sibling.data.nights} nights · From ${sibling.data.pricePerGuestUSD.toLocaleString()}
+                {sibling.data.nightsLabel ?? sibling.data.nights} nights · From ${sibling.data.pricePerGuestUSD.toLocaleString()}
               </p>
               <h3 class="font-display text-[1.5rem] leading-[1.1] tracking-[-0.015em] font-normal mt-2 group-hover:text-accent transition-colors" style="font-variation-settings: 'opsz' 36;">
                 {sibling.data.name}
