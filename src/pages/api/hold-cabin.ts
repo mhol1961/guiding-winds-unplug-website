@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { getCollection } from 'astro:content';
 import { upsertContact } from '../../lib/ghl/contacts';
 import { createHoldAppointment } from '../../lib/ghl/calendars';
-import { calendarIds } from '../../lib/ghl/client';
+import { getCalendarIds, type CalendarRegion } from '../../lib/ghl/client';
 import { rateLimit, clientKey } from '../../lib/utils/rate-limit';
 
 const HoldSchema = z.object({
@@ -27,7 +27,7 @@ const HoldSchema = z.object({
   website: z.string().max(0).default(''),
 });
 
-const REGION_FOR: Record<string, keyof typeof calendarIds> = {
+const REGION_FOR: Record<string, CalendarRegion> = {
   'british-virgin-islands': 'bvi',
   bahamas: 'bahamas',
   italy: 'mediterranean',
@@ -128,7 +128,7 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const region = REGION_FOR[data.voyageSlug];
-  const calendarId = calendarIds[region];
+  const calendarId = getCalendarIds()[region];
   if (!calendarId) {
     console.error(`[hold] no calendar configured for region ${region}`);
     return jsonResponse(

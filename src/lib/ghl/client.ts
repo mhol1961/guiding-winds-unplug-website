@@ -1,5 +1,11 @@
 // Thin typed wrapper around the GoHighLevel v2 REST API.
-// Reads credentials from environment via Astro's import.meta.env.
+//
+// Credentials are read at REQUEST TIME from the Cloudflare Worker runtime
+// env (secrets/vars set in the dashboard or via wrangler). On Cloudflare,
+// `import.meta.env` is inlined at BUILD time and does NOT carry runtime
+// secrets, so reading it at module load gave an empty token in production
+// and tripped the mailto fallback. We read the runtime env per call and
+// fall back to import.meta.env for local dev / non-Cloudflare contexts.
 //
 // Env vars (see .env.example):
 //   GHL_API_BASE       — https://services.leadconnectorhq.com
@@ -8,19 +14,17 @@
 //   GHL_LOCATION_ID    — subaccount Location ID
 //   GHL_CALENDAR_ID_*  — per-region calendar IDs
 //
-// DRY_RUN_GHL=true lets local dev exercise form code without a real
-// token — every call logs to console and returns a synthetic success
-// payload. Used when Dodie's creds aren't available yet.
+// DRY_RUN_GHL=true lets local dev exercise form code without a real token.
 
-const BASE = import.meta.env.GHL_API_BASE ?? 'https://services.leadconnectorhq.com';
-const VERSION = import.meta.env.GHL_API_VERSION ?? '2021-07-28';
-const TOKEN = import.meta.env.GHL_PRIVATE_TOKEN ?? '';
-// Gate DRY_RUN on an EXPLICIT env flag only (per Codex security audit).
-// Previously this also activated when TOKEN was empty — which meant a
-// missing prod env var silently dropped leads while returning 200 OK to
-// the user. The mailto fallback in the API handlers was bypassed.
-// Now: missing token in prod = throw → mailto fallback fires.
-const DRY_RUN = import.meta.env.DRY_RUN_GHL === 'true';
+import { env as runtimeEnv } from 'cloudflare:workers';
+
+/** Read an env value from the Cloudflare runtime first, then build-time. */
+function envVar(key: string): string | undefined {
+  const fromRuntime = runtimeEnv?.[key];
+  if (typeof fromRuntime === 'string' && fromRuntime !== '') return fromRuntime;
+  const fromBuild = (import.meta.env as Record<string, unknown>)[key];
+  return typeof fromBuild === 'string' && fromBuild !== '' ? fromBuild : undefined;
+}
 
 interface GhlRequestOptions extends Omit<RequestInit, 'body'> {
   body?: unknown;
@@ -40,6 +44,12 @@ export class GhlError extends Error {
 }
 
 export async function ghl<T>(path: string, options: GhlRequestOptions = {}): Promise<T> {
+  // Read at call time so Cloudflare runtime secrets/vars are picked up.
+  const DRY_RUN = envVar('DRY_RUN_GHL') === 'true';
+  const TOKEN = envVar('GHL_PRIVATE_TOKEN') ?? '';
+  const BASE = envVar('GHL_API_BASE') ?? 'https://services.leadconnectorhq.com';
+  const VERSION = envVar('GHL_API_VERSION') ?? '2021-07-28';
+
   if (DRY_RUN) {
     console.log(`[GHL DRY RUN] ${options.method ?? 'GET'} ${path}`, options.body ?? '');
     return { dryRun: true, path } as T;
@@ -104,11 +114,16 @@ export async function ghl<T>(path: string, options: GhlRequestOptions = {}): Pro
 }
 
 export function locationId(): string {
-  return import.meta.env.GHL_LOCATION_ID ?? '';
+  return envVar('GHL_LOCATION_ID') ?? '';
 }
 
-export const calendarIds = {
-  bvi: import.meta.env.GHL_CALENDAR_ID_BVI ?? '',
-  bahamas: import.meta.env.GHL_CALENDAR_ID_BAHAMAS ?? '',
-  mediterranean: import.meta.env.GHL_CALENDAR_ID_MED ?? '',
-} as const;
+export type CalendarRegion = 'bvi' | 'bahamas' | 'mediterranean';
+
+/** Per-region calendar IDs, read from the runtime env at call time. */
+export function getCalendarIds(): Record<CalendarRegion, string> {
+  return {
+    bvi: envVar('GHL_CALENDAR_ID_BVI') ?? '',
+    bahamas: envVar('GHL_CALENDAR_ID_BAHAMAS') ?? '',
+    mediterranean: envVar('GHL_CALENDAR_ID_MED') ?? '',
+  };
+}
