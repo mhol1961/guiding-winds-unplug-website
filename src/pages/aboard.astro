@@ -42,9 +42,9 @@ const schemaGraph = [
 ];
 
 const included = [
-  { Icon: UtensilsCrossed, label: 'Chef-prepared meals', body: 'Breakfast, lunch, dinner. Dodie runs the galley. Cuisine shifts by destination — Caribbean breakfasts, Mediterranean dinners, a different theme most nights.' },
+  { Icon: UtensilsCrossed, label: 'Chef-prepared meals', body: 'Breakfast, lunch, dinner. Dodie runs the galley. Meal shifts by destination — Caribbean breakfasts, Mediterranean dinners, a different theme most nights.' },
   { Icon: Waves, label: 'Snorkel gear included', body: 'Masks, fins, snorkels in every size, plus a noodle for the people who just want a noodle. Paddleboards and kayaks available as an add-on.' },
-  { Icon: BedDouble, label: 'Private cabin + head', body: 'Eight ensuite queens. Hatch over the bed. AC on shore power, fans underway. Linens and towels provided.' },
+  { Icon: BedDouble, label: 'Private cabin + head', body: 'Your own cabin with an ensuite head. AC on shore power, fans underway. Linens and towels provided.' },
   { Icon: Fuel, label: 'Fuel & dockage', body: 'No itemized fuel surcharge. Dockage included at every overnight, including the mooring fees at the busier anchorages.' },
   { Icon: Anchor, label: 'Captain & host', body: 'Clint at the helm, Dodie running the boat. We sail every voyage personally, no rotating skippers.' },
   { Icon: Sunrise, label: 'Daily wellness', body: 'Optional morning breath sequence or yoga flow on the foredeck. Optional, not announced. Skip without comment.' },
@@ -52,15 +52,12 @@ const included = [
 ];
 
 const boatAreas = [
-  { label: 'The salon', body: 'Wraparound bench seating, a table that doubles for long dinners and chart sessions. Most of the week is lived here when you are not in the water.', img: '/img/stock/boat/boat-salon-ai.jpg', alt: 'Wraparound salon seating on a sailing catamaran with set dinner table and golden-hour light through the windows' },
-  { label: 'The galley', body: 'Full-size induction cooktop, twin fridges, freezer for the long passages, a wine cooler. Dodie runs a tight kitchen — you should not feel obligated to help.', img: '/img/stock/boat/boat-galley-real.jpg', alt: 'White cabinetry galley on a yacht with sink, stainless beverage fridge, and espresso machine' },
-  { label: 'The cabins', body: 'Eight queens, each with an ensuite head and a hatch over the bed. The Lagoon 50 has no "small cabin" — every cabin is the same generous footprint.', img: '/img/stock/boat/boat-cabin-ai.jpg', alt: 'Ensuite queen cabin on a sailing catamaran with crisp white linens, overhead hatch admitting bright daylight, porthole showing turquoise water' },
   { label: 'The foredeck', body: 'The trampoline is the social spot of the boat. Where the morning practice happens, where the afternoon naps happen, where the sundowner conversations happen.', img: '/img/stock/boat/boat-foredeck-trampoline-ai.jpg', alt: 'Twin black-mesh trampolines stretched between the bows of a white catamaran at golden hour, cream cushions scattered across them, the sun setting low between the bows over turquoise water' },
 ];
 
-const notIncluded = [
+const notIncluded: Array<string | { label: string; href: string }> = [
   'Flights to and from the embarkation port',
-  'Travel insurance',
+  { label: 'Travel insurance', href: 'https://trawickinternational.com/' },
   'Crew gratuity (10–15% suggested)',
   'Off-boat dining and excursions you arrange independently',
 ];
@@ -178,7 +175,7 @@ const notIncluded = [
           class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance text-ink"
           style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
         >
-          A Lagoon 50.
+          Our catamaran.
           <span class="italic" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
             Chosen for cabin volume, not the spec sheet.
           </span>
@@ -243,7 +240,20 @@ const notIncluded = [
                   <span class="font-display text-[1.75rem] text-sun-deep shrink-0 leading-none mt-1 tabular-nums" style="font-variation-settings: 'opsz' 36;">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <p>{item}</p>
+                  <p>
+                    {typeof item === 'string' ? (
+                      item
+                    ) : (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="underline decoration-sun-deep/40 underline-offset-4 hover:decoration-sun-deep transition-colors"
+                      >
+                        {item.label}
+                      </a>
+                    )}
+                  </p>
                 </li>
               ))
             }
@@ -257,9 +267,9 @@ const notIncluded = [
   <SectionInterrupt
     variant="stat"
     eyebrow="The numbers"
-    headline="8 cabins"
-    headlineItalic="· 50 feet · 12 guests max"
-    body="Bigger boats lose the through-line. Smaller ones don't have the galley to do dinner the way Dodie does it. The Lagoon 50 is the boat that sits in between."
+    headline="Up to 12 guests"
+    headlineItalic="· comfortably aboard"
+    body="Bigger boats lose the through-line. Smaller ones don't have the galley to do dinner the way Dodie does it. Our catamaran is the boat that sits in between."
     ctaLabel="Hold a Cabin"
     ctaHref="/inquire"
   />

@@ -14,9 +14,6 @@ const voyages = await getCollection('voyages');
 const allWeeks = voyages.flatMap((v) =>
   v.data.availableWeeks.map((w) => ({ ...w, voyageSlug: v.data.slug })),
 );
-const cabinsAvailable = allWeeks.reduce((s, w) => s + w.cabinsAvailable, 0);
-const cabinsTotal = allWeeks.length * 8; // 8 cabins per week
-const cabinsBooked = cabinsTotal - cabinsAvailable;
 const weeksWithLowAvailability = allWeeks.filter(
   (w) => w.cabinsAvailable > 0 && w.cabinsAvailable <= 2,
 ).length;
@@ -33,8 +30,8 @@ const weeksWithLowAvailability = allWeeks.filter(
           class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance text-primary"
           style="font-size: clamp(2rem, 4vw + 1rem, 3.25rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
         >
-          <span class="tabular-nums">{cabinsBooked}</span> of {cabinsTotal} cabins are
-          <span class="italic" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">already booked.</span>
+          Some 2027 weeks are
+          <span class="italic" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">already filling up.</span>
         </h2>
         <p class="font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-primary/75 mt-7 max-w-xl">
           {weeksWithLowAvailability === 1
@@ -85,14 +82,6 @@ const weeksWithLowAvailability = allWeeks.filter(
       {/* Big-type proof block on the right */}
       <div class="lg:col-span-5">
         <div class="border-l-2 border-accent pl-8">
-          <p class="font-display text-[4rem] lg:text-[5rem] text-primary leading-none tabular-nums" style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;">
-            5.0
-          </p>
-          <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/65 mt-3">
-            Across 47 verified guest reviews
-          </p>
-        </div>
-        <div class="mt-8 border-l-2 border-accent pl-8">
           <p class="font-display text-[2rem] lg:text-[2.25rem] text-primary leading-tight" style="font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;">
             32% returning guests
           </p>

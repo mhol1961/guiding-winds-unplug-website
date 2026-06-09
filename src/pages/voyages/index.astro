@@ -33,7 +33,7 @@ const regionTheme: Record<
 > = {
   caribbean: {
     label: 'Caribbean',
-    seasonBlurb: 'trade-wind season',
+    seasonBlurb: 'steady trade winds',
     pillBg: 'bg-sun-deep',
     pillText: 'text-bone',
     rule: 'before:bg-sun-deep',
@@ -41,7 +41,7 @@ const regionTheme: Record<
   },
   bahamas: {
     label: 'Bahamas',
-    seasonBlurb: 'shoulder season, glass mornings',
+    seasonBlurb: 'glass mornings',
     pillBg: 'bg-accent',
     pillText: 'text-bone',
     rule: 'before:bg-accent',
@@ -210,7 +210,7 @@ const heroSubline = regionGroups
   .filter((r) => r.totalWeeks > 0)
   .map((r) => `${r.label} ${r.months}.`)
   .join(' ') +
-  ' We sail every week ourselves — Clint at the helm, Dodie running the galley. Eight cabins, twelve guests, no crowds at anchor.';
+  ' We sail every week ourselves — Clint at the helm, Dodie running the galley. Up to 12 guests, no crowds at anchor.';
 
 function formatWeek(start: string, end: string) {
   const s = new Date(`${start}T12:00:00Z`);
@@ -517,7 +517,7 @@ const schemaGraph = [
                                           class={`inline-block size-1.5 rounded-full mr-2 ${low ? 'bg-accent' : 'bg-sun-deep/80'}`}
                                           aria-hidden="true"
                                         ></span>
-                                        {week.cabinsAvailable} of 8 cabins{low ? ' · low' : ''}
+                                        {week.cabinsAvailable} cabins open{low ? ' · low' : ''}
                                       </Fragment>
                                     )}
                                   </span>

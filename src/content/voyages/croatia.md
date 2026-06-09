@@ -64,18 +64,18 @@ exclusions:
   - Crew gratuity (suggested 10–15%)
   - Off-boat dining (we cover two shore dinners; others on you)
 faq:
-  - q: When is the best time to go?
-    a: 'Early October — water is still warm, crowds have left, and weather is settled. Mid-August is high season but with the quietest beaches if you anchor on the lee side of the chain.'
+  - q: How long is the trip?
+    a: 'Seven nights, one-way from Split to Dubrovnik through the Dalmatian island chain. Specific weeks are available — see the calendar.'
 seo:
   title: 'Croatia Catamaran Charter 2027 · Split to Dubrovnik | Guiding Winds'
-  description: 'Hvar, Vis, Korčula, Mljet. Seven nights aboard a private catamaran for 8–12 guests through the Dalmatian chain. From $3,850 per guest, all-inclusive.'
+  description: 'Hvar, Vis, Korčula, Mljet. Seven nights aboard a private catamaran for up to 12 guests through the Dalmatian chain. From $3,850 per guest, all-inclusive.'
   keywords:
     - Croatian coast sailing charter
     - Dalmatian Coast sailing
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Croatian coast sailing charter runs one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route threads the Dalmatian chain — Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites — and finishes with a transfer to Dubrovnik for the flight home. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Two weeks in 2027: a mid-August high-season sailing and an early-October shoulder week.
+**TL;DR:** Our 7-night Croatian coast sailing charter runs one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a private catamaran for up to 12 guests. The route threads the Dalmatian chain — Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites — and finishes with a transfer to Dubrovnik for the flight home. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Weeks available across 2027 — see the calendar.
 
 ## The Dalmatian coast is not a beach coast
 
@@ -91,12 +91,6 @@ Korčula is the cultural beat in the middle of the week. A walled town on a peni
 
 Mljet closes the chain. The western third of the island is a national park built around two saltwater lakes connected to the sea by a narrow channel, with a twelfth-century Benedictine monastery on a small island in the middle of the larger lake. You anchor at Polače, walk in through the park, swim in the lakes, and walk back out for a quiet dinner ashore.
 
-## August versus early October — the decision
-
-The two weeks we run sit on opposite sides of the season's main question. Mid-August is high season in Dalmatia: full restaurants, premium dockage, the busy hum of a coast at peak. We work around it by anchoring on the lee side of the chain, eating ashore on the off-night, and treating the famous towns as morning stops rather than evening ones. It works, and the boat sails through it well.
-
-Early October is the week we secretly recommend. The marinas empty out the second week of September. The Adriatic stays in the low seventies for swimming through the first week of October. The light gets longer and lower, and the stone towns photograph the way the brochure shots actually look. It is the trip without the trade-off — and the one returning guests tend to ask about for the year after.
-
 > Dalmatia is the only coast in the Mediterranean where you anchor below a working stone village and swim through water that does not pretend to be a swimming pool.
 
 ## The galley, the wine, and one shore dinner we cover
@@ -105,4 +99,4 @@ Dodie runs a Croatian-leaning menu through the week. The Adriatic shellfish — 
 
 ## Why one-way Split to Dubrovnik
 
-The Dalmatian Coast sailing route works best as a one-way south. You cover real ground rather than retracing your wake, and the chain narrows as you go, so the final two days are the most dramatic stretch. The logistics sound heavier than they are: Split (SPU) takes direct flights from most of Europe, Dubrovnik (DBV) takes them back, and both marinas are inside thirty minutes of their airports. Two weeks are open for 2027. If your week matters more than the date, hold a cabin first — no deposit for the first 72 hours, and we will talk on the phone before you commit a dollar.
+The Dalmatian Coast sailing route works best as a one-way south. You cover real ground rather than retracing your wake, and the chain narrows as you go, so the final two days are the most dramatic stretch. The logistics sound heavier than they are: Split (SPU) takes direct flights from most of Europe, Dubrovnik (DBV) takes them back, and both marinas are inside thirty minutes of their airports. Weeks are available across 2027 — see the calendar. If your week matters more than the date, hold a cabin first — no deposit for the first 72 hours, and we will talk on the phone before you commit a dollar.

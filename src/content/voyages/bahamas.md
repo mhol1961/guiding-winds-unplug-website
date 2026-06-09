@@ -68,11 +68,11 @@ exclusions:
 faq:
   - q: How does Bahamas compare to BVI?
     a: 'Calmer water, lower density, more pink-sand beaches, fewer charter boats. The Abacos read as a quieter version of the BVI — same Caribbean palette, half the traffic at anchor.'
-  - q: When is the best time to go?
-    a: 'April and early May. Water is warm, weather is settled, and the chain is between high-season crowds and hurricane window.'
+  - q: How long is the trip?
+    a: 'Seven nights, Saturday to Saturday, from the Marsh Harbour / Treasure Cay area. Specific weeks are available — see the calendar.'
 seo:
   title: 'Bahamas All-Inclusive Catamaran Charter · Abacos 2027 | Guiding Winds'
-  description: 'Hope Town, Tilloo, Man-o-War, Guana. Seven nights for 8–12 guests on a private catamaran in the Abacos. From $3,550 per guest, all-inclusive. April–May 2027.'
+  description: 'Hope Town, Tilloo, Man-o-War, Guana. Seven nights for up to 12 guests on a private catamaran in the Abacos. From $3,550 per guest, all-inclusive.'
   keywords:
     - Bahamas catamaran charter all-inclusive
     - Abacos sailing trip
@@ -81,7 +81,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Bahamas catamaran charter sails the Abacos — a 45ft+ private catamaran with 8 ensuite cabins, capped at 12 guests, from **$3,550 per guest, all-inclusive**. Saturday-to-Saturday from the Marsh Harbour / Treasure Cay area, with named anchorages at Hope Town, Tilloo Cay, Man-o-War Cay, Guana Cay, and Little Harbour. Three weeks available in April and early May 2027.
+**TL;DR:** Our 7-night Bahamas catamaran charter sails the Abacos — a private catamaran for up to 12 guests, from **$3,550 per guest, all-inclusive**. Saturday-to-Saturday from the Marsh Harbour / Treasure Cay area, with named anchorages at Hope Town, Tilloo Cay, Man-o-War Cay, Guana Cay, and Little Harbour. Weeks available across 2027 — see the calendar.
 
 ## Why the Abacos, not the Exumas
 
@@ -99,12 +99,6 @@ Tuesday is Little Harbour and Pete's Pub — a sand-floor bar at the south end o
 
 Saturday morning, brunch aboard. Off the boat by 11.
 
-## April and early May — the window we run
-
-We sail the Bahamas in a deliberate three-week window. April and early May sit between the high-season crush (which clears out by Easter) and the start of the hurricane window (which doesn't realistically open until mid-June). The water is 78–80°F. The trade winds settle into a steady 10–15 knots from the east. The afternoon squalls that punctuate summer haven't started yet.
-
-You also get longer evenings without the heat — the air drops into the low 70s after sundown, which makes for the kind of long, candle-lit dinner on deck the Bahamas summer doesn't really allow.
-
 ## The wellness angle
 
 This is the slowest trip we run. Shorter passages, fewer bar stops, fewer named landmarks to tick off. The pace gives you room to actually unplug — a morning breath practice on the foredeck, a swim before breakfast, an afternoon of nothing in particular. Starlink is aboard and works fine; most guests turn it off on Sunday and don't think about it again until Friday. Dodie cooks taverna-style: long mezze, things off the grill, a glass of something cold on the way. There is no schedule. There is no list of things you'll have missed.
@@ -113,4 +107,4 @@ This is the slowest trip we run. Shorter passages, fewer bar stops, fewer named 
 
 ## Booking
 
-Three weeks for 2027 — April 10, April 24, and May 8 — each Saturday to Saturday, each at $3,550 per guest. Eight cabins per week. We hold a cabin for 72 hours, no payment required. If you want the whole boat for a private group, ask — we run private-charter weeks at the same rate with a tailored itinerary.
+Weeks are available across 2027 — each Saturday to Saturday, each at $3,550 per guest. See the calendar for open weeks. We hold a cabin for 72 hours, no payment required. If you want the whole boat for a private group, ask — we run private-charter weeks at the same rate with a tailored itinerary.

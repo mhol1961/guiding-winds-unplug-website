@@ -72,7 +72,7 @@ faq:
   - q: Do I need to know how to sail?
     a: 'No. Clint handles every helm decision. If you want to learn or take the wheel under his eye, he''ll teach. If you want to read a book, the boat sails itself with him at the helm.'
   - q: What does the cabin look like?
-    a: 'Eight queen cabins, each with an ensuite head (toilet + shower) and a hatch over the bed for stars at night. Air conditioning on shore power; fans underway. The Lagoon 50 was chosen for cabin volume — there''s genuinely no "small cabin" on this boat.'
+    a: 'Each cabin has an ensuite head (toilet + shower) and a hatch over the bed for stars at night. Air conditioning on shore power; fans underway. The catamaran was chosen for cabin volume — there''s genuinely no "small cabin" on this boat.'
   - q: What if I get seasick?
     a: 'Catamarans are dramatically more stable than monohulls — most people who get seasick on cruise ships are fine on this boat. We carry patches and Bonine. The BVI is also one of the most protected sailing grounds on earth — you''re almost never out of sight of an island.'
   - q: Cancellation policy?
@@ -83,7 +83,7 @@ faq:
     a: 'Starlink onboard, on by default. You can also opt to have it disabled for the week — most guests do, by Wednesday.'
 seo:
   title: 'BVI All-Inclusive Catamaran Charter 2027 · 7 Nights | Guiding Winds'
-  description: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Seven nights for 8–12 guests on a private catamaran. From $3,550 per guest, all-inclusive. Six 2027 weeks.'
+  description: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Seven nights for up to 12 guests on a private catamaran. From $3,550 per guest, all-inclusive.'
   keywords:
     - BVI all-inclusive catamaran charter
     - British Virgin Islands sailing charter
@@ -92,7 +92,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night BVI all-inclusive catamaran charter sails Saturday to Saturday from Nanny Cay, Tortola, aboard a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. From **$3,550 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Six weeks in 2027, January through March and one in November.
+**TL;DR:** Our 7-night BVI all-inclusive catamaran charter sails Saturday to Saturday from Nanny Cay, Tortola, aboard a private catamaran for up to 12 guests. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. From **$3,550 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Weeks available across 2027 — see the calendar.
 
 ## The shape of a week
 
@@ -114,8 +114,6 @@ Clint reads weather the way other people read the news. He'll change the next da
 
 > You don't need another vacation. You need a week where Wednesday feels like a Sunday.
 
-## Why the Caribbean, why now
+## Booking
 
-December through April is the window. Trade winds blow steady out of the east at 15 to 20 knots, daytime temperatures sit in the low 80s, and the rain almost always passes in twenty minutes. The water reads 78 to 80 degrees on a thermometer and bluer than that on every other measure. Hurricane season is a non-issue this side of the calendar, which is why we run the BVI from January to March and one shoulder week in mid-November.
-
-Six weeks are open for 2027. Two of them already have fewer than four cabins left. If your week matters more than the date, hold the cabin first — there's no deposit required for the first 72 hours, and we'll talk on the phone before you commit a dollar.
+Weeks are available across 2027 — see the calendar for what's open. Some already have fewer than four cabins left. If your week matters more than the date, hold the cabin first — there's no deposit required for the first 72 hours, and we'll talk on the phone before you commit a dollar.

@@ -68,7 +68,7 @@ faq:
     a: 'Less swimming-pool turquoise, more "you''re in a postcard." Longer passages, more shore time, more dinners ashore. Higher price reflects Mediterranean dockage and provisioning costs.'
 seo:
   title: 'Italy Catamaran Charter 2027 · Amalfi & Aeolian | Guiding Winds'
-  description: 'Capri, Positano, Stromboli, Panarea. Seven nights aboard a private catamaran for 8–12 guests on the Tyrrhenian coast. From $3,850 per guest, all-inclusive.'
+  description: 'Capri, Positano, Stromboli, Panarea. Seven nights aboard a private catamaran for up to 12 guests on the Tyrrhenian coast. From $3,850 per guest, all-inclusive.'
   keywords:
     - Amalfi coast catamaran charter
     - Italy wellness sailing
@@ -76,7 +76,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route threads the Amalfi coast — Amalfi, Positano, Capri — then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Two weeks in 2027, mid-June and early July.
+**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a private catamaran for up to 12 guests. The route threads the Amalfi coast — Amalfi, Positano, Capri — then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Weeks available across 2027 — see the calendar.
 
 ## The arc no one else sails in a week
 
@@ -98,6 +98,6 @@ The Italy voyage runs $3,850 per guest — $300 more than the Caribbean weeks. M
 
 > The Amalfi coast from a hotel terrace is a view. From the foredeck at six in the morning, it is a place.
 
-## June and July, water in the high 70s, dinners that take three hours
+## The galley, the wine, and dinners that take three hours
 
-Mid-June through mid-July is the window. The Tyrrhenian sits in the high 70s, the mistral hasn't started kicking in earnest, and the towns are full without yet being unmanageable. Dodie runs the galley around the regions we sail through — Campanian seafood at Positano, Aeolian capers and swordfish at Panarea, a Sicilian wine on the last night in Lipari. Dinners on deck run to three hours and a second bottle. Two weeks are open for 2027, both in early summer. If your week matters more than the date, hold a cabin first — no deposit for the first 72 hours, and we'll talk on the phone before you commit a dollar.
+Dodie runs the galley around the regions we sail through — Campanian seafood at Positano, Aeolian capers and swordfish at Panarea, a Sicilian wine on the last night in Lipari. Dinners on deck run to three hours and a second bottle. Weeks are available across 2027 — see the calendar. If your week matters more than the date, hold a cabin first — no deposit for the first 72 hours, and we'll talk on the phone before you commit a dollar.

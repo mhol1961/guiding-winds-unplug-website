@@ -44,7 +44,7 @@ const schemaGraph = [
     name: 'Sport fishing add-on · Guiding Winds Unplug',
     serviceType: 'Offshore sport fishing',
     description:
-      'A sport-fishing-focused itinerary layered into a Guiding Winds catamaran charter week. Includes morning trolling runs in deep blue water, dedicated gear, and dinners built around the day\'s catch. Targeted species rotate by region — wahoo, mahi-mahi, and yellowfin in the Caribbean shoulders.',
+      'A sport-fishing-focused itinerary layered into a Guiding Winds catamaran charter week. Includes morning trolling runs in deep blue water, dedicated gear, and dinners built around the day\'s catch. Targeted species rotate by region — wahoo, mahi-mahi, and yellowfin in the Caribbean.',
     provider: { '@id': `${baseUrl}/#org` },
     areaServed: [
       { '@type': 'Place', name: 'British Virgin Islands' },
@@ -194,14 +194,8 @@ const galleryPhotos = [
           </p>
         </div>
         <div class="lg:col-span-5 lg:text-right">
-          <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-sun mb-3">
-            Investment
-          </p>
-          <p class="font-display text-[2.25rem] lg:text-[2.5rem] text-ink leading-none tabular-nums" style="font-variation-settings: 'opsz' 96;">
-            From $850 <span class="text-[1rem] text-ink/70 align-middle font-body-md">/ guest</span>
-          </p>
           <p class="font-body-sm text-[0.8125rem] text-ink/60 mt-3 max-w-xs lg:ml-auto leading-relaxed">
-            Add when you hold a cabin. Final price confirmed by Dodie within 24 hours.
+            Add when you hold a cabin. Pricing confirmed by Dodie within 24 hours.
           </p>
         </div>
       </div>
@@ -302,14 +296,8 @@ const galleryPhotos = [
           </p>
         </div>
         <div class="lg:col-span-5 lg:text-right">
-          <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-accent mb-3">
-            Investment
-          </p>
-          <p class="font-display text-[2.25rem] lg:text-[2.5rem] text-ink leading-none tabular-nums" style="font-variation-settings: 'opsz' 96;">
-            From $650 <span class="text-[1rem] text-ink/70 align-middle font-body-md">/ guest</span>
-          </p>
           <p class="font-body-sm text-[0.8125rem] text-ink/60 mt-3 max-w-xs lg:ml-auto leading-relaxed">
-            Add when you hold a cabin. Final price confirmed by Clint within 24 hours.
+            Add when you hold a cabin. Pricing confirmed by Clint within 24 hours.
           </p>
         </div>
       </div>
@@ -350,7 +338,7 @@ const galleryPhotos = [
           </span>
         </h2>
         <p class="mt-6 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-primary/75 text-balance">
-          No stock footage here — these are Clint's own clips and photos from recent weeks aboard. Tap any clip to play.
+          No stock photography here — these are Clint's own photos from recent weeks aboard.
         </p>
       </div>
 
@@ -360,15 +348,13 @@ const galleryPhotos = [
           galleryClips.map(({ src, poster, title }) => (
             <li class="card-rise group bg-bone-deep border border-bone-deep overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-accent-hot hover:shadow-[0_16px_44px_rgba(229,64,43,0.16),0_2px_8px_rgba(229,64,43,0.10)]">
               <figure class="relative aspect-video overflow-hidden bg-primary/10">
-                <video
+                <img
+                  src={poster}
+                  alt={title}
+                  loading="lazy"
+                  decoding="async"
                   class="absolute inset-0 w-full h-full object-cover"
-                  preload="none"
-                  poster={poster}
-                  controls
-                  playsinline
-                >
-                  <source src={src} type="video/mp4" />
-                </video>
+                />
               </figure>
               <figcaption class="px-5 py-4 font-label-caps uppercase tracking-[0.18em] text-[0.625rem] font-semibold text-primary/70">
                 {title}

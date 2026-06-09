@@ -14,8 +14,6 @@ const reviews = allReviews
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
 
-const totalReviews = allReviews.length;
-
 // Map voyage slug -> region for the per-card region pill / accent.
 const slugToRegion = new Map(
   voyages.map((v) => [v.data.slug, v.data.region]),
@@ -64,22 +62,11 @@ const totalWeeks = voyages.reduce(
   (s, v) => s + v.data.availableWeeks.length,
   0,
 );
-const avgRating = (
-  allReviews.reduce((s, r) => s + r.data.rating, 0) / Math.max(allReviews.length, 1)
-).toFixed(1);
 const stats = [
-  { num: avgRating, sub: `across ${totalReviews} verified guest reviews` },
   { num: '100%', sub: 'of guests would recommend' },
   { num: String(totalWeeks), sub: 'weeks aboard in the 2027 calendar' },
 ];
 
-const initials = (name: string) =>
-  name
-    .split(/\s+/)
-    .map((p) => p[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2);
 ---
 
 <section class="bg-bone-deep text-primary py-24 sm:py-32 lg:py-36 border-y border-primary/10">
@@ -120,8 +107,8 @@ const initials = (name: string) =>
                 span,
               ]}
             >
-              {featured && review.data.photo && (
-                <figure class="relative overflow-hidden aspect-[4/3] bg-primary/5">
+              {review.data.photo && (
+                <figure class:list={['relative overflow-hidden bg-primary/5', featured ? 'aspect-[4/3]' : 'aspect-[3/2]']}>
                   <img
                     src={review.data.photo}
                     alt={review.data.photoAlt ?? review.data.author}
@@ -139,25 +126,13 @@ const initials = (name: string) =>
                         theme.pillText,
                       ]}
                     >
-                      {theme.label} · Featured
+                      {featured ? `${theme.label} · Featured` : theme.label}
                     </span>
                   </figcaption>
                 </figure>
               )}
 
               <div class="p-8 lg:p-10 flex flex-col flex-1">
-                {!featured && (
-                  <span
-                    class:list={[
-                      'inline-flex self-start font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold px-2.5 py-1.5 mb-7',
-                      theme.pillBg,
-                      theme.pillText,
-                    ]}
-                  >
-                    {theme.label}
-                  </span>
-                )}
-
                 <blockquote
                   class:list={[
                     'font-serif-quote italic text-primary leading-[1.3] tracking-[-0.01em] text-balance flex-1',
@@ -175,37 +150,7 @@ const initials = (name: string) =>
                   {review.data.quote}
                 </blockquote>
 
-                <figcaption class="mt-7 pt-6 border-t border-primary/15 flex items-center gap-4">
-                  {/* Real guest photo avatar when available, monogram
-                      fallback. size-12 with a thin region-colored ring
-                      to tie back to the per-card color identity. */}
-                  {review.data.photo ? (
-                    <img
-                      src={review.data.photo}
-                      alt=""
-                      width="48"
-                      height="48"
-                      loading="lazy"
-                      decoding="async"
-                      class:list={[
-                        'block size-12 object-cover shrink-0 ring-2',
-                        region === 'caribbean' && 'ring-sun-deep',
-                        region === 'bahamas' && 'ring-accent',
-                        region === 'mediterranean' && 'ring-teal-shadow',
-                      ]}
-                    />
-                  ) : (
-                    <span
-                      class:list={[
-                        'inline-flex items-center justify-center size-12 font-display text-[0.9375rem] font-medium tabular-nums shrink-0',
-                        theme.pillBg,
-                        theme.pillText,
-                      ]}
-                      aria-hidden="true"
-                    >
-                      {initials(review.data.author)}
-                    </span>
-                  )}
+                <figcaption class="mt-7 pt-6 border-t border-primary/15">
                   <span class="flex flex-col gap-0.5 min-w-0">
                     <span class="font-display text-[0.9375rem] font-medium text-primary truncate" style="font-variation-settings: 'opsz' 24;">
                       {review.data.author}
@@ -225,7 +170,7 @@ const initials = (name: string) =>
     {/* Trust-anchor stats row — promoted from a buried sentence to a
         three-up display with big-type numbers. CRO research: numeric
         stats next to social proof = ~+12% on conversion adjacency. */}
-    <div class="mt-16 lg:mt-20 pt-12 border-t border-primary/15 grid grid-cols-3 gap-6 lg:gap-12">
+    <div class="mt-16 lg:mt-20 pt-12 border-t border-primary/15 grid grid-cols-2 gap-6 lg:gap-12">
       {
         stats.map((stat, i) => (
           <div

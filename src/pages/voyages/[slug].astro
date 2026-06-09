@@ -38,7 +38,7 @@ const fallbackGradients: Record<string, string> = {
 };
 
 const emphasis: Record<string, string> = {
-  'british-virgin-islands': 'Eight cabins, one catamaran, a week off the grid.',
+  'british-virgin-islands': 'One catamaran, up to 12 guests, a week off the grid.',
   bahamas: 'Pink sand, shallow water, the slow Caribbean.',
   italy: 'Capri at sunrise, dinners that ruin you for hotels.',
   greece: 'The Cyclades at the pace they were meant to be sailed.',
@@ -146,11 +146,11 @@ const siblings = allVoyages.filter((v) => v.data.slug !== voyage.data.slug).slic
 
 // Teal mood-setter, lands between Overview and Timeline.
 const tealEyebrow: Record<string, string> = {
-  'british-virgin-islands': 'The water · January through March',
-  bahamas: 'The water · April and May',
-  italy: 'The coast · June through September',
-  greece: 'The Aegean · May through October',
-  croatia: 'The Adriatic · June through September',
+  'british-virgin-islands': 'The water',
+  bahamas: 'The water',
+  italy: 'The coast',
+  greece: 'The Aegean',
+  croatia: 'The Adriatic',
 };
 const tealHeadline: Record<string, { lead: string; italic: string }> = {
   'british-virgin-islands': {
@@ -184,18 +184,18 @@ const weekCount = voyage.data.availableWeeks.length;
 const statCopyByRegion: Record<string, { headline: string; italic: string; body: string }> = {
   caribbean: {
     headline: `${weekCount} weeks open`,
-    italic: 'January through March + one in November',
-    body: 'Caribbean weather closes our window to a narrow band of dry-season weeks. When they\'re gone they\'re gone — we don\'t add cabins or stretch the season.',
+    italic: 'Multiple weeks available — see the calendar',
+    body: 'A limited run of weeks. When they\'re gone they\'re gone — we don\'t add capacity or stretch the run.',
   },
   bahamas: {
     headline: `${weekCount} weeks open`,
-    italic: 'April and May, between high-season and hurricane window',
-    body: 'A short shoulder season between the Caribbean high season and the start of hurricane window. Two months, then we leave the boat for the Mediterranean.',
+    italic: 'Multiple weeks available — see the calendar',
+    body: 'A short run of weeks before we move the boat to the Mediterranean. Limited and not repeated.',
   },
   mediterranean: {
     headline: `${weekCount} weeks open`,
-    italic: 'the Mediterranean season is short and we sail every one',
-    body: 'The Mediterranean season runs from late spring to early autumn. We sail every week we\'re open — by October the boat is on its way back across the Atlantic.',
+    italic: 'Multiple weeks available — see the calendar',
+    body: 'We sail every week we\'re open, then the boat heads back across the Atlantic. A limited run.',
   },
 };
 const statCopy = statCopyByRegion[voyage.data.region];
@@ -318,11 +318,11 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
   <Gallery images={voyage.data.galleryImages} fallbackGradient="" />
   {voyage.data.faq.length > 0 && <VoyageFaq faq={voyage.data.faq} />}
 
-  {/* Interrupt 3 (stat) — dark scarcity / season window after FAQ */}
+  {/* Interrupt 3 (stat) — dark scarcity / availability window after FAQ */}
   {statCopy && (
     <SectionInterrupt
       variant="stat"
-      eyebrow="The season"
+      eyebrow="Availability"
       headline={statCopy.headline}
       headlineItalic={statCopy.italic}
       body={statCopy.body}

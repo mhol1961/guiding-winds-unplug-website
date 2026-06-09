@@ -1,7 +1,7 @@
 ---
 title: A captain's case for the catamaran over the monohull
-excerpt: 'Stability, cabin volume, draft, anchoring footprint — six reasons we picked a Lagoon 50 over a 50-foot monohull.'
-tldr: 'For an all-inclusive guest charter the catamaran wins on six measurable axes: stable at anchor (no heel, no rocking through dinner), more cabin volume per linear foot (the Lagoon 50 has eight cabins where a 50-foot monohull has four), shallower draft (we anchor where keelboats can''t), twin engines (a sticking thruster doesn''t cancel the week), trampoline foredeck (no other boat gives you that much social space), and Med-mooring without the keel-swing anxiety. Monohulls sail closer to the wind and look better at sunset — neither matters when the brief is "guests should sleep."'
+excerpt: 'Stability, cabin volume, draft, anchoring footprint — six reasons we picked a catamaran over a 50-foot monohull.'
+tldr: 'For an all-inclusive guest charter the catamaran wins on six measurable axes: stable at anchor (no heel, no rocking through dinner), more cabin volume per linear foot (a 50-foot catamaran fits roughly double the cabins of a 50-foot monohull), shallower draft (we anchor where keelboats can''t), twin engines (a sticking thruster doesn''t cancel the week), trampoline foredeck (no other boat gives you that much social space), and Med-mooring without the keel-swing anxiety. Monohulls sail closer to the wind and look better at sunset — neither matters when the brief is "guests should sleep."'
 category: behind-the-boat
 tags: [boat, sailing, gear]
 author: clint
@@ -12,11 +12,11 @@ seo:
 draft: false
 ---
 
-Every charter operator picks a boat. Some inherit one, some buy what the bank will finance, some buy what the previous skipper drove. We picked ours from scratch with one filter in mind, and that filter selected for the cat. The Lagoon 50 catamaran we run is a specific choice with specific trade-offs, and I want to walk through them honestly — including the places a good monohull beats us.
+Every charter operator picks a boat. Some inherit one, some buy what the bank will finance, some buy what the previous skipper drove. We picked ours from scratch with one filter in mind, and that filter selected for the cat. The catamaran we run is a specific choice with specific trade-offs, and I want to walk through them honestly — including the places a good monohull beats us.
 
 ## The brief that selected the boat
 
-When Dodie and I started shopping for the boat, we wrote down the brief before we wrote down a budget. Eight to twelve guests for a week at a time. All-inclusive. Three regions a year — Caribbean winter, Bahamas spring, Mediterranean summer. We considered cats from 40 to 60 feet and monohulls in the same range. We sat on Beneteaus, Jeanneaus, Bavarias, and Hallberg-Rassys. We sat on Lagoons, Leopards, Bali, and Fountaine Pajots.
+When Dodie and I started shopping for the boat, we wrote down the brief before we wrote down a budget. A small group for a week at a time. All-inclusive. Three regions a year. We considered cats from 40 to 60 feet and monohulls in the same range. We sat on Beneteaus, Jeanneaus, Bavarias, and Hallberg-Rassys. We sat on every major catamaran brand.
 
 The selection criteria, in order:
 
@@ -25,7 +25,7 @@ The selection criteria, in order:
 3. Shallow draft for anchor flexibility.
 4. Twin engines for redundancy.
 5. Ease of Med-mooring in tight European marinas.
-6. Social space for 8–12 guests aboard for a week.
+6. Social space for a small group aboard for a week.
 
 Five of the six selected for a cat. The sixth — sailing performance — would have selected for a monohull, but it wasn't on the list. The brief was "guests should sleep," not "guests should win the Pacific Cup."
 
@@ -41,9 +41,9 @@ That's the trade. A monohull's deep keel is a beautiful thing underway. At ancho
 
 ## 2. Cabin volume per linear foot
 
-A 50-foot monohull, with rare exception, has four cabins. A 50-foot catamaran has eight. The geometry is just better — two hulls means two parallel cabin runs, each with its own windows, headroom, and ensuite head. The Lagoon 50 we run has eight queen berths, hatches over every bed, ensuite heads in every cabin, and no shared-head schedule for guests to negotiate. Nobody is sleeping in a salon convertible. Nobody is brushing their teeth in the galley sink.
+A 50-foot monohull, with rare exception, has four cabins. A 50-foot catamaran fits roughly double that. The geometry is just better — two hulls means two parallel cabin runs, each with its own windows, headroom, and ensuite head. The catamaran we run gives every guest a private ensuite cabin with a proper queen berth, hatches over every bed, and no shared-head schedule for guests to negotiate. Nobody is sleeping in a salon convertible. Nobody is brushing their teeth in the galley sink.
 
-To match that cabin count on a monohull you'd need a 65 to 70-foot boat. The operating costs at that size jump dramatically — bigger sails, bigger dock fees, bigger crew requirements, marinas that can't take you. The cat gets you eight private cabins at a 50-foot operating profile. For a small-group charter that's the whole math.
+To match that cabin count on a monohull you'd need a 65 to 70-foot boat. The operating costs at that size jump dramatically — bigger sails, bigger dock fees, bigger crew requirements, marinas that can't take you. The cat gets you far more private cabins at a 50-foot operating profile. For a small-group charter that's the whole math.
 
 This is the structural reason most modern crewed cabin charters are catamarans now, not monohulls. The cabin-per-foot math doesn't favor anything else.
 
@@ -53,7 +53,7 @@ Here's where I want to concede the monohull point first, because it's real. A de
 
 But.
 
-The Lagoon 50 draws roughly four feet. A comparable monohull draws seven to eight. That four-foot delta is the difference between anchoring inside a cove and anchoring a mile offshore in the main channel.
+Our catamaran draws roughly four feet. A comparable monohull draws seven to eight. That four-foot delta is the difference between anchoring inside a cove and anchoring a mile offshore in the main channel.
 
 Specific example: the lee side of Tilloo Cay in the Abacos sits in about six feet of water at low tide. A catamaran tucks in there for the night in genuine privacy — usually the only boat on that side of the cay. A keelboat with eight feet of draft can't get in. It anchors out in the main Sea of Abaco channel with the rest of the fleet, exposed to the wakes of every passing center-console.
 
@@ -73,7 +73,7 @@ In the Mediterranean, stern-to mooring is the standard arrival. You back into a 
 
 A 50-foot monohull's deep keel is at risk during this maneuver. As the bow swings under wind or current, the keel can sweep into the boat next to you below the waterline — invisible, expensive, and not covered by your routine insurance. Many monohull skippers in Pakleni, Lipari, Korčula, and the Cinque Terre spend 20 to 30 minutes on a stern-to arrival because they're moving carefully.
 
-The cat has no deep keel to swing. Twin engines mean we pivot the boat exactly where we want it. A stern-to arrival into a tight European slip on the Lagoon is a five-minute routine, not a thirty-minute negotiation. Guests come up from the cabins after we're tied up because there was nothing for them to watch.
+The cat has no deep keel to swing. Twin engines mean we pivot the boat exactly where we want it. A stern-to arrival into a tight European slip on the catamaran is a five-minute routine, not a thirty-minute negotiation. Guests come up from the cabins after we're tied up because there was nothing for them to watch.
 
 ## 6. The trampoline foredeck
 
@@ -105,6 +105,6 @@ The first is cost. Cats cost more to buy and more to operate. Most fleet operato
 
 The second is captains. Catamarans handle differently — different sail trim, different docking, different anchoring approach, different motion in a seaway. A monohull captain stepping onto a cat for the first time will feel out of place for the first hundred hours. The pool of captains comfortable on both is small, and most charter operations stayed monohull because their captains stayed monohull.
 
-We started fresh, with the charter brief in mind, and the boat came out of that filter. If you've sailed both and prefer the monohull experience for your own week, I'd point you to one of the better single-hull operators in the BVI without hesitation. If the brief is the one we wrote — guests sleep, eight cabins, shallow water, easy arrivals, social space at anchor — the catamaran charter wins on every axis that matters.
+We started fresh, with the charter brief in mind, and the boat came out of that filter. If you've sailed both and prefer the monohull experience for your own week, I'd point you to one of the better single-hull operators in the BVI without hesitation. If the brief is the one we wrote — guests sleep, a private cabin each, shallow water, easy arrivals, social space at anchor — the catamaran charter wins on every axis that matters.
 
 That's the captain's case. The catamaran vs monohull charter debate is mostly a brief-writing exercise. Write the brief, then pick the boat. We did, and the boat picked itself.

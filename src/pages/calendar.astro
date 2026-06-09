@@ -5,7 +5,7 @@ import PageHero from '../components/shared/PageHero.astro';
 
 const title = '2027 Sailing Calendar · Guiding Winds Unplug';
 const description =
-  'Fourteen weeks aboard, eight cabins each. Hold one for 72 hours, no payment required.';
+  'Weeks aboard across the year. Hold one for 72 hours, no payment required.';
 
 const voyages = await getCollection('voyages');
 
@@ -69,8 +69,8 @@ const schemaGraph = [
   <PageHero
     eyebrow={`2027 Calendar · ${totalCabins} cabins available now`}
     headlinePrefix="Fourteen weeks."
-    headlineEmphasis="Eight cabins each."
-    subline="Hold one for 72 hours, no payment required. Caribbean January through March. Bahamas April and May. Mediterranean June through October."
+    headlineEmphasis="Up to 12 guests each."
+    subline="Hold one for 72 hours, no payment required. Pick a region, pick a week, hold a cabin."
     heroImage="/img/source/destinations/catamaran-anchorage-sunset-bvi-01.jpg"
     heroImageAlt="Our catamaran at anchor at sunset, the kind of week the calendar holds"
   />

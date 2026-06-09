@@ -18,7 +18,7 @@ import { getCollection } from 'astro:content';
 
 const title = 'Off-Grid Catamaran Charters · BVI, Bahamas, Mediterranean | Guiding Winds Unplug';
 const description =
-  'All-inclusive wellness catamaran voyages for four to six cabins and eight to twelve guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia.';
+  'All-inclusive wellness catamaran voyages for up to 12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia.';
 
 const baseUrl = Astro.site?.toString() ?? 'https://guidingwinds-unplug.com';
 const reviews = await getCollection('reviews');
@@ -49,16 +49,15 @@ const schemaGraph = [
 
 <BaseLayout title={title} description={description} transparentNav schema={schemaGraph}>
   <Hero
-    eyebrow="The Off-Grid Catamaran Experts · Established 2021"
-    headlinePrefix="Every voyage starts with a "
-    headlineEmphasis="feeling."
-    subline="All-inclusive wellness catamaran charters for four to six cabins and eight to twelve guests, sailing the Caribbean, the Bahamas, and the Mediterranean."
+    eyebrow="The Off-Grid Catamaran Experts"
+    headlinePrefix="Where guests become crew, strangers become friends, and the ocean becomes "
+    headlineEmphasis="the path back to presence."
+    subline="All-inclusive wellness catamaran charters for up to 12 guests, sailing the Caribbean, the Bahamas, and the Mediterranean."
     primaryCta={{ label: 'See Available Weeks', href: '/calendar' }}
     secondaryCta={{ label: 'How a Week Aboard Works', href: '/aboard' }}
     trustItems={[
-      '5.0 Verified Reviews',
-      '100% All-Inclusive',
-      '4-6 Cabins · 8-12 Guests',
+      'All-Inclusive',
+      'Up to 12 Guests',
     ]}
   />
   {/* Section rhythm (Stage 5 — alternation pass): dark hero → bone

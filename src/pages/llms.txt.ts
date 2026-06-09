@@ -16,11 +16,11 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('# Guiding Winds Unplug');
   lines.push('');
   lines.push(
-    '> All-inclusive wellness catamaran charters for 8–12 guests in the British Virgin Islands, Bahamas, and Mediterranean. From $3,550 per guest, per week. Captained by Clint Kendall and hosted by Dodie Kendall.',
+    '> All-inclusive wellness catamaran charters for up to 12 guests in the British Virgin Islands, Bahamas, and Mediterranean. From $3,550 per guest, per week. Captained by Clint Kendall and hosted by Dodie Kendall.',
   );
   lines.push('');
   lines.push(
-    'Brand promise: "unplug." Eight private cabins per voyage, twelve guests maximum, fourteen weeks a year. The same two-person crew sails every voyage personally.',
+    'Brand promise: "unplug." Up to twelve guests per voyage. The same two-person crew sails every voyage personally.',
   );
   lines.push('');
   lines.push('## Voyages (2027 calendar)');
@@ -36,8 +36,8 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('## Plan');
   lines.push('');
   lines.push(`- [About — Clint & Dodie Kendall](${origin}/about): One-captain husband-and-wife operation. Years in the chain, a dozen-plus weeks a year.`);
-  lines.push(`- [Aboard — what's included](${origin}/aboard): Chef-prepared meals, snorkel gear, paddleboards, kayaks, private cabin with ensuite head, fuel, dockage, captain, host. The Lagoon 50 catamaran has 8 ensuite queen cabins.`);
-  lines.push(`- [Calendar — all 14 weeks](${origin}/calendar): Live 2027 availability across BVI (January–March + November), Bahamas (April–May), and Mediterranean (June–October).`);
+  lines.push(`- [Aboard — what's included](${origin}/aboard): Chef-prepared meals, snorkel gear, paddleboards, kayaks, private cabin with ensuite head, fuel, dockage, captain, host. Private ensuite cabins for up to 12 guests.`);
+  lines.push(`- [Calendar — all 14 weeks](${origin}/calendar): Live 2027 availability across the BVI, Bahamas, and Mediterranean — see the calendar.`);
   lines.push(`- [FAQ](${origin}/faq): 23 questions across booking, the boat, the experience, logistics, and safety.`);
   lines.push(`- [Inquire — hold a cabin for 72 hours](${origin}/inquire): No payment required to hold. Dodie or Clint reply within 24 hours.`);
   lines.push('');

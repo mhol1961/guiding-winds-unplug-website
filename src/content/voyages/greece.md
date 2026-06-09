@@ -64,18 +64,18 @@ exclusions:
   - Crew gratuity (suggested 10–15%)
   - Off-boat dining (we cover two shore dinners; others on you)
 faq:
-  - q: Is the Meltemi wind a factor?
-    a: 'In July and August, yes — the northerlies can push 25 knots. The catamaran handles it well and Clint plans the route to use it as a tailwind. September weeks are dramatically calmer.'
+  - q: How long is the trip?
+    a: 'Seven nights, one-way from Athens (Alimos) to Santorini through the Cyclades. Specific weeks are available — see the calendar.'
 seo:
   title: 'Greece Catamaran Charter 2027 · Cyclades | Guiding Winds'
-  description: 'Kea, Sifnos, Folegandros, Santorini. Seven nights aboard a private catamaran for 8–12 guests through the quiet Cyclades. From $3,850 per guest, all-inclusive.'
+  description: 'Kea, Sifnos, Folegandros, Santorini. Seven nights aboard a private catamaran for up to 12 guests through the quiet Cyclades. From $3,850 per guest, all-inclusive.'
   keywords:
     - Greek islands catamaran trip
     - Cyclades catamaran charter all-inclusive
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Greek islands catamaran trip sails one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a 45ft+ catamaran with 8 private cabins and a 12-guest cap. The route threads Kea, Kythnos, Sifnos, Folegandros, Ios, and Santorini — the chain at sailboat pace, not ferry pace. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Two 2027 weeks: a July sailing in the Meltemi, and a calmer September week.
+**TL;DR:** Our 7-night Greek islands catamaran trip sails one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a private catamaran for up to 12 guests. The route threads Kea, Kythnos, Sifnos, Folegandros, Ios, and Santorini — the chain at sailboat pace, not ferry pace. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Weeks available across 2027 — see the calendar.
 
 ## The shape of a week
 
@@ -89,12 +89,6 @@ Kythnos opens the week. Kolona is the twin-bay anchorage you've seen on Greek to
 
 Folegandros is the dramatic note in the middle of the week. Smaller and steeper than its neighbors, with whitewashed Chora set on a cliff edge two hundred meters above the water. Late afternoon you sail the catamaran along the base of those cliffs with a glass of assyrtiko in your hand and the village invisible somewhere overhead. Santorini at the end is the final overnight — caldera anchorage at Ammoudi or Vlychada depending on wind, sunset from the water instead of shoulder-to-shoulder on Oia's terrace with 4,000 cruise passengers. Morning brings the short transfer to JTR for evening flights home.
 
-## The Meltemi, honestly
-
-July and August in the Cyclades means the Meltemi — the dry northerly that funnels down the Aegean and can push 25 knots for days at a time. We don't pretend it isn't there. We sail the route Clint has built around it, which is a one-way south through the chain so the wind is at our back rather than on our nose. The 45-foot catamaran sits flat where a monohull would heel uncomfortably, and you sleep at anchor in coves that are sheltered from the north. By the second day the boat motion stops registering and the wind becomes the soundtrack.
-
-The September week is the alternative. Same route, same islands, dramatically calmer water, swim temperatures still in the high seventies, and the high-season day boats gone home. If you want the Cyclades quieter, that's the week to hold.
-
 > The Greek islands at ferry speed is a country of post cards. At sailboat speed it's the country in between them.
 
 ## The galley and the wine
@@ -103,4 +97,4 @@ Dodie runs a Greek-leaning menu through the week — provisioned at each island 
 
 ## Why one-way, why the Cyclades
 
-The Cyclades catamaran charter all-inclusive itinerary is built around a one-way: in to Athens, out from Santorini. It sounds like more logistics than it is — JTR has direct flights to Athens and onward to most of Europe, and the routing means you cover real ground rather than retracing your wake. December through March the Aegean is closed to charter for weather; April through October is the window, and the two weeks we run sit at the high-summer peak and the early-shoulder calm. If your week matters more than the date, hold a cabin first — no deposit required for the first 72 hours, and we'll talk on the phone before you commit anything.
+The Cyclades catamaran charter all-inclusive itinerary is built around a one-way: in to Athens, out from Santorini. It sounds like more logistics than it is — JTR has direct flights to Athens and onward to most of Europe, and the routing means you cover real ground rather than retracing your wake. Weeks are available across 2027 — see the calendar. If your week matters more than the date, hold a cabin first — no deposit required for the first 72 hours, and we'll talk on the phone before you commit anything.
