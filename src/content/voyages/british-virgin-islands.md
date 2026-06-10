@@ -62,7 +62,6 @@ inclusions:
   - Private cabin with ensuite head
   - Fuel and dockage
   - Captain (Clint) and host (Dodie)
-  - Daily breath / yoga practice on deck (optional)
 exclusions:
   - Flights to/from Beef Island (EIS)
   - Travel insurance
@@ -108,7 +107,7 @@ The back half of the week is softer. Jost Van Dyke for a long lunch at White Bay
 
 ## Wellness without the air quotes
 
-This isn't a retreat with a schedule. It's a week on a boat with two people who happen to know how to set one up so you actually unwind. There's no onboard internet by default; Wi-Fi can be bought but it's unreliable, and most guests find the phone stops feeling useful by the second night anyway. If you want a morning breath sequence or a yoga flow on the foredeck, Dodie leads one most mornings. If you want to sleep until coffee, the coffee will still be there.
+This isn't a retreat with a schedule. It's a week on a boat with two people who happen to know how to set one up so you actually unwind. There's no onboard internet by default; Wi-Fi can be bought but it's unreliable, and most guests find the phone stops feeling useful by the second night anyway. If you want to sleep until coffee, the coffee will still be there.
 
 Clint reads weather the way other people read the news. He'll change the next day's plan over breakfast because the wind backed two points overnight, and you'll have one of those mornings where the boat is the only one in the anchorage. Dodie runs the galley the way a chef runs a tasting menu — a different cuisine every dinner, sourced from whichever island we provisioned at last, served on the aft deck with the sun going down behind the rig.
 

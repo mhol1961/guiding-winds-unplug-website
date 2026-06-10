@@ -59,7 +59,6 @@ inclusions:
   - Private cabin with ensuite head
   - Fuel and dockage
   - Captain and host
-  - Daily breath / yoga practice on deck (optional)
 exclusions:
   - Flights to/from Marsh Harbour (MHH)
   - Travel insurance
@@ -101,7 +100,7 @@ Saturday morning, brunch aboard. Off the boat by 11.
 
 ## The wellness angle
 
-This is the slowest trip we run. Shorter passages, fewer bar stops, fewer named landmarks to tick off. The pace gives you room to actually unplug — a morning breath practice on the foredeck, a swim before breakfast, an afternoon of nothing in particular. There's no onboard internet aboard; Wi-Fi can be purchased for an extra charge but is unreliable, and most guests stop reaching for the phone within a day or two. Dodie cooks taverna-style: long mezze, things off the grill, something cold to drink on the way. There is no schedule. There is no list of things you'll have missed.
+This is the slowest trip we run. Shorter passages, fewer bar stops, fewer named landmarks to tick off. The pace gives you room to actually unplug — a swim before breakfast, an afternoon of nothing in particular. There's no onboard internet aboard; Wi-Fi can be purchased for an extra charge but is unreliable, and most guests stop reaching for the phone within a day or two. Dodie cooks taverna-style: long mezze, things off the grill, something cold to drink on the way. There is no schedule. There is no list of things you'll have missed.
 
 > The Abacos don't ask you to chase a postcard. They ask you to sit still long enough to notice the water change color.
 

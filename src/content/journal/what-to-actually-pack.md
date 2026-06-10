@@ -43,7 +43,7 @@ Here's where most BVI packing list articles go wrong — they pad the bag with t
 4. **Beach towels.** Provided. Two per guest, swapped midweek. Hotel-quality, oversized, color-coded so we don't mix yours with the next cabin's.
 5. **A beach bag.** The boat is the beach bag. The dinghy carries what you need to shore; the dry bag carries what you need on the sand. A second canvas tote becomes one more thing to corral.
 6. **Heavy books.** One paperback and a Kindle, maximum. Hardcovers get warped by salt air within 48 hours, and there's no shelf wide enough to hold the stack you packed.
-7. **A yoga mat.** Foam pads live on the foredeck for Dodie's morning sessions. They're tacky-side-down, salt-rinsed nightly, and yours for the week.
+7. **A yoga mat.** Foam pads live on the foredeck and are yours for the week — tacky-side-down and salt-rinsed nightly.
 8. **Valuable jewelry.** Salt corrodes silver and gold filling within days, and the chance of losing an earring in the water is higher than you'd think. The watch you don't mind getting wet, a thin band, a pair of studs. That's the inventory.
 9. **More than two pairs of shoes.** One pair of water shoes, one pair of soft slip-ons for shore dinners. A third pair takes up a cabin shelf that should be holding your sunscreen.
 

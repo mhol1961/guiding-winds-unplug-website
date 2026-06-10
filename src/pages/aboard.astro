@@ -7,7 +7,6 @@ import {
   BedDouble,
   Fuel,
   Anchor,
-  Sunrise,
   WifiOff,
 } from 'lucide-react';
 
@@ -47,12 +46,11 @@ const included = [
   { Icon: BedDouble, label: 'Private cabin + head', body: 'Your own cabin with an ensuite head. AC on shore power, fans underway. Linens and towels provided.' },
   { Icon: Fuel, label: 'Fuel & dockage', body: 'No itemized fuel surcharge. Dockage included at every overnight, including the mooring fees at the busier anchorages.' },
   { Icon: Anchor, label: 'Captain & host', body: 'Clint at the helm, Dodie running the boat. We sail every voyage personally, no rotating skippers.' },
-  { Icon: Sunrise, label: 'Daily wellness', body: 'Optional morning breath sequence or yoga flow on the foredeck. Optional, not announced.' },
   { Icon: WifiOff, label: 'The right to unplug', body: 'We don\'t provide onboard internet — unplugging is the point. Wi-Fi can be purchased for an additional charge, and even then the connection can be unreliable at times.' },
 ];
 
 const boatAreas = [
-  { label: 'The foredeck', body: 'The trampoline is the social spot of the boat. Where the morning practice happens, where the afternoon naps happen, where the sundowner conversations happen.', img: '/img/stock/boat/boat-foredeck-trampoline-ai.jpg', alt: 'Twin black-mesh trampolines stretched between the bows of a white catamaran at golden hour, cream cushions scattered across them, the sun setting low between the bows over turquoise water' },
+  { label: 'The foredeck', body: 'The trampoline is the social spot of the boat. Where the afternoon naps happen, where the sundowner conversations happen.', img: '/img/stock/boat/boat-foredeck-trampoline-ai.jpg', alt: 'Twin black-mesh trampolines stretched between the bows of a white catamaran at golden hour, cream cushions scattered across them, the sun setting low between the bows over turquoise water' },
 ];
 
 const notIncluded: Array<string | { label: string; href: string }> = [
@@ -296,9 +294,7 @@ const notIncluded: Array<string | { label: string; href: string }> = [
           </h2>
           <div class="space-y-6 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.75] text-primary/75 text-balance">
             <p>
-              Coffee on deck at first light for whoever's up. Optional morning
-              breath sequence or yoga flow on the foredeck around seven, twenty
-              minutes, no announcement. Breakfast at eight — eggs, fruit, fresh
+              Coffee on deck at first light for whoever's up. Breakfast at eight — eggs, fruit, fresh
               bread from whatever village we were in yesterday. Dive in off the
               swim platform whenever.
             </p>
