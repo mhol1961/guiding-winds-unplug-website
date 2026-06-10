@@ -16,7 +16,7 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('# Guiding Winds Unplug');
   lines.push('');
   lines.push(
-    '> All-inclusive wellness catamaran charters for up to 12 guests in the British Virgin Islands, Bahamas, and Mediterranean. From $3,550 per guest, per week. Captained by Clint Kendall and hosted by Dodie Kendall.',
+    '> All-inclusive wellness catamaran charters for up to 12 guests in the British Virgin Islands, Bahamas, and Mediterranean. From $3,550 per guest, per week. Captained by Clint Kendall.',
   );
   lines.push('');
   lines.push(

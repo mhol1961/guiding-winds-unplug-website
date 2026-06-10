@@ -61,7 +61,7 @@ inclusions:
   - Snorkel gear, paddleboards, kayaks
   - Private cabin with ensuite head
   - Fuel and dockage
-  - Captain (Clint) and host (Dodie)
+  - Captain and host
 exclusions:
   - Flights to/from Beef Island (EIS)
   - Travel insurance
@@ -91,7 +91,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night BVI all-inclusive catamaran charter sails Saturday to Saturday from Nanny Cay, Tortola, aboard a private catamaran for up to 12 guests. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. From **$3,550 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Weeks available across 2027 — see the calendar.
+**TL;DR:** Our 7-night BVI all-inclusive catamaran charter sails Saturday to Saturday from Nanny Cay, Tortola, aboard a private catamaran for up to 12 guests. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. From **$3,550 per guest, all-inclusive** — captained by Clint Kendall. Weeks available across 2027 — see the calendar.
 
 ## The shape of a week
 
@@ -109,7 +109,7 @@ The back half of the week is softer. Jost Van Dyke for a long lunch at White Bay
 
 This isn't a retreat with a schedule. It's a week on a boat with two people who happen to know how to set one up so you actually unwind. There's no onboard internet by default; Wi-Fi can be bought but it's unreliable, and most guests find the phone stops feeling useful by the second night anyway. If you want to sleep until coffee, the coffee will still be there.
 
-Clint reads weather the way other people read the news. He'll change the next day's plan over breakfast because the wind backed two points overnight, and you'll have one of those mornings where the boat is the only one in the anchorage. Dodie runs the galley the way a chef runs a tasting menu — a different cuisine every dinner, sourced from whichever island we provisioned at last, served on the aft deck with the sun going down behind the rig.
+Clint reads weather the way other people read the news. He'll change the next day's plan over breakfast because the wind backed two points overnight, and you'll have one of those mornings where the boat is the only one in the anchorage. The galley runs the way a chef runs a tasting menu — a different meal every dinner, sourced from whichever island we provisioned at last, served on the aft deck with the sun going down behind the rig.
 
 > You don't need another vacation. You need a week where Wednesday feels like a Sunday.
 

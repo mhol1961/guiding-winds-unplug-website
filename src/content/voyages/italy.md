@@ -76,7 +76,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a private catamaran for up to 12 guests. The route threads the Amalfi coast — Amalfi, Positano, Capri — then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Weeks available across 2027 — see the calendar.
+**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a private catamaran for up to 12 guests. The route threads the Amalfi coast — Amalfi, Positano, Capri — then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall. Weeks available across 2027 — see the calendar.
 
 ## The arc no one else sails in a week
 
@@ -100,4 +100,4 @@ The Italy voyage runs $3,850 per guest — $300 more than the Caribbean weeks. M
 
 ## The galley, and dinners that take three hours
 
-Dodie runs the galley around the regions we sail through — Campanian seafood at Positano, Aeolian capers and swordfish at Panarea, Sicilian flavors on the last night in Lipari. Dinners on deck run to three hours. Weeks are available across 2027 — see the calendar. If your week matters more than the date, hold a cabin first — no deposit for the first 72 hours, and we'll talk on the phone before you commit a dollar.
+The galley follows the regions we sail through — Campanian seafood at Positano, Aeolian capers and swordfish at Panarea, Sicilian flavors on the last night in Lipari. Dinners on deck run to three hours. Weeks are available across 2027 — see the calendar. If your week matters more than the date, hold a cabin first — no deposit for the first 72 hours, and we'll talk on the phone before you commit a dollar.

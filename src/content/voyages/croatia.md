@@ -75,7 +75,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Croatian coast sailing charter runs one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a private catamaran for up to 12 guests. The route threads the Dalmatian chain — Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites — and finishes with a transfer to Dubrovnik for the flight home. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Weeks available across 2027 — see the calendar.
+**TL;DR:** Our 7-night Croatian coast sailing charter runs one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a private catamaran for up to 12 guests. The route threads the Dalmatian chain — Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites — and finishes with a transfer to Dubrovnik for the flight home. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall. Weeks available across 2027 — see the calendar.
 
 ## The Dalmatian coast is not a beach coast
 
@@ -95,7 +95,7 @@ Mljet closes the chain. The western third of the island is a national park built
 
 ## The galley, and one shore dinner we cover
 
-Dodie runs a Croatian-leaning menu through the week. The Adriatic shellfish — oysters from Ston on the Pelješac peninsula, scampi from off Vis — show up in the first half, alongside produce and cheeses sourced from the islands we provision at as we go. One of the seven dinners is ashore on us at a konoba — a family-run tavern — that Clint and Dodie have learned to trust. The other shore nights are yours; we make the reservation and you cover the bill.
+The galley runs a Croatian-leaning menu through the week. The Adriatic shellfish — oysters from Ston on the Pelješac peninsula, scampi from off Vis — show up in the first half, alongside produce and cheeses sourced from the islands we provision at as we go. One of the seven dinners is ashore on us at a konoba — a family-run tavern — that Clint and Dodie have learned to trust. The other shore nights are yours; we make the reservation and you cover the bill.
 
 ## Why one-way Split to Dubrovnik
 

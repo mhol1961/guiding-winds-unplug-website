@@ -75,7 +75,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Greek islands catamaran trip sails one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a private catamaran for up to 12 guests. The route threads Kea, Kythnos, Sifnos, Folegandros, Ios, and Santorini — the chain at sailboat pace, not ferry pace. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall and hosted by Dodie. Weeks available across 2027 — see the calendar.
+**TL;DR:** Our 7-night Greek islands catamaran trip sails one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a private catamaran for up to 12 guests. The route threads Kea, Kythnos, Sifnos, Folegandros, Ios, and Santorini — the chain at sailboat pace, not ferry pace. From **$3,850 per guest, all-inclusive** — captained by Clint Kendall. Weeks available across 2027 — see the calendar.
 
 ## The shape of a week
 
@@ -93,7 +93,7 @@ Folegandros is the dramatic note in the middle of the week. Smaller and steeper 
 
 ## The galley
 
-Dodie runs a Greek-leaning menu through the week — provisioned at each island as we go, which means the lamb is from one place, the cheese from another, and the tomatoes from the village we anchored at this morning. Two of the seven dinners are ashore on us at tavernas Clint and Dodie have learned to trust over years in the chain. The other five are on the boat at anchor, served on the aft deck as the sun goes down behind whichever cliff you happen to be tucked under that night.
+The galley runs a Greek-leaning menu through the week — provisioned at each island as we go, which means the lamb is from one place, the cheese from another, and the tomatoes from the village we anchored at this morning. Two of the seven dinners are ashore on us at tavernas Clint and Dodie have learned to trust over years in the chain. The other five are on the boat at anchor, served on the aft deck as the sun goes down behind whichever cliff you happen to be tucked under that night.
 
 ## Why one-way, why the Cyclades
 
