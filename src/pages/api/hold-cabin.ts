@@ -152,7 +152,7 @@ export const POST: APIRoute = async ({ request }) => {
     { key: 'preferred_week', field_value: `${data.weekStart} → ${data.weekEnd}` },
     { key: 'party_size', field_value: data.partySize },
     { key: 'inquiry_notes', field_value: data.notes ?? '' },
-    { key: 'inquiry_source', field_value: 'guidingwinds-unplug.com — hold-cabin' },
+    { key: 'inquiry_source', field_value: 'guidingwinds-unplug.com - hold-cabin' },
     { key: 'voyage_slug', field_value: data.voyageSlug },
   ];
 
@@ -182,7 +182,7 @@ export const POST: APIRoute = async ({ request }) => {
       contactId,
       startTime,
       endTime,
-      title: `Cabin hold — ${data.firstName} ${data.lastName} — ${data.voyageSlug} ${data.weekStart}`,
+      title: `Cabin hold - ${data.firstName} ${data.lastName} - ${data.voyageSlug} ${data.weekStart}`,
       notes: data.notes ?? '',
     });
   } catch (err) {

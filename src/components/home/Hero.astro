@@ -111,7 +111,7 @@ const {
           </p>
           <h1
             class="font-display text-bone font-light text-pretty leading-[0.95] tracking-[-0.03em]"
-            style="font-size: clamp(2.75rem, 7.5vw + 1rem, 7rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
+            style="font-size: clamp(1.75rem, 4vw + 0.75rem, 3.75rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
           >
             {headlinePrefix}
             <span
@@ -183,7 +183,7 @@ const {
 
 <script>
   // Drive the hero crossfade in sync with playback: only the active scene's
-  // video plays, always from frame 0, exactly once — then we fade to the
+  // video plays, always from frame 0, exactly once - then we fade to the
   // next. This eliminates the mid-window loop restart that made every clip
   // look like it was repeating, and avoids drift from 4 videos looping
   // independently. The next clip is pre-warmed so it doesn't flash a poster.

@@ -20,7 +20,7 @@ interface UpsertResponse {
 }
 
 /**
- * Upsert a contact in GHL. The upsert endpoint deduplicates on email — if
+ * Upsert a contact in GHL. The upsert endpoint deduplicates on email - if
  * the email already exists in the subaccount, it returns the existing
  * contact and merges tags + customFields instead of creating a duplicate.
  * See https://highlevel.stoplight.io/docs/integrations/contacts-upsert

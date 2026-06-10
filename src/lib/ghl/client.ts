@@ -8,11 +8,11 @@
 // fall back to import.meta.env for local dev / non-Cloudflare contexts.
 //
 // Env vars (see .env.example):
-//   GHL_API_BASE       — https://services.leadconnectorhq.com
-//   GHL_API_VERSION    — date-stamped version string
-//   GHL_PRIVATE_TOKEN  — Private Integration Token from Dodie's GHL
-//   GHL_LOCATION_ID    — subaccount Location ID
-//   GHL_CALENDAR_ID_*  — per-region calendar IDs
+//   GHL_API_BASE       - https://services.leadconnectorhq.com
+//   GHL_API_VERSION    - date-stamped version string
+//   GHL_PRIVATE_TOKEN  - Private Integration Token from Dodie's GHL
+//   GHL_LOCATION_ID    - subaccount Location ID
+//   GHL_CALENDAR_ID_*  - per-region calendar IDs
 //
 // DRY_RUN_GHL=true lets local dev exercise form code without a real token.
 
@@ -89,11 +89,11 @@ export async function ghl<T>(path: string, options: GhlRequestOptions = {}): Pro
       }
 
       const text = await res.text();
-      // 4xx — don't retry; bubble up immediately.
+      // 4xx - don't retry; bubble up immediately.
       if (res.status >= 400 && res.status < 500) {
         throw new GhlError(res.status, text, `GHL ${res.status} on ${path}: ${text.slice(0, 200)}`);
       }
-      // 5xx — fall through to retry logic.
+      // 5xx - fall through to retry logic.
       lastError = new GhlError(res.status, text, `GHL ${res.status} on ${path}`);
     } catch (err) {
       lastError = err;

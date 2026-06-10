@@ -31,7 +31,7 @@ itinerary:
   - day: 2
     label: Sunday
     title: Norman Island
-    body: 'Morning anchorage off the Bight. Snorkel the Caves and the Indians — three pillars of rock that erupt from the seabed. Lunch aboard, afternoon ashore at Pirates Bight.'
+    body: 'Morning anchorage off the Bight. Snorkel the Caves and the Indians - three pillars of rock that erupt from the seabed. Lunch aboard, afternoon ashore at Pirates Bight.'
   - day: 3
     label: Monday
     title: The Baths · Virgin Gorda
@@ -43,7 +43,7 @@ itinerary:
   - day: 5
     label: Wednesday
     title: Jost Van Dyke
-    body: 'Day in White Bay — the bar at the Soggy Dollar is exactly as advertised. Quiet anchorage at Great Harbour after.'
+    body: 'Day in White Bay - the bar at the Soggy Dollar is exactly as advertised. Quiet anchorage at Great Harbour after.'
   - day: 6
     label: Thursday
     title: Sandy Spit & Sandy Cay
@@ -65,17 +65,17 @@ inclusions:
 exclusions:
   - Flights to/from Beef Island (EIS)
   - Travel insurance
-  - Crew gratuity (suggested 10–15%)
+  - Crew gratuity (suggested 10-15%)
   - Off-boat dining and excursions
 faq:
   - q: Do I need to know how to sail?
     a: 'No. Clint handles every helm decision. If you want to learn or take the wheel under his eye, he''ll teach. If you want to read a book, the boat sails itself with him at the helm.'
   - q: What does the cabin look like?
-    a: 'Each cabin has an ensuite head (toilet + shower) and a hatch over the bed for stars at night. Air conditioning on shore power; fans underway. The catamaran was chosen for cabin volume — there''s genuinely no "small cabin" on this boat.'
+    a: 'Each cabin has an ensuite head (toilet + shower) and a hatch over the bed for stars at night. Air conditioning on shore power; fans underway. The catamaran was chosen for cabin volume - there''s genuinely no "small cabin" on this boat.'
   - q: What if I get seasick?
-    a: 'Catamarans are dramatically more stable than monohulls — most people who get seasick on cruise ships are fine on this boat. We carry patches and Bonine. The BVI is also one of the most protected sailing grounds on earth — you''re almost never out of sight of an island.'
+    a: 'Catamarans are dramatically more stable than monohulls - most people who get seasick on cruise ships are fine on this boat. We carry patches and Bonine. The BVI is also one of the most protected sailing grounds on earth - you''re almost never out of sight of an island.'
   - q: Cancellation policy?
-    a: '90+ days from departure: full refund. 90–45 days: 50%. Under 45 days: no refund, but we''ll rebook you for any week with availability in the next 12 months at no charge.'
+    a: '90+ days from departure: full refund. 90-45 days: 50%. Under 45 days: no refund, but we''ll rebook you for any week with availability in the next 12 months at no charge.'
   - q: Can we bring kids?
     a: 'Yes. The boat sleeps 12 and kids stack in cabins easily. Two notes: this is an adult-pace trip (long dinners, no kids'' menu), and there''s no formal childcare. If you want a family week, book the whole boat and let us tailor the itinerary.'
   - q: Is there Wi-Fi?
@@ -91,17 +91,17 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night BVI all-inclusive catamaran charter sails Saturday to Saturday from Nanny Cay, Tortola, aboard a private catamaran for up to 12 guests. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. From **$3,550 per guest, all-inclusive** — captained by Clint Kendall. Weeks available across 2027 — see the calendar.
+**TL;DR:** Our 7-night BVI all-inclusive catamaran charter sails Saturday to Saturday from Nanny Cay, Tortola, aboard a private catamaran for up to 12 guests. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. From **$3,550 per guest, all-inclusive** - captained by Clint Kendall. Weeks available across 2027 - see the calendar.
 
 ## The shape of a week
 
 You fly into Beef Island on a Friday or early Saturday, you're aboard by 2pm, and by sundown you're at a quiet anchorage somewhere most charter guests never see on day one. Saturdays in the BVI are noisy at the marina and quiet everywhere else, which is exactly why we leave the dock fast. From there the week opens up: short, easy passages between anchorages, long afternoons in the water, and dinners that run until the stars come out. You'll never be on the boat for more than four hours at a stretch. Most days it's two.
 
-The British Virgin Islands sailing charter circuit is well-trodden for a reason — the islands sit close together, the trade winds are dependable, and the chain shelters you from open Atlantic swell almost everywhere you'd want to drop a hook. What separates one week from another is who's reading the weather, where you anchor when the day boats arrive, and what shows up at dinner. We anchor where the crowd isn't. By Wednesday the catamaran charter Tortola itineraries you'd find in a brochure feel like a different trip entirely.
+The British Virgin Islands sailing charter circuit is well-trodden for a reason - the islands sit close together, the trade winds are dependable, and the chain shelters you from open Atlantic swell almost everywhere you'd want to drop a hook. What separates one week from another is who's reading the weather, where you anchor when the day boats arrive, and what shows up at dinner. We anchor where the crowd isn't. By Wednesday the catamaran charter Tortola itineraries you'd find in a brochure feel like a different trip entirely.
 
 ## The anchorages this trip is known for
 
-The Norman Island catamaran morning is the trip's opening note — the Caves and the Indians, three rock pillars rising from the seabed, snorkeled before the first day-charter boat arrives. The Baths come next, granite boulders the size of small houses with sea pools you can swim between if you time the tide. Then the overnight passage to Anegada, the only coral atoll in the chain, where the Anegada catamaran lobster dinner is exactly what people say it is and the bonefish flats stretch farther than your eyes can follow.
+The Norman Island catamaran morning is the trip's opening note - the Caves and the Indians, three rock pillars rising from the seabed, snorkeled before the first day-charter boat arrives. The Baths come next, granite boulders the size of small houses with sea pools you can swim between if you time the tide. Then the overnight passage to Anegada, the only coral atoll in the chain, where the Anegada catamaran lobster dinner is exactly what people say it is and the bonefish flats stretch farther than your eyes can follow.
 
 The back half of the week is softer. Jost Van Dyke for a long lunch at White Bay. Sandy Spit for an uninhabited-island swim. Cooper Island at Manchioneel Bay for the last night, a long dinner under the rig lights, and a final sunrise swim before brunch and the short ride back to Nanny Cay.
 
@@ -109,10 +109,10 @@ The back half of the week is softer. Jost Van Dyke for a long lunch at White Bay
 
 This isn't a retreat with a schedule. It's a week on a boat with two people who happen to know how to set one up so you actually unwind. There's no onboard internet by default; Wi-Fi can be bought but it's unreliable, and most guests find the phone stops feeling useful by the second night anyway. If you want to sleep until coffee, the coffee will still be there.
 
-Clint reads weather the way other people read the news. He'll change the next day's plan over breakfast because the wind backed two points overnight, and you'll have one of those mornings where the boat is the only one in the anchorage. The galley runs the way a chef runs a tasting menu — a different meal every dinner, sourced from whichever island we provisioned at last, served on the aft deck with the sun going down behind the rig.
+Clint reads weather the way other people read the news. He'll change the next day's plan over breakfast because the wind backed two points overnight, and you'll have one of those mornings where the boat is the only one in the anchorage. The galley runs the way a chef runs a tasting menu - a different meal every dinner, sourced from whichever island we provisioned at last, served on the aft deck with the sun going down behind the rig.
 
 > You don't need another vacation. You need a week where Wednesday feels like a Sunday.
 
 ## Booking
 
-Weeks are available across 2027 — see the calendar for what's open. Some already have fewer than four cabins left. If your week matters more than the date, hold the cabin first — there's no deposit required for the first 72 hours, and we'll talk on the phone before you commit a dollar.
+Weeks are available across 2027 - see the calendar for what's open. Some already have fewer than four cabins left. If your week matters more than the date, hold the cabin first - there's no deposit required for the first 72 hours, and we'll talk on the phone before you commit a dollar.

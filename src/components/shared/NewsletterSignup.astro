@@ -1,7 +1,7 @@
 ---
 // Two variants:
-// 'footer' — on dark primary bg, ink type with sun-gold accent
-// 'inline' — on bone bg with dark type (for embedding in editorial pages)
+// 'footer' - on dark primary bg, ink type with sun-gold accent
+// 'inline' - on bone bg with dark type (for embedding in editorial pages)
 interface Props {
   variant?: 'inline' | 'footer';
   heading?: string;
@@ -9,7 +9,7 @@ interface Props {
 }
 const {
   variant = 'footer',
-  heading = 'Field Notes — a quiet newsletter',
+  heading = 'Field Notes - a quiet newsletter',
   subtext = 'One or two pieces a month from the water. No urgency, no upsells.',
 } = Astro.props;
 
@@ -67,7 +67,7 @@ const isInline = variant === 'inline';
           : 'bg-transparent text-ink border-ink/30 focus:border-sun placeholder:text-ink-mute',
       ]}
     />
-    {/* Honeypot — opacity+tabindex+aria-hidden (OWASP) */}
+    {/* Honeypot - opacity+tabindex+aria-hidden (OWASP) */}
     <input
       type="text"
       name="website"

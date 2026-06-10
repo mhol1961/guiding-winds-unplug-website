@@ -20,7 +20,7 @@ const region = voyageSlug ? regionFromSlug[voyageSlug] : undefined;
 
 const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
 const schemaGraph = [
-  { '@type': 'ContactPage', name: 'Inquire — Guiding Winds Unplug', description },
+  { '@type': 'ContactPage', name: 'Inquire - Guiding Winds Unplug', description },
   {
     '@type': 'BreadcrumbList',
     itemListElement: [
@@ -58,7 +58,7 @@ const schemaGraph = [
             <ol class="space-y-7">
               {
                 [
-                  { title: 'You send the inquiry', body: 'Takes 60 seconds. Tell us your preferred week, or "flexible — recommend one."' },
+                  { title: 'You send the inquiry', body: 'Takes 60 seconds. Tell us your preferred week, or "flexible - recommend one."' },
                   { title: 'We reply within 24 hours', body: 'Email or text, your choice. We confirm cabin availability and answer the first batch of questions.' },
                   { title: 'We hold a cabin for 72 hours', body: 'No deposit required to hold. Once you confirm, a 25% deposit locks the cabin; balance due 60 days before departure.' },
                 ].map((step, i) => (
@@ -91,7 +91,7 @@ const schemaGraph = [
             </a>
             <div class="flex items-center gap-3 font-body-md text-[0.9375rem] text-primary/65 py-2">
               <Clock className="size-4 text-sun" strokeWidth={1.5} />
-              Replies M–F, usually within 4h
+              Replies M-F, usually within 4h
             </div>
           </div>
 
@@ -102,7 +102,7 @@ const schemaGraph = [
             <dl class="space-y-7">
               {
                 [
-                  { q: 'Cancellation?', a: '90+ days full refund, 90–45 days 50%, under 45 we rebook you for any future week with availability.' },
+                  { q: 'Cancellation?', a: '90+ days full refund, 90-45 days 50%, under 45 we rebook you for any future week with availability.' },
                   { q: 'Payment options?', a: 'Stripe (card), wire transfer, or check. 25% deposit to lock, balance 60 days out.' },
                   { q: 'Kids welcome?', a: 'Yes, especially on whole-boat charters. The boat sleeps 12 comfortably; this is an adult-pace trip.' },
                 ].map((item) => (

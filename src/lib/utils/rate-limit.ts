@@ -1,6 +1,6 @@
 // Simple in-memory sliding-window rate limiter.
 //
-// On Cloudflare Workers each isolate runs independently — a determined
+// On Cloudflare Workers each isolate runs independently - a determined
 // attacker could hit different isolates to bypass this, but the dominant
 // spam pattern (a single bot pounding one endpoint) is well served by
 // per-isolate limits. For higher-volume v2, upgrade to a Cloudflare KV
@@ -36,7 +36,7 @@ export function rateLimit(
   hits.push(now);
   buckets.set(key, hits);
 
-  // Light housekeeping — evict stale buckets every 200 hits across the map.
+  // Light housekeeping - evict stale buckets every 200 hits across the map.
   if (buckets.size > 1000) {
     for (const [k, v] of buckets) {
       const fresh = v.filter((t) => t > cutoff);
@@ -50,7 +50,7 @@ export function rateLimit(
 
 /** Extract a stable client identifier from an Astro request.
  *
- *  Only CF-Connecting-IP is trusted — Cloudflare sets it for every request
+ *  Only CF-Connecting-IP is trusted - Cloudflare sets it for every request
  *  and it cannot be spoofed at the edge. x-forwarded-for / x-real-ip are
  *  user-supplied and would let an attacker reset the bucket per request
  *  by rotating the header. When CF-Connecting-IP is absent (local dev or

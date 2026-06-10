@@ -22,7 +22,7 @@ function formatWeek(start: string, end: string): string {
   const fmt = (d: Date) =>
     d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
   const year = s.getUTCFullYear();
-  return `${fmt(s)} – ${fmt(e)}, ${year}`;
+  return `${fmt(s)} - ${fmt(e)}, ${year}`;
 }
 ---
 

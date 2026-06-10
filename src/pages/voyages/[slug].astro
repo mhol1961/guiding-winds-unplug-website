@@ -45,7 +45,7 @@ const emphasis: Record<string, string> = {
   croatia: 'Split to Dubrovnik, the long way around.',
 };
 
-// Schema graph for the page — TouristTrip + Offer per available week +
+// Schema graph for the page - TouristTrip + Offer per available week +
 // FAQPage from frontmatter FAQ + BreadcrumbList.
 const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
 const pageUrl = `${baseUrl}/voyages/${voyage.data.slug}`;
@@ -140,7 +140,7 @@ const allVoyages = await getCollection('voyages');
 const siblings = allVoyages.filter((v) => v.data.slug !== voyage.data.slug).slice(0, 2);
 
 // ── Mid-page interrupt copy (Section S1 audit fix) ────────────────────────
-// The voyage detail page used to be 6,000-7,000px of unbroken cream — one
+// The voyage detail page used to be 6,000-7,000px of unbroken cream - one
 // giant wall of tan. These three interrupt sections break the stretch at
 // ~1,500-2,000px intervals so the eye gets rhythm.
 
@@ -184,17 +184,17 @@ const weekCount = voyage.data.availableWeeks.length;
 const statCopyByRegion: Record<string, { headline: string; italic: string; body: string }> = {
   caribbean: {
     headline: `${weekCount} weeks open`,
-    italic: 'Multiple weeks available — see the calendar',
-    body: 'A limited run of weeks. When they\'re gone they\'re gone — we don\'t add capacity or stretch the run.',
+    italic: 'Multiple weeks available - see the calendar',
+    body: 'A limited run of weeks. When they\'re gone they\'re gone - we don\'t add capacity or stretch the run.',
   },
   bahamas: {
     headline: `${weekCount} weeks open`,
-    italic: 'Multiple weeks available — see the calendar',
+    italic: 'Multiple weeks available - see the calendar',
     body: 'A short run of weeks before we move the boat to the Mediterranean. Limited and not repeated.',
   },
   mediterranean: {
     headline: `${weekCount} weeks open`,
-    italic: 'Multiple weeks available — see the calendar',
+    italic: 'Multiple weeks available - see the calendar',
     body: 'We sail every week we\'re open, then the boat heads back across the Atlantic. A limited run.',
   },
 };
@@ -224,7 +224,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
     anchorages={voyage.data.itinerary.length}
   />
 
-  {/* Overview + sticky PricingCard — bone bg, dark text */}
+  {/* Overview + sticky PricingCard - bone bg, dark text */}
   <section class="bg-bone text-primary border-t border-rule">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-20 sm:py-24">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -290,7 +290,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
     </div>
   </section>
 
-  {/* Interrupt 1 (teal) — mood-setter, breaks the bone after Overview */}
+  {/* Interrupt 1 (teal) - mood-setter, breaks the bone after Overview */}
   <SectionInterrupt
     variant="teal"
     eyebrow={tealEyebrow[voyage.data.slug]}
@@ -300,7 +300,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
 
   <Timeline itinerary={voyage.data.itinerary} />
 
-  {/* Interrupt 2 (quote) — full-bleed photo + guest review after Timeline.
+  {/* Interrupt 2 (quote) - full-bleed photo + guest review after Timeline.
       Hidden if no review exists for this voyage. */}
   {voyageReviewForInterrupt && (
     <SectionInterrupt
@@ -318,7 +318,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
   <Gallery images={voyage.data.galleryImages} fallbackGradient="" />
   {voyage.data.faq.length > 0 && <VoyageFaq faq={voyage.data.faq} />}
 
-  {/* Interrupt 3 (stat) — dark scarcity / availability window after FAQ */}
+  {/* Interrupt 3 (stat) - dark scarcity / availability window after FAQ */}
   {statCopy && (
     <SectionInterrupt
       variant="stat"
@@ -331,7 +331,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
     />
   )}
 
-  {/* Cross-link siblings — image-led portrait cards on bone */}
+  {/* Cross-link siblings - image-led portrait cards on bone */}
   <section class="bg-bone text-primary border-t border-rule">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-20 sm:py-24">
       <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-10">
@@ -363,7 +363,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
               <h3 class="font-display text-[1.5rem] leading-[1.1] tracking-[-0.015em] font-normal mt-2 group-hover:text-accent transition-colors" style="font-variation-settings: 'opsz' 36;">
                 {sibling.data.name}
               </h3>
-              {/* legacy bottom-overlay text — preserved below for graceful degradation but visually hidden */}
+              {/* legacy bottom-overlay text - preserved below for graceful degradation but visually hidden */}
               <div class="hidden">
                 <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-ink/80 mb-2">
                   {regionLabel[sibling.data.region]}

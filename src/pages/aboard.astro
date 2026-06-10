@@ -19,7 +19,7 @@ const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwin
 const schemaGraph = [
   {
     '@type': 'Product',
-    name: 'All-Inclusive Catamaran Voyage — Aboard',
+    name: 'All-Inclusive Catamaran Voyage - Aboard',
     description,
     image: `${baseUrl}/img/source/hero/04-cockpit-sunrise.jpg`,
     brand: { '@type': 'Brand', name: 'Guiding Winds Unplug' },
@@ -41,22 +41,18 @@ const schemaGraph = [
 ];
 
 const included = [
-  { Icon: UtensilsCrossed, label: 'Chef-prepared meals', body: 'Breakfast, lunch, dinner. Meals shift by destination — Caribbean breakfasts, Mediterranean dinners, a different theme most nights.' },
+  { Icon: UtensilsCrossed, label: 'Chef-prepared meals', body: 'Breakfast, lunch, dinner. Meals shift by destination - Caribbean breakfasts, Mediterranean dinners, a different theme most nights.' },
   { Icon: Waves, label: 'Snorkel gear included', body: 'Masks, fins, and snorkels in every size. Paddleboards and kayaks available as an add-on.' },
   { Icon: BedDouble, label: 'Private cabin + head', body: 'Your own cabin with an ensuite head. AC on shore power, fans underway. Linens and towels provided.' },
   { Icon: Fuel, label: 'Fuel & dockage', body: 'No itemized fuel surcharge. Dockage included at every overnight, including the mooring fees at the busier anchorages.' },
-  { Icon: Anchor, label: 'Captain & host', body: 'Clint captains every voyage himself — no rotating skippers. A host runs the galley and the guest experience aboard.' },
-  { Icon: WifiOff, label: 'The right to unplug', body: 'We don\'t provide onboard internet — unplugging is the point. Wi-Fi can be purchased for an additional charge, and even then the connection can be unreliable at times.' },
-];
-
-const boatAreas = [
-  { label: 'The foredeck', body: 'The trampoline is the social spot of the boat. Where the afternoon naps happen, where the sundowner conversations happen.', img: '/img/stock/boat/boat-foredeck-trampoline-ai.jpg', alt: 'Twin black-mesh trampolines stretched between the bows of a white catamaran at golden hour, cream cushions scattered across them, the sun setting low between the bows over turquoise water' },
+  { Icon: Anchor, label: 'Captain & host', body: 'Clint captains every voyage himself. A host runs the galley and the guest experience aboard.' },
+  { Icon: WifiOff, label: 'The right to unplug', body: 'We don\'t provide onboard internet - unplugging is the point. Wi-Fi can be purchased for an additional charge, and even then the connection can be unreliable at times.' },
 ];
 
 const notIncluded: Array<string | { label: string; href: string }> = [
   'Flights to and from the embarkation port',
   { label: 'Travel insurance (click to get quotes)', href: 'https://trawickinternational.com/' },
-  'Crew gratuity (10–15% suggested)',
+  'Crew gratuity (10-15% suggested)',
   'Off-boat dining and excursions you arrange independently',
 ];
 ---
@@ -71,7 +67,7 @@ const notIncluded: Array<string | { label: string; href: string }> = [
       fetchpriority="high"
       decoding="async"
     />
-    <div class="absolute inset-0 bg-gradient-to-b from-primary/30 via-transparent to-primary/95" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/45 to-transparent" aria-hidden="true"></div>
     <div class="relative z-10 min-h-[80dvh] flex flex-col">
       <div class="flex-1 flex items-end pb-16 lg:pb-24 px-7 lg:px-14 pt-32">
         <div class="max-w-[1400px] w-full mx-auto">
@@ -89,15 +85,14 @@ const notIncluded: Array<string | { label: string; href: string }> = [
           </h1>
           <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.6] text-ink/85 mt-8 max-w-3xl">
             All-inclusive on this boat means what it says. One number covers
-            your cabin, every meal, every piece of water gear,
-            fuel, dockage, and the captain.
+            meals, snorkel equipment, fuel, dockage, and the captain.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  {/* 8-icon inclusion grid — PREMIUM treatment.
+  {/* 8-icon inclusion grid - PREMIUM treatment.
        Section sits on dark surface-warm so the cream cards POP with
        editorial contrast. Each card has a soft sun-gold backlit shadow
        on hover, gradient border shift, gentle lift, and a staggered
@@ -132,7 +127,7 @@ const notIncluded: Array<string | { label: string; href: string }> = [
               class="card-rise group relative bg-bone text-primary border border-bone-deep p-7 lg:p-8 flex flex-col shadow-[0_4px_16px_rgba(0,0,0,0.25)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-sun hover:bg-card-lift hover:shadow-[0_16px_44px_rgba(232,163,64,0.32),0_2px_8px_rgba(232,163,64,0.18)] focus-within:-translate-y-1.5 focus-within:border-sun focus-within:bg-card-lift focus-within:shadow-[0_16px_44px_rgba(232,163,64,0.32),0_2px_8px_rgba(232,163,64,0.18)]"
               style={`animation-delay: ${i * 80}ms;`}
             >
-              {/* Top sun-gold rail — appears on hover, gives the cards
+              {/* Top sun-gold rail - appears on hover, gives the cards
                    a backlit ribbon affordance. */}
               <span
                 class="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-sun to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300"
@@ -158,58 +153,8 @@ const notIncluded: Array<string | { label: string; href: string }> = [
     </div>
   </section>
 
-  {/* The boat — 4 image-led sections, alternating left/right.
-       Mark's pick: bg-teal-shadow as the page's chapter break — the
-       editorial centerpiece. Text colors shift to ink-on-teal. Photo
-       containers keep a subtle bone wash so images don't bleed into
-       the teal. */}
-  <section class="bg-teal-shadow text-ink py-24 sm:py-32 border-t border-hairline">
-    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
-      <div class="mb-16 max-w-3xl">
-        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun mb-5">
-          The boat
-        </p>
-        <h2
-          class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance text-ink"
-          style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
-        >
-          Our catamaran.
-          <span class="italic" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
-            Chosen for cabin volume, not the spec sheet.
-          </span>
-        </h2>
-      </div>
-      <div class="space-y-20 lg:space-y-32">
-        {
-          boatAreas.map((area, i) => (
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-              <div class={`lg:col-span-7 ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
-                <figure class="relative aspect-[17/10] overflow-hidden bg-bone/10 ring-1 ring-ink/10">
-                  <img src={area.img} alt={area.alt} loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" />
-                </figure>
-              </div>
-              <div class={`lg:col-span-5 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-sun mb-4">
-                  Plate 0{i + 1} · {area.label}
-                </p>
-                <h3
-                  class="font-display text-[1.75rem] leading-[1.15] tracking-[-0.015em] font-normal mb-4 text-ink"
-                  style="font-variation-settings: 'opsz' 36;"
-                >
-                  {area.label}
-                </h3>
-                <p class="font-body-lg text-[1.0625rem] leading-[1.7] text-ink/85 text-balance">
-                  {area.body}
-                </p>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
 
-  {/* What's NOT included — numbered list on sage accent panel.
+  {/* What's NOT included - numbered list on sage accent panel.
        Was bg-bone-deep/30 (basically tan-on-tan). Sage gives a clean
        natural break against the teal above and the paper "typical day"
        section below. */}
@@ -261,7 +206,7 @@ const notIncluded: Array<string | { label: string; href: string }> = [
     </div>
   </section>
 
-  {/* Interrupt AB1 — stat break (already dark surface-warm in component) */}
+  {/* Interrupt AB1 - stat break (already dark surface-warm in component) */}
   <SectionInterrupt
     variant="stat"
     eyebrow="The numbers"
@@ -272,7 +217,7 @@ const notIncluded: Array<string | { label: string; href: string }> = [
     ctaHref="/inquire"
   />
 
-  {/* Typical day — paper (off-white) with Dodie's IG "Good morning"
+  {/* Typical day - paper (off-white) with Dodie's IG "Good morning"
        deck-coffee photo set up top so the section opens with an actual
        sunrise scene before the words describe one. Asymmetric 7-5 grid:
        portrait photo on the right, copy on the left. */}
@@ -294,21 +239,21 @@ const notIncluded: Array<string | { label: string; href: string }> = [
           </h2>
           <div class="space-y-6 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.75] text-primary/75 text-balance">
             <p>
-              Coffee on deck at first light for whoever's up. Breakfast at eight — eggs, fruit, fresh
+              Coffee on deck at first light for whoever's up. Breakfast at eight - eggs, fruit, fresh
               bread from whatever village we were in yesterday. Dive in off the
               swim platform whenever.
             </p>
             <p>
               By ten we've usually pulled the anchor for a short, easy passage
               to the next stop. Most legs are under two hours. You can sit at
-              the helm with Clint, lie on the trampoline, read in the salon —
-              the day is yours. Lunch on the boat at one — light, mostly off
+              the helm with Clint, lie on the trampoline, read in the salon -
+              the day is yours. Lunch on the boat at one - light, mostly off
               the grill, always with a cold something.
             </p>
             <p>
               Afternoon is the long open block. Snorkel, paddle, kayak, nap,
               read, walk ashore if we're tied up. By five we're on a sundowner.
-              By seven Dodie's brought dinner up — long meal, long stars, no
+              By seven Dodie's brought dinner up - long meal, long stars, no
               schedule for tomorrow until tomorrow.
             </p>
           </div>
@@ -317,7 +262,7 @@ const notIncluded: Array<string | { label: string; href: string }> = [
           <figure class="relative aspect-[3/4] overflow-hidden bg-primary/5">
             <img
               src="/img/source/ig/cockpit-coffee-sunrise-portrait.jpg"
-              alt="First-person view from the cockpit at sunrise — coffee mug nearby, bare feet on the bench, sailing catamarans silhouetted against a pink and orange dawn sky over the anchorage"
+              alt="First-person view from the cockpit at sunrise - coffee mug nearby, bare feet on the bench, sailing catamarans silhouetted against a pink and orange dawn sky over the anchorage"
               loading="lazy"
               decoding="async"
               class="absolute inset-0 w-full h-full object-cover"
@@ -331,7 +276,7 @@ const notIncluded: Array<string | { label: string; href: string }> = [
     </div>
   </section>
 
-  {/* Pre-footer CTA — teal-soft per Mark's note: the section right above
+  {/* Pre-footer CTA - teal-soft per Mark's note: the section right above
        the dark footer must be LIGHTER, not match it. Carries the "See
        Available Weeks" CTA that used to live in the typical-day section. */}
   <section class="bg-teal-soft text-primary py-24 sm:py-28 border-t border-hairline">

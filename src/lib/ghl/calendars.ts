@@ -75,7 +75,7 @@ export async function createHoldAppointment(
       contactId: input.contactId,
       startTime: input.startTime,
       endTime: input.endTime,
-      title: input.title ?? 'Cabin hold — 72h',
+      title: input.title ?? 'Cabin hold - 72h',
       appointmentStatus: 'new',
       notes: input.notes,
       ignoreFreeSlotValidation: false,

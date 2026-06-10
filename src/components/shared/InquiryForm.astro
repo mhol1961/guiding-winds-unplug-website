@@ -14,7 +14,7 @@ const weekOptions = voyages
   .flatMap((v) =>
     v.data.availableWeeks.map((w) => ({
       value: `${v.data.slug}|${w.start}`,
-      label: `${v.data.name} · ${new Date(`${w.start}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}–${new Date(`${w.end}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })} · ${w.cabinsAvailable === 0 ? 'Sold out' : `${w.cabinsAvailable} cabins left`}`,
+      label: `${v.data.name} · ${new Date(`${w.start}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}-${new Date(`${w.end}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })} · ${w.cabinsAvailable === 0 ? 'Sold out' : `${w.cabinsAvailable} cabins left`}`,
       disabled: w.cabinsAvailable === 0,
       defaultSelected: voyageSlug ? v.data.slug === voyageSlug : false,
     })),
@@ -89,9 +89,9 @@ const isEmbedded = variant === 'embedded';
         <option value="">Select…</option>
         <option value="1 (solo)">1 (solo)</option>
         <option value="2 (couple)">2 (couple)</option>
-        <option value="3–4">3–4</option>
-        <option value="5–8">5–8</option>
-        <option value="9–12 (whole boat)">9–12 (whole boat)</option>
+        <option value="3-4">3-4</option>
+        <option value="5-8">5-8</option>
+        <option value="9-12 (whole boat)">9-12 (whole boat)</option>
       </select>
     </div>
   </div>
@@ -105,7 +105,7 @@ const isEmbedded = variant === 'embedded';
       class="w-full bg-bone-deep/20 text-primary font-body-md text-[1rem] border-b border-primary/30 focus:border-accent transition-colors px-1 py-3 focus:outline-none appearance-none bg-no-repeat bg-[right_8px_center]"
       style="background-image: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1L6 6L11 1' stroke='%23E5402B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>&quot;);"
     >
-      <option value="flexible">Flexible — recommend a week</option>
+      <option value="flexible">Flexible - recommend a week</option>
       {
         weekOptions.map((opt) => (
           <option value={opt.value} disabled={opt.disabled} selected={opt.defaultSelected}>

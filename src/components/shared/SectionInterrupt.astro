@@ -1,18 +1,18 @@
 ---
 // Site-wide mid-page pattern interrupt. Breaks long stretches of bone
-// (#F4EFE0) with a distinct surface — used across home, about, aboard,
+// (#F4EFE0) with a distinct surface - used across home, about, aboard,
 // voyages-hub, journal-hub, and voyage detail pages where extended
 // cream runs flatlined the eye. Four variants by mood and weight:
 //
-//   photo  — FULL-BLEED hero-style image with overlay headline. Image
+//   photo  - FULL-BLEED hero-style image with overlay headline. Image
 //            IS the section. Highest visual impact, heaviest payload
-//            (lazy-loaded). Use as the strongest break — once per page max.
-//   quote  — full-bleed photo + italic guest quote + optional CTA.
+//            (lazy-loaded). Use as the strongest break - once per page max.
+//   quote  - full-bleed photo + italic guest quote + optional CTA.
 //            Models LogbookQuote.astro. Use for emotional proof.
-//   stat   — dark surface (surface-warm), big-type single statistic +
+//   stat   - dark surface (surface-warm), big-type single statistic +
 //            sun-gold rule. No image. Use for credibility / scarcity.
-//   teal   — bright teal panel (#0E3F47), italic eyebrow phrase.
-//            No image. Lightest break — use freely between bone sections.
+//   teal   - bright teal panel (#0E3F47), italic eyebrow phrase.
+//            No image. Lightest break - use freely between bone sections.
 
 // Discriminated union so `variant: 'photo'` forces an `image` at compile
 // time (Codex review caught the silent-disappearance failure mode when
@@ -30,7 +30,7 @@ interface BaseProps {
 }
 interface PhotoProps extends BaseProps {
   variant: 'photo';
-  /** REQUIRED for photo variant — full-bleed background image. */
+  /** REQUIRED for photo variant - full-bleed background image. */
   image: string;
   imageAlt: string;
   /** Photo variant text alignment. Default 'left' (editorial). */
@@ -54,7 +54,7 @@ type Props = PhotoProps | QuoteProps | StatProps | TealProps;
 
 const props = Astro.props;
 const { variant, eyebrow, headline, headlineItalic, body, ctaLabel, ctaHref } = props;
-// Variant-only fields — narrow inside each rendered branch.
+// Variant-only fields - narrow inside each rendered branch.
 const image = 'image' in props ? props.image : undefined;
 const imageAlt = 'imageAlt' in props ? props.imageAlt : undefined;
 const attribution = 'attribution' in props ? props.attribution : undefined;
@@ -73,7 +73,7 @@ const photoAlign = 'photoAlign' in props ? (props.photoAlign ?? 'left') : 'left'
       />
       {/* Overlay built for legibility over ANY photo (sunset, night, sun-flare,
          pastel buildings). Codex review found the prior gradient ratios
-         dipped below AA on bright/centered images. New strategy: 3 layers —
+         dipped below AA on bright/centered images. New strategy: 3 layers -
          (1) strong base vertical darken so the bottom band where the headline
          sits is ≥4.5:1 against text-ink on every photo, (2) directional rake
          for editorial weight, (3) a near-opaque scrim band hugging the
@@ -91,7 +91,7 @@ const photoAlign = 'photoAlign' in props ? (props.photoAlign ?? 'left') : 'left'
         ]}
         aria-hidden="true"
       />
-      {/* Scrim band — bottom 60% gets a near-opaque dark wash so headline +
+      {/* Scrim band - bottom 60% gets a near-opaque dark wash so headline +
          body always clear AA, regardless of photo content beneath. */}
       <div
         class="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-primary/85 via-primary/60 to-transparent"
@@ -105,7 +105,7 @@ const photoAlign = 'photoAlign' in props ? (props.photoAlign ?? 'left') : 'left'
       >
         <div class:list={['w-full', photoAlign === 'center' ? 'max-w-3xl' : 'max-w-3xl']}>
           {eyebrow && (
-            /* text-bone (not text-sun) — gold-on-photo fails AA. The eyebrow
+            /* text-bone (not text-sun) - gold-on-photo fails AA. The eyebrow
                sits above the scrim band, so it needs the highest-contrast
                ink color. */
             <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-bone mb-7">

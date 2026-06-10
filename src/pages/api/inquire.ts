@@ -15,7 +15,7 @@ const InquirySchema = z.object({
   notes: z.string().trim().max(2000).optional().or(z.literal('')),
   region: z.enum(['bvi', 'bahamas', 'mediterranean', '']).optional(),
   source: z.string().trim().max(60).optional(),
-  // Honeypot — must be empty. Bots filling fields will land here.
+  // Honeypot - must be empty. Bots filling fields will land here.
   website: z.string().max(0).default(''),
 });
 
@@ -70,7 +70,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   const data = parsed.data;
 
-  // Honeypot tripped — return 200 but signal ok:false so the client JS
+  // Honeypot tripped - return 200 but signal ok:false so the client JS
   // does NOT navigate to /inquire/thank-you (bots polluting analytics
   // goal completions). The message looks benign so the bot can't tell
   // it was caught.
@@ -79,7 +79,7 @@ export const POST: APIRoute = async ({ request }) => {
     return jsonResponse({
       ok: false,
       silent: true,
-      message: 'Thanks — we will be in touch within 24 hours.',
+      message: 'Thanks - we will be in touch within 24 hours.',
     });
   }
 
@@ -105,7 +105,7 @@ export const POST: APIRoute = async ({ request }) => {
     });
   } catch (err) {
     console.error('[inquire] GHL upsert failed', err);
-    // Hard failure path — surface a mailto fallback in the JSON response.
+    // Hard failure path - surface a mailto fallback in the JSON response.
     // The InquiryForm client script renders the fallback to the user.
     return jsonResponse(
       {

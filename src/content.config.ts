@@ -72,7 +72,7 @@ const journal = defineCollection({
     title: z.string(),
     slug: z.string().optional(),
     excerpt: z.string().max(240),
-    /** TL;DR / "answer capsule" surfaced at the top of the post — what AI
+    /** TL;DR / "answer capsule" surfaced at the top of the post - what AI
      *  search engines extract for citations. See SEO-PLAN.md. */
     tldr: z.string().min(40).max(800),
     category: z.enum(['guide', 'field-notes', 'wellness', 'behind-the-boat']),
@@ -93,7 +93,7 @@ const journal = defineCollection({
 });
 
 // ── Reviews ──────────────────────────────────────────────────────────────
-// Data collection — loaded from JSON/YAML rather than MD bodies. Each entry
+// Data collection - loaded from JSON/YAML rather than MD bodies. Each entry
 // is one testimonial. Drives the home TestimonialRow + Review/AggregateRating
 // schema.
 const reviews = defineCollection({
@@ -108,7 +108,7 @@ const reviews = defineCollection({
     date: z.coerce.date(),
     /** Whether to surface on the home page. */
     homepageFeature: z.boolean().default(false),
-    /** Optional guest photo path under /public — used as the avatar in
+    /** Optional guest photo path under /public - used as the avatar in
      *  the TestimonialRow card footer and (for featured) as the card
      *  background. When absent the component falls back to a monogram. */
     photo: z.string().optional(),

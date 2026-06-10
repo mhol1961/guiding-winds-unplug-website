@@ -16,10 +16,10 @@ const regionLabel: Record<string, string> = {
   mediterranean: 'Mediterranean',
 };
 
-// Region theme map — colors + season-blurb only. The month-range label
+// Region theme map - colors + season-blurb only. The month-range label
 // is DERIVED from the actual availableWeeks data below, so it can never
 // drift from inventory (Codex caught a contradiction where Caribbean
-// hardcoded "Jan – Mar" but BVI also had a November week).
+// hardcoded "Jan - Mar" but BVI also had a November week).
 const regionTheme: Record<
   string,
   {
@@ -57,7 +57,7 @@ const regionTheme: Record<
   },
 };
 
-// Derive a "Jan – Mar, Nov" style month range from the actual weeks in
+// Derive a "Jan - Mar, Nov" style month range from the actual weeks in
 // a region. Groups consecutive months into runs; non-consecutive
 // months trail as comma-separated items.
 const monthShort = [
@@ -81,12 +81,12 @@ function monthRangeFor(weeks: { start: string }[]): string {
     .map((r) =>
       r.length === 1
         ? monthShort[r[0]]
-        : `${monthShort[r[0]]} – ${monthShort[r[r.length - 1]]}`,
+        : `${monthShort[r[0]]} - ${monthShort[r[r.length - 1]]}`,
     )
     .join(', ');
 }
 
-// "Fourteen" / "Fifteen" word forms for 2–20 — editorial preference
+// "Fourteen" / "Fifteen" word forms for 2-20 - editorial preference
 // over digits in headline copy. Falls back to the digit for >20.
 const numberWord: Record<number, string> = {
   2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five', 6: 'Six', 7: 'Seven',
@@ -210,7 +210,7 @@ const heroSubline = regionGroups
   .filter((r) => r.totalWeeks > 0)
   .map((r) => `${r.label} ${r.months}.`)
   .join(' ') +
-  ' Clint captains every week himself — no rotating skippers, no charter fleet. Up to 12 guests, no crowds at anchor.';
+  ' Clint captains every week himself. Up to 12 guests, no crowds at anchor.';
 
 function formatWeek(start: string, end: string) {
   const s = new Date(`${start}T12:00:00Z`);
@@ -221,9 +221,9 @@ function formatWeek(start: string, end: string) {
   const dayFmt = (d: Date) =>
     d.toLocaleDateString('en-US', { day: 'numeric', timeZone: 'UTC' });
   if (sameMonth) {
-    return `${monthFmt(s)} ${dayFmt(s)}–${dayFmt(e)}`;
+    return `${monthFmt(s)} ${dayFmt(s)}-${dayFmt(e)}`;
   }
-  return `${monthFmt(s)} ${dayFmt(s)} – ${monthFmt(e)} ${dayFmt(e)}`;
+  return `${monthFmt(s)} ${dayFmt(s)} - ${monthFmt(e)} ${dayFmt(e)}`;
 }
 
 function weekdayLabel(start: string) {
@@ -235,7 +235,7 @@ const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwin
 const schemaGraph = [
   {
     '@type': 'ItemList',
-    name: '2027 Voyages — Guiding Winds Unplug',
+    name: '2027 Voyages - Guiding Winds Unplug',
     numberOfItems: voyages.length,
     itemListElement: voyages.map((v, i) => ({
       '@type': 'ListItem',
@@ -258,14 +258,13 @@ const schemaGraph = [
   <PageHero
     eyebrow="Voyages · 2027"
     headlinePrefix="Three regions."
-    headlineEmphasis={`${grandTotalWeeksWord} weeks.`}
-    headlineSuffix="One boat."
+    headlineEmphasis="One boat."
     subline={heroSubline}
     heroImage="/img/stock/hero/hero-sunset-teak-deck-04.jpg"
     heroImageAlt="Sunset over a teak boat deck with the horizon line glowing gold"
   />
 
-  {/* Voyage card grid — portrait 9:16, magazine-cover style.
+  {/* Voyage card grid - portrait 9:16, magazine-cover style.
       Stage 4 bg switch: bg-bone -> bg-paper. Cuts the wall-of-tan effect
       and lets the calendar section below (also paper-family but warmer)
       step down naturally. */}
@@ -338,7 +337,7 @@ const schemaGraph = [
     ctaHref="/calendar"
   />
 
-  {/* Full 2027 calendar — premium destination-list treatment.
+  {/* Full 2027 calendar - premium destination-list treatment.
       Stage 4 rebuild per owner direction: was a long flat list on bone that
       interleaved regions. Now grouped by region with colored pills, row-
       level alternation (bone <-> paper), hover lift, and explicit sold-out
@@ -356,33 +355,14 @@ const schemaGraph = [
             class="font-display font-light leading-[1.02] tracking-[-0.025em] text-balance"
             style="font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
           >
-            Every week, every region.
+            Pick a region.
             <span
               class="italic font-normal"
               style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;"
             >
-              One catamaran.
+              Pick a week.
             </span>
           </h2>
-        </div>
-        <div class="flex items-center gap-8 lg:pb-3 shrink-0">
-          <div>
-            <p class="font-display text-[2.5rem] leading-none text-primary tabular-nums" style="font-variation-settings: 'opsz' 96;">
-              {grandTotalWeeks}
-            </p>
-            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/70 mt-2">
-              Weeks
-            </p>
-          </div>
-          <div class="w-px h-12 bg-rule" aria-hidden="true"></div>
-          <div>
-            <p class="font-display text-[2.5rem] leading-none text-primary tabular-nums" style="font-variation-settings: 'opsz' 96;">
-              {grandTotalCabins}
-            </p>
-            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/70 mt-2">
-              Cabins open
-            </p>
-          </div>
         </div>
       </div>
 
@@ -391,7 +371,7 @@ const schemaGraph = [
         {
           regionGroups.map((region) => (
             <div class="relative">
-              {/* Region header — colored top rule + label + meta */}
+              {/* Region header - colored top rule + label + meta */}
               <div class={`relative pt-10 before:absolute before:top-0 before:left-0 before:h-[3px] before:w-16 ${region.rule}`}>
                 <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-10">
                   <div>
@@ -443,7 +423,7 @@ const schemaGraph = [
                         </a>
                       </div>
 
-                      {/* Week rows — alternating bg-bone / bg-paper.
+                      {/* Week rows - alternating bg-bone / bg-paper.
                           Each is a link to the voyage detail. Hover lifts
                           a region-colored left border and shifts the arrow. */}
                       <ul class="divide-y divide-rule/60">
@@ -451,7 +431,7 @@ const schemaGraph = [
                           const soldOut = week.cabinsAvailable === 0;
                           const low = !soldOut && week.cabinsAvailable < 3;
                           const rowBg = idx % 2 === 0 ? 'bg-bone' : 'bg-paper';
-                          // Sold-out rows render as a plain <div>, not an <a> —
+                          // Sold-out rows render as a plain <div>, not an <a> -
                           // pointer-events-none alone left them keyboard-
                           // activatable (Codex flagged the inaccessible disabled
                           // state). Bookable rows stay as anchors with all
@@ -475,7 +455,7 @@ const schemaGraph = [
                                   </span>
                                 </div>
 
-                                {/* Date — primary content */}
+                                {/* Date - primary content */}
                                 <div class="col-span-7 sm:col-span-4 order-2">
                                   <p
                                     class={`font-display text-[1.25rem] lg:text-[1.375rem] leading-[1.1] tabular-nums text-primary ${soldOut ? 'line-through decoration-1' : 'group-hover:text-accent transition-colors'}`}
@@ -523,7 +503,7 @@ const schemaGraph = [
                                   </span>
                                 </div>
 
-                                {/* Arrow — slides right on hover */}
+                                {/* Arrow - slides right on hover */}
                                 <div class="col-span-1 order-5 flex justify-end">
                                   {!soldOut && (
                                     <svg
@@ -554,7 +534,7 @@ const schemaGraph = [
     </div>
   </section>
 
-  {/* Pre-footer CTA — light teal panel so the page doesn't dump straight
+  {/* Pre-footer CTA - light teal panel so the page doesn't dump straight
       from bone into the near-black footer. Replaces the "dark slab" feel
       Mark called out. */}
   <section class="bg-teal-soft text-primary py-24 sm:py-28 border-t border-teal-shadow/15">

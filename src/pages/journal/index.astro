@@ -6,7 +6,7 @@ import SectionInterrupt from '../../components/shared/SectionInterrupt.astro';
 
 const title = 'Field Notes · Stories from Catamaran Voyages | Guiding Winds Unplug';
 const description =
-  'Quiet pieces on the slow life on the water — guides, field notes, wellness, and the view from behind the boat.';
+  'Quiet pieces on the slow life on the water - guides, field notes, wellness, and the view from behind the boat.';
 
 const allPosts = await getCollection('journal', ({ data }) => !data.draft);
 const posts = allPosts.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
@@ -39,7 +39,7 @@ const postHero: Record<string, string> = {
 const schemaGraph = [
   {
     '@type': 'Blog',
-    name: 'Field Notes — Guiding Winds Unplug',
+    name: 'Field Notes - Guiding Winds Unplug',
     description,
     url: `${baseUrl}/journal`,
     blogPost: posts.slice(0, 10).map((p) => ({
@@ -74,7 +74,7 @@ const rest = posts.slice(1);
     eyebrow="Journal"
     headlinePrefix="Field"
     headlineEmphasis="Notes."
-    subline="Quiet pieces on the slow life on the water — packing guides, the anchorages we love, why mornings at sea are the best therapy, and the view from behind the boat."
+    subline="Quiet pieces on the slow life on the water - packing guides, the anchorages we love, why mornings at sea are the best therapy, and the view from behind the boat."
     heroImage="/img/stock/journal/journal-sunrise-meditation-03.jpg"
     heroImageAlt="A figure sitting on the bow at sunrise, looking out across calm water"
   />
@@ -100,7 +100,7 @@ const rest = posts.slice(1);
     </div>
   </section>
 
-  {/* Featured post — editorial split */}
+  {/* Featured post - editorial split */}
   {featured && (
     <section class="bg-bone text-primary py-20 lg:py-28 border-b border-rule">
       <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
@@ -149,7 +149,7 @@ const rest = posts.slice(1);
     body="Not a content marketing engine. Notes from actual weeks, written between charters."
   />
 
-  {/* Rest of posts — 3-col grid */}
+  {/* Rest of posts - 3-col grid */}
   <section class="bg-bone text-primary py-20 lg:py-28">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
       {rest.length === 0 && (

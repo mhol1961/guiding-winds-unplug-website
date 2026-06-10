@@ -1,5 +1,5 @@
 // Explicit AI-bot allowlist per ADR-010. The marketing math here is the
-// opposite of a publisher's — being cited by ChatGPT / Claude / Perplexity
+// opposite of a publisher's - being cited by ChatGPT / Claude / Perplexity
 // / Google AI Overviews drives qualified leads for a $3,000+/week
 // purchase. We invite the crawl.
 
@@ -40,7 +40,7 @@ export const GET: APIRoute = ({ site }) => {
     lines.push('');
   }
 
-  // Universal default — anything else is welcome too.
+  // Universal default - anything else is welcome too.
   lines.push('User-agent: *');
   lines.push('Allow: /');
   lines.push('Disallow: /api/');
