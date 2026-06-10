@@ -15,7 +15,7 @@ galleryImages:
   - { src: /img/stock/voyages/croatia/gallery/croatia-korcula-walls-01.jpg, alt: Stone walls of Korcula seen from the sea }
   - { src: /img/stock/voyages/croatia/gallery/croatia-dalmatian-cove-02.jpg, alt: Quiet Dalmatian cove with pine forest to the waterline }
   - { src: /img/stock/voyages/croatia/gallery/croatia-harbor-town-03.jpg, alt: Croatian harbor town at golden hour }
-  - { src: /img/stock/people/people-serving-deck-02.jpg, alt: Host serving wine on the deck of a catamaran }
+  - { src: /img/stock/people/people-serving-deck-02.jpg, alt: Host serving a meal on the deck of a catamaran }
 availableWeeks:
   - { start: '2027-08-14', end: '2027-08-21', cabinsAvailable: 5 }
   - { start: '2027-10-02', end: '2027-10-09', cabinsAvailable: 8 }
@@ -93,9 +93,9 @@ Mljet closes the chain. The western third of the island is a national park built
 
 > Dalmatia is the only coast in the Mediterranean where you anchor below a working stone village and swim through water that does not pretend to be a swimming pool.
 
-## The galley, the wine, and one shore dinner we cover
+## The galley, and one shore dinner we cover
 
-Dodie runs a Croatian-leaning menu through the week. The Adriatic shellfish — oysters from Ston on the Pelješac peninsula, scampi from off Vis — show up in the first half. The local wines do the rest of the work: Plavac Mali from the steep Pelješac vineyards across from Korčula, Pošip from the Korčulan hill villages, both featured on the bar at no extra charge. One of the seven dinners is ashore on us at a konoba — a family-run tavern — that Clint and Dodie have learned to trust. The other shore nights are yours; we make the reservation and you cover the bill.
+Dodie runs a Croatian-leaning menu through the week. The Adriatic shellfish — oysters from Ston on the Pelješac peninsula, scampi from off Vis — show up in the first half, alongside produce and cheeses sourced from the islands we provision at as we go. One of the seven dinners is ashore on us at a konoba — a family-run tavern — that Clint and Dodie have learned to trust. The other shore nights are yours; we make the reservation and you cover the bill.
 
 ## Why one-way Split to Dubrovnik
 

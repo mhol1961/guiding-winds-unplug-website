@@ -87,13 +87,13 @@ Ferries connect the famous islands and skip everything else. Cruise ships dock a
 
 Kythnos opens the week. Kolona is the twin-bay anchorage you've seen on Greek tourism posters — a thin sandbar splitting two crescents of water, the boat lying at anchor in one bay while you swim across to the other. Sifnos is the long day ashore: Kamares as the harbor town, Apollonia climbing the hill above it, and the kind of dinner Greeks recommend to other Greeks. The island has a quiet reputation for its food and earns it without trying.
 
-Folegandros is the dramatic note in the middle of the week. Smaller and steeper than its neighbors, with whitewashed Chora set on a cliff edge two hundred meters above the water. Late afternoon you sail the catamaran along the base of those cliffs with a glass of assyrtiko in your hand and the village invisible somewhere overhead. Santorini at the end is the final overnight — caldera anchorage at Ammoudi or Vlychada depending on wind, sunset from the water instead of shoulder-to-shoulder on Oia's terrace with 4,000 cruise passengers. Morning brings the short transfer to JTR for evening flights home.
+Folegandros is the dramatic note in the middle of the week. Smaller and steeper than its neighbors, with whitewashed Chora set on a cliff edge two hundred meters above the water. Late afternoon you sail the catamaran along the base of those cliffs with the village invisible somewhere overhead. Santorini at the end is the final overnight — caldera anchorage at Ammoudi or Vlychada depending on wind, sunset from the water instead of shoulder-to-shoulder on Oia's terrace with 4,000 cruise passengers. Morning brings the short transfer to JTR for evening flights home.
 
 > The Greek islands at ferry speed is a country of post cards. At sailboat speed it's the country in between them.
 
-## The galley and the wine
+## The galley
 
-Dodie runs a Greek-leaning menu through the week — provisioned at each island as we go, which means the lamb is from one place, the cheese from another, and the tomatoes from the village we anchored at this morning. Assyrtiko is featured on the bar by default; the wine grows on volcanic soil sixty miles from where you're drinking it and tastes like the place it came from. Two of the seven dinners are ashore on us at tavernas Clint and Dodie have learned to trust over years in the chain. The other five are on the boat at anchor, served on the aft deck as the sun goes down behind whichever cliff you happen to be tucked under that night.
+Dodie runs a Greek-leaning menu through the week — provisioned at each island as we go, which means the lamb is from one place, the cheese from another, and the tomatoes from the village we anchored at this morning. Two of the seven dinners are ashore on us at tavernas Clint and Dodie have learned to trust over years in the chain. The other five are on the boat at anchor, served on the aft deck as the sun goes down behind whichever cliff you happen to be tucked under that night.
 
 ## Why one-way, why the Cyclades
 

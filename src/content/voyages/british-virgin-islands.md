@@ -80,7 +80,7 @@ faq:
   - q: Can we bring kids?
     a: 'Yes. The boat sleeps 12 and kids stack in cabins easily. Two notes: this is an adult-pace trip (long dinners, no kids'' menu), and there''s no formal childcare. If you want a family week, book the whole boat and let us tailor the itinerary.'
   - q: Is there Wi-Fi?
-    a: 'Starlink onboard, on by default. You can also opt to have it disabled for the week — most guests do, by Wednesday.'
+    a: 'We don''t provide onboard internet. Wi-Fi can be purchased for an additional charge, and the connection can be unreliable at times. Most guests embrace the unplug.'
 seo:
   title: 'BVI All-Inclusive Catamaran Charter 2027 · 7 Nights | Guiding Winds'
   description: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Seven nights for up to 12 guests on a private catamaran. From $3,550 per guest, all-inclusive.'
@@ -108,7 +108,7 @@ The back half of the week is softer. Jost Van Dyke for a long lunch at White Bay
 
 ## Wellness without the air quotes
 
-This isn't a retreat with a schedule. It's a week on a boat with two people who happen to know how to set one up so you actually unwind. Starlink is on by default, and most guests have us turn it off by Wednesday — not because we ask, but because the second drink of the second night is when the phone stops feeling useful. If you want a morning breath sequence or a yoga flow on the foredeck, Dodie leads one most mornings. If you want to sleep until coffee, the coffee will still be there.
+This isn't a retreat with a schedule. It's a week on a boat with two people who happen to know how to set one up so you actually unwind. There's no onboard internet by default; Wi-Fi can be bought but it's unreliable, and most guests find the phone stops feeling useful by the second night anyway. If you want a morning breath sequence or a yoga flow on the foredeck, Dodie leads one most mornings. If you want to sleep until coffee, the coffee will still be there.
 
 Clint reads weather the way other people read the news. He'll change the next day's plan over breakfast because the wind backed two points overnight, and you'll have one of those mornings where the boat is the only one in the anchorage. Dodie runs the galley the way a chef runs a tasting menu — a different cuisine every dinner, sourced from whichever island we provisioned at last, served on the aft deck with the sun going down behind the rig.
 

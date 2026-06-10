@@ -94,10 +94,10 @@ A catamaran in the Tyrrhenian solves two problems a monohull does not. First, do
 
 ## What the higher price actually pays for
 
-The Italy voyage runs $3,850 per guest — $300 more than the Caribbean weeks. Mediterranean dockage costs roughly four times what a BVI mooring ball costs, provisioning at a Salerno market runs materially higher than at a Tortola IGA, and Sicilian fuel sits at a different price tier altogether. The Italy wellness sailing market mostly hides those costs in an a-la-carte structure that tacks them onto your final invoice. We don't. The price you see is the price you pay; the only money you'll spend ashore is on the shore dinners we don't cover and whatever you decide to bring home in a wine box.
+The Italy voyage runs $3,850 per guest — $300 more than the Caribbean weeks. Mediterranean dockage costs roughly four times what a BVI mooring ball costs, provisioning at a Salerno market runs materially higher than at a Tortola IGA, and Sicilian fuel sits at a different price tier altogether. The Italy wellness sailing market mostly hides those costs in an a-la-carte structure that tacks them onto your final invoice. We don't. The price you see is the price you pay; the only money you'll spend ashore is on the shore dinners we don't cover and whatever you decide to bring home.
 
 > The Amalfi coast from a hotel terrace is a view. From the foredeck at six in the morning, it is a place.
 
-## The galley, the wine, and dinners that take three hours
+## The galley, and dinners that take three hours
 
-Dodie runs the galley around the regions we sail through — Campanian seafood at Positano, Aeolian capers and swordfish at Panarea, a Sicilian wine on the last night in Lipari. Dinners on deck run to three hours and a second bottle. Weeks are available across 2027 — see the calendar. If your week matters more than the date, hold a cabin first — no deposit for the first 72 hours, and we'll talk on the phone before you commit a dollar.
+Dodie runs the galley around the regions we sail through — Campanian seafood at Positano, Aeolian capers and swordfish at Panarea, Sicilian flavors on the last night in Lipari. Dinners on deck run to three hours. Weeks are available across 2027 — see the calendar. If your week matters more than the date, hold a cabin first — no deposit for the first 72 hours, and we'll talk on the phone before you commit a dollar.

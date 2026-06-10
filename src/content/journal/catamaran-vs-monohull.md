@@ -35,7 +35,7 @@ This is the big one. It's not close.
 
 Catamarans don't heel underway, and they don't roll the way a monohull rolls in a side swell at anchor. For a charter where the boat spends 18 or more hours a day stopped — guests trying to eat dinner on deck, read a book in the cockpit, fall asleep in a queen berth — stability at anchor is the single biggest livability factor on the boat. It dwarfs everything else.
 
-A concrete example. In April 2024 we were anchored at Cooper Island in the BVI. A Brittany Pavilion swell rolled into the mooring field overnight — long-period, off the port quarter, the kind that grabs a monohull and rocks it 15 to 20 degrees rail-to-rail for hours. Our guests had a long, candle-lit dinner on the aft deck. Wine glasses stayed on the table. Nobody mentioned the swell because nobody felt it. The Beneteau 51 on the next mooring had three guests sleeping in the cockpit by midnight because the cabins had become unusable.
+A concrete example. In April 2024 we were anchored at Cooper Island in the BVI. A Brittany Pavilion swell rolled into the mooring field overnight — long-period, off the port quarter, the kind that grabs a monohull and rocks it 15 to 20 degrees rail-to-rail for hours. Our guests had a long, candle-lit dinner on the aft deck. Water glasses stayed on the table. Nobody mentioned the swell because nobody felt it. The Beneteau 51 on the next mooring had three guests sleeping in the cockpit by midnight because the cabins had become unusable.
 
 That's the trade. A monohull's deep keel is a beautiful thing underway. At anchor it's a pendulum.
 
@@ -89,7 +89,7 @@ I want to be honest about this part. A good monohull does several things our cat
 
 It sails closer to the wind. Anyone who tells you a cruising cat points like a monohull hasn't sailed both — the monohull will beat us upwind every time, full stop.
 
-It heels poetically at sunset for the photograph. The cat sails flat. That's good for the wine glass and bad for the Instagram post.
+It heels poetically at sunset for the photograph. The cat sails flat. That's good for the coffee cup and bad for the Instagram post.
 
 It costs roughly 30% less per foot to buy. A 50-foot cruising monohull, used, is meaningfully cheaper than a comparable cat. Operating costs at the dock are also lower because cats often pay a multihull surcharge — typically 1.5 times a monohull's slip fee.
 
