@@ -107,8 +107,8 @@ const stats = [
                 span,
               ]}
             >
-              {review.data.photo && (
-                <figure class:list={['relative overflow-hidden bg-primary/5', featured ? 'aspect-[4/3]' : 'aspect-[3/2]']}>
+              {featured && review.data.photo && (
+                <figure class="relative overflow-hidden aspect-[4/3] bg-primary/5">
                   <img
                     src={review.data.photo}
                     alt={review.data.photoAlt ?? review.data.author}
@@ -133,6 +133,18 @@ const stats = [
               )}
 
               <div class="p-8 lg:p-10 flex flex-col flex-1">
+                {!featured && (
+                  <span
+                    class:list={[
+                      'inline-flex self-start font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold px-2.5 py-1.5 mb-7',
+                      theme.pillBg,
+                      theme.pillText,
+                    ]}
+                  >
+                    {theme.label}
+                  </span>
+                )}
+
                 <blockquote
                   class:list={[
                     'font-serif-quote italic text-primary leading-[1.3] tracking-[-0.01em] text-balance flex-1',
