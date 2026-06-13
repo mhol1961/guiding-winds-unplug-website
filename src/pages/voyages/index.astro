@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import { Fragment } from 'astro/jsx-runtime';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/shared/PageHero.astro';
 import SectionInterrupt from '../../components/shared/SectionInterrupt.astro';
@@ -200,7 +199,6 @@ const regionGroups: RegionGroup[] = regionKeys.map((key) => {
 });
 
 const grandTotalWeeks = regionGroups.reduce((s, r) => s + r.totalWeeks, 0);
-const grandTotalCabins = regionGroups.reduce((s, r) => s + r.totalCabins, 0);
 const grandTotalWeeksWord = numberWord[grandTotalWeeks] ?? String(grandTotalWeeks);
 const description = `${grandTotalWeeksWord} weeks aboard a private catamaran across the British Virgin Islands, Bahamas, and Mediterranean. Pick a region, pick a week, hold a cabin for 72 hours.`;
 
@@ -490,15 +488,15 @@ const schemaGraph = [
                                     }`}
                                   >
                                     {soldOut ? (
-                                      <Fragment>Held / Sold out</Fragment>
+                                      <>Held / Sold out</>
                                     ) : (
-                                      <Fragment>
+                                      <>
                                         <span
                                           class={`inline-block size-1.5 rounded-full mr-2 ${low ? 'bg-accent' : 'bg-sun-deep/80'}`}
                                           aria-hidden="true"
                                         ></span>
                                         {week.cabinsAvailable} cabins open{low ? ' · low' : ''}
-                                      </Fragment>
+                                      </>
                                     )}
                                   </span>
                                 </div>

@@ -26,17 +26,6 @@ const regionLabel: Record<string, string> = {
   mediterranean: 'Mediterranean',
 };
 
-// Per-voyage fallback gradients (ADR-011: design must hold without photos).
-// Top stops use a lifted, saturated destination color so the page reads
-// "Caribbean" / "Bahamas" / etc. at first glance instead of a black slab.
-const fallbackGradients: Record<string, string> = {
-  'british-virgin-islands': 'linear-gradient(165deg, #1E7A8C 0%, #0E3F47 45%, #0A0A0A 100%)',
-  bahamas: 'linear-gradient(165deg, #E58A4D 0%, #C92E1C 35%, #1F1B17 100%)',
-  italy: 'linear-gradient(165deg, #C9633C 0%, #5F2F1A 45%, #0A0A0A 100%)',
-  greece: 'linear-gradient(165deg, #4A8FA3 0%, #0E3F47 45%, #0A0A0A 100%)',
-  croatia: 'linear-gradient(165deg, #4D7A78 0%, #1F1B17 50%, #0A0A0A 100%)',
-};
-
 const emphasis: Record<string, string> = {
   'british-virgin-islands': 'One catamaran, up to 12 guests, a week off the grid.',
   bahamas: 'Pink sand, shallow water, the slow Caribbean.',

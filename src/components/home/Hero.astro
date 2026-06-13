@@ -196,7 +196,7 @@ const {
     let i = 0;
     let timer = 0;
 
-    const warm = (k) => {
+    const warm = (k: number) => {
       const v = videos[k];
       if (v && v.preload !== 'auto') {
         v.preload = 'auto';
@@ -204,7 +204,7 @@ const {
       }
     };
 
-    const activate = (idx) => {
+    const activate = (idx: number) => {
       scenes.forEach((s, k) => s.classList.toggle('is-active', k === idx));
       videos.forEach((v, k) => {
         if (!v) return;
