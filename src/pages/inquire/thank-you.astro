@@ -39,4 +39,10 @@ const description = 'Thanks - Dodie or Clint will reply within 24 hours.';
       </div>
     </div>
   </section>
+  <script is:inline>
+    // Meta Pixel conversion: this page is only reached after a successful
+    // inquiry submission, so it's the Lead event. Guarded — no-op when the
+    // pixel isn't loaded (PUBLIC_FB_PIXEL_ID unset).
+    if (window.fbq) window.fbq('track', 'Lead');
+  </script>
 </BaseLayout>

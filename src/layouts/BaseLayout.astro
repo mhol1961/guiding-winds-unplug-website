@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SeoHead from '../components/shared/SeoHead.astro';
+import MetaPixel from '../components/shared/MetaPixel.astro';
 import Nav from '../components/shared/Nav.astro';
 import Footer from '../components/shared/Footer.astro';
 import ChatBubble from '../components/shared/ChatBubble.astro';
@@ -18,7 +19,7 @@ interface Props {
   author?: string;
   noindex?: boolean;
   schema?: object | object[];
-  /** Make the nav transparent over a hero — call sites that have a full-bleed
+  /** Make the nav transparent over a hero - call sites that have a full-bleed
    *  hero pass true; everything else uses the default solid nav. */
   transparentNav?: boolean;
   /** Hide the floating chat bubble and the sticky mobile CTA (used on
@@ -33,6 +34,7 @@ const { transparentNav = false, hideFloatingCta = false, ...seoProps } = Astro.p
 <html lang="en">
   <head>
     <SeoHead {...seoProps} />
+    <MetaPixel />
   </head>
   <body class="bg-bone text-primary min-h-screen flex flex-col">
     <a
