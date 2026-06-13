@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Privacy Policy · Guiding Winds Unplug';
 const description =
   'How we collect, use, and protect the information you share when you inquire about a voyage or sign up for our newsletter.';
-const updated = '2026-05-17';
+const updated = '2026-06-13';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -37,7 +37,8 @@ const updated = '2026-05-17';
         <ul class="space-y-3 list-disc list-outside pl-6">
           <li>Contact info you submit through our inquiry, newsletter, or hold-cabin forms</li>
           <li>Trip preferences you share (week, party size, dietary needs, notes)</li>
-          <li>Anonymous traffic data via Plausible - no cookies, no personal identifiers, no cross-site tracking</li>
+          <li>Anonymous traffic data via Plausible - cookie-less analytics with no personal identifiers</li>
+          <li>Advertising activity via the Meta (Facebook) Pixel, but only while we are running Facebook or Instagram ads (see Advertising below)</li>
         </ul>
 
         <h2 class="font-h2 text-primary leading-[1.1] tracking-[-0.02em] font-normal mt-12" style="font-size: 1.75rem; font-variation-settings: 'opsz' 72;">
@@ -67,9 +68,28 @@ const updated = '2026-05-17';
           Cookies
         </h2>
         <p>
-          We do not set tracking cookies. We use one strictly necessary
-          cookie to remember your dismissal of the newsletter strip. Plausible
-          analytics is cookie-less by design.
+          We use one strictly necessary cookie to remember your dismissal of
+          the newsletter strip, and Plausible analytics is cookie-less by
+          design. When we are running Facebook or Instagram advertising, the
+          Meta (Facebook) Pixel may set cookies such as _fbp to measure ad
+          performance - see Advertising below. We do not otherwise set
+          tracking cookies.
+        </p>
+
+        <h2 class="font-h2 text-primary leading-[1.1] tracking-[-0.02em] font-normal mt-12" style="font-size: 1.75rem; font-variation-settings: 'opsz' 72;">
+          Advertising
+        </h2>
+        <p>
+          At times we run advertising on Facebook and Instagram. During those
+          periods the site loads the Meta (Facebook) Pixel, which reports page
+          visits and inquiry submissions to Meta so we can measure and improve
+          those ads. This involves cross-site tracking and may set cookies in
+          your browser. We do not load the Pixel when no campaign is active.
+          You can opt out through your Meta ad preferences at
+          <a href="https://www.facebook.com/adpreferences" class="text-accent hover:underline">facebook.com/adpreferences</a>,
+          your browser's cookie controls, or industry tools like
+          <a href="https://optout.aboutads.info" class="text-accent hover:underline">aboutads.info/choices</a>.
+          Opting out does not affect your ability to inquire or book.
         </p>
 
         <h2 class="font-h2 text-primary leading-[1.1] tracking-[-0.02em] font-normal mt-12" style="font-size: 1.75rem; font-variation-settings: 'opsz' 72;">
