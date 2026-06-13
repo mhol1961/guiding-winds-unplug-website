@@ -1,0 +1,110 @@
+---
+// LP-3 — "Choose Your Waters" · destination-led, visual + genuine scarcity.
+// Angle: pick a region; limited cabins and weeks. Image-driven.
+import LpLayout from '../layouts/LpLayout.astro';
+import LpQuestionnaire from '../components/lp/LpQuestionnaire.astro';
+
+const title = 'Three oceans, a dozen weeks · Guiding Winds Unplug';
+const description =
+  'Choose your water — the British Virgin Islands, the Bahamas, or the Mediterranean. All-inclusive catamaran charters for up to 12 guests. Limited cabins each season.';
+
+const regions = [
+  { h: 'British Virgin Islands', b: 'Turquoise water, the Baths, the Anegada lobster run.', img: '/img/stock/voyages/bvi/bvi-the-baths-hero.jpg' },
+  { h: 'The Bahamas', b: 'Pink sand, shallow flats, the slow side of the Caribbean.', img: '/img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg' },
+  { h: 'The Mediterranean', b: 'Greece, Italy, and Croatia — walled towns and sunset sails.', img: '/img/stock/voyages/greece/greece-santorini-caldera-hero.jpg' },
+];
+---
+
+<LpLayout title={title} description={description} ogImage="/img/source/destinations/catamaran-anchorage-sunset-bvi-01.jpg">
+  <!-- HERO -->
+  <section class="relative min-h-[100dvh] flex items-end overflow-hidden">
+    <img
+      src="/img/source/destinations/catamaran-anchorage-sunset-bvi-01.jpg"
+      alt="A catamaran anchored at sunset in a quiet cove"
+      fetchpriority="high"
+      width="1920"
+      height="1280"
+      class="absolute inset-0 size-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-primary/25" aria-hidden="true"></div>
+    <div class="relative mx-auto w-full max-w-5xl px-7 pb-20 lg:pb-28 pt-32">
+      <p class="font-label-caps uppercase tracking-[0.32em] text-[0.6875rem] font-semibold text-ink-soft mb-6">
+        All-inclusive catamaran charters
+      </p>
+      <h1 class="font-display font-light text-ink leading-[0.98] tracking-[-0.03em] max-w-3xl text-balance" style="font-size: clamp(2.6rem, 6vw + 1rem, 5.25rem);">
+        Three oceans. A dozen weeks a year. Your cabin is
+        <span class="italic text-accent">one of six.</span>
+      </h1>
+      <p class="font-body-lg text-[1.125rem] lg:text-[1.25rem] leading-[1.55] text-ink-soft mt-7 max-w-xl">
+        Pick your water and we sail it for a week — small group, private cabin, everything aboard
+        included. The boat only runs a dozen-plus weeks a season, so the calendar fills early.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-5">
+        <a href="#start" class="inline-flex items-center justify-center gap-2 bg-accent text-primary font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-9 py-[20px] hover:bg-accent-hot transition-colors">
+          Find your week <span aria-hidden="true">→</span>
+        </a>
+        <p class="font-body-sm text-[0.875rem] text-ink-soft"><span class="text-sun">★★★★★</span> 5.0 · up to 12 guests</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGION CARDS -->
+  <section class="bg-primary border-t border-hairline">
+    <div class="mx-auto max-w-6xl px-7 py-20 lg:py-28">
+      <h2 class="font-display font-light text-ink leading-[1.05] tracking-[-0.025em] mb-12" style="font-size: clamp(1.9rem, 3.5vw + 1rem, 3rem);">
+        Choose your water
+      </h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        {regions.map((r) => (
+          <a href="#start" class="group block relative overflow-hidden aspect-[3/4]">
+            <img src={r.img} alt={r.h} width="800" height="1066" loading="lazy" class="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent" aria-hidden="true"></div>
+            <div class="absolute inset-x-0 bottom-0 p-7">
+              <h3 class="font-h3 text-ink leading-[1.1]" style="font-size: 1.5rem;">{r.h}</h3>
+              <p class="font-body-md text-[0.9375rem] leading-[1.5] text-ink-soft mt-2">{r.b}</p>
+              <span class="inline-flex items-center gap-2 mt-4 font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-accent">
+                See weeks <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SCARCITY / WHY SMALL -->
+  <section class="bg-surface border-t border-hairline">
+    <div class="mx-auto max-w-3xl px-7 py-20 lg:py-24 text-center">
+      <p class="font-display font-light text-ink leading-[1.2] tracking-[-0.02em]" style="font-size: clamp(1.7rem, 3vw + 1rem, 2.6rem);">
+        Up to six cabins. A dozen-plus weeks a year.
+        <span class="text-ink-soft">When a week is held, it's gone.</span>
+      </p>
+      <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-ink-soft mt-7">
+        We keep the boat small on purpose — quiet anchorages, a real galley, a captain who knows
+        your name by day two. It also means the calendar is short. The earlier you tell us your
+        window, the more of it is still open.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="bg-primary border-t border-hairline">
+    <div class="mx-auto max-w-3xl px-7 py-20 lg:py-24 text-center">
+      <p class="text-sun text-[0.875rem] tracking-[0.2em] mb-5">★★★★★</p>
+      <p class="font-serif-quote font-light italic text-ink leading-[1.4]" style="font-size: clamp(1.4rem, 2.5vw + 0.5rem, 2rem);">
+        “Island hopping on the catamaran was the highlight of my year — the views were incredible and the fishing was top-notch.”
+      </p>
+      <p class="mt-6 font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold text-ink-soft">Frank Zuckero · Michigan</p>
+    </div>
+  </section>
+
+  <LpQuestionnaire
+    source="lp-3"
+    heading="Which water, and when?"
+    sub="Pick your region and timing below. Dodie or Clint replies within 24 hours with the open weeks."
+  />
+
+  <a href="#start" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-accent text-primary text-center font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold py-4">
+    Find your week →
+  </a>
+</LpLayout>

@@ -1,0 +1,126 @@
+---
+// LP-2 — "Everything's Included" · offer-led, value + trust.
+// Angle: one price covers the whole week. Bento inclusions, 3-up proof, how-it-works.
+import LpLayout from '../layouts/LpLayout.astro';
+import LpQuestionnaire from '../components/lp/LpQuestionnaire.astro';
+
+const title = 'One price. Everything aboard. · Guiding Winds Unplug';
+const description =
+  'All-inclusive catamaran charters: cabin, meals, fuel, dockage, and snorkel gear, with a private captain and host. Up to 12 guests. BVI, Bahamas, Mediterranean.';
+
+const inclusions = [
+  { h: 'Your private cabin', b: 'A cabin with an ensuite head, AC on shore power, linens and towels provided.' },
+  { h: 'Meals aboard, every day', b: 'Breakfast, lunch, and dinner — the menu shifts with the destination.' },
+  { h: 'Fuel & dockage', b: 'No itemized fuel surcharge. Mooring fees covered at every overnight.' },
+  { h: 'Snorkel gear', b: 'Masks, fins, and snorkels in every size. Reefs and wrecks on tap.' },
+  { h: 'Captain & host', b: 'Clint captains every voyage; a host runs the galley and the experience.' },
+  { h: 'The right to unplug', b: 'No agenda, no upsells. The week is built around slowing down.' },
+];
+const reviews = [
+  { q: 'Our trip was nothing short of perfection. Dodie and Clint have truly mastered the art of hospitality.', n: 'Joe & Danielle Steen', l: 'St. Augustine, FL', img: '/img/source/testimonials/joe-danielle-steen.jpg' },
+  { q: 'An unbelievable experience. We loved the balance of relaxing in the sun and getting some fishing in.', n: 'Tommy Lyn & Alisha', l: 'Tennessee', img: '/img/source/testimonials/tommy-alisha.jpg' },
+  { q: "I've done a fair share of traveling, but this trip stands out. The views were incredible.", n: 'Frank Zuckero', l: 'Michigan', img: '/img/source/testimonials/frank-zuckero.jpg' },
+];
+---
+
+<LpLayout title={title} description={description} ogImage="/img/source/experiences/foredeck-lounge-golden-hour.jpg">
+  <!-- HERO (split) -->
+  <section class="relative">
+    <div class="grid lg:grid-cols-2 min-h-[100dvh]">
+      <div class="flex items-center order-2 lg:order-1">
+        <div class="px-7 lg:px-14 py-20 pt-28 lg:py-0 max-w-xl">
+          <p class="font-label-caps uppercase tracking-[0.32em] text-[0.6875rem] font-semibold text-accent mb-6">
+            All-inclusive · up to 12 guests
+          </p>
+          <h1 class="font-display font-light text-ink leading-[1] tracking-[-0.03em] text-balance" style="font-size: clamp(2.4rem, 4.5vw + 1rem, 4.25rem);">
+            One price. Everything aboard. A week you actually
+            <span class="italic text-accent">rest.</span>
+          </h1>
+          <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.55] text-ink-soft mt-7">
+            Cabin, meals, fuel, dockage, and snorkel gear — all in. A private catamaran with a
+            captain and host, in the BVI, the Bahamas, or the Mediterranean.
+          </p>
+          <div class="mt-9 flex flex-col sm:flex-row sm:items-center gap-5">
+            <a href="#start" class="inline-flex items-center justify-center gap-2 bg-accent text-primary font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-9 py-[20px] hover:bg-accent-hot transition-colors">
+              Check available weeks <span aria-hidden="true">→</span>
+            </a>
+            <p class="font-body-sm text-[0.875rem] text-ink-soft"><span class="text-sun">★★★★★</span> 5.0 across every guest</p>
+          </div>
+        </div>
+      </div>
+      <div class="relative order-1 lg:order-2 min-h-[40dvh] lg:min-h-0">
+        <img src="/img/source/experiences/guest-sunset-aboard.jpg" alt="Guests aboard at sunset on the catamaran" fetchpriority="high" width="1280" height="1600" class="absolute inset-0 size-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/40 to-transparent lg:from-primary/30" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUSIONS BENTO -->
+  <section class="bg-surface border-t border-hairline">
+    <div class="mx-auto max-w-6xl px-7 py-20 lg:py-28">
+      <h2 class="font-display font-light text-ink leading-[1.05] tracking-[-0.025em]" style="font-size: clamp(1.9rem, 3.5vw + 1rem, 3rem);">
+        What "all-inclusive" actually means here
+      </h2>
+      <p class="font-body-lg text-[1.0625rem] text-ink-soft mt-4 max-w-2xl">One number covers the week. The only things separate are flights, travel insurance, and a crew gratuity.</p>
+      <div class="grid gap-px bg-hairline mt-10 sm:grid-cols-2 lg:grid-cols-3">
+        {inclusions.map((x) => (
+          <div class="bg-surface p-8">
+            <h3 class="font-h3 text-ink" style="font-size: 1.25rem;">{x.h}</h3>
+            <p class="font-body-md text-[0.9375rem] leading-[1.6] text-ink-soft mt-2">{x.b}</p>
+          </div>
+        ))}
+      </div>
+      <p class="font-body-md text-[0.9375rem] text-ink-soft mt-8 border-l-2 border-accent pl-5">
+        This is not a party charter. There is no onboard bar and no agenda beyond water, weather, and time.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROOF 3-up -->
+  <section class="bg-primary border-t border-hairline">
+    <div class="mx-auto max-w-6xl px-7 py-20 lg:py-24">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-accent mb-10">5.0 · what guests say</p>
+      <div class="grid gap-8 md:grid-cols-3">
+        {reviews.map((r) => (
+          <figure>
+            <p class="text-sun text-[0.875rem] tracking-[0.2em] mb-4">★★★★★</p>
+            <blockquote class="font-serif-quote font-light italic text-ink leading-[1.4]" style="font-size: 1.1875rem;">“{r.q}”</blockquote>
+            <figcaption class="mt-5 flex items-center gap-3">
+              <img src={r.img} alt={r.n} width="44" height="44" loading="lazy" class="size-11 object-cover rounded-pill" />
+              <span class="font-label-caps uppercase tracking-[0.18em] text-[0.625rem] font-semibold text-ink-soft">{r.n} · {r.l}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="bg-surface border-t border-hairline">
+    <div class="mx-auto max-w-5xl px-7 py-20 lg:py-24">
+      <div class="grid gap-10 sm:grid-cols-3">
+        {[
+          { n: '01', h: 'Tell us your week', b: 'Answer three quick questions below — region, party size, timing.' },
+          { n: '02', h: 'Hold a cabin', b: 'We hold your cabin for 72 hours while you decide. No deposit to look.' },
+          { n: '03', h: 'Come aboard', b: 'Show up. We handle the rest, from the galley to the anchorages.' },
+        ].map((s) => (
+          <div>
+            <p class="font-display text-accent" style="font-size: 2.5rem; line-height:1;">{s.n}</p>
+            <h3 class="font-h3 text-ink mt-4" style="font-size: 1.25rem;">{s.h}</h3>
+            <p class="font-body-md text-[0.9375rem] leading-[1.6] text-ink-soft mt-2">{s.b}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <LpQuestionnaire
+    source="lp-2"
+    heading="Check availability for your week"
+    sub="Three quick questions and you're done. Dodie or Clint replies within 24 hours."
+  />
+
+  <a href="#start" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-accent text-primary text-center font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold py-4">
+    Check available weeks →
+  </a>
+</LpLayout>

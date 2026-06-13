@@ -1,0 +1,66 @@
+---
+// Minimal landing-page layout for paid-ad traffic.
+// No nav, no chat bubble, no escape routes — one goal: the questionnaire.
+// Always noindex (ad LPs must not compete with the real site for SEO).
+// Keeps SeoHead (OG for ad previews), the Meta Pixel, and the form handlers
+// (so the questionnaire posts to GHL and fires the Lead conversion).
+import '../styles/global.css';
+import SeoHead from '../components/shared/SeoHead.astro';
+import MetaPixel from '../components/shared/MetaPixel.astro';
+import FormHandlers from '../components/shared/form-handlers.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+const year = 2026;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <SeoHead title={title} description={description} ogImage={ogImage} noindex={true} />
+    <MetaPixel />
+  </head>
+  <body class="bg-primary text-ink min-h-screen flex flex-col antialiased">
+    <a
+      href="#start"
+      class="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-50 focus-visible:bg-bone focus-visible:text-primary focus-visible:px-4 focus-visible:py-3 focus-visible:font-label-caps focus-visible:uppercase focus-visible:tracking-[0.28em] focus-visible:text-[0.6875rem] focus-visible:font-semibold"
+    >
+      Skip to the questionnaire
+    </a>
+
+    <!-- Bare header: brand only, no nav links (no escape routes) -->
+    <header class="absolute top-0 inset-x-0 z-30 flex items-center justify-center pt-6 lg:pt-8">
+      <img
+        src="/img/brand/logo.png"
+        alt="Guiding Winds Unplug"
+        width="96"
+        height="96"
+        class="size-16 lg:size-20 object-contain"
+      />
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Minimal footer: legal only (Meta ad policy requires a privacy link) -->
+    <footer class="bg-primary border-t border-hairline">
+      <div class="mx-auto max-w-6xl px-7 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="font-body-sm text-[0.75rem] text-ink-mute">
+          © {year} Guiding Winds Unplug LLC
+        </p>
+        <nav class="flex items-center gap-6 font-body-sm text-[0.75rem] text-ink-soft">
+          <a href="/privacy" class="hover:text-ink transition-colors">Privacy</a>
+          <a href="/terms" class="hover:text-ink transition-colors">Terms</a>
+        </nav>
+      </div>
+    </footer>
+
+    <FormHandlers />
+  </body>
+</html>

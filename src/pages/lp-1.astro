@@ -1,0 +1,111 @@
+---
+// LP-1 — "The Unplug" · emotional reframe, editorial/text-led.
+// Angle: escape the always-on life. Single goal: the questionnaire.
+import LpLayout from '../layouts/LpLayout.astro';
+import LpQuestionnaire from '../components/lp/LpQuestionnaire.astro';
+
+const title = 'A week off the grid · Guiding Winds Unplug';
+const description =
+  'All-inclusive catamaran charters in the BVI, Bahamas, and Mediterranean. One captain, a small group, nothing on the schedule but water and weather.';
+---
+
+<LpLayout title={title} description={description} ogImage="/img/source/hero/02-sunset-catamaran-anchorage.jpg">
+  <!-- HERO -->
+  <section class="relative min-h-[100dvh] flex items-end overflow-hidden">
+    <img
+      src="/img/source/hero/05-caribbean-night-moonlit.jpg"
+      alt="A catamaran at anchor under a moonlit Caribbean sky"
+      fetchpriority="high"
+      width="1920"
+      height="1280"
+      class="absolute inset-0 size-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/55 to-primary/35" aria-hidden="true"></div>
+
+    <div class="relative mx-auto w-full max-w-5xl px-7 pb-20 lg:pb-28 pt-32">
+      <p class="font-label-caps uppercase tracking-[0.32em] text-[0.6875rem] font-semibold text-ink-soft mb-6">
+        All-inclusive catamaran charters
+      </p>
+      <h1
+        class="font-display font-light text-ink leading-[0.98] tracking-[-0.03em] max-w-3xl text-balance"
+        style="font-size: clamp(2.6rem, 6vw + 1rem, 5.25rem);"
+      >
+        You don't need another vacation. You need a week
+        <span class="italic text-accent">off the grid.</span>
+      </h1>
+      <p class="font-body-lg text-[1.125rem] lg:text-[1.25rem] leading-[1.55] text-ink-soft mt-7 max-w-xl">
+        Seven nights aboard a private catamaran in the British Virgin Islands, the Bahamas, or the
+        Mediterranean. One captain, a small group, and nothing on the schedule but water and weather.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-5">
+        <a
+          href="#start"
+          class="inline-flex items-center justify-center gap-2 bg-accent text-primary font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-9 py-[20px] hover:bg-accent-hot transition-colors"
+        >
+          See available weeks <span aria-hidden="true">→</span>
+        </a>
+        <p class="font-body-sm text-[0.875rem] text-ink-soft">
+          <span class="text-sun">★★★★★</span> 5.0 · every guest who has sailed with us
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN AGITATION -->
+  <section class="bg-primary border-t border-hairline">
+    <div class="mx-auto max-w-3xl px-7 py-20 lg:py-28">
+      <p class="font-display font-light text-ink leading-[1.25] tracking-[-0.02em]" style="font-size: clamp(1.6rem, 3vw + 1rem, 2.6rem);">
+        The phone hasn't stopped. Neither have you. A resort just moves the noise somewhere warmer —
+        <span class="text-ink-soft">the notifications still find you, the schedule still runs the day.</span>
+      </p>
+      <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-ink-soft mt-8 max-w-2xl">
+        A week aboard is different. No itinerary to keep. No itemized add-ons. No reason to check
+        anything. Just a small group, a slow boat, and the kind of quiet you forgot was possible.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHAT A WEEK IS -->
+  <section class="bg-surface border-t border-hairline">
+    <div class="mx-auto max-w-5xl px-7 py-20 lg:py-28">
+      <div class="grid gap-px bg-hairline sm:grid-cols-2">
+        {[
+          { h: 'One captain, every voyage', b: 'Clint sails the boat himself. A host runs the galley and the day. You are aboard to unplug, not to crew.' },
+          { h: 'Genuinely all-inclusive', b: 'Cabin, meals, fuel, dockage, and snorkel gear. One number covers the week — no surprises at the dock.' },
+          { h: 'A small group, not a crowd', b: 'Up to twelve guests across four to six private cabins. Quiet anchorages, not the day-charter circuit.' },
+          { h: 'Nothing on the schedule', b: 'Swim, read, snorkel, nap, sail when the wind is right. The plan is that there is no plan.' },
+        ].map((x) => (
+          <div class="bg-surface p-8 lg:p-10">
+            <h3 class="font-h3 text-ink leading-[1.15]" style="font-size: 1.4rem;">{x.h}</h3>
+            <p class="font-body-md text-[0.9375rem] leading-[1.6] text-ink-soft mt-3">{x.b}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="bg-primary border-t border-hairline">
+    <div class="mx-auto max-w-3xl px-7 py-20 lg:py-24 text-center">
+      <p class="font-serif-quote font-light italic text-ink leading-[1.35]" style="font-size: clamp(1.5rem, 3vw + 0.5rem, 2.25rem);">
+        “Our trip with Guiding Winds was nothing short of perfection. We spent our days island hopping
+        and soaking up every bit of the sun. Dodie and Clint have truly mastered the art of hospitality.”
+      </p>
+      <div class="mt-8 flex items-center justify-center gap-4">
+        <img src="/img/source/testimonials/joe-danielle-steen.jpg" alt="Joe and Danielle Steen aboard" width="56" height="56" loading="lazy" class="size-14 object-cover rounded-pill" />
+        <span class="font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold text-ink-soft">Joe &amp; Danielle Steen · St. Augustine, FL</span>
+      </div>
+    </div>
+  </section>
+
+  <LpQuestionnaire
+    source="lp-1"
+    heading="Tell us what off-the-grid looks like for you"
+    sub="Three quick questions. Dodie or Clint replies within 24 hours — no call center, no hard sell."
+  />
+
+  <!-- sticky mobile CTA -->
+  <a href="#start" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-accent text-primary text-center font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold py-4">
+    See available weeks →
+  </a>
+</LpLayout>
