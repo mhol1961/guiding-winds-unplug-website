@@ -73,6 +73,9 @@
 
         if (res.ok && json.ok !== false) {
           form.reset();
+          // One-time flag the thank-you page consumes to fire the Meta Pixel
+          // Lead exactly once per real submission (not on refresh/back/direct visit).
+          try { sessionStorage.setItem('gw_inquiry_lead', '1'); } catch {}
           window.location.href = '/inquire/thank-you';
           return;
         }

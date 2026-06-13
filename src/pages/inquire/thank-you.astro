@@ -40,9 +40,15 @@ const description = 'Thanks - Dodie or Clint will reply within 24 hours.';
     </div>
   </section>
   <script is:inline>
-    // Meta Pixel conversion: this page is only reached after a successful
-    // inquiry submission, so it's the Lead event. Guarded — no-op when the
-    // pixel isn't loaded (PUBLIC_FB_PIXEL_ID unset).
-    if (window.fbq) window.fbq('track', 'Lead');
+    // Meta Pixel Lead conversion — idempotent. Only fires when the form's
+    // success handler set the one-time flag (real submission), then clears it,
+    // so refresh / back-forward / direct or bookmarked visits never re-fire.
+    // No-op when the pixel is disabled (PUBLIC_FB_PIXEL_ID unset → no window.fbq).
+    try {
+      if (sessionStorage.getItem('gw_inquiry_lead') === '1') {
+        sessionStorage.removeItem('gw_inquiry_lead');
+        if (window.fbq) window.fbq('track', 'Lead');
+      }
+    } catch {}
   </script>
 </BaseLayout>
