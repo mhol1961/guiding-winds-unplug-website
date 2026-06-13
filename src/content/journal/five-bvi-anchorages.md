@@ -51,7 +51,7 @@ Captain note for any Anegada catamaran approach: get the current GPS waypoint fo
 
 This is my back-half-of-the-week pick, and the one I'd anchor at last if the week was mine.
 
-Cooper Island BVI is a small, low-population island east of Tortola with one thing on it: the Cooper Island Beach Club, a low-key resort with about ten rooms, a brewpub, a dive shop, and a beach restaurant. The bartender at the beach bar remembers what guests we've brought through. The brewer makes a passable pale ale and a better stout that doesn't travel; you have to drink it here. The dive shop runs the Wreck of the Rhone trip out to Salt Island - one of the best dive sites in the Caribbean, sunk in an 1867 hurricane, sitting in 30 to 80 feet of water - if you have certified divers aboard.
+Cooper Island BVI is a small, low-population island east of Tortola with one thing on it: the Cooper Island Beach Club, a low-key resort with about ten rooms, a dive shop, and a beach restaurant. The staff remember what guests we've brought through. The dive shop runs the Wreck of the Rhone trip out to Salt Island - one of the best dive sites in the Caribbean, sunk in an 1867 hurricane, sitting in 30 to 80 feet of water - if you have certified divers aboard.
 
 Manchioneel Bay is also the quietest mooring field on our usual circuit. Twenty-five moorings, well spaced, no marina noise, no day-boat traffic after 5pm. The last-night vibe I aim for: long dinner ashore at the beach restaurant, dinghy back at 10pm, kill the rig lights, and the sky goes dark enough you can see the Milky Way arc straight overhead. Nobody talks much on that dinghy ride back. They don't need to.
 

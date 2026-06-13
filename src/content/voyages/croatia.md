@@ -39,7 +39,7 @@ itinerary:
   - day: 5
     label: Wednesday
     title: Korčula
-    body: 'Walled town that claims Marco Polo as a native son. Afternoon ashore, sundowner at Massimo.'
+    body: 'Walled town that claims Marco Polo as a native son. Afternoon ashore, sunset from the turret at Massimo.'
   - day: 6
     label: Thursday
     title: Mljet
@@ -87,7 +87,7 @@ The Pakleni archipelago off Hvar is the trip's opening line - a string of pine-f
 
 Vis is the furthest island offshore and the one that feels least like the rest of the chain. Closed to foreigners for decades while it was a Yugoslav naval base, it sat out the tourism build-up that reshaped Hvar, and the result is a working island with two harbors - Vis town on the east, Komiža on the west - and a single road between them. The Blue Cave at Biševo, conditions allowing, is the snorkel of the trip: a sea grotto where light enters underwater through a submerged opening and the whole cavern glows blue from below.
 
-Korčula is the cultural beat in the middle of the week. A walled town on a peninsula that claims Marco Polo as a native son, with a street plan laid out as a herringbone so the sea breeze cools every alley in summer. Sundowner at Massimo, a bar in a stone turret on the old wall, drinks hauled up by rope from the bartender below.
+Korčula is the cultural beat in the middle of the week. A walled town on a peninsula that claims Marco Polo as a native son, with a street plan laid out as a herringbone so the sea breeze cools every alley in summer. Climb the stone turret on the old wall at Massimo for one of the best sunset views on the Dalmatian coast.
 
 Mljet closes the chain. The western third of the island is a national park built around two saltwater lakes connected to the sea by a narrow channel, with a twelfth-century Benedictine monastery on a small island in the middle of the larger lake. You anchor at Polače, walk in through the park, swim in the lakes, and walk back out for a quiet dinner ashore.
 

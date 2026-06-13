@@ -27,7 +27,7 @@ itinerary:
   - day: 1
     label: Saturday
     title: Embarkation · Nanny Cay
-    body: 'Board at 2pm, settle into your cabin, sundowners on deck while we provision the boat. Short evening sail to Soper''s Hole or Cane Garden Bay depending on weather.'
+    body: 'Board at 2pm, settle into your cabin, golden hour on deck while we provision the boat. Short evening sail to Soper''s Hole or Cane Garden Bay depending on weather.'
   - day: 2
     label: Sunday
     title: Norman Island

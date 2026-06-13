@@ -79,7 +79,7 @@ The cat has no deep keel to swing. Twin engines mean we pivot the boat exactly w
 
 The softer point, but it's a real one. No other 50-foot boat gives you the same amount of usable social space at anchor.
 
-The trampoline between the cat's two bows is a 12-by-15-foot mesh deck - soft, ventilated, cool to the touch in the morning, shaded by the jib in the afternoon. It's where breakfast happens for the people who want to eat away from the table. It's where the sundowner crowd gathers because it has the best view of the sunset and the best breeze.
+The trampoline between the cat's two bows is a 12-by-15-foot mesh deck - soft, ventilated, cool to the touch in the morning, shaded by the jib in the afternoon. It's where breakfast happens for the people who want to eat away from the table. It's where the sunset crowd gathers because it has the best view and the best breeze.
 
 A monohull foredeck, by comparison, is curved fiberglass. It's hot by ten in the morning in the Caribbean. There's nowhere to sit without bringing a cushion up from the salon, and the cushion slides off when the boat heels. People don't hang out on a monohull foredeck. They hang out in the cockpit, which is fine, but the cockpit has eight people already.
 

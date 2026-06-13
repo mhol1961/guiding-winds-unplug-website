@@ -39,7 +39,7 @@ itinerary:
   - day: 5
     label: Wednesday
     title: Folegandros
-    body: 'Smaller, quieter, more dramatic than its neighbors. Sundowner sail under the cliffs at Chora.'
+    body: 'Smaller, quieter, more dramatic than its neighbors. Sunset sail under the cliffs at Chora.'
   - day: 6
     label: Thursday
     title: Ios

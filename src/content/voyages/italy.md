@@ -31,7 +31,7 @@ itinerary:
   - day: 3
     label: Monday
     title: Positano
-    body: 'Quiet morning at Fornillo. Lunch ashore, optional walk up to the Path of the Gods. Sundowners at anchor.'
+    body: 'Quiet morning at Fornillo. Lunch ashore, optional walk up to the Path of the Gods. Quiet evening at anchor.'
   - day: 4
     label: Tuesday
     title: Capri
