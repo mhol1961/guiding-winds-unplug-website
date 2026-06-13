@@ -39,8 +39,12 @@ public/*.jpeg
 !public/media/
 !public/og/
 
-# THIS REPO IS PUBLIC. Keep internal/sensitive material out of it:
-ops/                          # internal GHL ops notes (account config, strategy)
-docs/*.pdf                    # client proposals/pricing
-public/img/dodie-text-*.png   # personal text-message screenshots
+# THIS REPO IS PUBLIC. Keep internal/sensitive material out of it.
+# (gitignore has no inline comments — keep each note on its own line)
+# internal GHL ops notes (account config, strategy)
+ops/
+# client proposals / pricing
+docs/*.pdf
+# personal text-message screenshots
+public/img/dodie-text-*.png
 
