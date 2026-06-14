@@ -1,9 +1,9 @@
 ---
 // Minimal landing-page layout for paid-ad traffic.
-// No nav, no chat bubble, no escape routes — one goal: the questionnaire.
-// Always noindex (ad LPs must not compete with the real site for SEO).
-// Keeps SeoHead (OG for ad previews), the Meta Pixel, and the form handlers
-// (so the questionnaire posts to GHL and fires the Lead conversion).
+// Focused on conversion: a clickable phone (call IS a conversion for charters),
+// one "view full site" credibility link, and a thumb-zone sticky bar on mobile.
+// Always noindex. Keeps SeoHead (OG for ad previews), the Meta Pixel, and the
+// form handlers (so the questionnaire posts to GHL and fires the Lead).
 import '../styles/global.css';
 import SeoHead from '../components/shared/SeoHead.astro';
 import MetaPixel from '../components/shared/MetaPixel.astro';
@@ -14,8 +14,11 @@ interface Props {
   description: string;
   ogImage?: string;
 }
-
 const { title, description, ogImage } = Astro.props;
+
+// Public business number (from the GHL location record). Update here if it changes.
+const PHONE_TEL = '+15613055116';
+const PHONE_DISPLAY = '(561) 305-5116';
 const year = 2026;
 ---
 
@@ -33,33 +36,60 @@ const year = 2026;
       Skip to the questionnaire
     </a>
 
-    <!-- Bare header: brand only, no nav links (no escape routes) -->
-    <header class="absolute top-0 inset-x-0 z-30 flex items-center justify-center pt-6 lg:pt-8">
-      <img
-        src="/img/brand/logo.png"
-        alt="Guiding Winds Unplug"
-        width="96"
-        height="96"
-        class="size-16 lg:size-20 object-contain"
-      />
+    <!-- Bare header: brand + phone + one credibility link -->
+    <header class="absolute top-0 inset-x-0 z-30">
+      <div class="mx-auto max-w-6xl px-5 lg:px-7 pt-5 lg:pt-6 flex items-center justify-between gap-3">
+        <a href="/" class="hidden sm:inline-flex items-center gap-1.5 font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-ink-soft hover:text-ink transition-colors">
+          View full site
+        </a>
+        <img
+          src="/img/brand/logo.png"
+          alt="Guiding Winds Unplug"
+          width="80"
+          height="80"
+          class="size-14 lg:size-16 object-contain shrink-0 sm:absolute sm:left-1/2 sm:-translate-x-1/2"
+        />
+        <a
+          href={`tel:${PHONE_TEL}`}
+          class="inline-flex items-center gap-2 bg-bone/95 text-primary font-label-caps uppercase tracking-[0.18em] text-[0.625rem] font-semibold px-4 py-2.5 min-h-[44px] hover:bg-bone transition-colors"
+          aria-label={`Call us at ${PHONE_DISPLAY}`}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>{PHONE_DISPLAY}</span>
+        </a>
+      </div>
     </header>
 
-    <main class="flex-1">
+    <main class="flex-1 pb-16 lg:pb-0">
       <slot />
     </main>
 
-    <!-- Minimal footer: legal only (Meta ad policy requires a privacy link) -->
+    <!-- Minimal footer: phone + full-site + legal -->
     <footer class="bg-primary border-t border-hairline">
-      <div class="mx-auto max-w-6xl px-7 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="font-body-sm text-[0.75rem] text-ink-mute">
-          © {year} Guiding Winds Unplug LLC
-        </p>
-        <nav class="flex items-center gap-6 font-body-sm text-[0.75rem] text-ink-soft">
+      <div class="mx-auto max-w-6xl px-7 py-10 flex flex-col items-center gap-5 text-center">
+        <a href={`tel:${PHONE_TEL}`} class="inline-flex items-center gap-2 font-display text-ink hover:text-accent transition-colors" style="font-size: 1.5rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          {PHONE_DISPLAY}
+        </a>
+        <nav class="flex items-center gap-6 font-body-sm text-[0.8125rem] text-ink-soft">
+          <a href="/" class="hover:text-ink transition-colors">Full site</a>
           <a href="/privacy" class="hover:text-ink transition-colors">Privacy</a>
           <a href="/terms" class="hover:text-ink transition-colors">Terms</a>
         </nav>
+        <p class="font-body-sm text-[0.75rem] text-ink-mute">© {year} Guiding Winds Unplug LLC</p>
       </div>
     </footer>
+
+    <!-- Sticky mobile action bar (thumb zone): Call + Hold a cabin -->
+    <div class="lg:hidden fixed bottom-0 inset-x-0 z-40 grid grid-cols-2 shadow-[0_-8px_30px_-10px_rgba(0,0,0,0.6)]">
+      <a href={`tel:${PHONE_TEL}`} class="flex items-center justify-center gap-2 bg-surface-warm text-ink font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold py-4 min-h-[52px]">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        Call
+      </a>
+      <a href="#start" class="flex items-center justify-center bg-accent text-primary font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold py-4 min-h-[52px]">
+        Hold a cabin →
+      </a>
+    </div>
 
     <FormHandlers />
   </body>

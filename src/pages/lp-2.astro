@@ -23,7 +23,7 @@ const reviews = [
 ];
 ---
 
-<LpLayout title={title} description={description} ogImage="/img/source/experiences/foredeck-lounge-golden-hour.jpg">
+<LpLayout title={title} description={description} ogImage="/img/source/hero/02-sunset-catamaran-anchorage.jpg">
   <!-- HERO (split) -->
   <section class="relative">
     <div class="grid lg:grid-cols-2 min-h-[100dvh]">
@@ -40,16 +40,19 @@ const reviews = [
             Cabin, meals, fuel, dockage, and snorkel gear — all in. A private catamaran with a
             captain and host, in the BVI, the Bahamas, or the Mediterranean.
           </p>
-          <div class="mt-9 flex flex-col sm:flex-row sm:items-center gap-5">
-            <a href="#start" class="inline-flex items-center justify-center gap-2 bg-accent text-primary font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-9 py-[20px] hover:bg-accent-hot transition-colors">
+          <div class="mt-9 flex flex-col sm:flex-row sm:items-center gap-4">
+            <a href="#start" class="inline-flex items-center justify-center gap-2 bg-accent text-primary font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-9 py-[20px] min-h-[52px] hover:bg-accent-hot transition-colors">
               Check available weeks <span aria-hidden="true">→</span>
             </a>
-            <p class="font-body-sm text-[0.875rem] text-ink-soft"><span class="text-sun">★★★★★</span> 5.0 across every guest</p>
+            <a href="tel:+15613055116" class="inline-flex items-center justify-center gap-2 border border-ink/25 text-ink font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold px-7 py-[20px] min-h-[52px] hover:border-accent hover:text-accent transition-colors">
+              Call (561) 305-5116
+            </a>
           </div>
+          <p class="font-body-sm text-[0.875rem] text-ink-soft mt-5"><span class="text-sun">★★★★★</span> 5.0 across every guest</p>
         </div>
       </div>
       <div class="relative order-1 lg:order-2 min-h-[40dvh] lg:min-h-0">
-        <img src="/img/source/experiences/guest-sunset-aboard.jpg" alt="Guests aboard at sunset on the catamaran" fetchpriority="high" width="1280" height="1600" class="absolute inset-0 size-full object-cover" />
+        <img src="/img/source/hero/03-foredeck-bow-sun-flare.jpg" alt="The catamaran's foredeck and bow in golden-hour light" fetchpriority="high" width="1280" height="1600" class="absolute inset-0 size-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-r from-primary/40 to-transparent lg:from-primary/30" aria-hidden="true"></div>
       </div>
     </div>
@@ -62,9 +65,10 @@ const reviews = [
         What "all-inclusive" actually means here
       </h2>
       <p class="font-body-lg text-[1.0625rem] text-ink-soft mt-4 max-w-2xl">One number covers the week. The only things separate are flights, travel insurance, and a crew gratuity.</p>
-      <div class="grid gap-px bg-hairline mt-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-4 lg:gap-5 mt-10 sm:grid-cols-2 lg:grid-cols-3">
         {inclusions.map((x) => (
-          <div class="bg-surface p-8">
+          <div class="group relative bg-surface border border-hairline p-8 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_14px_55px_-18px_rgba(229,64,43,0.5)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+            <span class="absolute left-0 top-0 h-px w-0 bg-accent transition-[width] duration-300 group-hover:w-full motion-reduce:transition-none" aria-hidden="true"></span>
             <h3 class="font-h3 text-ink" style="font-size: 1.25rem;">{x.h}</h3>
             <p class="font-body-md text-[0.9375rem] leading-[1.6] text-ink-soft mt-2">{x.b}</p>
           </div>
@@ -98,13 +102,13 @@ const reviews = [
   <!-- HOW IT WORKS -->
   <section class="bg-surface border-t border-hairline">
     <div class="mx-auto max-w-5xl px-7 py-20 lg:py-24">
-      <div class="grid gap-10 sm:grid-cols-3">
+      <div class="grid gap-4 lg:gap-5 sm:grid-cols-3">
         {[
           { n: '01', h: 'Tell us your week', b: 'Answer three quick questions below — region, party size, timing.' },
           { n: '02', h: 'Hold a cabin', b: 'We hold your cabin for 72 hours while you decide. No deposit to look.' },
           { n: '03', h: 'Come aboard', b: 'Show up. We handle the rest, from the galley to the anchorages.' },
         ].map((s) => (
-          <div>
+          <div class="group relative bg-primary border border-hairline p-8 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_14px_55px_-18px_rgba(229,64,43,0.5)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
             <p class="font-display text-accent" style="font-size: 2.5rem; line-height:1;">{s.n}</p>
             <h3 class="font-h3 text-ink mt-4" style="font-size: 1.25rem;">{s.h}</h3>
             <p class="font-body-md text-[0.9375rem] leading-[1.6] text-ink-soft mt-2">{s.b}</p>
@@ -120,7 +124,4 @@ const reviews = [
     sub="Three quick questions and you're done. Dodie or Clint replies within 24 hours."
   />
 
-  <a href="#start" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-accent text-primary text-center font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold py-4">
-    Check available weeks →
-  </a>
 </LpLayout>

@@ -37,17 +37,23 @@ const description =
         Seven nights aboard a private catamaran in the British Virgin Islands, the Bahamas, or the
         Mediterranean. One captain, a small group, and nothing on the schedule but water and weather.
       </p>
-      <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-5">
+      <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
         <a
           href="#start"
-          class="inline-flex items-center justify-center gap-2 bg-accent text-primary font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-9 py-[20px] hover:bg-accent-hot transition-colors"
+          class="inline-flex items-center justify-center gap-2 bg-accent text-primary font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-9 py-[20px] min-h-[52px] hover:bg-accent-hot transition-colors"
         >
           See available weeks <span aria-hidden="true">→</span>
         </a>
-        <p class="font-body-sm text-[0.875rem] text-ink-soft">
-          <span class="text-sun">★★★★★</span> 5.0 · every guest who has sailed with us
-        </p>
+        <a
+          href="tel:+15613055116"
+          class="inline-flex items-center justify-center gap-2 border border-ink/25 text-ink font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold px-7 py-[20px] min-h-[52px] hover:border-accent hover:text-accent transition-colors"
+        >
+          Call (561) 305-5116
+        </a>
       </div>
+      <p class="font-body-sm text-[0.875rem] text-ink-soft mt-5">
+        <span class="text-sun">★★★★★</span> 5.0 · every guest who has sailed with us
+      </p>
     </div>
   </section>
 
@@ -68,14 +74,15 @@ const description =
   <!-- WHAT A WEEK IS -->
   <section class="bg-surface border-t border-hairline">
     <div class="mx-auto max-w-5xl px-7 py-20 lg:py-28">
-      <div class="grid gap-px bg-hairline sm:grid-cols-2">
+      <div class="grid gap-4 lg:gap-5 sm:grid-cols-2">
         {[
           { h: 'One captain, every voyage', b: 'Clint sails the boat himself. A host runs the galley and the day. You are aboard to unplug, not to crew.' },
           { h: 'Genuinely all-inclusive', b: 'Cabin, meals, fuel, dockage, and snorkel gear. One number covers the week — no surprises at the dock.' },
           { h: 'A small group, not a crowd', b: 'Up to twelve guests across four to six private cabins. Quiet anchorages, not the day-charter circuit.' },
           { h: 'Nothing on the schedule', b: 'Swim, read, snorkel, nap, sail when the wind is right. The plan is that there is no plan.' },
         ].map((x) => (
-          <div class="bg-surface p-8 lg:p-10">
+          <div class="group relative bg-surface border border-hairline p-8 lg:p-10 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_14px_55px_-18px_rgba(229,64,43,0.5)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+            <span class="absolute left-0 top-0 h-px w-0 bg-accent transition-[width] duration-300 group-hover:w-full motion-reduce:transition-none" aria-hidden="true"></span>
             <h3 class="font-h3 text-ink leading-[1.15]" style="font-size: 1.4rem;">{x.h}</h3>
             <p class="font-body-md text-[0.9375rem] leading-[1.6] text-ink-soft mt-3">{x.b}</p>
           </div>
@@ -103,9 +110,4 @@ const description =
     heading="Tell us what off-the-grid looks like for you"
     sub="Three quick questions. Dodie or Clint replies within 24 hours — no call center, no hard sell."
   />
-
-  <!-- sticky mobile CTA -->
-  <a href="#start" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-accent text-primary text-center font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold py-4">
-    See available weeks →
-  </a>
 </LpLayout>
