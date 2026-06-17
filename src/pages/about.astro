@@ -53,32 +53,28 @@ const credentials = [
 <BaseLayout title={title} description={description} transparentNav schema={schemaGraph}>
   {/* Image hero - Clint & Dodie on the foredeck at sunset.
       object-[center_25%] biases the crop UP so neither captain's head
-      gets clipped at hero aspect ratios. Overlay rebuilt as a 3-layer
-      stack (matching SectionInterrupt photo variant) so the eyebrow up
-      top AND the headline at the bottom both clear AA against the
-      sunset photo. */}
-  <section class="relative bg-primary text-ink overflow-hidden min-h-[88dvh] flex flex-col">
+      gets clipped at hero aspect ratios. Light treatment (Stage 2): bright
+      daytime turquoise photo + a single light bone bottom scrim so the
+      dark headline column clears AA without darkening the daytime image. */}
+  <section class="relative bg-bone text-primary overflow-hidden min-h-[88dvh] flex flex-col">
     <img
-      src="/img/source/experiences/gorgeous-sunset-from-island-beach.jpg"
-      alt="Sunset over a British Virgin Islands anchorage - sailboats and catamarans moored off a beach, a dock silhouetted against the setting sun"
+      src="/img/stock/hero/hero-bvi-catamaran-turquoise-01.jpg"
+      alt="A white catamaran on bright turquoise Caribbean water under a clear blue sky"
       class="absolute inset-0 w-full h-full object-cover object-center"
       fetchpriority="high"
       decoding="async"
     />
-    {/* Base vertical darken */}
-    <div class="absolute inset-0 bg-gradient-to-b from-primary/55 via-primary/30 to-primary/95" aria-hidden="true"></div>
-    {/* Top band - guarantees AA for the eyebrow over any sky region */}
-    <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-primary/70 to-transparent" aria-hidden="true"></div>
-    {/* Bottom band - guarantees AA for the headline column */}
-    <div class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-primary/85 to-transparent" aria-hidden="true"></div>
+    {/* Light bottom scrim - keeps the daytime image bright up top while
+        giving the dark headline column a readable wash at the bottom. */}
+    <div class="absolute inset-0 bg-gradient-to-t from-bone/90 via-bone/45 via-45% to-transparent" aria-hidden="true"></div>
     <div class="relative z-10 min-h-[88dvh] flex flex-col">
       <div class="flex-1 flex items-end pb-16 lg:pb-24 px-7 lg:px-14 pt-32">
         <div class="max-w-[1400px] w-full mx-auto">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.75rem] font-semibold text-bone mb-6">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.75rem] font-semibold text-primary/70 mb-6">
             Our story · A husband-and-wife crew
           </p>
           <h1
-            class="font-display text-ink font-light leading-[0.95] tracking-[-0.03em] max-w-5xl text-pretty"
+            class="font-display text-primary font-light leading-[0.95] tracking-[-0.03em] max-w-5xl text-pretty"
             style="font-size: clamp(2.5rem, 6vw + 1rem, 5.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
           >
             One captain, one crew.
