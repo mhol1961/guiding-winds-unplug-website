@@ -27,8 +27,8 @@ const {
     {
       videoSrc: '/media/hero/hero-bvi-01.mp4',
       videoSrcPortrait: '/media/hero/hero-bvi-01-portrait.mp4',
-      posterSrc: '/img/source/hero/02-sunset-catamaran-anchorage.jpg',
-      alt: 'A catamaran at anchor at sunset in the Caribbean, warm orange sky reflecting off glassy water',
+      posterSrc: '/img/stock/hero/hero-bvi-catamaran-turquoise-01.jpg',
+      alt: 'A white catamaran sailing on bright turquoise Caribbean water under a clear blue daytime sky',
     },
     {
       videoSrc: '/media/hero/hero-bahamas-02.mp4',
@@ -64,7 +64,7 @@ const {
 // loops mid-window. Keep SCENE_MS there in sync with the clip length.
 ---
 
-<section class="hero relative w-full min-h-[100dvh] overflow-hidden bg-primary text-bone">
+<section class="hero relative w-full min-h-[100dvh] overflow-hidden bg-bone text-primary">
   <div class="absolute inset-0 z-0" aria-hidden="true">
     {
       scenes.map((scene, i) => (
@@ -99,18 +99,18 @@ const {
         </div>
       ))
     }
-    <div class="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/10 via-50% to-primary/90"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-bone/70 via-transparent to-transparent"></div>
   </div>
 
   <div class="relative z-10 min-h-[100dvh] flex flex-col">
     <div class="flex-1 flex items-end pb-24 lg:pb-32 px-7 lg:px-14 pt-32">
       <div class="max-w-[1400px] w-full mx-auto">
         <div class="max-w-4xl">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.75rem] font-semibold text-bone/90 mb-8">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.75rem] font-semibold text-primary/70 mb-8">
             {eyebrow}
           </p>
           <h1
-            class="font-display text-bone font-light text-pretty leading-[0.95] tracking-[-0.03em]"
+            class="font-display text-primary font-light text-pretty leading-[0.95] tracking-[-0.03em]"
             style="font-size: clamp(1.75rem, 4vw + 0.75rem, 3.75rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
           >
             {headlinePrefix}
@@ -122,13 +122,13 @@ const {
             </span>
             {headlineSuffix}
           </h1>
-          <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.6] text-bone/90 mt-8 max-w-[58ch]">
+          <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.6] text-primary/80 mt-8 max-w-[58ch]">
             {subline}
           </p>
           <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-10 lg:mt-12">
             <a
               href={primaryCta.href}
-              class="group inline-flex items-center justify-center gap-3 cursor-pointer bg-accent text-primary font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-accent-hot hover:text-bone transition-colors focus-visible:outline-2 focus-visible:outline-bone focus-visible:outline-offset-3"
+              class="group inline-flex items-center justify-center gap-3 cursor-pointer bg-accent text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-accent-hot hover:text-bone transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3"
             >
               {primaryCta.label}
               <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -137,7 +137,7 @@ const {
             </a>
             <a
               href={secondaryCta.href}
-              class="group inline-flex items-center gap-3 cursor-pointer text-bone/80 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold pb-1 border-b border-bone/30 hover:text-bone hover:border-bone transition-all"
+              class="group inline-flex items-center gap-3 cursor-pointer text-primary/80 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold pb-1 border-b border-primary/30 hover:text-primary hover:border-primary transition-all"
             >
               {secondaryCta.label}
               <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -149,11 +149,11 @@ const {
       </div>
     </div>
 
-    <div class="border-t border-bone/15 backdrop-blur-md bg-primary/30">
+    <div class="border-t border-primary/15 backdrop-blur-md bg-bone/40">
       <div class="max-w-[1400px] mx-auto px-7 lg:px-14 py-5 flex flex-wrap items-center gap-x-10 gap-y-3">
         {
           trustItems.map((item) => (
-            <span class="inline-flex items-center gap-2.5 font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-bone/85">
+            <span class="inline-flex items-center gap-2.5 font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/85">
               <span class="block size-[6px] bg-accent rounded-full" aria-hidden="true" />
               {item}
             </span>
