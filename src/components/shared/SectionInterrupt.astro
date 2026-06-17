@@ -225,7 +225,7 @@ const photoAlign = 'photoAlign' in props ? (props.photoAlign ?? 'left') : 'left'
 
 {
   variant === 'stat' && (
-    <section class="relative bg-surface-warm text-ink overflow-hidden border-t border-hairline">
+    <section class="relative bg-paper text-primary overflow-hidden border-t border-hairline">
       <div class="relative max-w-[1400px] mx-auto px-7 lg:px-14 py-24 sm:py-28">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div class="lg:col-span-5">
@@ -236,7 +236,7 @@ const photoAlign = 'photoAlign' in props ? (props.photoAlign ?? 'left') : 'left'
                 </p>
               )}
               <p
-                class="font-display text-ink leading-[1.0] tabular-nums"
+                class="font-display text-primary leading-[1.0] tabular-nums"
                 style="font-size: clamp(2.5rem, 5vw + 1rem, 4rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
               >
                 {headline}
@@ -253,7 +253,7 @@ const photoAlign = 'photoAlign' in props ? (props.photoAlign ?? 'left') : 'left'
           </div>
           <div class="lg:col-span-7">
             {body && (
-              <p class="font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-ink/80 max-w-xl">
+              <p class="font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-primary/80 max-w-xl">
                 {body}
               </p>
             )}
@@ -261,7 +261,7 @@ const photoAlign = 'photoAlign' in props ? (props.photoAlign ?? 'left') : 'left'
               <div class="mt-9">
                 <a
                   href={ctaHref}
-                  class="group inline-flex items-center justify-center gap-3 cursor-pointer bg-bone text-primary font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-sun transition-colors focus-visible:outline-2 focus-visible:outline-sun focus-visible:outline-offset-3"
+                  class="group inline-flex items-center justify-center gap-3 cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-sun hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-sun focus-visible:outline-offset-3"
                 >
                   {ctaLabel}
                   <svg
@@ -286,7 +286,7 @@ const photoAlign = 'photoAlign' in props ? (props.photoAlign ?? 'left') : 'left'
 
 {
   variant === 'teal' && (
-    <section class="relative bg-teal-shadow text-ink overflow-hidden border-t border-hairline">
+    <section class="relative bg-teal-mist text-primary overflow-hidden border-t border-hairline">
       <div class="relative max-w-[1400px] mx-auto px-7 lg:px-14 py-20 sm:py-24">
         <div class="max-w-3xl">
           {eyebrow && (
@@ -295,7 +295,7 @@ const photoAlign = 'photoAlign' in props ? (props.photoAlign ?? 'left') : 'left'
             </p>
           )}
           <p
-            class="font-display font-light text-ink leading-[1.15] tracking-[-0.02em] text-balance"
+            class="font-display font-light text-primary leading-[1.15] tracking-[-0.02em] text-balance"
             style="font-size: clamp(1.625rem, 3vw + 1rem, 2.5rem); font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;"
           >
             {headline}
@@ -310,7 +310,7 @@ const photoAlign = 'photoAlign' in props ? (props.photoAlign ?? 'left') : 'left'
             )}
           </p>
           {body && (
-            <p class="mt-6 font-body-md text-[1rem] lg:text-[1.0625rem] leading-[1.65] text-ink/75 max-w-2xl">
+            <p class="mt-6 font-body-md text-[1rem] lg:text-[1.0625rem] leading-[1.65] text-primary/75 max-w-2xl">
               {body}
             </p>
           )}
@@ -318,7 +318,7 @@ const photoAlign = 'photoAlign' in props ? (props.photoAlign ?? 'left') : 'left'
             <div class="mt-8">
               <a
                 href={ctaHref}
-                class="group inline-flex items-center gap-3 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold text-ink border-b border-sun/80 pb-1 hover:text-sun transition-colors"
+                class="group inline-flex items-center gap-3 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold text-primary border-b border-sun/80 pb-1 hover:text-sun transition-colors"
               >
                 {ctaLabel}
                 <svg
