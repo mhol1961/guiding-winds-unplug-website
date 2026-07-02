@@ -37,8 +37,8 @@ const weeksWithLowAvailability = allWeeks.filter(
           {weeksWithLowAvailability === 1
             ? 'One week has only one or two cabins left.'
             : `${weeksWithLowAvailability} weeks have only one or two cabins left.`}{' '}
-          Hold a cabin for 72 hours, no payment required - Dodie or Clint
-          will reply within 24 hours.
+          We speak with every guest before booking. Book a quick call and we'll
+          walk you through the open weeks. Dodie or Clint reply within 24 hours.
         </p>
 
         <div class="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6">
@@ -46,16 +46,7 @@ const weeksWithLowAvailability = allWeeks.filter(
             href="/inquire"
             class="group inline-flex items-center justify-center gap-3 cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
           >
-            Hold a Cabin
-            <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-          <a
-            href="/calendar"
-            class="group inline-flex items-center gap-3 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold text-primary border-b border-primary/40 pb-1 hover:text-accent hover:border-accent transition-colors self-center"
-          >
-            Or browse the full calendar
+            See available weeks and Book a quick call
             <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -66,11 +57,11 @@ const weeksWithLowAvailability = allWeeks.filter(
         <ul class="mt-10 flex flex-wrap gap-x-7 gap-y-3 font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/65">
           <li class="flex items-center gap-2">
             <span class="block size-[5px] bg-accent rounded-full" aria-hidden="true"></span>
-            No deposit to hold
+            A quick call before you book
           </li>
           <li class="flex items-center gap-2">
             <span class="block size-[5px] bg-accent rounded-full" aria-hidden="true"></span>
-            72-hour soft hold, no card
+            Booking link sent after we talk
           </li>
           <li class="flex items-center gap-2">
             <span class="block size-[5px] bg-accent rounded-full" aria-hidden="true"></span>
@@ -83,10 +74,10 @@ const weeksWithLowAvailability = allWeeks.filter(
       <div class="lg:col-span-5">
         <div class="border-l-2 border-accent pl-8">
           <p class="font-display text-[2rem] lg:text-[2.25rem] text-primary leading-tight" style="font-variation-settings: 'opsz' 72, 'SOFT' 30, 'WONK' 0;">
-            32% returning guests
+            One call, then your week
           </p>
           <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/65 mt-3">
-            Most charter operators don't track this
+            We talk it through before anything is booked
           </p>
         </div>
       </div>

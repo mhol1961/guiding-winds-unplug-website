@@ -15,7 +15,6 @@ galleryImages:
   - { src: /img/stock/voyages/italy/gallery/italy-positano-01.jpg, alt: Positano cliffs and pastel houses rising above the Tyrrhenian }
   - { src: /img/stock/voyages/italy/gallery/italy-amalfi-village-02.jpg, alt: Amalfi village clinging to a cliff above the sea }
   - { src: /img/stock/voyages/italy/gallery/italy-positano-coast-03.jpg, alt: Positano coastline at golden hour from a sailboat }
-  - { src: /img/stock/food/food-mediterranean-spread-02.jpg, alt: Mediterranean dinner spread on a yacht deck }
 availableWeeks:
   - { start: '2027-06-19', end: '2027-06-26', cabinsAvailable: 6 }
   - { start: '2027-07-03', end: '2027-07-10', cabinsAvailable: 8 }
@@ -100,4 +99,4 @@ The Italy voyage runs $3,850 per guest - $300 more than the Caribbean weeks. Med
 
 ## The galley, and dinners that take three hours
 
-The galley follows the regions we sail through - Campanian seafood at Positano, Aeolian capers and swordfish at Panarea, Sicilian flavors on the last night in Lipari. Dinners on deck run to three hours. Weeks are available across 2027 - see the calendar. If your week matters more than the date, hold a cabin first - no deposit for the first 72 hours, and we'll talk on the phone before you commit a dollar.
+The galley follows the regions we sail through - Campanian seafood at Positano, Aeolian capers and swordfish at Panarea, Sicilian flavors on the last night in Lipari. Dinners on deck run to three hours. Weeks are available across 2027 - see the calendar. We speak with every guest before booking, so book a quick call and we'll talk it through before you commit anything.

@@ -5,7 +5,7 @@ import PageHero from '../components/shared/PageHero.astro';
 
 const title = '2027 Sailing Calendar · Guiding Winds Unplug';
 const description =
-  'Weeks aboard across the year. Hold one for 72 hours, no payment required.';
+  'Weeks aboard across the year. Pick a region, pick a week, and book a quick call.';
 
 const voyages = await getCollection('voyages');
 
@@ -68,9 +68,9 @@ const schemaGraph = [
 <BaseLayout title={title} description={description} transparentNav schema={schemaGraph}>
   <PageHero
     eyebrow={`2027 Calendar · ${totalCabins} cabins available now`}
-    headlinePrefix="Fourteen weeks."
+    headlinePrefix="The 2027 weeks."
     headlineEmphasis="Up to 12 guests each."
-    subline="Hold one for 72 hours, no payment required. Pick a region, pick a week, hold a cabin."
+    subline="Pick a region, pick a week, and book a quick call. We speak with every guest before booking."
     heroImage="/img/stock/hero/hero-bvi-catamaran-turquoise-01.jpg"
     heroImageAlt="Our catamaran at anchor in bright turquoise water, the kind of week the calendar holds"
   />
@@ -143,7 +143,7 @@ const schemaGraph = [
                       href={`/inquire?voyage=${row.voyageSlug}`}
                       class="inline-flex items-center gap-2 cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold px-4 py-2.5 hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
                     >
-                      Hold
+                      Book a call
                     </a>
                   )}
                 </div>
@@ -173,15 +173,15 @@ const schemaGraph = [
       </h2>
       <p class="font-body-md text-[1rem] text-primary/65 mt-6 max-w-xl mx-auto">
         We sometimes open a private-charter week based on group interest, and
-        we're happy to hold a week from the public calendar while you align
-        with your group.
+        we're happy to talk through the open weeks while you align with your
+        group.
       </p>
       <div class="mt-10">
         <a
           href="/inquire"
           class="inline-flex items-center justify-center cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
         >
-          Send an Inquiry
+          See available weeks and Book a quick call
         </a>
       </div>
     </div>

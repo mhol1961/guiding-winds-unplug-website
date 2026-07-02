@@ -97,4 +97,4 @@ The galley runs a Greek-leaning menu through the week - provisioned at each isla
 
 ## Why one-way, why the Cyclades
 
-The Cyclades catamaran charter all-inclusive itinerary is built around a one-way: in to Athens, out from Santorini. It sounds like more logistics than it is - JTR has direct flights to Athens and onward to most of Europe, and the routing means you cover real ground rather than retracing your wake. Weeks are available across 2027 - see the calendar. If your week matters more than the date, hold a cabin first - no deposit required for the first 72 hours, and we'll talk on the phone before you commit anything.
+The Cyclades catamaran charter all-inclusive itinerary is built around a one-way: in to Athens, out from Santorini. It sounds like more logistics than it is - JTR has direct flights to Athens and onward to most of Europe, and the routing means you cover real ground rather than retracing your wake. Weeks are available across 2027 - see the calendar. We speak with every guest before booking, so book a quick call and we'll talk it through before you commit anything.

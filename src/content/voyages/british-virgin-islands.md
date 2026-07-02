@@ -7,7 +7,7 @@ heroEyebrow: 'Tortola · Caribbean'
 nights: 7
 nightsLabel: '4 to 7'
 pricePerGuestUSD: 3550
-shortDescription: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Quiet anchorages day-trippers never reach, on glass water at sunrise.'
+shortDescription: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Quiet anchorages day-trippers never reach.'
 heroImage: /img/stock/voyages/bvi/bvi-the-baths-hero.jpg
 heroImageAlt: Granite boulders of The Baths at Virgin Gorda, BVI
 galleryImages:
@@ -75,7 +75,7 @@ faq:
   - q: What if I get seasick?
     a: 'Catamarans are dramatically more stable than monohulls - most people who get seasick on cruise ships are fine on this boat. We carry patches and Bonine. The BVI is also one of the most protected sailing grounds on earth - you''re almost never out of sight of an island.'
   - q: Cancellation policy?
-    a: '90+ days from departure: full refund. 90-45 days: 50%. Under 45 days: no refund, but we''ll rebook you for any week with availability in the next 12 months at no charge.'
+    a: 'We recommend travelers insurance that lets you cancel for any reason and get a full refund: trawickinternational.com/?agent=21057. We talk through the details with you on a quick call before you book.'
   - q: Can we bring kids?
     a: 'Yes. The boat sleeps 12 and kids stack in cabins easily. Two notes: this is an adult-pace trip (long dinners, no kids'' menu), and there''s no formal childcare. If you want a family week, book the whole boat and let us tailor the itinerary.'
   - q: Is there Wi-Fi?
@@ -115,4 +115,4 @@ Clint reads weather the way other people read the news. He'll change the next da
 
 ## Booking
 
-Weeks are available across 2027 - see the calendar for what's open. Some already have fewer than four cabins left. If your week matters more than the date, hold the cabin first - there's no deposit required for the first 72 hours, and we'll talk on the phone before you commit a dollar.
+Weeks are available across 2027 - see the calendar for what's open. Some already have fewer than four cabins left. We speak with every guest before booking, so book a quick call and we'll talk it through before you commit anything.

@@ -143,8 +143,8 @@ const tealEyebrow: Record<string, string> = {
 };
 const tealHeadline: Record<string, { lead: string; italic: string }> = {
   'british-virgin-islands': {
-    lead: 'Glass water at sunrise.',
-    italic: 'Anchorages day-trippers never reach.',
+    lead: 'Quiet anchorages',
+    italic: 'day-trippers never reach.',
   },
   bahamas: {
     lead: 'Pink sand, shallow water,',
@@ -169,21 +169,20 @@ const tealCopy = tealHeadline[voyage.data.slug] ?? {
 };
 
 // Stat interrupt, lands between FAQ and cross-link siblings.
-const weekCount = voyage.data.availableWeeks.length;
 const statCopyByRegion: Record<string, { headline: string; italic: string; body: string }> = {
   caribbean: {
-    headline: `${weekCount} weeks open`,
-    italic: 'Multiple weeks available - see the calendar',
+    headline: 'A limited run',
+    italic: 'See the open weeks',
     body: 'A limited run of weeks. When they\'re gone they\'re gone - we don\'t add capacity or stretch the run.',
   },
   bahamas: {
-    headline: `${weekCount} weeks open`,
-    italic: 'Multiple weeks available - see the calendar',
+    headline: 'A limited run',
+    italic: 'See the open weeks',
     body: 'A short run of weeks before we move the boat to the Mediterranean. Limited and not repeated.',
   },
   mediterranean: {
-    headline: `${weekCount} weeks open`,
-    italic: 'Multiple weeks available - see the calendar',
+    headline: 'A limited run',
+    italic: 'See the open weeks',
     body: 'We sail every week we\'re open, then the boat heads back across the Atlantic. A limited run.',
   },
 };
@@ -210,7 +209,6 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
     pricePerGuestUSD={voyage.data.pricePerGuestUSD}
     nights={voyage.data.nights}
     nightsLabel={voyage.data.nightsLabel}
-    anchorages={voyage.data.itinerary.length}
   />
 
   {/* Overview + sticky PricingCard - bone bg, dark text */}
@@ -299,8 +297,8 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
       image={voyage.data.heroImage}
       imageAlt={voyage.data.heroImageAlt}
       attribution={`${voyageReviewForInterrupt.data.author} · ${voyageReviewForInterrupt.data.location} · ${voyage.data.name}`}
-      ctaLabel="See available weeks"
-      ctaHref="/calendar"
+      ctaLabel="See available weeks and Book a quick call"
+      ctaHref="/inquire"
     />
   )}
 
@@ -315,7 +313,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
       headline={statCopy.headline}
       headlineItalic={statCopy.italic}
       body={statCopy.body}
-      ctaLabel="Hold a cabin"
+      ctaLabel="See available weeks and Book a quick call"
       ctaHref="/inquire"
     />
   )}

@@ -18,7 +18,7 @@ interface Props {
   headlineSuffix?: string;
   subline: string;
   primaryCta: { label: string; href: string };
-  secondaryCta: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
   trustItems: string[];
 }
 
@@ -135,15 +135,17 @@ const {
                 <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
-            <a
-              href={secondaryCta.href}
-              class="group inline-flex items-center gap-3 cursor-pointer text-primary/80 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold pb-1 border-b border-primary/30 hover:text-primary hover:border-primary transition-all"
-            >
-              {secondaryCta.label}
-              <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
+            {secondaryCta && (
+              <a
+                href={secondaryCta.href}
+                class="group inline-flex items-center gap-3 cursor-pointer text-primary/80 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold pb-1 border-b border-primary/30 hover:text-primary hover:border-primary transition-all"
+              >
+                {secondaryCta.label}
+                <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            )}
           </div>
         </div>
       </div>

@@ -22,10 +22,9 @@ export function organization({ baseUrl }: OrgInput) {
       height: 600,
     },
     description:
-      'All-inclusive wellness catamaran charters for up to 12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia. From $3,550 per guest, per week.',
+      'Off-grid all-inclusive catamaran voyages for up to 12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia. From $3,550 per guest, per week.',
     sameAs: [
       'https://www.facebook.com/profile.php?id=61588279383433',
-      'https://instagram.com/guidingwinds',
       'https://youtube.com/@guidingwinds',
     ],
     founder: [

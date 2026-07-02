@@ -1,57 +1,18 @@
 ---
-// /experiences - landing page for the two voyage add-ons Dodie and
-// Clint can layer onto any charter week. Spiritual retreat (Dodie's
-// QHHT + breathwork + meditation practice) and Sport fishing (Clint's
-// long-liner background brought to deep-water trolling).
-//
-// Layout follows the established editorial pattern: shared PageHero
-// up top, two asymmetric photo+copy splits alternating left/right with
-// contrasting surfaces, a SectionInterrupt between them as a beat
-// break, and a teal-soft pre-footer CTA that points at /inquire with
-// the relevant tag prefilled.
+// /experiences - stripped down per owner direction. The prior add-on
+// content (spiritual retreat with Dodie, sport fishing with Clint, the
+// "typical day" narrative, and the from-aboard gallery) was removed.
+// Real content will be added back when it's ready.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/shared/PageHero.astro';
-import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
-import { Sun, Compass, Anchor, Waves, Sparkles, Fish } from 'lucide-react';
 
-const title = 'Optional experiences · Spiritual retreat + sport fishing add-ons';
+const title = 'Optional experiences · Guiding Winds Unplug';
 const description =
-  'Two ways to shape a Guiding Winds voyage to your week. A guided spiritual retreat with Dodie - breathwork, meditation, and QHHT sessions on the foredeck at sunrise. Or sport fishing with Clint - trolling deep blue water for wahoo, mahi, and tuna.';
+  'Optional experiences to shape a Guiding Winds voyage to your week. Book a quick call and we will talk through what fits.';
 
 const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
 
-// Schema.org Service entries for each add-on - feed AEO/SEO so AI
-// search engines pick these up as named offerings linked to the
-// Organization.
 const schemaGraph = [
-  {
-    '@type': 'Service',
-    '@id': `${baseUrl}/experiences#spiritual-retreat`,
-    name: 'Spiritual retreat add-on · Guiding Winds Unplug',
-    serviceType: 'Wellness retreat at sea',
-    description:
-      'A guided spiritual retreat layered into a Guiding Winds catamaran charter week. Includes daily breathwork and meditation on the foredeck at sunrise, two private one-on-one sessions, and an evening intention practice on deck.',
-    provider: { '@id': `${baseUrl}/#org` },
-    areaServed: [
-      { '@type': 'Place', name: 'British Virgin Islands' },
-      { '@type': 'Place', name: 'The Bahamas' },
-    ],
-    isRelatedTo: { '@id': `${baseUrl}/about#dodie` },
-  },
-  {
-    '@type': 'Service',
-    '@id': `${baseUrl}/experiences#sport-fishing`,
-    name: 'Sport fishing add-on · Guiding Winds Unplug',
-    serviceType: 'Offshore sport fishing',
-    description:
-      'A sport-fishing-focused itinerary layered into a Guiding Winds catamaran charter week. Includes morning trolling runs in deep blue water, dedicated gear, and dinners built around the day\'s catch. Targeted species rotate by region - wahoo, mahi-mahi, and yellowfin in the Caribbean.',
-    provider: { '@id': `${baseUrl}/#org` },
-    areaServed: [
-      { '@type': 'Place', name: 'British Virgin Islands' },
-      { '@type': 'Place', name: 'The Bahamas' },
-    ],
-    isRelatedTo: { '@id': `${baseUrl}/about#clint` },
-  },
   {
     '@type': 'BreadcrumbList',
     itemListElement: [
@@ -60,375 +21,43 @@ const schemaGraph = [
     ],
   },
 ];
-
-const spiritualIncludes = [
-  { Icon: Sun, label: 'Sunrise breathwork', body: 'Twenty minutes on the foredeck most mornings. Optional, never announced.' },
-  { Icon: Sparkles, label: 'Two private sessions', body: 'One-on-one with Dodie at a time you pick. Past-life regression, intention work, or whatever the week calls for.' },
-  { Icon: Waves, label: 'Evening intention', body: 'Brief group practice on deck before dinner, three or four nights. Optional. The water does most of the work.' },
-  { Icon: Compass, label: 'Itinerary attunement', body: 'Slightly slower passages, longer anchor times, quieter coves. The same week, dialed differently.' },
-];
-
-const fishingItems = [
-  { Icon: Fish, label: 'Daily trolling run', body: 'A morning offshore leg purpose-built for fishing - wahoo, mahi, yellowfin in season, kingfish year-round.' },
-  { Icon: Anchor, label: 'Dedicated gear', body: 'Sport rods, trolling reels, ballyhoo and lures stocked aboard. Bring nothing. Clint runs the spread.' },
-  { Icon: Compass, label: 'Clint at the helm', body: 'A long-liner background brought to deep-water trolling. He reads the bottom and the bird sign the way other people read forecasts.' },
-  { Icon: Sun, label: 'Catch-driven dinners', body: "What the boat brings in is what Dodie cooks that night. Crudo, blackened, grilled whole - the kitchen flexes around the day." },
-];
-
-// "From aboard" gallery - Clint's own footage and photos from recent
-// weeks. Videos are click-to-play (poster + preload=none) so they cost
-// nothing on page load until a visitor presses play.
-const galleryClips = [
-  { src: '/media/gallery/sailing-islands.mp4', poster: '/media/gallery/posters/sailing-islands.jpg', title: 'Underway between anchorages' },
-  { src: '/media/gallery/big-fish-jumping.mp4', poster: '/media/gallery/posters/big-fish-jumping.jpg', title: 'A fish on, off the stern' },
-  { src: '/media/gallery/catching-mahi-mahi.mp4', poster: '/media/gallery/posters/catching-mahi-mahi.jpg', title: 'Mahi-mahi on the troll' },
-  { src: '/media/gallery/clint-big-fish.mp4', poster: '/media/gallery/posters/clint-big-fish.jpg', title: 'Clint works one to the boat' },
-  { src: '/media/gallery/flamingos.mp4', poster: '/media/gallery/posters/flamingos.jpg', title: 'A flamingo flat, up close' },
-  { src: '/media/gallery/clint-boats-portrait.mp4', poster: '/media/gallery/posters/clint-boats-portrait.jpg', title: 'Harbor, fishing boats astern' },
-];
-
-const galleryPhotos = [
-  { src: '/img/source/experiences/gorgeous-sunset-from-island-beach.jpg', alt: 'A vivid sunset seen from an island beach, sky in deep orange and violet over calm water', title: 'Sunset off the island beach' },
-  { src: '/img/source/experiences/clint-relaxing-on-boat-islands-background.jpg', alt: 'Clint relaxing aboard the boat with green island headlands in the background', title: 'At anchor, islands behind' },
-  { src: '/img/source/experiences/beautiful-scene-from-boat-with-client.jpg', alt: 'A bright morning scene shot from aboard the boat, open water and distant shoreline', title: 'A morning underway' },
-  { src: '/img/source/experiences/guest-sunset-aboard.jpg', alt: 'A guest aboard the catamaran at golden hour, the boat anchored behind', title: 'Golden hour aboard' },
-  { src: '/img/source/experiences/snorkel-rock-cove.jpg', alt: 'Two guests snorkeling in clear water beside dramatic rock formations', title: 'Snorkeling the rock pools' },
-  { src: '/img/source/experiences/foredeck-lounge-golden-hour.jpg', alt: 'Guests lounging on the catamaran foredeck under the bimini at golden hour', title: 'Afternoon on the foredeck' },
-  { src: '/img/source/experiences/sunset-anchorage-dock.jpg', alt: 'Sunset over a quiet island anchorage with sailboats and a dock', title: 'Sunset over the anchorage' },
-  { src: '/img/source/experiences/catamaran-anchor-rock-islands.jpg', alt: 'The catamaran at anchor beside rock islands under a bright blue sky', title: 'At anchor by the rocks' },
-  { src: '/img/source/experiences/sunset-islands-sunburst.jpg', alt: 'A sunburst sunset over distant islands seen from the boat', title: 'Last light' },
-];
 ---
 
 <BaseLayout title={title} description={description} transparentNav schema={schemaGraph}>
   <PageHero
-    eyebrow="Optional experiences · 2027"
+    eyebrow="Optional experiences"
     headlinePrefix="Two ways to shape"
     headlineEmphasis="a week aboard."
     headlineSuffix=""
-    subline="Every voyage week comes with the same core - the boat, the cabins, the meals, the route. These two add-ons let you tilt the week toward what you came for. Both layer onto any voyage; both can be added when you hold a cabin."
+    subline="Optional experiences can be layered onto any voyage. Book a quick call and we'll talk through what fits your week."
     heroImage="/img/stock/experiences/experiences-hero-ai.jpg"
-    heroImageAlt="The teak aft deck of a catamaran at first light - a single meditation cushion, a teapot with steam rising, a folded blanket and two books, the boat anchored alone in glassy turquoise water"
+    heroImageAlt="The teak aft deck of a catamaran at first light, the boat anchored alone in glassy turquoise water"
   />
 
-  {/* Spiritual retreat - bg-paper light, image LEFT, copy RIGHT */}
-  <section
-    id="spiritual-retreat"
-    class="bg-paper text-primary py-24 sm:py-32 lg:py-36 border-t border-rule scroll-mt-24"
-  >
-    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        <div class="lg:col-span-7">
-          <figure class="relative aspect-[16/10] overflow-hidden bg-primary/5">
-            <img
-              src="/img/stock/experiences/spiritual-retreat-foredeck-ai.jpg"
-              alt="A cork yoga mat rolled out across the foredeck trampoline of a catamaran at sunrise, glassy aquamarine water reflecting pink dawn clouds, a distant Caribbean headland on the left"
-              loading="lazy"
-              decoding="async"
-              class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out hover:scale-[1.02]"
-            />
-          </figure>
-          <figcaption class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/55 mt-3">
-            Plate 01 · Foredeck at sunrise · BVI
-          </figcaption>
-        </div>
-        <div class="lg:col-span-5">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun-deep mb-5">
-            Add-on · Spiritual retreat
-          </p>
-          <h2
-            class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
-            style="font-size: clamp(2rem, 4vw + 0.75rem, 3rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
-          >
-            A guided retreat
-            <span class="italic block" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
-              with Dodie.
-            </span>
-          </h2>
-          <div class="mt-8 space-y-5 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-primary/75 text-balance">
-            <p>
-              Same week, slower pulse. Dodie runs a quiet, opt-in retreat
-              layered into the voyage - sunrise breathwork on the foredeck,
-              two private one-on-one sessions at times you choose, and an
-              evening intention practice on deck most nights. This add-on is
-              subject to Dodie's availability, confirmed when you hold a cabin.
-            </p>
-            <p>
-              No mat-folding, no spiritual jargon. Just a careful structure
-              built around the water, on a week that already does most of
-              the work.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Includes grid - premium card treatment matching aboard "In the price" */}
-      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 mt-16 lg:mt-20">
-        {
-          spiritualIncludes.map(({ Icon, label, body }, i) => (
-            <li
-              class="card-rise group bg-bone text-primary border border-bone-deep p-7 lg:p-8 flex flex-col shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-sun hover:bg-card-lift hover:shadow-[0_16px_44px_rgba(232,163,64,0.25),0_2px_8px_rgba(232,163,64,0.15)]"
-              style={`animation-delay: ${i * 80}ms;`}
-            >
-              <span
-                class="inline-flex items-center justify-center size-12 bg-sun/15 border border-sun/30 mb-6 transition-all duration-300 ease-out group-hover:bg-sun/30 group-hover:border-sun"
-                aria-hidden="true"
-              >
-                <Icon
-                  className="size-7 text-sun-deep transition-colors duration-300 ease-out group-hover:text-accent-hot"
-                  strokeWidth={1.75}
-                />
-              </span>
-              <p class="font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold text-primary mb-3">
-                {label}
-              </p>
-              <p class="font-body-md text-[0.9375rem] leading-[1.6] text-primary/75 text-balance">{body}</p>
-            </li>
-          ))
-        }
-      </ul>
-
-      {/* Tier card - pricing placeholder until Mark/Dodie set the real number */}
-      <div class="mt-16 lg:mt-20 bg-teal-soft text-primary p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun mb-4">
-            Pricing
-          </p>
-          <p class="font-display font-light text-[1.625rem] lg:text-[2rem] leading-[1.2] text-balance" style="font-variation-settings: 'opsz' 60, 'SOFT' 30, 'WONK' 0;">
-            Per-week add-on, layered onto any voyage. Available on
-            <span class="italic" style="font-variation-settings: 'opsz' 60, 'SOFT' 60, 'WONK' 1;">Caribbean and Bahamas dates.</span>
-          </p>
-        </div>
-        <div class="lg:col-span-5 lg:text-right">
-          <p class="font-body-sm text-[0.8125rem] text-primary/60 mt-3 max-w-xs lg:ml-auto leading-relaxed">
-            Add when you hold a cabin. Pricing confirmed by Dodie within 24 hours.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* Beat break - teal interrupt to separate the two add-ons */}
-  <SectionInterrupt
-    variant="teal"
-    eyebrow="Or, the other side of the boat"
-    headline="Same week, different verb."
-    headlineItalic="Trolling, not stretching."
-  />
-
-  {/* Sport fishing - bg-bone-deep, image RIGHT, copy LEFT (mirror of spiritual) */}
-  <section
-    id="sport-fishing"
-    class="bg-bone-deep text-primary py-24 sm:py-32 lg:py-36 border-t border-rule scroll-mt-24"
-  >
-    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        <div class="lg:col-span-5 order-2 lg:order-1">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-accent-hot mb-5">
-            Add-on · Sport fishing
-          </p>
-          <h2
-            class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
-            style="font-size: clamp(2rem, 4vw + 0.75rem, 3rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
-          >
-            A fishing week
-            <span class="italic block" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
-              with Clint.
-            </span>
-          </h2>
-          <div class="mt-8 space-y-5 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-primary/75 text-balance">
-            <p>
-              Clint spent years as a long-liner before he ran a charter.
-              He reads the bottom, the temperature break, and the bird
-              sign the way other people read the news.
-            </p>
-            <p>
-              The week looks the same on paper - same itinerary, same
-              meals, same anchorages. The difference is the morning
-              trolling run on the way to each leg, and that the kitchen
-              moves with what the boat brings in.
-            </p>
-          </div>
-        </div>
-        <div class="lg:col-span-7 order-1 lg:order-2">
-          <figure class="relative aspect-[4/3] overflow-hidden bg-primary/5">
-            <img
-              src="/img/source/experiences/fishing-clint-mahi.jpg"
-              alt="Clint holding a large mahi-mahi caught aboard, deep blue Caribbean water and islands behind him"
-              loading="lazy"
-              decoding="async"
-              class="absolute inset-0 w-full h-full object-cover object-[center_20%] transition-transform duration-[1200ms] ease-out hover:scale-[1.02]"
-            />
-          </figure>
-          <figcaption class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/55 mt-3">
-            Plate 02 · The catch · Mahi-mahi
-          </figcaption>
-        </div>
-      </div>
-
-      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 mt-16 lg:mt-20">
-        {
-          fishingItems.map(({ Icon, label, body }, i) => (
-            <li
-              class="card-rise group bg-paper text-primary border border-bone-deep p-7 lg:p-8 flex flex-col shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-accent-hot hover:bg-card-lift hover:shadow-[0_16px_44px_rgba(229,64,43,0.18),0_2px_8px_rgba(229,64,43,0.10)]"
-              style={`animation-delay: ${i * 80}ms;`}
-            >
-              <span
-                class="inline-flex items-center justify-center size-12 bg-accent/10 border border-accent/30 mb-6 transition-all duration-300 ease-out group-hover:bg-accent/25 group-hover:border-accent-hot"
-                aria-hidden="true"
-              >
-                <Icon
-                  className="size-7 text-accent-hot transition-colors duration-300 ease-out group-hover:text-primary"
-                  strokeWidth={1.75}
-                />
-              </span>
-              <p class="font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold text-primary mb-3">
-                {label}
-              </p>
-              <p class="font-body-md text-[0.9375rem] leading-[1.6] text-primary/75 text-balance">{body}</p>
-            </li>
-          ))
-        }
-      </ul>
-
-      <div class="mt-16 lg:mt-20 bg-teal-soft text-primary p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-accent mb-4">
-            Pricing
-          </p>
-          <p class="font-display font-light text-[1.625rem] lg:text-[2rem] leading-[1.2] text-balance" style="font-variation-settings: 'opsz' 60, 'SOFT' 30, 'WONK' 0;">
-            Per-week add-on, layered onto any voyage. Best on the
-            <span class="italic" style="font-variation-settings: 'opsz' 60, 'SOFT' 60, 'WONK' 1;">Caribbean and Bahamas dates.</span>
-          </p>
-        </div>
-        <div class="lg:col-span-5 lg:text-right">
-          <p class="font-body-sm text-[0.8125rem] text-primary/60 mt-3 max-w-xs lg:ml-auto leading-relaxed">
-            Add when you hold a cabin. Pricing confirmed by Clint within 24 hours.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* Stack-them note - small editorial aside */}
-  <section class="bg-sage text-primary py-16 sm:py-20 border-t border-rule">
-    <div class="max-w-[820px] mx-auto px-7 lg:px-0 text-center">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-4">
-        A note on stacking
-      </p>
-      <p class="font-display font-light leading-[1.25] tracking-[-0.015em] text-balance text-primary"
-         style="font-size: clamp(1.25rem, 2.5vw + 0.5rem, 1.625rem); font-variation-settings: 'opsz' 60, 'SOFT' 30, 'WONK' 0;">
-        Yes, you can do both in the same week.
-        <span class="italic" style="font-variation-settings: 'opsz' 60, 'SOFT' 60, 'WONK' 1;">
-          We've done it.
-        </span>
-        Mornings on the foredeck for the practice, afternoons on the troll. Dinner is whatever the boat caught.
-      </p>
-    </div>
-  </section>
-
-  {/* From aboard - real footage + photos gallery (click-to-play) */}
-  <section id="from-aboard" class="bg-bone text-primary py-24 sm:py-32 border-t border-rule">
-    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
-      <div class="max-w-2xl mb-14 lg:mb-16">
-        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-accent-hot mb-5">
-          From aboard
-        </p>
-        <h2
-          class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
-          style="font-size: clamp(2rem, 4vw + 0.75rem, 3rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
-        >
-          Real days on the water,
-          <span class="italic block" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
-            caught on the way past.
-          </span>
-        </h2>
-        <p class="mt-6 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-primary/75 text-balance">
-          No stock photography here - these are Clint's own photos from recent weeks aboard.
-        </p>
-      </div>
-
-      {/* Clips - click-to-play, nothing downloads until you press play */}
-      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-        {
-          galleryClips.map(({ src, poster, title }) => (
-            <li class="card-rise group bg-bone-deep border border-bone-deep overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-accent-hot hover:shadow-[0_16px_44px_rgba(229,64,43,0.16),0_2px_8px_rgba(229,64,43,0.10)]">
-              <figure class="relative aspect-video overflow-hidden bg-primary/10">
-                <img
-                  src={poster}
-                  alt={title}
-                  loading="lazy"
-                  decoding="async"
-                  class="absolute inset-0 w-full h-full object-cover"
-                />
-              </figure>
-              <figcaption class="px-5 py-4 font-label-caps uppercase tracking-[0.18em] text-[0.625rem] font-semibold text-primary/70">
-                {title}
-              </figcaption>
-            </li>
-          ))
-        }
-      </ul>
-
-      {/* Photos - click to open full size */}
-      <ul class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 mt-6 lg:mt-8">
-        {
-          galleryPhotos.map(({ src, alt, title }) => (
-            <li class="card-rise group bg-bone-deep border border-bone-deep overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-sun hover:shadow-[0_16px_44px_rgba(232,163,64,0.22),0_2px_8px_rgba(232,163,64,0.12)]">
-              <a href={src} target="_blank" rel="noreferrer">
-                <figure class="relative aspect-[4/5] overflow-hidden bg-primary/10">
-                  <img
-                    src={src}
-                    alt={alt}
-                    loading="lazy"
-                    decoding="async"
-                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
-                  />
-                </figure>
-              </a>
-              <figcaption class="px-4 py-3 font-label-caps uppercase tracking-[0.16em] text-[0.5625rem] font-semibold text-primary/65">
-                {title}
-              </figcaption>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
-  {/* Pre-footer CTA - teal-soft, matches the rest of the site's pre-footer pattern */}
+  {/* Pre-footer CTA - teal-soft, matches the rest of the site's pattern */}
   <section class="bg-teal-soft text-primary py-24 sm:py-28 border-t border-hairline">
     <div class="max-w-[1100px] mx-auto px-7 lg:px-14 text-center">
       <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-teal-shadow mb-5">
-        Add to your voyage
+        Speak with us first
       </p>
       <h2
         class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance text-primary"
         style="font-size: clamp(2rem, 3.5vw + 1rem, 3rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
       >
-        Decide which (or both)
+        Add an experience
         <span class="italic font-normal" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
-          when you hold a cabin.
+          when we talk.
         </span>
       </h2>
       <p class="font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.65] text-primary/75 max-w-2xl mx-auto mt-8 mb-10 text-balance">
-        Add the retreat or the fishing add-on (or both) to your inquiry - Dodie or Clint will confirm pricing and the week's shape within 24 hours, no payment required.
+        We speak with every guest before booking. Book a quick call and we'll walk you through the open weeks and talk through what fits your week.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+      <div class="flex justify-center">
         <a
-          href="/inquire?addon=spiritual-retreat"
+          href="/inquire"
           class="group inline-flex items-center justify-center gap-3 cursor-pointer bg-primary text-ink font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-surface-warm transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
         >
-          Inquire about the retreat
-          <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </a>
-        <a
-          href="/inquire?addon=sport-fishing"
-          class="group inline-flex items-center gap-3 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold text-primary border-b-2 border-teal-shadow pb-1 hover:text-teal-shadow transition-colors self-center"
-        >
-          Inquire about fishing
+          See available weeks and Book a quick call
           <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>

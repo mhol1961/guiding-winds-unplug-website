@@ -3,8 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import Feeling from '../components/home/Feeling.astro';
 import Picker from '../components/home/Picker.astro';
-import LogbookQuote from '../components/home/LogbookQuote.astro';
-import ExploreCards from '../components/home/ExploreCards.astro';
 import TestimonialRow from '../components/home/TestimonialRow.astro';
 import MidCta from '../components/home/MidCta.astro';
 import Megatype from '../components/home/Megatype.astro';
@@ -18,7 +16,7 @@ import { getCollection } from 'astro:content';
 
 const title = 'Off-Grid Catamaran Charters · BVI, Bahamas, Mediterranean | Guiding Winds Unplug';
 const description =
-  'All-inclusive wellness catamaran voyages for up to 12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia.';
+  'Off-grid all-inclusive catamaran voyages for up to 12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia.';
 
 const baseUrl = Astro.site?.toString() ?? 'https://guidingwinds-unplug.com';
 const reviews = await getCollection('reviews');
@@ -52,9 +50,8 @@ const schemaGraph = [
     eyebrow="The Off-Grid Catamaran Experts"
     headlinePrefix="Where guests become crew, strangers become friends, and the ocean becomes "
     headlineEmphasis="the path back to presence."
-    subline="All-inclusive wellness catamaran charters for up to 12 guests, sailing the Caribbean, the Bahamas, and the Mediterranean."
-    primaryCta={{ label: 'See Available Weeks', href: '/calendar' }}
-    secondaryCta={{ label: 'How a Week Aboard Works', href: '/aboard' }}
+    subline={'Join our "All-in" Collective for a voyage through the Caribbean, Bahamas, and the Mediterranean. Designed for groups of up to 12, this is an adventure ready journey where we trade resort luxuries for salt-air freedom, local discovery, and a life lived entirely on the water.'}
+    primaryCta={{ label: 'See available weeks and Book a quick call', href: '/inquire' }}
     trustItems={[
       'All-Inclusive',
       'Up to 12 Guests',
@@ -72,23 +69,70 @@ const schemaGraph = [
   <Feeling />
   <SectionInterrupt
     variant="teal"
-    eyebrow="Five regions · 12+ weeks a year"
+    eyebrow="Five regions"
     headline="The boat goes"
     headlineItalic="where day-charter crowds don't."
     body="Four to seven nights at anchor, mooring to mooring, on a schedule the wind writes."
   />
   <Picker />
-  <LogbookQuote />
-  <ExploreCards />
+
+  {/* The boat - Fountaine Pajot catamaran, supporting exterior shot */}
+  <section class="bg-bone text-primary py-24 sm:py-32 lg:py-40 border-t border-rule">
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-7">
+          <figure class="relative aspect-[16/9] overflow-hidden bg-primary/5">
+            <img
+              src="/img/fountaine.pajotpic.website.2.jpg"
+              alt="Guiding Winds catamaran at anchor"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          </figure>
+          <figcaption class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/45 mt-3">
+            Our Fountaine Pajot catamaran
+          </figcaption>
+        </div>
+        <div class="lg:col-span-5">
+          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-5">
+            The boat
+          </p>
+          <h2
+            class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
+            style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
+          >
+            A Fountaine Pajot catamaran,
+            <span class="italic block" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
+              home for the week.
+            </span>
+          </h2>
+          <p class="mt-7 font-body-lg text-[1.0625rem] leading-[1.7] text-primary/75 text-balance">
+            Up to 12 guests, 4 to 6 cabins, a full galley, and a salon built for long dinners. See the living space and everything that comes with the week.
+          </p>
+          <a
+            href="/aboard"
+            class="group inline-flex items-center gap-3 mt-9 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold text-primary border-b-2 border-accent pb-1 hover:text-accent transition-colors"
+          >
+            See what's aboard
+            <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <TestimonialRow />
   <SectionInterrupt
     variant="stat"
     eyebrow="Limited inventory"
-    headline="Up to 6 cabins"
-    headlineItalic="· a dozen-plus weeks a year"
+    headline="4 to 6 cabins"
+    headlineItalic="· one catamaran"
     body="A limited run of sailing weeks each year. Caribbean dry season fills first."
-    ctaLabel="See Available Weeks"
-    ctaHref="/calendar"
+    ctaLabel="See available weeks and Book a quick call"
+    ctaHref="/inquire"
   />
   <MidCta />
   <Megatype />

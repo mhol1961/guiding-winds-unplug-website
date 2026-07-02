@@ -106,4 +106,4 @@ This is the slowest trip we run. Shorter passages, fewer bar stops, fewer named 
 
 ## Booking
 
-Weeks are available across 2027 - each Saturday to Saturday, each at $3,550 per guest. See the calendar for open weeks. We hold a cabin for 72 hours, no payment required. If you want the whole boat for a private group, ask - we run private-charter weeks at the same rate with a tailored itinerary.
+Weeks are available across 2027 - each Saturday to Saturday, each at $3,550 per guest. See the calendar for open weeks. We speak with every guest before booking, so book a quick call and we'll talk it through. If you want the whole boat for a private group, ask - we run private-charter weeks at the same rate with a tailored itinerary.

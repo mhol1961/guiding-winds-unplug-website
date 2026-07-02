@@ -4,9 +4,9 @@ import InquiryForm from '../components/shared/InquiryForm.astro';
 import PageHero from '../components/shared/PageHero.astro';
 import { Mail, Clock } from 'lucide-react';
 
-const title = 'Inquire · Hold a Cabin for 72 Hours | Guiding Winds Unplug';
+const title = 'Book a Quick Zoom Call | Guiding Winds Unplug';
 const description =
-  'Tell us which week and we will hold a cabin for 72 hours. No payment required. Dodie or Clint reply within 24 hours.';
+  'We speak with every guest before booking. Tell us which week and book a quick call. Dodie or Clint reply within 24 hours.';
 
 const voyageSlug = new URL(Astro.url).searchParams.get('voyage') ?? undefined;
 const regionFromSlug: Record<string, 'bvi' | 'bahamas' | 'mediterranean'> = {
@@ -34,10 +34,10 @@ const schemaGraph = [
 <BaseLayout title={title} description={description} schema={schemaGraph} hideFloatingCta transparentNav>
   <PageHero
     compact
-    eyebrow="Inquire · No payment to hold"
-    headlinePrefix="Tell us which week. We'll hold a cabin"
-    headlineEmphasis="for seventy-two hours."
-    subline="No payment required. Dodie or Clint will reply within 24 hours with availability and the next step."
+    eyebrow="Book a quick Zoom call"
+    headlinePrefix="Tell us which week, and"
+    headlineEmphasis="let's book a quick call."
+    subline="We speak with every guest before booking. Send the form or book a quick call, and Dodie or Clint will reply within 24 hours with availability and the next step."
     heroImage="/img/stock/hero/hero-bvi-catamaran-turquoise-01.jpg"
     heroImageAlt="Aerial view of a small green island ringed by turquoise reef water in the British Virgin Islands"
   />
@@ -51,6 +51,24 @@ const schemaGraph = [
         </div>
 
         <aside class="lg:col-span-5 space-y-12">
+          <div class="border border-rule p-6">
+            <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-4">
+              Prefer to talk now
+            </p>
+            <a
+              href="tel:+17723103777"
+              class="group inline-flex items-center justify-center gap-3 w-full cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-6 py-[16px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+            >
+              Book a quick call
+              <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <p class="font-body-sm text-[0.8125rem] text-primary/65 mt-3 text-center">
+              (772) 310-3777 · we speak with every guest before booking
+            </p>
+          </div>
+
           <div>
             <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-6">
               What happens next
@@ -59,8 +77,8 @@ const schemaGraph = [
               {
                 [
                   { title: 'You send the inquiry', body: 'Takes 60 seconds. Tell us your preferred week, or "flexible - recommend one."' },
-                  { title: 'We reply within 24 hours', body: 'Email or text, your choice. We confirm cabin availability and answer the first batch of questions.' },
-                  { title: 'We hold a cabin for 72 hours', body: 'No deposit required to hold. Once you confirm, a 25% deposit locks the cabin; balance due 60 days before departure.' },
+                  { title: 'We reply within 24 hours', body: 'Email or text, your choice. We confirm cabin availability and set up a quick call.' },
+                  { title: 'We talk it through', body: 'We speak with every guest before booking. On a quick call we answer your questions and, once you decide, send the private booking link.' },
                 ].map((step, i) => (
                   <li class="flex gap-5 pb-7 border-b border-rule last:border-0">
                     <span class="font-display text-[1.75rem] text-sun-deep shrink-0 leading-none tabular-nums" style="font-variation-settings: 'opsz' 36;">
@@ -95,6 +113,26 @@ const schemaGraph = [
             </div>
           </div>
 
+          <div class="border border-rule p-6">
+            <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-4">
+              Travelers insurance
+            </p>
+            <p class="font-body-md text-[0.9375rem] leading-[1.6] text-primary/75 mb-3">
+              We recommend a policy that lets you cancel for any reason and get a full refund.
+            </p>
+            <a
+              href="https://trawickinternational.com/?agent=21057"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary border-b border-accent pb-1 hover:text-accent transition-colors"
+            >
+              Get an insurance quote
+              <svg viewBox="0 0 16 16" class="size-3" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+
           <div>
             <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-6">
               Three most common
@@ -102,8 +140,8 @@ const schemaGraph = [
             <dl class="space-y-7">
               {
                 [
-                  { q: 'Cancellation?', a: '90+ days full refund, 90-45 days 50%, under 45 we rebook you for any future week with availability.' },
-                  { q: 'Payment options?', a: 'Stripe (card), wire transfer, or check. 25% deposit to lock, balance 60 days out.' },
+                  { q: 'Cancellation?', a: 'We recommend travelers insurance that lets you cancel for any reason and get a full refund: trawickinternational.com/?agent=21057.' },
+                  { q: 'How do we book?', a: 'We speak with every guest before booking. After a quick call we send you a private booking link.' },
                   { q: 'Kids welcome?', a: 'Yes, especially on whole-boat charters. The boat sleeps 12 comfortably; this is an adult-pace trip.' },
                 ].map((item) => (
                   <div>

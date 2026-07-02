@@ -1,14 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
-import {
-  UtensilsCrossed,
-  Waves,
-  BedDouble,
-  Fuel,
-  Anchor,
-  WifiOff,
-} from 'lucide-react';
 
 const title = 'What is Aboard · All-Inclusive Catamaran Charter Inclusions | Guiding Winds Unplug';
 const description =
@@ -40,20 +32,17 @@ const schemaGraph = [
   },
 ];
 
-const included = [
-  { Icon: UtensilsCrossed, label: 'Chef-prepared meals', body: 'Breakfast, lunch, dinner. Meals shift by destination - Caribbean breakfasts, Mediterranean dinners, a different theme most nights.' },
-  { Icon: Waves, label: 'Snorkel gear included', body: 'Masks, fins, and snorkels in every size. Paddleboards and kayaks available as an add-on.' },
-  { Icon: BedDouble, label: 'Private cabin + head', body: 'Your own cabin with an ensuite head. AC on shore power, fans underway. Linens and towels provided.' },
-  { Icon: Fuel, label: 'Fuel & dockage', body: 'No itemized fuel surcharge. Dockage included at every overnight, including the mooring fees at the busier anchorages.' },
-  { Icon: Anchor, label: 'Captain & host', body: 'Clint captains every voyage himself. A host runs the galley and the guest experience aboard.' },
-  { Icon: WifiOff, label: 'The right to unplug', body: 'We don\'t provide onboard internet - unplugging is the point. Wi-Fi can be purchased for an additional charge, and even then the connection can be unreliable at times.' },
-];
-
 const notIncluded: Array<string | { label: string; href: string }> = [
   'Flights to and from the embarkation port',
-  { label: 'Travel insurance (click to get quotes)', href: 'https://trawickinternational.com/' },
+  { label: 'Travel insurance, cancel for any reason for a full refund (click for quotes)', href: 'https://trawickinternational.com/?agent=21057' },
   'Crew gratuity (10-15% suggested)',
   'Off-boat dining and excursions you arrange independently',
+];
+
+// The three real catamaran photos (Fountaine Pajot) for the interior gallery.
+const boatInterior = [
+  { src: '/img/fountaine.pajot.photo..jpg', alt: 'Catamaran salon and galley' },
+  { src: '/img/galley.fountaine.pajot.45.jpg', alt: 'Catamaran main salon and cockpit' },
 ];
 ---
 
@@ -61,8 +50,8 @@ const notIncluded: Array<string | { label: string; href: string }> = [
   {/* Image hero with full-bleed real boat photo */}
   <section class="relative bg-primary text-ink overflow-hidden min-h-[80dvh] flex flex-col">
     <img
-      src="/img/source/boat/cockpit-bench-seating-sunrise-01.jpg"
-      alt="Cockpit bench seating on a sailing catamaran at sunrise"
+      src="/img/fountaine.pajotpic.website.2.jpg"
+      alt="Guiding Winds catamaran at anchor"
       class="absolute inset-0 w-full h-full object-cover"
       fetchpriority="high"
       decoding="async"
@@ -92,60 +81,41 @@ const notIncluded: Array<string | { label: string; href: string }> = [
     </div>
   </section>
 
-  {/* 8-icon inclusion grid - PREMIUM treatment.
-       Section sits on dark surface-warm so the cream cards POP with
-       editorial contrast. Each card has a soft sun-gold backlit shadow
-       on hover, gradient border shift, gentle lift, and a staggered
-       on-load rise animation. Defined in global.css (@keyframes card-rise)
-       so the reduced-motion guard neutralizes it automatically. */}
+  {/* The boat - real Fountaine Pajot interior gallery. Exterior at anchor
+       leads the page hero above; these two interior shots show the salon
+       and galley living space. */}
   <section class="bg-teal-mist text-primary py-28 lg:py-36 border-t border-hairline">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
       <div class="mb-16 lg:mb-20 max-w-3xl">
         <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun mb-5">
-          In the price
+          The boat
         </p>
         <h2
           class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance text-primary"
           style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
         >
-          Eight things you don't pay for again,
+          The salon and galley,
           <span class="italic" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
-            once you're aboard.
+            where the week happens.
           </span>
         </h2>
       </div>
-      {/* Premium 8-card grid. Cards: cream surface on lighter cocoa for
-          stronger contrast, sun-gold ring + icon-tile, bigger icon
-          (size-7) on its own gold-tinted square so the eye reads it
-          first, animated card-rise stagger, hover lifts -translate-y-1
-          AND brightens the icon tile + drops a sun-tinted backlight
-          shadow. Focus-within mirrors hover for keyboard parity. */}
-      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+      <ul class="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6">
         {
-          included.map(({ Icon, label, body }, i) => (
-            <li
-              class="card-rise group relative bg-bone text-primary border border-bone-deep p-7 lg:p-8 flex flex-col shadow-[0_4px_16px_rgba(0,0,0,0.25)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-sun hover:bg-card-lift hover:shadow-[0_16px_44px_rgba(232,163,64,0.32),0_2px_8px_rgba(232,163,64,0.18)] focus-within:-translate-y-1.5 focus-within:border-sun focus-within:bg-card-lift focus-within:shadow-[0_16px_44px_rgba(232,163,64,0.32),0_2px_8px_rgba(232,163,64,0.18)]"
-              style={`animation-delay: ${i * 80}ms;`}
-            >
-              {/* Top sun-gold rail - appears on hover, gives the cards
-                   a backlit ribbon affordance. */}
-              <span
-                class="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-sun to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300"
-                aria-hidden="true"
-              />
-              <span
-                class="inline-flex items-center justify-center size-12 bg-sun/15 border border-sun/30 mb-6 transition-all duration-300 ease-out group-hover:bg-sun/30 group-hover:border-sun group-focus-within:bg-sun/30 group-focus-within:border-sun"
-                aria-hidden="true"
-              >
-                <Icon
-                  className="size-7 text-sun-deep transition-colors duration-300 ease-out group-hover:text-accent-hot group-focus-within:text-accent-hot"
-                  strokeWidth={1.75}
+          boatInterior.map(({ src, alt }) => (
+            <li class="flex flex-col">
+              <figure class="relative aspect-[16/10] overflow-hidden bg-primary/5">
+                <img
+                  src={src}
+                  alt={alt}
+                  loading="lazy"
+                  decoding="async"
+                  class="absolute inset-0 w-full h-full object-cover"
                 />
-              </span>
-              <p class="font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold text-primary mb-3">
-                {label}
-              </p>
-              <p class="font-body-md text-[0.9375rem] leading-[1.6] text-primary/75 text-balance">{body}</p>
+              </figure>
+              <figcaption class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/55 mt-3">
+                {alt}
+              </figcaption>
             </li>
           ))
         }
@@ -212,70 +182,10 @@ const notIncluded: Array<string | { label: string; href: string }> = [
     eyebrow="The numbers"
     headline="Up to 12 guests"
     headlineItalic="· comfortably aboard"
-    body="Bigger boats lose the through-line. Smaller ones don't have the galley to do dinner the way Dodie does it. Our catamaran is the boat that sits in between."
-    ctaLabel="Hold a Cabin"
+    body="We've found the sweet spot of sailing. We're not a crowded charter where the experience gets diluted, and we're not a cramped boat that cuts corners on dinner. Our catamaran is sized perfectly: it has the galley power to host a proper feast, but the soul to keep us all connected."
+    ctaLabel="See available weeks and Book a quick call"
     ctaHref="/inquire"
   />
-
-  {/* Typical day - paper (off-white) with Dodie's IG "Good morning"
-       deck-coffee photo set up top so the section opens with an actual
-       sunrise scene before the words describe one. Asymmetric 7-5 grid:
-       portrait photo on the right, copy on the left. */}
-  <section class="bg-paper text-primary py-24 sm:py-32 border-t border-hairline">
-    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        <div class="lg:col-span-7 order-2 lg:order-1">
-          <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-5">
-            A typical day
-          </p>
-          <h2
-            class="font-display font-light leading-[1.05] tracking-[-0.025em] mb-10 text-balance"
-            style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
-          >
-            Sunrise to sundown,
-            <span class="italic block" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
-              what it actually looks like.
-            </span>
-          </h2>
-          <div class="space-y-6 font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.75] text-primary/75 text-balance">
-            <p>
-              Coffee on deck at first light for whoever's up. Breakfast at eight - eggs, fruit, fresh
-              bread from whatever village we were in yesterday. Dive in off the
-              swim platform whenever.
-            </p>
-            <p>
-              By ten we've usually pulled the anchor for a short, easy passage
-              to the next stop. Most legs are under two hours. You can sit at
-              the helm with Clint, lie on the trampoline, read in the salon -
-              the day is yours. Lunch on the boat at one - light, mostly off
-              the grill, always with a cold something.
-            </p>
-            <p>
-              Afternoon is the long open block. Snorkel, paddle, kayak, nap,
-              read, walk ashore if we're tied up. By five the light goes gold
-              and we're settled at anchor. By seven Dodie's brought dinner up -
-              long meal, long stars, no
-              schedule for tomorrow until tomorrow.
-            </p>
-          </div>
-        </div>
-        <div class="lg:col-span-5 order-1 lg:order-2">
-          <figure class="relative aspect-[3/4] overflow-hidden bg-primary/5">
-            <img
-              src="/img/source/ig/cockpit-coffee-sunrise-portrait.jpg"
-              alt="First-person view from the cockpit at sunrise - coffee mug nearby, bare feet on the bench, sailing catamarans silhouetted against a pink and orange dawn sky over the anchorage"
-              loading="lazy"
-              decoding="async"
-              class="absolute inset-0 w-full h-full object-cover"
-            />
-          </figure>
-          <figcaption class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/55 mt-3">
-            Plate · Sunrise · From Dodie's logbook
-          </figcaption>
-        </div>
-      </div>
-    </div>
-  </section>
 
   {/* Pre-footer CTA - teal-soft per Mark's note: the section right above
        the dark footer must be LIGHTER, not match it. Carries the "See
@@ -284,37 +194,27 @@ const notIncluded: Array<string | { label: string; href: string }> = [
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
       <div class="max-w-3xl mx-auto text-center">
         <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/60 mb-6">
-          Hold a cabin
+          Speak with us first
         </p>
         <h2
           class="font-display font-light leading-[1.05] tracking-[-0.025em] mb-8 text-balance"
           style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
         >
-          Weeks fill in the order they're held,
+          We want to talk with you
           <span class="italic block" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
-            not the order they're inquired about.
+            before you book.
           </span>
         </h2>
         <p class="font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.65] text-primary/75 max-w-2xl mx-auto mb-10 text-balance">
-          A no-cost 72-hour soft hold puts a week in your name while you
-          read the itinerary and talk to whoever you're traveling with. No
-          card on file. No follow-up if you let it lapse.
+          Book a quick call and we'll walk you through the open weeks, answer
+          your questions, and send the booking link after we talk.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href="/calendar"
-            class="group inline-flex items-center justify-center gap-3 cursor-pointer bg-primary text-ink font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-surface-warm transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
-          >
-            See Available Weeks
-            <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
+        <div class="flex justify-center items-center">
           <a
             href="/inquire"
-            class="group inline-flex items-center gap-3 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold text-primary border-b-2 border-accent pb-1 hover:text-accent transition-colors"
+            class="group inline-flex items-center justify-center gap-3 cursor-pointer bg-primary text-ink font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-surface-warm transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
           >
-            Ask a Question
+            See available weeks and Book a quick call
             <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>

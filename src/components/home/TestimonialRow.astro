@@ -54,17 +54,12 @@ const surfaceRotation = ['bg-paper', 'bg-sage', 'bg-bone-deep'];
 // row 1, then wide quote (12) on row 2.
 const cardSpan = ['lg:col-span-7', 'lg:col-span-5', 'lg:col-span-12'];
 
-// Trust-anchor stats - pulled from real data. Removed the prior
-// fabricated "32% return rate" and "14 voyages" stats; replaced with
-// verifiable numbers from the reviews collection + the voyages
-// calendar count.
-const totalWeeks = voyages.reduce(
-  (s, v) => s + v.data.availableWeeks.length,
-  0,
-);
+// Trust-anchor stats - pulled from real data. No week/voyage counts
+// displayed per owner direction; both numbers below are verifiable from
+// the reviews collection.
 const stats = [
   { num: '100%', sub: 'of guests would recommend' },
-  { num: String(totalWeeks), sub: 'weeks aboard in the 2027 calendar' },
+  { num: '5.0', sub: 'average guest rating' },
 ];
 
 ---
