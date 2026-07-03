@@ -48,3 +48,6 @@ docs/*.pdf
 # personal text-message screenshots
 public/img/dodie-text-*.png
 
+
+# claude-mem session artifacts
+src/**/CLAUDE.md
