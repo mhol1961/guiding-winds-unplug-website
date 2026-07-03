@@ -1,4 +1,4 @@
-import { ghl, locationId } from './client';
+import { ghl } from './client';
 
 export interface FreeSlot {
   startTime: string; // ISO
@@ -40,45 +40,3 @@ export async function getFreeSlots(
   return slots;
 }
 
-interface HoldAppointmentInput {
-  calendarId: string;
-  contactId: string;
-  startTime: string;
-  endTime: string;
-  title?: string;
-  notes?: string;
-}
-
-interface AppointmentResponse {
-  id: string;
-  calendarId: string;
-  contactId: string;
-  startTime: string;
-  endTime: string;
-  appointmentStatus: string;
-}
-
-/**
- * Create a 72-hour soft cabin hold on the GHL calendar. The appointment
- * has status `new` initially; Dodie's "hold expiring" workflow (W6)
- * watches the `hold-cabin` tag and fires reminders + cancellation at
- * the 48h / 72h marks.
- */
-export async function createHoldAppointment(
-  input: HoldAppointmentInput,
-): Promise<AppointmentResponse> {
-  return ghl<AppointmentResponse>('/calendars/events/appointments', {
-    method: 'POST',
-    body: {
-      calendarId: input.calendarId,
-      locationId: locationId(),
-      contactId: input.contactId,
-      startTime: input.startTime,
-      endTime: input.endTime,
-      title: input.title ?? 'Cabin hold - 72h',
-      appointmentStatus: 'new',
-      notes: input.notes,
-      ignoreFreeSlotValidation: false,
-    },
-  });
-}

@@ -149,7 +149,7 @@ This project touches **two different GoHighLevel subaccounts**. Keep them mental
 
 ## 5. Brand voice — short version (full in `DESIGN.md` and `CONTENT-MAP.md`)
 
-Wellness + luxury + slow-living catamaran charters. Black-Tomato-adjacent positioning: cinematic, restrained, opinionated, mildly literary. Headlines lean reframe-style ("You don't need another vacation. You need a week off the grid."). Body copy is short, declarative, slightly poetic. Never use exclamation marks. Never use marketing-urgency tropes ("Time is ticking!"). Never the word "luxurious" — earn it instead. CTAs prefer "See Available Weeks" or "Hold a Cabin" over "Book Now."
+Wellness + luxury + slow-living catamaran charters. Black-Tomato-adjacent positioning: cinematic, restrained, opinionated, mildly literary. Headlines lean reframe-style ("You don't need another vacation. You need a week off the grid."). Body copy is short, declarative, slightly poetic. Never use exclamation marks. Never use marketing-urgency tropes ("Time is ticking!"). Never the word "luxurious" — earn it instead. CTAs prefer "See available weeks and Book a quick call" over "Book Now." The site is **call-first** (owner decision, July 2026): every guest speaks with Clint & Dodie before booking; the booking link is sent privately after the call. There is no self-serve hold, no public checkout — never rebuild the old "Hold a Cabin" / 72-hour-hold flow (the spec docs PRD.md / TECH-SPEC.md / CONTENT-MAP.md / GHL-INTEGRATION.md still describe it; they predate this decision).
 
 The brand promise is **"unplug."** Every word, every image, every interaction either supports that promise or contradicts it.
 
