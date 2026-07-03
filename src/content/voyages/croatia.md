@@ -18,7 +18,7 @@ galleryImages:
   - { src: /img/stock/people/people-serving-deck-02.jpg, alt: Host serving a meal on the deck of a catamaran }
 availableWeeks:
   - { start: '2027-08-14', end: '2027-08-21', cabinsAvailable: 5 }
-  - { start: '2027-10-02', end: '2027-10-09', cabinsAvailable: 8 }
+  - { start: '2027-10-02', end: '2027-10-09', cabinsAvailable: 6 }
 itinerary:
   - day: 1
     label: Saturday

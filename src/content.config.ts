@@ -36,7 +36,7 @@ const voyages = defineCollection({
       z.object({
         start: z.string(), // ISO yyyy-mm-dd
         end: z.string(),
-        cabinsAvailable: z.number().int().min(0).max(8),
+        cabinsAvailable: z.number().int().min(0).max(6),
         ghlEventId: z.string().optional(),
       }),
     ),

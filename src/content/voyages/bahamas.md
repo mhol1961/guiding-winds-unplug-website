@@ -17,9 +17,9 @@ galleryImages:
   - { src: /img/stock/voyages/bahamas/gallery/bahamas-beach-aerial-03.jpg, alt: Aerial view of a Bahamian beach and pink sand spit }
   - { src: /img/stock/food/food-seafood-platter-01.jpg, alt: Fresh seafood platter on a boat deck }
 availableWeeks:
-  - { start: '2027-04-10', end: '2027-04-17', cabinsAvailable: 7 }
+  - { start: '2027-04-10', end: '2027-04-17', cabinsAvailable: 6 }
   - { start: '2027-04-24', end: '2027-05-01', cabinsAvailable: 5 }
-  - { start: '2027-05-08', end: '2027-05-15', cabinsAvailable: 8 }
+  - { start: '2027-05-08', end: '2027-05-15', cabinsAvailable: 6 }
 itinerary:
   - day: 1
     label: Saturday

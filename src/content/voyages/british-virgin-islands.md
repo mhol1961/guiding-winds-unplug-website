@@ -19,10 +19,10 @@ galleryImages:
 availableWeeks:
   - { start: '2027-01-09', end: '2027-01-16', cabinsAvailable: 6 }
   - { start: '2027-01-23', end: '2027-01-30', cabinsAvailable: 4 }
-  - { start: '2027-02-06', end: '2027-02-13', cabinsAvailable: 8 }
+  - { start: '2027-02-06', end: '2027-02-13', cabinsAvailable: 6 }
   - { start: '2027-02-20', end: '2027-02-27', cabinsAvailable: 2 }
   - { start: '2027-03-06', end: '2027-03-13', cabinsAvailable: 5 }
-  - { start: '2027-11-13', end: '2027-11-20', cabinsAvailable: 8 }
+  - { start: '2027-11-13', end: '2027-11-20', cabinsAvailable: 6 }
 itinerary:
   - day: 1
     label: Saturday

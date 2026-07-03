@@ -20,7 +20,6 @@ const schemaGraph = [
       priceCurrency: 'USD',
       lowPrice: 3550,
       highPrice: 3850,
-      offerCount: 14,
     },
   },
   {
@@ -43,6 +42,17 @@ const notIncluded: Array<string | { label: string; href: string }> = [
 const boatInterior = [
   { src: '/img/fountaine.pajot.photo..jpg', alt: 'Catamaran salon and galley' },
   { src: '/img/galley.fountaine.pajot.45.jpg', alt: 'Catamaran main salon and cockpit' },
+];
+
+// Real photos from real weeks aboard - owner-supplied, July 2026. Spans
+// drive the editorial grid: landscape shots stretch two columns.
+const lifeAboard = [
+  { src: '/img/boat/boat-foredeck-lounge-01.jpg', alt: 'Guests lounging on the shaded foredeck seating at anchor', caption: 'The foredeck lounge, late afternoon', span: 'lg:col-span-2', aspect: 'aspect-[16/10]' },
+  { src: '/img/boat/boat-bow-trampoline-02.jpg', alt: 'A guest sitting on the bow rail above the trampoline nets', caption: 'The bow, underway', span: '', aspect: 'aspect-[3/4]' },
+  { src: '/img/boat/boat-swim-platform-paddleboards-03.jpg', alt: 'The swim platform at anchor with paddleboards floating alongside', caption: 'Swim platform and paddleboards', span: '', aspect: 'aspect-[3/4]' },
+  { src: '/img/boat/boat-snorkel-off-stern-04.jpg', alt: 'Two guests snorkeling off the stern near rock formations', caption: 'Snorkeling right off the stern', span: '', aspect: 'aspect-[3/4]' },
+  { src: '/img/boat/boat-evening-anchorage-06.jpg', alt: 'The anchorage at night with boat lights reflecting on calm water', caption: 'The anchorage after dark', span: '', aspect: 'aspect-[3/4]' },
+  { src: '/img/boat/boat-deck-indians-view-05.jpg', alt: 'View from the side deck toward rock pinnacles rising from the sea', caption: 'The view from the side deck', span: 'lg:col-span-3', aspect: 'aspect-[16/10] lg:aspect-[21/9]' },
 ];
 ---
 
@@ -123,6 +133,50 @@ const boatInterior = [
     </div>
   </section>
 
+  {/* Life aboard - real photos from real weeks, owner-supplied. The renders
+       above show the layout; these show the boat actually being lived on. */}
+  <section class="bg-bone text-primary py-28 lg:py-36 border-t border-hairline">
+    <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
+      <div class="mb-16 lg:mb-20 max-w-3xl">
+        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-sun-deep mb-5">
+          Life aboard
+        </p>
+        <h2
+          class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance text-primary"
+          style="font-size: clamp(1.875rem, 3.5vw + 1rem, 2.75rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
+        >
+          The boat,
+          <span class="italic" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
+            on an actual week.
+          </span>
+        </h2>
+        <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-primary/70 mt-6">
+          No staging, no stock. These are our guests, our decks, and our
+          anchorages, photographed the way the week actually looks.
+        </p>
+      </div>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+        {
+          lifeAboard.map(({ src, alt, caption, span, aspect }) => (
+            <li class={`flex flex-col ${span}`}>
+              <figure class={`relative ${aspect} overflow-hidden bg-primary/5`}>
+                <img
+                  src={src}
+                  alt={alt}
+                  loading="lazy"
+                  decoding="async"
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+              </figure>
+              <figcaption class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/55 mt-3">
+                {caption}
+              </figcaption>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
 
   {/* What's NOT included - numbered list on sage accent panel.
        Was bg-bone-deep/30 (basically tan-on-tan). Sage gives a clean

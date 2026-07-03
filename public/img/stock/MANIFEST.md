@@ -78,7 +78,6 @@ All files delivered at **w=2400, q=80, JPG**. Total: **38 images**.
 | File | Source URL | License |
 |---|---|---|
 | `food/food-seafood-platter-01.jpg` | https://images.unsplash.com/photo-1606850780554-b55ea4dd0b70 | Unsplash License — free commercial use, no attribution required |
-| `food/food-mediterranean-spread-02.jpg` | https://images.unsplash.com/photo-1738516737618-06726c85ddab | Unsplash License — free commercial use, no attribution required |
 | `food/food-breakfast-water-03.jpg` | https://images.unsplash.com/photo-1670362939460-45246df3ee22 | Unsplash License — free commercial use, no attribution required |
 
 ## Captain / Host (2) — `people/`

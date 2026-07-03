@@ -17,7 +17,7 @@ galleryImages:
   - { src: /img/stock/voyages/greece/gallery/greece-taverna-dinner-03.jpg, alt: Taverna dinner table set at a Greek harbor }
   - { src: /img/stock/food/food-breakfast-water-03.jpg, alt: Breakfast served on a yacht deck above clear water }
 availableWeeks:
-  - { start: '2027-07-17', end: '2027-07-24', cabinsAvailable: 8 }
+  - { start: '2027-07-17', end: '2027-07-24', cabinsAvailable: 6 }
   - { start: '2027-09-04', end: '2027-09-11', cabinsAvailable: 6 }
 itinerary:
   - day: 1

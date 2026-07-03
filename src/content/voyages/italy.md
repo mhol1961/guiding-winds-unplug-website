@@ -17,7 +17,7 @@ galleryImages:
   - { src: /img/stock/voyages/italy/gallery/italy-positano-coast-03.jpg, alt: Positano coastline at golden hour from a sailboat }
 availableWeeks:
   - { start: '2027-06-19', end: '2027-06-26', cabinsAvailable: 6 }
-  - { start: '2027-07-03', end: '2027-07-10', cabinsAvailable: 8 }
+  - { start: '2027-07-03', end: '2027-07-10', cabinsAvailable: 6 }
 itinerary:
   - day: 1
     label: Saturday
