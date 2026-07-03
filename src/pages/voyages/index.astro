@@ -191,9 +191,6 @@ const regionGroups: RegionGroup[] = regionKeys.map((key) => {
 
 const description = `Sail a private catamaran across the British Virgin Islands, Bahamas, and Mediterranean. Pick a region, pick a week, and book a quick call.`;
 
-// Hero subline - Clint captains every week himself.
-const heroSubline = 'Clint captains every week himself.';
-
 function formatWeek(start: string, end: string) {
   const s = new Date(`${start}T12:00:00Z`);
   const e = new Date(`${end}T12:00:00Z`);
@@ -241,7 +238,6 @@ const schemaGraph = [
     eyebrow="Voyages · 2027"
     headlinePrefix="Three regions."
     headlineEmphasis="One boat."
-    subline={heroSubline}
     heroImage="/img/source/destinations/catamaran-anchored-green-headland-01.jpg"
     heroImageAlt="Our catamaran anchored in bright turquoise water below a green island headland under a blue sky"
   />
