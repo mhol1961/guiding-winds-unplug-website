@@ -5,58 +5,49 @@ name: Greece · Cyclades
 country: Greece
 heroEyebrow: 'Athens · Aegean'
 nights: 7
-nightsLabel: '4 to 7'
+nightsLabel: '5 to 7'
 pricePerGuestUSD: 3850
 shortDescription: 'Mykonos at the start, Santorini at the end, three quiet Cyclades in between - the chain at the pace it was meant to be sailed.'
 heroImage: /img/stock/voyages/greece/greece-santorini-caldera-hero.jpg
 heroImageAlt: Whitewashed Cycladic village above the Santorini caldera at sunset
 galleryImages:
   - { src: /img/stock/voyages/greece/greece-santorini-caldera-hero.jpg, alt: Whitewashed Cycladic village above the Santorini caldera at sunset }
-  - { src: /img/stock/voyages/greece/gallery/greece-cyclades-cove-01.jpg, alt: Catamaran anchored in a quiet Cycladic cove }
-  - { src: /img/stock/voyages/greece/gallery/greece-sailing-02.jpg, alt: Sailing through the Greek islands in clear blue water }
-  - { src: /img/stock/voyages/greece/gallery/greece-taverna-dinner-03.jpg, alt: Taverna dinner table set at a Greek harbor }
-  - { src: /img/stock/food/food-breakfast-water-03.jpg, alt: Breakfast served on a yacht deck above clear water }
+  - { src: /img/stock/voyages/greece/greece-island-cove-hero.jpg, alt: Kolona, the twin-bay sandbar anchorage at Kythnos }
+  - { src: /img/stock/voyages/greece/gallery/greece-sifnos.jpg, alt: Sifnos, with the hill town of Apollonia above the harbor at Kamares }
+  - { src: /img/stock/voyages/greece/gallery/greece-folegandros.jpg, alt: Folegandros, whitewashed Chora set on a cliff edge above the Aegean }
+  - { src: /img/stock/voyages/greece/gallery/greece-ios.jpg, alt: Ios and the anchorage at Manganari }
 availableWeeks:
   - { start: '2027-07-17', end: '2027-07-24', cabinsAvailable: 6 }
-  - { start: '2027-09-04', end: '2027-09-11', cabinsAvailable: 6 }
 itinerary:
   - day: 1
     label: Saturday
     title: Embarkation · Athens (Alimos)
-    body: 'Board mid-afternoon. Evening sail to Kea - quietest of the islands close to Athens. Dinner at anchor.'
   - day: 2
     label: Sunday
     title: Kythnos · Kolona
-    body: 'The twin-bay anchorage you''ve seen on Greek tourism posters. Snorkel between the bays, lunch on the boat, taverna ashore for dinner.'
   - day: 3
     label: Monday
     title: Serifos
-    body: 'Quiet anchorage at Livadi. The whitewashed Chora is a steep walk above the harbor - worth it at sunset.'
   - day: 4
     label: Tuesday
     title: Sifnos
-    body: 'Long day ashore at Kamares and Apollonia. Sifnos is the island Greeks send other Greeks to.'
   - day: 5
     label: Wednesday
     title: Folegandros
-    body: 'Smaller, quieter, more dramatic than its neighbors. Sunset sail under the cliffs at Chora.'
   - day: 6
     label: Thursday
     title: Ios
-    body: 'Quiet morning anchorage at Manganari. Afternoon sail south.'
   - day: 7
     label: Friday
     title: Santorini
-    body: 'Final overnight in the caldera at Ammoudi or Vlychada - the most photographed sunset on earth, viewed from the water instead of with 4,000 cruise passengers.'
   - day: 8
     label: Saturday
     title: Disembarkation · Santorini
-    body: 'One-way charter. Off by 10am, transfer to JTR for evening flight.'
 inclusions:
   - All meals aboard, chef-prepared (Greek-leaning galley menu)
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
-  - Fuel and dockage
+  - Fuel and moorings
   - Captain and host
 exclusions:
   - Flights to Athens (ATH) / from Santorini (JTR)

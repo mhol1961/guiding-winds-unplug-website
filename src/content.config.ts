@@ -6,7 +6,7 @@ import { glob } from 'astro/loaders';
 // the home picker, the /calendar grid, the destinations hub, and the
 // TouristTrip + Event + Offer schema graphs.
 const voyages = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/voyages' }),
+  loader: glob({ pattern: ['**/*.md', '!**/CLAUDE.md'], base: './src/content/voyages' }),
   schema: z.object({
     slug: z.string(),
     region: z.enum(['caribbean', 'bahamas', 'mediterranean']),
@@ -15,7 +15,7 @@ const voyages = defineCollection({
     /** Three-line hero stat (e.g., "Tortola · BVI") */
     heroEyebrow: z.string(),
     nights: z.number().default(7),
-    /** Human-facing nights range, e.g. "4 to 7". Falls back to `nights` when unset. */
+    /** Human-facing nights range, e.g. "5 to 7". Falls back to `nights` when unset. */
     nightsLabel: z.string().optional(),
     pricePerGuestUSD: z.number(),
     /** Short narrative card description used on the home ExploreCards row. */
@@ -45,7 +45,10 @@ const voyages = defineCollection({
         day: z.number().int().min(1).max(8),
         label: z.string(), // e.g., "Saturday"
         title: z.string(), // e.g., "Norman Island"
-        body: z.string(),
+        /** Optional narrative paragraph. Omitted as of July 2026 - owner
+         *  direction to replace per-stop write-ups with photos (see
+         *  galleryImages) rather than prose. */
+        body: z.string().optional(),
       }),
     ),
     inclusions: z.array(z.string()),
@@ -67,7 +70,7 @@ const voyages = defineCollection({
 
 // ── Journal ──────────────────────────────────────────────────────────────
 const journal = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/journal' }),
+  loader: glob({ pattern: ['**/*.md', '!**/CLAUDE.md'], base: './src/content/journal' }),
   schema: z.object({
     title: z.string(),
     slug: z.string().optional(),

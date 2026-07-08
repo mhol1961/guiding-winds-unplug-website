@@ -5,57 +5,49 @@ name: Italy · Amalfi & Aeolian
 country: Italy
 heroEyebrow: 'Salerno · Tyrrhenian Sea'
 nights: 7
-nightsLabel: '4 to 7'
+nightsLabel: '5 to 7'
 pricePerGuestUSD: 3850
 shortDescription: 'Capri at sunrise, Positano on the water, the volcanic Aeolian chain - dinners ashore that ruin you for hotel restaurants forever.'
 heroImage: /img/stock/voyages/italy/italy-amalfi-coast-hero.jpg
 heroImageAlt: Pastel houses of an Amalfi coast village seen from the water
 galleryImages:
-  - { src: /img/stock/voyages/italy/italy-amalfi-coast-hero.jpg, alt: Pastel houses of an Amalfi coast village seen from the water }
   - { src: /img/stock/voyages/italy/gallery/italy-positano-01.jpg, alt: Positano cliffs and pastel houses rising above the Tyrrhenian }
-  - { src: /img/stock/voyages/italy/gallery/italy-amalfi-village-02.jpg, alt: Amalfi village clinging to a cliff above the sea }
-  - { src: /img/stock/voyages/italy/gallery/italy-positano-coast-03.jpg, alt: Positano coastline at golden hour from a sailboat }
+  - { src: /img/stock/voyages/italy/gallery/italy-capri.jpg, alt: Capri and the grottos at Marina Piccola }
+  - { src: /img/stock/voyages/italy/gallery/italy-stromboli.jpg, alt: Stromboli volcano lit up at night in the Aeolian Islands }
+  - { src: /img/stock/voyages/italy/gallery/italy-panarea.jpg, alt: Panarea, the smallest and most chic of the Aeolian islands }
+  - { src: /img/stock/voyages/italy/gallery/italy-lipari.jpg, alt: Lipari harbor in the Aeolian Islands }
 availableWeeks:
-  - { start: '2027-06-19', end: '2027-06-26', cabinsAvailable: 6 }
   - { start: '2027-07-03', end: '2027-07-10', cabinsAvailable: 6 }
 itinerary:
   - day: 1
     label: Saturday
     title: Embarkation · Salerno
-    body: 'Board mid-afternoon. Short sail to Amalfi for the first night under the cathedral lights.'
   - day: 2
     label: Sunday
     title: Amalfi & Atrani
-    body: 'Morning anchorage off the town, ferry ashore for breakfast on the cliffside. Afternoon swim, evening sail to Positano.'
   - day: 3
     label: Monday
     title: Positano
-    body: 'Quiet morning at Fornillo. Lunch ashore, optional walk up to the Path of the Gods. Quiet evening at anchor.'
   - day: 4
     label: Tuesday
     title: Capri
-    body: 'Early arrival at Marina Piccola - before the tour boats. Boat tour of the grottos, long lunch at Da Gemma.'
   - day: 5
     label: Wednesday
     title: Stromboli (overnight passage)
-    body: 'Long sail south to the Aeolian chain. The volcano lights itself every twenty minutes after sunset. We anchor in the lee for the show.'
   - day: 6
     label: Thursday
     title: Panarea
-    body: 'Smallest and most chic of the Aeolian islands. Morning swim at Cala Junco. Dinner ashore at Hycesia.'
   - day: 7
     label: Friday
     title: Lipari
-    body: 'Final overnight in Marina Lunga. Long dinner, long stars.'
   - day: 8
     label: Saturday
     title: Disembarkation · Milazzo
-    body: 'One-way charter ends in Sicily. Off by 11am, train to Catania for evening flight, or stay on for a few nights ashore.'
 inclusions:
   - All meals aboard, chef-prepared (Italian-leaning galley menu)
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
-  - Fuel and dockage
+  - Fuel and moorings
   - Captain and host
 exclusions:
   - Flights to Naples (NAP) / from Catania (CTA)

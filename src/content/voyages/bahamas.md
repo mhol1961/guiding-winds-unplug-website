@@ -5,59 +5,49 @@ name: The Bahamas
 country: The Bahamas
 heroEyebrow: 'Marsh Harbour · Abacos'
 nights: 7
-nightsLabel: '4 to 7'
+nightsLabel: '5 to 7'
 pricePerGuestUSD: 3550
 shortDescription: 'Hope Town, Tilloo Cay, Man-o-War. Pink-sand spits, shallow water you can stand up in a half-mile from shore, the slow side of the Caribbean.'
 heroImage: /img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg
 heroImageAlt: Hope Town candy-striped lighthouse rising above the Abacos waterfront
 galleryImages:
   - { src: /img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg, alt: Hope Town candy-striped lighthouse rising above the Abacos waterfront }
-  - { src: /img/stock/voyages/bahamas/gallery/bahamas-clear-water-02.jpg, alt: Shallow Bahamian water with sand visible through the surface }
-  - { src: /img/stock/voyages/bahamas/gallery/bahamas-anchorage-01.jpg, alt: Catamaran at anchor in a Bahamian cove }
-  - { src: /img/stock/voyages/bahamas/gallery/bahamas-beach-aerial-03.jpg, alt: Aerial view of a Bahamian beach and pink sand spit }
-  - { src: /img/stock/food/food-seafood-platter-01.jpg, alt: Fresh seafood platter on a boat deck }
+  - { src: /img/stock/voyages/bahamas/gallery/bahamas-tilloo-cay.jpg, alt: Tilloo Cay and Sandy Cay, low reef-fringed islands in the Abacos }
+  - { src: /img/stock/voyages/bahamas/gallery/bahamas-man-o-war-cay.jpg, alt: Man-o-War Cay, a boat-building village with no cars }
+  - { src: /img/stock/voyages/bahamas/gallery/bahamas-guana-cay.jpg, alt: Guana Cay, a long beach on the Atlantic side of the Abacos }
+  - { src: /img/stock/voyages/bahamas/gallery/bahamas-treasure-cay.jpg, alt: Treasure Cay, one of the most photographed bays in the Abacos chain }
 availableWeeks:
   - { start: '2027-04-10', end: '2027-04-17', cabinsAvailable: 6 }
-  - { start: '2027-04-24', end: '2027-05-01', cabinsAvailable: 5 }
-  - { start: '2027-05-08', end: '2027-05-15', cabinsAvailable: 6 }
 itinerary:
   - day: 1
     label: Saturday
     title: Embarkation · Marsh Harbour
-    body: 'Board at 2pm. Short sail across the Sea of Abaco to Hope Town for the first night under the candy-striped lighthouse.'
   - day: 2
     label: Sunday
     title: Hope Town
-    body: 'Morning ashore - the lighthouse climb is worth the 101 steps. Snorkel the Mermaid Reef in the afternoon, dinner aboard at anchor.'
   - day: 3
     label: Monday
     title: Tilloo Cay & Sandy Cay
-    body: 'A pair of low cays with reefs you can walk to from the boat. The Sandy Cay sea garden is the snorkel of the trip.'
   - day: 4
     label: Tuesday
     title: Little Harbour
-    body: 'South to Pete''s Pub for an afternoon ashore. Wild beach south of the cut for the sunset walk.'
   - day: 5
     label: Wednesday
     title: Man-o-War Cay
-    body: 'Back up the chain - boat-building village with no cars, narrow streets, and the best baked bread we''ve had in the Bahamas.'
   - day: 6
     label: Thursday
     title: Guana Cay
-    body: 'Long beach, long lunch at Nipper''s, optional afternoon kayak to Bakers Bay.'
   - day: 7
     label: Friday
     title: Treasure Cay
-    body: 'Final night in one of the most photographed bays in the chain. Long dinner aboard; last swim at moonrise.'
   - day: 8
     label: Saturday
     title: Disembarkation · Marsh Harbour
-    body: 'Brunch aboard, off the boat by 11am.'
 inclusions:
   - All meals aboard, chef-prepared
   - Snorkel gear, paddleboards, kayaks
   - Private cabin with ensuite head
-  - Fuel and dockage
+  - Fuel and moorings
   - Captain and host
 exclusions:
   - Flights to/from Marsh Harbour (MHH)

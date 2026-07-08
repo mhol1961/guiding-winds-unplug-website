@@ -5,62 +5,51 @@ name: British Virgin Islands
 country: British Virgin Islands
 heroEyebrow: 'Tortola · Caribbean'
 nights: 7
-nightsLabel: '4 to 7'
+nightsLabel: '5 to 7'
 pricePerGuestUSD: 3550
 shortDescription: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Quiet anchorages day-trippers never reach.'
 heroImage: /img/stock/voyages/bvi/bvi-the-baths-hero.jpg
 heroImageAlt: Granite boulders of The Baths at Virgin Gorda, BVI
 galleryImages:
+  - { src: /carribean-sea-map-image.png, alt: Map of the British Virgin Islands showing the anchorages sailed on this voyage }
   - { src: /img/stock/voyages/bvi/bvi-the-baths-hero.jpg, alt: Granite boulders of The Baths at Virgin Gorda }
-  - { src: /img/stock/voyages/bvi/gallery/bvi-sailing-01.jpg, alt: Catamaran sailing in the British Virgin Islands }
-  - { src: /img/stock/voyages/bvi/gallery/bvi-anchorage-aerial-02.jpg, alt: Aerial view of a BVI anchorage with the catamaran below }
-  - { src: /img/stock/voyages/bvi/gallery/bvi-cove-snorkel-03.jpg, alt: Snorkelers in a Caribbean cove with clear water }
-  - { src: /img/source/hero/02-sunset-catamaran-anchorage.jpg, alt: Catamaran at anchor at sunset in the BVI }
+  - { src: /img/stock/voyages/bvi/gallery/bvi-norman-island.jpg, alt: Norman Island, home to the Caves and the Indians snorkel site }
+  - { src: /img/stock/voyages/bvi/gallery/bvi-anegada.jpg, alt: Anegada, the only coral atoll in the British Virgin Islands chain }
+  - { src: /img/stock/voyages/bvi/gallery/bvi-jost-van-dyke.jpg, alt: Jost Van Dyke, home to White Bay and the Soggy Dollar Bar }
 availableWeeks:
   - { start: '2027-01-09', end: '2027-01-16', cabinsAvailable: 6 }
-  - { start: '2027-01-23', end: '2027-01-30', cabinsAvailable: 4 }
   - { start: '2027-02-06', end: '2027-02-13', cabinsAvailable: 6 }
-  - { start: '2027-02-20', end: '2027-02-27', cabinsAvailable: 2 }
-  - { start: '2027-03-06', end: '2027-03-13', cabinsAvailable: 5 }
-  - { start: '2027-11-13', end: '2027-11-20', cabinsAvailable: 6 }
+  - { start: '2027-03-06', end: '2027-03-13', cabinsAvailable: 6 }
 itinerary:
   - day: 1
     label: Saturday
     title: Embarkation · Nanny Cay
-    body: 'Board at 2pm, settle into your cabin, golden hour on deck while we provision the boat. Short evening sail to Soper''s Hole or Cane Garden Bay depending on weather.'
   - day: 2
     label: Sunday
     title: Norman Island
-    body: 'Morning anchorage off the Bight. Snorkel the Caves and the Indians - three pillars of rock that erupt from the seabed. Lunch aboard, afternoon ashore at Pirates Bight.'
   - day: 3
     label: Monday
     title: The Baths · Virgin Gorda
-    body: 'Anchor early to beat the day-charter crowd. Granite boulders the size of houses, sea pools you can swim between. Afternoon sail to Spanish Town.'
   - day: 4
     label: Tuesday
     title: Anegada
-    body: 'Overnight passage to the lone coral atoll in the chain. Bonefish flats, pink-sand beaches, and the lobster dinner the BVI is genuinely famous for.'
   - day: 5
     label: Wednesday
     title: Jost Van Dyke
-    body: 'Day in White Bay - the bar at the Soggy Dollar is exactly as advertised. Quiet anchorage at Great Harbour after.'
   - day: 6
     label: Thursday
     title: Sandy Spit & Sandy Cay
-    body: 'Two uninhabited islands, two snorkels, one nap. The kind of day this trip was built around.'
   - day: 7
     label: Friday
     title: Cooper Island
-    body: 'Final overnight at Manchioneel Bay. Long dinner, long stars, last swim before sunrise.'
   - day: 8
     label: Saturday
     title: Disembarkation · Nanny Cay
-    body: 'Brunch aboard, off the boat by 11am. Most guests grab a ferry to Beef Island for the afternoon flight home.'
 inclusions:
   - All meals aboard, chef-prepared
   - Snorkel gear, paddleboards, kayaks
   - Private cabin with ensuite head
-  - Fuel and dockage
+  - Fuel and moorings
   - Captain and host
 exclusions:
   - Flights to/from Beef Island (EIS)
@@ -71,9 +60,9 @@ faq:
   - q: Do I need to know how to sail?
     a: 'No. Clint handles every helm decision. If you want to learn or take the wheel under his eye, he''ll teach. If you want to read a book, the boat sails itself with him at the helm.'
   - q: What does the cabin look like?
-    a: 'Each cabin has an ensuite head (toilet + shower) and a hatch over the bed for stars at night. Air conditioning on shore power; fans underway. The catamaran was chosen for cabin volume - there''s genuinely no "small cabin" on this boat.'
+    a: 'Each cabin has an ensuite head (toilet + shower) and a hatch over the bed for stars at night. Air conditioning on shore power; fans underway. The catamaran was chosen for cabin volume.'
   - q: What if I get seasick?
-    a: 'Catamarans are dramatically more stable than monohulls - most people who get seasick on cruise ships are fine on this boat. We carry patches and Bonine. The BVI is also one of the most protected sailing grounds on earth - you''re almost never out of sight of an island.'
+    a: 'Catamarans are dramatically more stable than monohulls - most people who get seasick on cruise ships are fine on this boat. Guests should purchase seasickness remedies such as scopolamine patches, Bonine, or ginger on their own and bring them along. The BVI is also one of the most protected sailing grounds on earth - you''re almost never out of sight of an island.'
   - q: Cancellation policy?
     a: 'We recommend travelers insurance that lets you cancel for any reason and get a full refund: trawickinternational.com/?agent=21057. We talk through the details with you on a quick call before you book.'
   - q: Can we bring kids?

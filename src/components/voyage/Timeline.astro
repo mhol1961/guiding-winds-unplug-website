@@ -3,7 +3,7 @@ interface Day {
   day: number;
   label: string;
   title: string;
-  body: string;
+  body?: string;
 }
 
 interface Props {
@@ -53,9 +53,11 @@ const { itinerary } = Astro.props;
             >
               {day.title}
             </h3>
-            <p class="font-body-md text-[1rem] leading-[1.7] text-primary/75 max-w-prose">
-              {day.body}
-            </p>
+            {day.body && (
+              <p class="font-body-md text-[1rem] leading-[1.7] text-primary/75 max-w-prose">
+                {day.body}
+              </p>
+            )}
           </li>
         ))
       }

@@ -5,58 +5,49 @@ name: Croatia · Dalmatian Coast
 country: Croatia
 heroEyebrow: 'Split · Adriatic'
 nights: 7
-nightsLabel: '4 to 7'
+nightsLabel: '5 to 7'
 pricePerGuestUSD: 3850
 shortDescription: 'Split to Dubrovnik through the Dalmatian island chain. Hvar, Vis, Korčula - quiet coves with Roman ruins above and clear water below.'
 heroImage: /img/stock/voyages/croatia/croatia-hvar-harbor-hero.jpg
 heroImageAlt: Stone harbor town on the Dalmatian coast of Croatia
 galleryImages:
-  - { src: /img/stock/voyages/croatia/croatia-hvar-harbor-hero.jpg, alt: Stone harbor town on the Dalmatian coast of Croatia }
+  - { src: /img/stock/voyages/croatia/croatia-hvar-harbor-hero.jpg, alt: Hvar town and the Pakleni Islands archipelago }
+  - { src: /img/stock/voyages/croatia/gallery/croatia-vis.jpg, alt: Vis, the furthest offshore island in the Dalmatian chain }
   - { src: /img/stock/voyages/croatia/gallery/croatia-korcula-walls-01.jpg, alt: Stone walls of Korcula seen from the sea }
-  - { src: /img/stock/voyages/croatia/gallery/croatia-dalmatian-cove-02.jpg, alt: Quiet Dalmatian cove with pine forest to the waterline }
-  - { src: /img/stock/voyages/croatia/gallery/croatia-harbor-town-03.jpg, alt: Croatian harbor town at golden hour }
-  - { src: /img/stock/people/people-serving-deck-02.jpg, alt: Host serving a meal on the deck of a catamaran }
+  - { src: /img/stock/voyages/croatia/gallery/croatia-mljet.jpg, alt: Mljet National Park and its saltwater lakes }
+  - { src: /img/stock/voyages/croatia/gallery/croatia-elaphites.jpg, alt: Šipan or Lopud in the Elaphite Islands }
 availableWeeks:
-  - { start: '2027-08-14', end: '2027-08-21', cabinsAvailable: 5 }
-  - { start: '2027-10-02', end: '2027-10-09', cabinsAvailable: 6 }
+  - { start: '2027-08-14', end: '2027-08-21', cabinsAvailable: 6 }
 itinerary:
   - day: 1
     label: Saturday
     title: Embarkation · Split (ACI Marina)
-    body: 'Board mid-afternoon. Short sail to Šolta for the first night - quietest island close to Split.'
   - day: 2
     label: Sunday
     title: Brač · Pučišća
-    body: 'Stone-cut harbor on the north side. Long lunch at Konoba Toni, snorkel off the boat in the afternoon.'
   - day: 3
     label: Monday
     title: Hvar · Pakleni Islands
-    body: 'Anchor off the Pakleni archipelago - pine-fringed coves with water you can see the anchor in. Evening ashore in Hvar town.'
   - day: 4
     label: Tuesday
     title: Vis
-    body: 'Furthest island offshore. The Blue Cave at Biševo (if conditions allow) is the snorkel of the trip. Dinner in Komiža.'
   - day: 5
     label: Wednesday
     title: Korčula
-    body: 'Walled town that claims Marco Polo as a native son. Afternoon ashore, sunset from the turret at Massimo.'
   - day: 6
     label: Thursday
     title: Mljet
-    body: 'Day in the national park. Two saltwater lakes, a Benedictine monastery on an island in the middle. Quiet anchorage at Polače.'
   - day: 7
     label: Friday
     title: Šipan or Lopud
-    body: 'Final overnight in the Elaphites. Long dinner ashore.'
   - day: 8
     label: Saturday
     title: Disembarkation · Dubrovnik (ACI Marina)
-    body: 'One-way charter. Off by 10am, transfer to Dubrovnik for evening flight.'
 inclusions:
   - All meals aboard, chef-prepared (Croatian-leaning galley menu)
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
-  - Fuel and dockage
+  - Fuel and moorings
   - Captain and host
 exclusions:
   - Flights to Split (SPU) / from Dubrovnik (DBV)
