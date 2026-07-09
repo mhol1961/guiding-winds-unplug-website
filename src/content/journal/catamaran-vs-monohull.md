@@ -41,7 +41,7 @@ That's the trade. A monohull's deep keel is a beautiful thing underway. At ancho
 
 ## 2. Cabin volume per linear foot
 
-A 50-foot monohull, with rare exception, has four cabins. A 50-foot catamaran fits roughly double that. The geometry is just better - two hulls means two parallel cabin runs, each with its own windows, headroom, and ensuite head. The catamaran we run gives every guest a private ensuite cabin with a proper queen berth, hatches over every bed, and no shared-head schedule for guests to negotiate. Nobody is sleeping in a salon convertible. Nobody is brushing their teeth in the galley sink.
+A 50-foot monohull, with rare exception, has four cabins. A 50-foot catamaran fits roughly double that. The geometry is just better - two hulls means two parallel cabin runs, each with its own windows, headroom, and ensuite head. The catamarans we run give every guest a private ensuite cabin with a proper berth, hatches over the bed, and no shared-head schedule for guests to negotiate. Nobody is sleeping in a salon convertible. Nobody is brushing their teeth in the galley sink.
 
 To match that cabin count on a monohull you'd need a 65 to 70-foot boat. The operating costs at that size jump dramatically - bigger sails, bigger dock fees, bigger crew requirements, marinas that can't take you. The cat gets you far more private cabins at a 50-foot operating profile. For a small-group charter that's the whole math.
 

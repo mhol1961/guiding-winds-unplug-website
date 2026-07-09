@@ -25,9 +25,9 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('## Voyages (2027 calendar)');
   lines.push('');
   for (const v of voyages) {
-    const cabins = v.data.availableWeeks.reduce((sum, w) => sum + w.cabinsAvailable, 0);
+    const weeks = v.data.availableWeeks.length;
     lines.push(
-      `- [${v.data.name}](${origin}/voyages/${v.data.slug}): ${v.data.shortDescription} ${cabins} cabins open in 2027. From $${v.data.pricePerGuestUSD.toLocaleString()} per guest, all-inclusive.`,
+      `- [${v.data.name}](${origin}/voyages/${v.data.slug}): ${v.data.shortDescription} ${weeks} ${weeks === 1 ? 'week' : 'weeks'} open in 2027. From $${v.data.pricePerGuestUSD.toLocaleString()} per guest, all-inclusive.`,
     );
   }
   lines.push('');

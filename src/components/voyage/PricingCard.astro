@@ -74,7 +74,7 @@ function formatWeek(start: string, end: string): string {
                     : 'text-primary/70',
               ]}
             >
-              {week.cabinsAvailable === 0 ? 'Sold out' : `${week.cabinsAvailable} cabins`}
+              {week.cabinsAvailable === 0 ? 'Sold out' : week.cabinsAvailable < 3 ? 'Nearly full' : 'Open'}
             </span>
           </li>
         ))

@@ -22,6 +22,7 @@ itinerary:
   - day: 1
     label: Saturday
     title: Embarkation · Split (ACI Marina)
+    body: We stay tied up at the marina this first night, so everyone can get settled aboard before we head out in the morning.
   - day: 2
     label: Sunday
     title: Brač · Pučišća

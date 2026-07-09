@@ -36,7 +36,6 @@ const rows: CalendarRow[] = voyages
   .sort((a, b) => a.start.localeCompare(b.start));
 
 const totalWeeks = rows.length;
-const totalCabins = rows.reduce((s, r) => s + r.cabinsAvailable, 0);
 
 const regionLabel: Record<string, string> = {
   caribbean: 'Caribbean',
@@ -67,7 +66,7 @@ const schemaGraph = [
 
 <BaseLayout title={title} description={description} transparentNav schema={schemaGraph}>
   <PageHero
-    eyebrow={`2027 Calendar · ${totalCabins} cabins available now`}
+    eyebrow="2027 Calendar"
     headlinePrefix="The 2027 weeks."
     headlineEmphasis="Up to 12 guests each."
     subline="Pick a region, pick a week, and book a quick call. We speak with every guest before booking."
@@ -130,7 +129,7 @@ const schemaGraph = [
                 </p>
                 <p class="col-span-2 sm:col-span-1 text-right font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold tabular-nums">
                   <span class={soldOut ? 'text-primary/40' : row.cabinsAvailable <= 2 ? 'text-accent' : 'text-primary/65'}>
-                    {soldOut ? 'Sold out' : `${row.cabinsAvailable} cabins`}
+                    {soldOut ? 'Sold out' : row.cabinsAvailable < 3 ? 'Nearly full' : 'Open'}
                   </span>
                 </p>
                 <div class="col-span-3 sm:col-span-2 text-right">

@@ -13,7 +13,7 @@ seo:
 draft: false
 ---
 
-Most pack-lists for a catamaran charter are written by someone who has never lived on a boat for a week. They tell you to bring a robe and a pair of deck shoes, then forget to mention that you cannot, in any meaningful sense, blow-dry your hair at anchor, and that the deck shoes you bought for the trip will be in the bottom of your duffel by Tuesday. We've hosted enough voyages now to know what people quietly wish they'd packed by midweek - and what they wish they'd left at home. The list below is what we tell friends. It is also, after fourteen voyages a year, the closest thing we have to a manifesto on what to pack catamaran charter style without overpacking.
+Most pack-lists for a catamaran charter are written by someone who has never lived on a boat for a week. They tell you to bring a robe and a pair of deck shoes, then forget to mention that you cannot, in any meaningful sense, blow-dry your hair at anchor, and that the deck shoes you bought for the trip will be in the bottom of your duffel by Tuesday. We've hosted enough voyages now to know what people quietly wish they'd packed by midweek - and what they wish they'd left at home. The list below is what we tell friends. It is also, after years of voyages, the closest thing we have to a manifesto on what to pack catamaran charter style without overpacking.
 
 ## The seven you wish you had
 

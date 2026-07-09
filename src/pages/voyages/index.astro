@@ -166,10 +166,6 @@ const regionGroups: RegionGroup[] = regionKeys.map((key) => {
     .sort((a, b) => (a.weeks[0]?.start ?? '').localeCompare(b.weeks[0]?.start ?? ''));
 
   const totalWeeks = voyageGroups.reduce((sum, vg) => sum + vg.weeks.length, 0);
-  const totalCabins = voyageGroups.reduce(
-    (sum, vg) => sum + vg.weeks.reduce((s, w) => s + w.cabinsAvailable, 0),
-    0,
-  );
 
   const theme = regionTheme[key];
   const allRegionWeeks = voyageGroups.flatMap((vg) => vg.weeks);
@@ -185,7 +181,6 @@ const regionGroups: RegionGroup[] = regionKeys.map((key) => {
     accentBorder: theme.accentBorder,
     voyages: voyageGroups,
     totalWeeks,
-    totalCabins,
   };
 });
 
@@ -251,10 +246,7 @@ const schemaGraph = [
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 lg:gap-6">
         {
           sorted.map((voyage) => {
-            const totalCabins = voyage.data.availableWeeks.reduce(
-              (sum, w) => sum + w.cabinsAvailable,
-              0,
-            );
+            const weekCount = voyage.data.availableWeeks.length;
             return (
               <a
                 href={`/voyages/${voyage.data.slug}`}
@@ -273,7 +265,7 @@ const schemaGraph = [
                     {regionLabel[voyage.data.region]}
                   </span>
                   <span class="absolute bottom-4 right-4 font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-bone tabular-nums">
-                    {totalCabins} cabins
+                    {weekCount} {weekCount === 1 ? 'week' : 'weeks'}
                   </span>
                 </div>
                 <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70">
@@ -368,7 +360,7 @@ const schemaGraph = [
                     </p>
                   </div>
                   <div class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/70 tabular-nums lg:pb-2">
-                    {region.totalCabins} cabins open
+                    {region.totalWeeks} {region.totalWeeks === 1 ? 'week' : 'weeks'} open
                   </div>
                 </div>
 
@@ -474,7 +466,7 @@ const schemaGraph = [
                                           class={`inline-block size-1.5 rounded-full mr-2 ${low ? 'bg-accent' : 'bg-sun-deep/80'}`}
                                           aria-hidden="true"
                                         ></span>
-                                        {week.cabinsAvailable} cabins open{low ? ' · low' : ''}
+                                        {low ? 'Nearly full' : 'Cabins open'}
                                       </>
                                     )}
                                   </span>
@@ -533,8 +525,8 @@ const schemaGraph = [
       </h2>
       <p class="font-body-lg text-[1.0625rem] text-primary/75 mt-6 leading-[1.6] max-w-2xl mx-auto">
         We speak with every guest before booking. Book a quick call and we'll
-        walk you through the open weeks, then send the booking link after we
-        talk. Dodie or Clint reply within 24 hours.
+        walk you through the open weeks, then send payment details by email
+        after we talk. Dodie or Clint reply within 24 hours.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a

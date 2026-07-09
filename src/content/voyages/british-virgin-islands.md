@@ -24,6 +24,7 @@ itinerary:
   - day: 1
     label: Saturday
     title: Embarkation · Nanny Cay
+    body: We stay tied up at the marina this first night, so everyone can get settled aboard before we head out in the morning.
   - day: 2
     label: Sunday
     title: Norman Island
@@ -84,7 +85,7 @@ publishedAt: 2026-05-17
 
 ## The shape of a week
 
-You fly into Beef Island on a Friday or early Saturday, you're aboard by 2pm, and by sundown you're at a quiet anchorage somewhere most charter guests never see on day one. Saturdays in the BVI are noisy at the marina and quiet everywhere else, which is exactly why we leave the dock fast. From there the week opens up: short, easy passages between anchorages, long afternoons in the water, and dinners that run until the stars come out. You'll never be on the boat for more than four hours at a stretch. Most days it's two.
+You fly into Beef Island on a Friday or early Saturday and you're aboard by 2pm. The first night we stay tied up at the marina - you unpack once, find your cabin, have a long dinner aboard, and get settled while the boat sits still. In the morning we slip the lines and the week begins. From there the week opens up: short, easy passages between anchorages, long afternoons in the water, and dinners that run until the stars come out. You'll never be on the boat for more than four hours at a stretch. Most days it's two.
 
 The British Virgin Islands sailing charter circuit is well-trodden for a reason - the islands sit close together, the trade winds are dependable, and the chain shelters you from open Atlantic swell almost everywhere you'd want to drop a hook. What separates one week from another is who's reading the weather, where you anchor when the day boats arrive, and what shows up at dinner. We anchor where the crowd isn't. By Wednesday the catamaran charter Tortola itineraries you'd find in a brochure feel like a different trip entirely.
 
@@ -104,4 +105,4 @@ Clint reads weather the way other people read the news. He'll change the next da
 
 ## Booking
 
-Weeks are available across 2027 - see the calendar for what's open. Some already have fewer than four cabins left. We speak with every guest before booking, so book a quick call and we'll talk it through before you commit anything.
+Weeks are available across 2027 - see the calendar for what's open. Some are already nearly full. We speak with every guest before booking, so book a quick call and we'll talk it through before you commit anything.

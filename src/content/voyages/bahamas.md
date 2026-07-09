@@ -22,6 +22,7 @@ itinerary:
   - day: 1
     label: Saturday
     title: Embarkation · Marsh Harbour
+    body: We stay tied up at the marina this first night, so everyone can get settled aboard before we head out in the morning.
   - day: 2
     label: Sunday
     title: Hope Town
@@ -80,7 +81,7 @@ The water is shallow enough that you can stand a half-mile from any beach. The p
 
 ## The shape of the week
 
-You board Saturday afternoon at Marsh Harbour. We provision, you settle into your cabin, and we slip the lines for the short crossing of the Sea of Abaco to Hope Town for the first night under the candy-striped lighthouse - one of only three hand-wound, kerosene-burning lighthouses still operating anywhere in the world. The climb is 101 steps. The view at the top is the whole chain laid out below you.
+You board Saturday afternoon at Marsh Harbour. We provision, you settle into your cabin, and we spend the first night tied up at the marina so everyone can get their bearings before we head out. In the morning we slip the lines for the short crossing of the Sea of Abaco to Hope Town, under the candy-striped lighthouse - one of only three hand-wound, kerosene-burning lighthouses still operating anywhere in the world. The climb is 101 steps. The view at the top is the whole chain laid out below you.
 
 From Hope Town we drift south through Tilloo Cay and Sandy Cay - two low scraps of land with a sea garden you can swim to from the boat. Sandy Cay's reef is the snorkel of the trip; pillar coral, fans, a resident pair of nurse sharks that have been there longer than the marina at Marsh Harbour. Lunch aboard, afternoon nap on the trampoline, dinner at anchor.
 

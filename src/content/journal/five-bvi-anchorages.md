@@ -8,14 +8,14 @@ author: clint
 publishedAt: 2026-06-18
 relatedVoyage: british-virgin-islands
 seo:
-  title: 'The 5 Best BVI Anchorages, by a Captain Who Sails 14 Weeks a Year'
+  title: 'The 5 Best BVI Anchorages, by a Captain Who Sails the Chain All Season'
   description: "Norman Island, The Baths, Anegada, Cooper Island, Jost Van Dyke - the BVI anchorages we'd anchor at again, and why."
 draft: false
 ---
 
 There are something like sixty named anchorages in the British Virgin Islands, depending on who's counting and whether you include the moorings that only hold three boats. Most charter brochures push the same five - Soggy Dollar, Bitter End, Cooper, The Baths, Norman - and run those five every week for every guest. That's a fine list. It's not the list I'd pick.
 
-I've been running the BVI roughly fourteen weeks a year for the last several seasons. After enough trips you stop reading the brochures and start filtering on what you'd want again if someone told you you only got five. Not the five that photograph best. The five you'd anchor at on a week you were doing for yourself.
+I've been running the BVI season after season for years now. After enough trips you stop reading the brochures and start filtering on what you'd want again if someone told you you only got five. Not the five that photograph best. The five you'd anchor at on a week you were doing for yourself.
 
 Here they are, with the practical notes I'd give a captain friend.
 

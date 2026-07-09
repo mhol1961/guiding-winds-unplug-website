@@ -64,10 +64,6 @@ const regionLabel: Record<string, string> = {
       {
         sorted.map((voyage) => {
           const weeks = voyage.data.availableWeeks.length;
-          const totalCabins = voyage.data.availableWeeks.reduce(
-            (sum, w) => sum + w.cabinsAvailable,
-            0,
-          );
           const hero = heroFor[voyage.data.slug] ?? heroFor['british-virgin-islands'];
           return (
             <a
@@ -92,7 +88,7 @@ const regionLabel: Record<string, string> = {
                 </span>
                 {/* Availability chip - bottom-right, plain type */}
                 <span class="absolute bottom-4 right-4 font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-bone tabular-nums">
-                  {totalCabins} cabins · {weeks} {weeks === 1 ? 'wk' : 'wks'}
+                  {weeks} {weeks === 1 ? 'week' : 'weeks'} open
                 </span>
               </div>
 
