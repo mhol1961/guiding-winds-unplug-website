@@ -45,7 +45,7 @@ itinerary:
     label: Saturday
     title: Disembarkation · Marsh Harbour
 inclusions:
-  - All meals aboard, chef-prepared
+  - All meals aboard, cooked fresh in the galley
   - Snorkel gear, paddleboards, kayaks
   - Private cabin with ensuite head
   - Fuel and moorings

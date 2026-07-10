@@ -45,7 +45,7 @@ itinerary:
     label: Saturday
     title: Disembarkation · Santorini
 inclusions:
-  - All meals aboard, chef-prepared (Greek-leaning galley menu)
+  - All meals aboard, cooked fresh (Greek-leaning galley menu)
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and moorings

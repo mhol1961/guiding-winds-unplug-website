@@ -111,8 +111,8 @@ export const POST: APIRoute = async ({ request }) => {
       {
         ok: false,
         error:
-          'Our form is temporarily down. Email dodie@guidingwinds-unplug.com directly and we will reply within 24 hours.',
-        mailto: `mailto:dodie@guidingwinds-unplug.com?subject=Inquiry%20%E2%80%94%20${encodeURIComponent(
+          'Our form is temporarily down. Email guidingwindsunplug@gmail.com directly and we will reply within 24 hours.',
+        mailto: `mailto:guidingwindsunplug@gmail.com?subject=Inquiry%20%E2%80%94%20${encodeURIComponent(
           data.firstName + ' ' + data.lastName,
         )}&body=${encodeURIComponent(
           `Hi Dodie,\n\nI tried to submit through the website but the form is down. My details:\n\nName: ${data.firstName} ${data.lastName}\nEmail: ${data.email}\nPhone: ${data.phone ?? ''}\nParty size: ${data.partySize}\nPreferred week: ${data.week ?? 'flexible'}\nRegion: ${data.region ?? ''}\nNotes:\n${data.notes ?? ''}\n\nThanks,\n${data.firstName}`,

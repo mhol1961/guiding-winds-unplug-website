@@ -45,7 +45,7 @@ itinerary:
     label: Saturday
     title: Disembarkation · Milazzo
 inclusions:
-  - All meals aboard, chef-prepared (Italian-leaning galley menu)
+  - All meals aboard, cooked fresh (Italian-leaning galley menu)
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and moorings

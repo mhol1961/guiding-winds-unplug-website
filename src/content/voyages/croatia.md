@@ -45,7 +45,7 @@ itinerary:
     label: Saturday
     title: Disembarkation · Dubrovnik (ACI Marina)
 inclusions:
-  - All meals aboard, chef-prepared (Croatian-leaning galley menu)
+  - All meals aboard, cooked fresh (Croatian-leaning galley menu)
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and moorings

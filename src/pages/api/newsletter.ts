@@ -66,7 +66,7 @@ export const POST: APIRoute = async ({ request }) => {
       {
         ok: false,
         error:
-          'Subscription is temporarily down. Email dodie@guidingwinds-unplug.com to subscribe directly.',
+          'Subscription is temporarily down. Email guidingwindsunplug@gmail.com to subscribe directly.',
       },
       503,
     );

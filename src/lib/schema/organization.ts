@@ -44,7 +44,7 @@ export function organization({ baseUrl }: OrgInput) {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Reservations',
-      email: 'dodie@guidingwinds-unplug.com',
+      email: 'guidingwindsunplug@gmail.com',
       availableLanguage: ['English'],
     },
   };

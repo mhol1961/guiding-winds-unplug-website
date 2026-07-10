@@ -47,7 +47,7 @@ itinerary:
     label: Saturday
     title: Disembarkation · Nanny Cay
 inclusions:
-  - All meals aboard, chef-prepared
+  - All meals aboard, cooked fresh in the galley
   - Snorkel gear, paddleboards, kayaks
   - Private cabin with ensuite head
   - Fuel and moorings
@@ -99,7 +99,7 @@ The back half of the week is softer. Jost Van Dyke for a long lunch at White Bay
 
 This isn't a retreat with a schedule. It's a week on a boat with two people who happen to know how to set one up so you actually unwind. There's no onboard internet by default; Wi-Fi can be bought but it's unreliable, and most guests find the phone stops feeling useful by the second night anyway. If you want to sleep until coffee, the coffee will still be there.
 
-Clint reads weather the way other people read the news. He'll change the next day's plan over breakfast because the wind backed two points overnight, and you'll have one of those mornings where the boat is the only one in the anchorage. The galley runs the way a chef runs a tasting menu - a different meal every dinner, sourced from whichever island we provisioned at last, served on the aft deck with the sun going down behind the rig.
+Clint reads weather the way other people read the news. He'll change the next day's plan over breakfast because the wind backed two points overnight, and you'll have one of those mornings where the boat is the only one in the anchorage. The galley turns out a different meal every dinner, sourced from whichever island we provisioned at last, served on the aft deck with the sun going down behind the rig.
 
 > You don't need another vacation. You need a week where Wednesday feels like a Sunday.
 
