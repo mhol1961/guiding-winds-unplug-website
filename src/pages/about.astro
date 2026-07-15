@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
-import { Anchor, Award, Sun } from 'lucide-react';
+import { Anchor } from 'lucide-react';
 
-const title = 'Meet Clint & Dodie Kendall · Captains of Guiding Winds Unplug';
+const title = 'Meet Clint & Dodie Kendall · Guiding Winds Unplug';
 const description =
   'A husband-and-wife crew running all-inclusive catamaran voyages from the British Virgin Islands. Clint at the helm, born in Miami Beach and raised in the Florida Keys. Dodie running the galley and the guest experience.';
 
@@ -14,7 +14,7 @@ const schemaGraph = [
     '@type': 'Person',
     '@id': `${baseUrl}/about#clint`,
     name: 'Clint Kendall',
-    jobTitle: 'Captain',
+    jobTitle: 'Owner-Operator',
     worksFor: { '@type': 'Organization', name: 'Guiding Winds Unplug' },
     birthPlace: 'Miami Beach, Florida',
     knowsAbout: ['Catamaran sailing', 'Caribbean navigation', 'Long-line fishing', 'Florida Keys waters'],
@@ -23,10 +23,10 @@ const schemaGraph = [
     '@type': 'Person',
     '@id': `${baseUrl}/about#dodie`,
     name: 'Dodie Kendall',
-    jobTitle: 'Host & Galley Lead',
+    jobTitle: 'Galley Lead',
     worksFor: { '@type': 'Organization', name: 'Guiding Winds Unplug' },
     birthPlace: 'Fort Lauderdale, Florida',
-    knowsAbout: ['Galley provisioning', 'Wellness hosting', 'Guest experience'],
+    knowsAbout: ['Galley provisioning', 'Wellness curation', 'Guest experience'],
   },
   {
     '@type': 'BreadcrumbList',
@@ -44,22 +44,20 @@ const schemaGraph = [
 // specifics before launch; until then this block describes the kind
 // of coverage in place without inventing details.
 const credentials = [
-  { Icon: Award, label: 'Charter liability insurance in force' },
-  { Icon: Sun, label: 'Annual safety-equipment certification - life raft, EPIRB, AED' },
   { Icon: Anchor, label: 'Years of working Florida Keys and Caribbean waters' },
 ];
 ---
 
 <BaseLayout title={title} description={description} transparentNav schema={schemaGraph}>
   {/* Image hero - Clint & Dodie on the foredeck at sunset.
-      object-[center_25%] biases the crop UP so neither captain's head
+      object-[center_25%] biases the crop UP so neither person's head
       gets clipped at hero aspect ratios. Light treatment (Stage 2): bright
       daytime turquoise photo + a single light bone bottom scrim so the
       dark headline column clears AA without darkening the daytime image. */}
   <section class="relative bg-bone text-primary overflow-hidden min-h-[88dvh] flex flex-col">
     <img
       src="/img/clint-relaxing-on-boat-islands-background.png"
-      alt="Captain Clint Kendall relaxing in the cockpit of the catamaran, a British Virgin Islands headland behind him"
+      alt="Clint Kendall relaxing in the cockpit of the catamaran, a British Virgin Islands headland behind him"
       class="absolute inset-0 w-full h-full object-cover object-[center_35%]"
       fetchpriority="high"
       decoding="async"
@@ -102,7 +100,7 @@ const credentials = [
         </div>
         <div class="lg:col-span-6">
           <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-sun-deep mb-5">
-            The captain
+            At the helm
           </p>
           <h2
             class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
@@ -142,7 +140,7 @@ const credentials = [
     eyebrow="The crew"
     headline="Two people."
     headlineItalic="One boat."
-    body="Clint reads the weather and the chain. Dodie reads the guests and the galley. The week works because neither of us is doing the other's job."
+    body="Clint reads the weather and the chart. Dodie reads the guests and the galley. The week works because neither of us is doing the other's job."
   />
 
   {/* Dodie - right image, left text (alternating). bg-paper to break the
@@ -152,7 +150,7 @@ const credentials = [
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <div class="lg:col-span-6 order-2 lg:order-1">
           <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-sun-deep mb-5">
-            The host
+            In the galley
           </p>
           <h2
             class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"

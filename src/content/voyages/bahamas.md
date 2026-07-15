@@ -6,7 +6,7 @@ country: The Bahamas
 heroEyebrow: 'Marsh Harbour · Abacos'
 nights: 7
 nightsLabel: '5 to 7'
-pricePerGuestUSD: 3550
+pricePerGuestUSD: 3350
 shortDescription: 'Hope Town, Tilloo Cay, Man-o-War. Pink-sand spits, shallow water you can stand up in a half-mile from shore, the slow side of the Caribbean.'
 heroImage: /img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg
 heroImageAlt: Hope Town candy-striped lighthouse rising above the Abacos waterfront
@@ -49,11 +49,10 @@ inclusions:
   - Snorkel gear, paddleboards, kayaks
   - Private cabin with ensuite head
   - Fuel and moorings
-  - Captain and host
+  - Crew and host
 exclusions:
   - Flights to/from Marsh Harbour (MHH)
   - Travel insurance
-  - Crew gratuity (suggested 10-15%)
   - Off-boat dining and excursions
 faq:
   - q: How does Bahamas compare to BVI?
@@ -62,7 +61,7 @@ faq:
     a: 'Seven nights, Saturday to Saturday, from the Marsh Harbour / Treasure Cay area. Specific weeks are available - see the calendar.'
 seo:
   title: 'Bahamas All-Inclusive Catamaran Charter · Abacos 2027 | Guiding Winds'
-  description: 'Hope Town, Tilloo, Man-o-War, Guana. Seven nights for up to 12 guests on a private catamaran in the Abacos. From $3,550 per guest, all-inclusive.'
+  description: 'Hope Town, Tilloo, Man-o-War, Guana. Seven nights for up to 12 guests on a private catamaran in the Abacos. From $3,350 per guest, all-inclusive.'
   keywords:
     - Bahamas catamaran charter all-inclusive
     - Abacos sailing trip
@@ -71,7 +70,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Bahamas catamaran charter sails the Abacos - a private catamaran for up to 12 guests, from **$3,550 per guest, all-inclusive**. Saturday-to-Saturday from the Marsh Harbour / Treasure Cay area, with named anchorages at Hope Town, Tilloo Cay, Man-o-War Cay, Guana Cay, and Little Harbour. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our 7-night Bahamas catamaran charter sails the Abacos - a private catamaran for up to 12 guests, from **$3,350 per guest, all-inclusive**. Saturday-to-Saturday from the Marsh Harbour / Treasure Cay area, with named anchorages at Hope Town, Tilloo Cay, Man-o-War Cay, Guana Cay, and Little Harbour. Weeks available across 2027 - see the calendar.
 
 ## Why the Abacos, not the Exumas
 
@@ -97,4 +96,4 @@ This is the slowest trip we run. Shorter passages, fewer bar stops, fewer named 
 
 ## Booking
 
-Weeks are available across 2027 - each Saturday to Saturday, each at $3,550 per guest. See the calendar for open weeks. We speak with every guest before booking, so book a quick call and we'll talk it through. If you want the whole boat for a private group, ask - we run private-charter weeks at the same rate with a tailored itinerary.
+Weeks are available across 2027 - each Saturday to Saturday, each at $3,350 per guest. See the calendar for open weeks. We speak with every guest before booking, so book a quick call and we'll talk it through. If you want the whole boat for a private group, ask - we run private-charter weeks at the same rate with a tailored itinerary.

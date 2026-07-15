@@ -6,7 +6,7 @@ country: Italy
 heroEyebrow: 'Salerno · Tyrrhenian Sea'
 nights: 7
 nightsLabel: '5 to 7'
-pricePerGuestUSD: 3850
+pricePerGuestUSD: 3650
 shortDescription: 'Capri at sunrise, Positano on the water, the volcanic Aeolian chain - dinners ashore that ruin you for hotel restaurants forever.'
 heroImage: /img/stock/voyages/italy/italy-amalfi-coast-hero.jpg
 heroImageAlt: Pastel houses of an Amalfi coast village seen from the water
@@ -49,18 +49,17 @@ inclusions:
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and moorings
-  - Captain and host
+  - Crew and host
 exclusions:
   - Flights to Naples (NAP) / from Catania (CTA)
   - Travel insurance
-  - Crew gratuity (suggested 10-15%)
   - Off-boat dining (we cover one shore dinner; others on you)
 faq:
   - q: How does Italy compare to BVI?
     a: 'Less swimming-pool turquoise, more "you''re in a postcard." Longer passages, more shore time, more dinners ashore. Higher price reflects Mediterranean dockage and provisioning costs.'
 seo:
   title: 'Italy Catamaran Charter 2027 · Amalfi & Aeolian | Guiding Winds'
-  description: 'Capri, Positano, Stromboli, Panarea. Seven nights aboard a private catamaran for up to 12 guests on the Tyrrhenian coast. From $3,850 per guest, all-inclusive.'
+  description: 'Capri, Positano, Stromboli, Panarea. Seven nights aboard a private catamaran for up to 12 guests on the Tyrrhenian coast. From $3,650 per guest, all-inclusive.'
   keywords:
     - Amalfi coast catamaran charter
     - Italy wellness sailing
@@ -68,11 +67,11 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a private catamaran for up to 12 guests. The route threads the Amalfi coast - Amalfi, Positano, Capri - then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. From **$3,850 per guest, all-inclusive** - captained by Clint Kendall. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a private catamaran for up to 12 guests. The route threads the Amalfi coast - Amalfi, Positano, Capri - then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. From **$3,650 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
 
 ## The arc no one else sails in a week
 
-Most Italy charters pick a coast and stay on it. The Amalfi boats stay near Capri. The Aeolian boats stay near Sicily. The two cruising grounds are roughly 150 nautical miles apart, and the operators who do both usually do them as separate ten-day trips. We sail it as a single week because we have a captain who'll stand the overnight passage himself, and because the trip is more interesting when the back half doesn't look anything like the front half. You start on the Amalfi coast, where the towns are vertical and the cliffs are theatrical. You finish in the Aeolian chain, where the islands are volcanic and the harbors are quiet. The contrast is the trip.
+Most Italy charters pick a coast and stay on it. The Amalfi boats stay near Capri. The Aeolian boats stay near Sicily. The two cruising grounds are roughly 150 nautical miles apart, and the operators who do both usually do them as separate ten-day trips. We sail it as a single week because Clint stands the overnight passage himself, and because the trip is more interesting when the back half doesn't look anything like the front half. You start on the Amalfi coast, where the towns are vertical and the cliffs are theatrical. You finish in the Aeolian chain, where the islands are volcanic and the harbors are quiet. The contrast is the trip.
 
 ## The anchorages this voyage is known for
 
@@ -86,7 +85,7 @@ A catamaran in the Tyrrhenian solves two problems a monohull does not. First, do
 
 ## What the higher price actually pays for
 
-The Italy voyage runs $3,850 per guest - $300 more than the Caribbean weeks. Mediterranean dockage costs roughly four times what a BVI mooring ball costs, provisioning at a Salerno market runs materially higher than at a Tortola IGA, and Sicilian fuel sits at a different price tier altogether. The Italy wellness sailing market mostly hides those costs in an a-la-carte structure that tacks them onto your final invoice. We don't. The price you see is the price you pay; the only money you'll spend ashore is on the shore dinners we don't cover and whatever you decide to bring home.
+The Italy voyage runs $3,650 per guest - $300 more than the Caribbean weeks. Mediterranean dockage costs roughly four times what a BVI mooring ball costs, provisioning at a Salerno market runs materially higher than at a Tortola IGA, and Sicilian fuel sits at a different price tier altogether. The Italy wellness sailing market mostly hides those costs in an a-la-carte structure that tacks them onto your final invoice. We don't. The price you see is the price you pay; the only money you'll spend ashore is on the shore dinners we don't cover and whatever you decide to bring home.
 
 > The Amalfi coast from a hotel terrace is a view. From the foredeck at six in the morning, it is a place.
 

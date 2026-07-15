@@ -15,7 +15,7 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('# Guiding Winds Unplug');
   lines.push('');
   lines.push(
-    '> Off-grid all-inclusive catamaran voyages for up to 12 guests in the British Virgin Islands, Bahamas, and Mediterranean. From $3,550 per guest, per week. Captained by Clint Kendall.',
+    '> Off-grid all-inclusive catamaran voyages for up to 12 guests in the British Virgin Islands, Bahamas, and Mediterranean. From $3,350 per guest, per week. Owner-run by Clint and Dodie Kendall.',
   );
   lines.push('');
   lines.push(
@@ -33,8 +33,8 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('');
   lines.push('## Plan');
   lines.push('');
-  lines.push(`- [About - Clint & Dodie Kendall](${origin}/about): One-captain husband-and-wife operation. Years in the chain.`);
-  lines.push(`- [Aboard - what's included](${origin}/aboard): All meals cooked fresh aboard, snorkel gear, paddleboards, kayaks, private cabin with ensuite head, fuel, moorings, captain, host. Private ensuite cabins for up to 12 guests.`);
+  lines.push(`- [About - Clint & Dodie Kendall](${origin}/about): Owner-run husband-and-wife operation. Years in the chain.`);
+  lines.push(`- [Aboard - what's included](${origin}/aboard): All meals cooked fresh aboard, snorkel gear, paddleboards, kayaks, private cabin with ensuite head, fuel, moorings, crew, host. Private ensuite cabins for up to 12 guests.`);
   lines.push(`- [Calendar](${origin}/calendar): Live 2027 availability across the BVI, Bahamas, and Mediterranean - see the calendar.`);
   lines.push(`- [FAQ](${origin}/faq): Booking, the boat, the experience, logistics, and safety.`);
   lines.push(`- [Book a quick Zoom call](${origin}/inquire): We speak with every guest before booking. Dodie or Clint reply within 24 hours.`);

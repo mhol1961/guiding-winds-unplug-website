@@ -8,7 +8,7 @@ author: clint
 publishedAt: 2026-06-18
 relatedVoyage: british-virgin-islands
 seo:
-  title: 'The 5 Best BVI Anchorages, by a Captain Who Sails the Chain All Season'
+  title: 'The 5 Best BVI Anchorages, from Sailing the Chain All Season'
   description: "Norman Island, The Baths, Anegada, Cooper Island, Jost Van Dyke - the BVI anchorages we'd anchor at again, and why."
 draft: false
 ---

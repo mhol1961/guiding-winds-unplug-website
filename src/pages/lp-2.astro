@@ -6,14 +6,14 @@ import LpQuestionnaire from '../components/lp/LpQuestionnaire.astro';
 
 const title = 'One price. Everything aboard. · Guiding Winds Unplug';
 const description =
-  'All-inclusive catamaran charters: cabin, meals, fuel, moorings, and snorkel gear, with a private captain and host. Up to 12 guests. BVI, Bahamas, Mediterranean.';
+  'All-inclusive catamaran charters: cabin, meals, fuel, moorings, and snorkel gear, with a private crew and host. Up to 12 guests. BVI, Bahamas, Mediterranean.';
 
 const inclusions = [
   { h: 'Your private cabin', b: 'A cabin with an ensuite head, AC on shore power, linens and towels provided.' },
   { h: 'Meals aboard, every day', b: 'Breakfast, lunch, and dinner — the menu shifts with the destination.' },
   { h: 'Fuel & moorings', b: 'No itemized fuel surcharge. Mooring fees covered at every overnight.' },
   { h: 'Snorkel gear', b: 'Masks, fins, and snorkels in every size. Reefs and wrecks on tap.' },
-  { h: 'Captain & host', b: 'An experienced captain runs the boat; a host runs the galley and the experience.' },
+  { h: 'Crew & host', b: 'An experienced crew runs the boat; a host runs the galley and the experience.' },
   { h: 'The right to unplug', b: 'No agenda, no upsells. The week is built around slowing down.' },
 ];
 const reviews = [
@@ -38,7 +38,7 @@ const reviews = [
           </h1>
           <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.55] text-ink-soft mt-7">
             Cabin, meals, fuel, moorings, and snorkel gear - all in. A private catamaran with a
-            captain and host, in the BVI, the Bahamas, or the Mediterranean.
+            crew and host, in the BVI, the Bahamas, or the Mediterranean.
           </p>
           <div class="mt-9 flex flex-col sm:flex-row sm:items-center gap-4">
             <a href="#start" class="inline-flex items-center justify-center gap-2 bg-accent text-primary font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-9 py-[20px] min-h-[52px] hover:bg-accent-hot transition-colors">
@@ -64,7 +64,7 @@ const reviews = [
       <h2 class="font-display font-light text-ink leading-[1.05] tracking-[-0.025em]" style="font-size: clamp(1.9rem, 3.5vw + 1rem, 3rem);">
         What "all-inclusive" actually means here
       </h2>
-      <p class="font-body-lg text-[1.0625rem] text-ink-soft mt-4 max-w-2xl">One number covers the week. The only things separate are flights, travel insurance, and a crew gratuity.</p>
+      <p class="font-body-lg text-[1.0625rem] text-ink-soft mt-4 max-w-2xl">One number covers the week. The only things separate are flights and travel insurance.</p>
       <div class="grid gap-4 lg:gap-5 mt-10 sm:grid-cols-2 lg:grid-cols-3">
         {inclusions.map((x) => (
           <div class="group relative bg-surface border border-hairline p-8 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_14px_55px_-18px_rgba(229,64,43,0.5)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">

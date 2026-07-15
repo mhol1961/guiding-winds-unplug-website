@@ -35,8 +35,10 @@ const weeksWithLowAvailability = allWeeks.filter(
         </h2>
         <p class="font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-primary/75 mt-7 max-w-xl">
           {weeksWithLowAvailability === 1
-            ? 'One week is already nearly full.'
-            : `${weeksWithLowAvailability} weeks are already nearly full.`}{' '}
+            ? 'One week is already nearly full. '
+            : weeksWithLowAvailability > 1
+              ? `${weeksWithLowAvailability} weeks are already nearly full. `
+              : ''}
           We speak with every guest before booking. Book a quick call and we'll
           walk you through the open weeks. Dodie or Clint reply within 24 hours.
         </p>

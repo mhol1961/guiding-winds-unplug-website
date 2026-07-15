@@ -1,5 +1,5 @@
 ---
-title: A captain's case for the catamaran over the monohull
+title: The case for the catamaran over the monohull
 excerpt: 'Stability, cabin volume, draft, anchoring footprint - six reasons we picked a catamaran over a 50-foot monohull.'
 tldr: 'For an all-inclusive guest charter the catamaran wins on six measurable axes: stable at anchor (no heel, no rocking through dinner), more cabin volume per linear foot (a 50-foot catamaran fits roughly double the cabins of a 50-foot monohull), shallower draft (we anchor where keelboats can''t), twin engines (a sticking thruster doesn''t cancel the week), trampoline foredeck (no other boat gives you that much social space), and Med-mooring without the keel-swing anxiety. Monohulls sail closer to the wind and look better at sunset - neither matters when the brief is "guests should sleep."'
 category: behind-the-boat
@@ -7,7 +7,7 @@ tags: [boat, sailing, gear]
 author: clint
 publishedAt: 2026-07-16
 seo:
-  title: 'Catamaran vs Monohull: A Captain''s Honest Take | Guiding Winds'
+  title: 'Catamaran vs Monohull: An Honest Take | Guiding Winds'
   description: 'Six reasons we picked a catamaran over a monohull for our charter - stability, cabin volume, draft, and four more.'
 draft: false
 ---
@@ -107,4 +107,4 @@ The second is captains. Catamarans handle differently - different sail trim, dif
 
 We started fresh, with the charter brief in mind, and the boat came out of that filter. If you've sailed both and prefer the monohull experience for your own week, I'd point you to one of the better single-hull operators in the BVI without hesitation. If the brief is the one we wrote - guests sleep, a private cabin each, shallow water, easy arrivals, social space at anchor - the catamaran charter wins on every axis that matters.
 
-That's the captain's case. The catamaran vs monohull charter debate is mostly a brief-writing exercise. Write the brief, then pick the boat. We did, and the boat picked itself.
+That's the case. The catamaran vs monohull charter debate is mostly a brief-writing exercise. Write the brief, then pick the boat. We did, and the boat picked itself.
