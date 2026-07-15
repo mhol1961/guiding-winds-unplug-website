@@ -49,7 +49,7 @@ inclusions:
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and moorings
-  - Crew and host
+  - Crew
 exclusions:
   - Flights to Split (SPU) / from Dubrovnik (DBV)
   - Travel insurance
@@ -59,14 +59,14 @@ faq:
     a: 'Seven nights, one-way from Split to Dubrovnik through the Dalmatian island chain. Specific weeks are available - see the calendar.'
 seo:
   title: 'Croatia Catamaran Charter 2027 · Split to Dubrovnik | Guiding Winds'
-  description: 'Hvar, Vis, Korčula, Mljet. Seven nights aboard a private catamaran for up to 12 guests through the Dalmatian chain. From $3,650 per guest, all-inclusive.'
+  description: 'Hvar, Vis, Korčula, Mljet. Seven nights aboard a private catamaran for up to 12 guests through the Dalmatian chain. Starts at $3,650 per guest, all-inclusive.'
   keywords:
     - Croatian coast sailing charter
     - Dalmatian Coast sailing
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Croatian coast sailing charter runs one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a private catamaran for up to 12 guests. The route threads the Dalmatian chain - Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites - and finishes with a transfer to Dubrovnik for the flight home. From **$3,650 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our 7-night Croatian coast sailing charter runs one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a private catamaran for up to 12 guests. The route threads the Dalmatian chain - Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites - and finishes with a transfer to Dubrovnik for the flight home. Starts at **$3,650 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
 
 ## The Dalmatian coast is not a beach coast
 

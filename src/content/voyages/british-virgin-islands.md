@@ -51,7 +51,7 @@ inclusions:
   - Snorkel gear, paddleboards, kayaks
   - Private cabin with ensuite head
   - Fuel and moorings
-  - Crew and host
+  - Crew
 exclusions:
   - Flights to/from Beef Island (EIS)
   - Travel insurance
@@ -71,7 +71,7 @@ faq:
     a: 'We don''t provide onboard internet. Wi-Fi can be purchased for an additional charge, and the connection can be unreliable at times. Most guests embrace the unplug.'
 seo:
   title: 'BVI All-Inclusive Catamaran Charter 2027 · 7 Nights | Guiding Winds'
-  description: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Seven nights for up to 12 guests on a private catamaran. From $3,350 per guest, all-inclusive.'
+  description: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Seven nights for up to 12 guests on a private catamaran. Starts at $3,350 per guest, all-inclusive.'
   keywords:
     - BVI all-inclusive catamaran charter
     - British Virgin Islands sailing charter
@@ -80,7 +80,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night BVI all-inclusive catamaran charter sails Saturday to Saturday from Nanny Cay, Tortola, aboard a private catamaran for up to 12 guests. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. From **$3,350 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our 7-night BVI all-inclusive catamaran charter sails Saturday to Saturday from Nanny Cay, Tortola, aboard a private catamaran for up to 12 guests. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. Starts at **$3,350 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
 
 ## The shape of a week
 

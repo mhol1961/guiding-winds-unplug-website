@@ -49,7 +49,7 @@ inclusions:
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and moorings
-  - Crew and host
+  - Crew
 exclusions:
   - Flights to Naples (NAP) / from Catania (CTA)
   - Travel insurance
@@ -59,7 +59,7 @@ faq:
     a: 'Less swimming-pool turquoise, more "you''re in a postcard." Longer passages, more shore time, more dinners ashore. Higher price reflects Mediterranean dockage and provisioning costs.'
 seo:
   title: 'Italy Catamaran Charter 2027 · Amalfi & Aeolian | Guiding Winds'
-  description: 'Capri, Positano, Stromboli, Panarea. Seven nights aboard a private catamaran for up to 12 guests on the Tyrrhenian coast. From $3,650 per guest, all-inclusive.'
+  description: 'Capri, Positano, Stromboli, Panarea. Seven nights aboard a private catamaran for up to 12 guests on the Tyrrhenian coast. Starts at $3,650 per guest, all-inclusive.'
   keywords:
     - Amalfi coast catamaran charter
     - Italy wellness sailing
@@ -67,7 +67,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a private catamaran for up to 12 guests. The route threads the Amalfi coast - Amalfi, Positano, Capri - then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. From **$3,650 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a private catamaran for up to 12 guests. The route threads the Amalfi coast - Amalfi, Positano, Capri - then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. Starts at **$3,650 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
 
 ## The arc no one else sails in a week
 

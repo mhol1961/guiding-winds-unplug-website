@@ -49,7 +49,7 @@ inclusions:
   - Snorkel gear, paddleboards, kayaks
   - Private cabin with ensuite head
   - Fuel and moorings
-  - Crew and host
+  - Crew
 exclusions:
   - Flights to/from Marsh Harbour (MHH)
   - Travel insurance
@@ -61,7 +61,7 @@ faq:
     a: 'Seven nights, Saturday to Saturday, from the Marsh Harbour / Treasure Cay area. Specific weeks are available - see the calendar.'
 seo:
   title: 'Bahamas All-Inclusive Catamaran Charter · Abacos 2027 | Guiding Winds'
-  description: 'Hope Town, Tilloo, Man-o-War, Guana. Seven nights for up to 12 guests on a private catamaran in the Abacos. From $3,350 per guest, all-inclusive.'
+  description: 'Hope Town, Tilloo, Man-o-War, Guana. Seven nights for up to 12 guests on a private catamaran in the Abacos. Starts at $3,350 per guest, all-inclusive.'
   keywords:
     - Bahamas catamaran charter all-inclusive
     - Abacos sailing trip
@@ -70,7 +70,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Bahamas catamaran charter sails the Abacos - a private catamaran for up to 12 guests, from **$3,350 per guest, all-inclusive**. Saturday-to-Saturday from the Marsh Harbour / Treasure Cay area, with named anchorages at Hope Town, Tilloo Cay, Man-o-War Cay, Guana Cay, and Little Harbour. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our 7-night Bahamas catamaran charter sails the Abacos - a private catamaran for up to 12 guests - starts at **$3,350 per guest, all-inclusive**. Saturday-to-Saturday from the Marsh Harbour / Treasure Cay area, with named anchorages at Hope Town, Tilloo Cay, Man-o-War Cay, Guana Cay, and Little Harbour. Weeks available across 2027 - see the calendar.
 
 ## Why the Abacos, not the Exumas
 

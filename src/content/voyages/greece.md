@@ -49,7 +49,7 @@ inclusions:
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and moorings
-  - Crew and host
+  - Crew
 exclusions:
   - Flights to Athens (ATH) / from Santorini (JTR)
   - Travel insurance
@@ -59,14 +59,14 @@ faq:
     a: 'Seven nights, one-way from Athens (Alimos) to Santorini through the Cyclades. Specific weeks are available - see the calendar.'
 seo:
   title: 'Greece Catamaran Charter 2027 · Cyclades | Guiding Winds'
-  description: 'Kea, Sifnos, Folegandros, Santorini. Seven nights aboard a private catamaran for up to 12 guests through the quiet Cyclades. From $3,650 per guest, all-inclusive.'
+  description: 'Kea, Sifnos, Folegandros, Santorini. Seven nights on a private catamaran for up to 12 guests through the quiet Cyclades. Starts at $3,650 per guest, all-inclusive.'
   keywords:
     - Greek islands catamaran trip
     - Cyclades catamaran charter all-inclusive
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Greek islands catamaran trip sails one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a private catamaran for up to 12 guests. The route threads Kea, Kythnos, Sifnos, Folegandros, Ios, and Santorini - the chain at sailboat pace, not ferry pace. From **$3,650 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our 7-night Greek islands catamaran trip sails one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a private catamaran for up to 12 guests. The route threads Kea, Kythnos, Sifnos, Folegandros, Ios, and Santorini - the chain at sailboat pace, not ferry pace. Starts at **$3,650 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
 
 ## The shape of a week
 
