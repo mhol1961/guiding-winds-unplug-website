@@ -1,0 +1,43 @@
+---
+// Site-wide GoHighLevel (LeadConnector) chat widget, plus a brand-colored
+// click-to-call button that dials our AI voice line.
+//
+// Rendered once from BaseLayout, the same way the previous ChatBubble was
+// wired (gated by hideFloatingCta so it stays off /inquire). The paid-ad
+// LpLayout does NOT render this - landing pages carry their own phone CTAs.
+//
+// Brand tokens: this repo has no `brand` / `brand-hover` / `ink-inverse`
+// tokens. The site's brand action color is `accent` (#E5402B) with
+// `accent-hot` (#C92E1C) on hover and bone (#F4EFE0) text - the same accent
+// button used in lp-1. No localStorage or sessionStorage is used here.
+const PHONE_TEL = '+17723103777';
+---
+
+{/* Brand click-to-call button. Fixed bottom-right and offset up so it stacks
+    clearly ABOVE the GoHighLevel chat bubble that the loader injects into the
+    bottom-right corner. The wrapper is the `group` for the hover/focus
+    tooltip. */}
+<div class="fixed bottom-28 right-6 z-40 group print:hidden">
+  <a
+    href={`tel:${PHONE_TEL}`}
+    aria-label="Talk to our assistant"
+    class="grid place-items-center size-14 rounded-full bg-accent hover:bg-accent-hot text-bone shadow-lg transition-colors motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+  >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </a>
+  {/* Visual tooltip - shown on hover and keyboard focus. aria-hidden because
+      the link already has an accessible name (avoids a double announcement). */}
+  <span
+    aria-hidden="true"
+    class="pointer-events-none absolute right-full top-1/2 -translate-y-1/2 mr-3 whitespace-nowrap bg-primary text-bone font-label-caps uppercase tracking-[0.18em] text-[0.625rem] font-semibold px-3 py-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity motion-reduce:transition-none"
+  >
+    Talk to our assistant
+  </span>
+</div>
+
+{/* GoHighLevel / LeadConnector chat widget loader. is:inline keeps Astro from
+    bundling the tag so the data-* attributes reach the third-party loader
+    exactly as written. */}
+<script is:inline src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a59601dd166a8719fbec7d2"></script>
