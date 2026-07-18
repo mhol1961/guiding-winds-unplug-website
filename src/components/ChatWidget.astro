@@ -84,15 +84,12 @@ const PHONE_TEL = '+17723103777';
     pointer-events: auto;
   }
 
-  /* Hide GoHighLevel's own launcher bubble so only our button shows. The
-     widget renders a `chat-widget` custom element; its launcher may sit in the
-     light DOM (handled here) or in an open shadow root (handled in script).
-     The chat panel/iframe is intentionally NOT hidden. */
-  chat-widget::part(launcher),
-  chat-widget [class*='launcher' i],
-  chat-widget [class*='bubble' i],
-  #lc_text-widget,
-  [id*='chat-widget-launcher'] {
+  /* Hide GoHighLevel's own launcher bubble and its auto-greeting prompt so
+     only our button shows. These are light-DOM classes observed on the live
+     LeadConnector widget. The chat window itself is NOT hidden, so it still
+     opens when we trigger it. */
+  .lc_text-widget--bubble,
+  .lc_text-widget--prompt {
     display: none !important;
   }
 </style>
@@ -138,11 +135,16 @@ const PHONE_TEL = '+17723103777';
 
   /* ---- GoHighLevel (LeadConnector) chat control ------------------------- */
 
-  // Best-effort programmatic open. The widget is a `chat-widget` custom
-  // element; different builds expose different hooks, so we try a few in
-  // order: public methods, an open prop, then clicking its own launcher
-  // (light DOM or open shadow root).
+  // Open the GoHighLevel chat. Preferred path: click the widget's own
+  // launcher bubble (.lc_text-widget--bubble) - its click handler opens the
+  // chat, and a programmatic click fires even though the bubble is hidden via
+  // CSS. Fallbacks cover other widget builds.
   function openGhlChat() {
+    const bubble = document.querySelector('.lc_text-widget--bubble') as HTMLElement | null;
+    if (bubble) {
+      bubble.click();
+      return true;
+    }
     const cw = document.querySelector('chat-widget') as
       | (HTMLElement & Record<string, unknown>)
       | null;
@@ -158,21 +160,12 @@ const PHONE_TEL = '+17723103777';
         }
       }
     }
-    try {
-      (cw as Record<string, unknown>).isOpen = true;
-    } catch {
-      /* ignore */
-    }
-    const scopes: (ParentNode | null)[] = [cw.shadowRoot, cw, document];
-    for (const scope of scopes) {
-      if (!scope) continue;
-      const launcher = scope.querySelector(
-        '[class*="launcher" i],[class*="bubble" i],[id*="launcher"],button',
-      ) as HTMLElement | null;
-      if (launcher) {
-        launcher.click();
-        return true;
-      }
+    const fallback = cw.querySelector(
+      '[class*="bubble" i],[class*="launcher" i],button',
+    ) as HTMLElement | null;
+    if (fallback) {
+      fallback.click();
+      return true;
     }
     return false;
   }
@@ -181,27 +174,6 @@ const PHONE_TEL = '+17723103777';
     openGhlChat();
     setOpen(false);
   });
-
-  // If the widget's launcher lives in an open shadow root, page CSS can't
-  // reach it - hide it there once the element mounts.
-  function hideGhlLauncherInShadow() {
-    const cw = document.querySelector('chat-widget') as HTMLElement | null;
-    const sr = cw?.shadowRoot;
-    if (!sr || sr.getElementById('gwu-hide-launcher')) return true;
-    const style = document.createElement('style');
-    style.id = 'gwu-hide-launcher';
-    style.textContent =
-      '[class*="launcher" i],[class*="bubble" i],[id*="launcher"]{display:none !important;}';
-    sr.appendChild(style);
-    return true;
-  }
-  let tries = 0;
-  const poll = setInterval(() => {
-    if (hideGhlLauncherInShadow() && document.querySelector('chat-widget')?.shadowRoot) {
-      clearInterval(poll);
-    }
-    if (++tries > 40) clearInterval(poll); // ~20s cap
-  }, 500);
 </script>
 
 {/* GoHighLevel / LeadConnector chat widget loader. is:inline keeps Astro from
