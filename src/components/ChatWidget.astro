@@ -1,41 +1,208 @@
 ---
-// Site-wide GoHighLevel (LeadConnector) chat widget, plus a brand-colored
-// click-to-call button that dials our AI voice line.
+// Single expanding "speed-dial" launcher that replaces the two overlapping
+// floating buttons (our old coral phone FAB + GoHighLevel's blue chat bubble).
 //
-// Rendered once from BaseLayout, the same way the previous ChatBubble was
-// wired (gated by hideFloatingCta so it stays off /inquire). The paid-ad
-// LpLayout does NOT render this - landing pages carry their own phone CTAs.
+// One accent (#E5402B) button, bottom-right. Tap it to reveal two actions:
+//   - Call us       -> tel:+17723103777 (our AI voice line)
+//   - Chat with us  -> opens the GoHighLevel (LeadConnector) chat widget
 //
-// Brand tokens: this repo has no `brand` / `brand-hover` / `ink-inverse`
-// tokens. The site's brand action color is `accent` (#E5402B) with
-// `accent-hot` (#C92E1C) on hover and bone (#F4EFE0) text - the same accent
-// button used in lp-1. No localStorage or sessionStorage is used here.
+// GoHighLevel's own launcher bubble is hidden (CSS + a runtime hook) so only
+// this one button shows. Rendered once from BaseLayout, gated by
+// !hideFloatingCta; LpLayout and /inquire do not render it. Accessible
+// (keyboard, aria, prefers-reduced-motion). No localStorage / sessionStorage.
 const PHONE_TEL = '+17723103777';
 ---
 
-{/* Brand click-to-call button. Fixed bottom-right and offset up so it stacks
-    clearly ABOVE the GoHighLevel chat bubble that the loader injects into the
-    bottom-right corner. The wrapper is the `group` for the hover/focus
-    tooltip. */}
-<div class="fixed bottom-28 right-6 z-40 group print:hidden">
-  <a
-    href={`tel:${PHONE_TEL}`}
-    aria-label="Talk to our assistant"
-    class="grid place-items-center size-14 rounded-full bg-accent hover:bg-accent-hot text-bone shadow-lg transition-colors motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
+<div
+  id="gwu-speeddial"
+  class="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-3 print:hidden"
+  data-open="false"
+>
+  {/* Revealed actions - stacked above the main button, hidden until open */}
+  <div
+    id="gwu-sd-actions"
+    class="flex flex-col items-end gap-3 opacity-0 translate-y-2 pointer-events-none transition-all duration-200 motion-reduce:transition-none"
   >
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6" aria-hidden="true">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-    </svg>
-  </a>
-  {/* Visual tooltip - shown on hover and keyboard focus. aria-hidden because
-      the link already has an accessible name (avoids a double announcement). */}
-  <span
-    aria-hidden="true"
-    class="pointer-events-none absolute right-full top-1/2 -translate-y-1/2 mr-3 whitespace-nowrap bg-primary text-bone font-label-caps uppercase tracking-[0.18em] text-[0.625rem] font-semibold px-3 py-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity motion-reduce:transition-none"
+    <a
+      href={`tel:${PHONE_TEL}`}
+      class="gwu-sd-item group inline-flex items-center gap-3"
+      data-sd-item
+      tabindex="-1"
+    >
+      <span class="gwu-sd-pill">Call us</span>
+      <span class="grid place-items-center size-12 rounded-full bg-bone text-primary shadow-lg ring-1 ring-primary/10 transition-transform duration-150 group-hover:scale-105 group-focus-visible:outline-2 group-focus-visible:outline-accent group-focus-visible:outline-offset-2 motion-reduce:transition-none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </span>
+    </a>
+
+    <button
+      type="button"
+      data-sd-chat
+      data-sd-item
+      tabindex="-1"
+      class="gwu-sd-item group inline-flex items-center gap-3 cursor-pointer"
+    >
+      <span class="gwu-sd-pill">Chat with us</span>
+      <span class="grid place-items-center size-12 rounded-full bg-bone text-primary shadow-lg ring-1 ring-primary/10 transition-transform duration-150 group-hover:scale-105 group-focus-visible:outline-2 group-focus-visible:outline-accent group-focus-visible:outline-offset-2 motion-reduce:transition-none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="size-5" aria-hidden="true"><path d="M21 12c0 4.418-4.03 8-9 8-1.4 0-2.728-.282-3.917-.787L3 20l1.27-3.81C3.473 15.029 3 13.563 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </span>
+    </button>
+  </div>
+
+  {/* Main toggle */}
+  <button
+    type="button"
+    id="gwu-sd-toggle"
+    aria-expanded="false"
+    aria-controls="gwu-sd-actions"
+    aria-label="Contact us: call or chat"
+    class="grid place-items-center size-14 rounded-full bg-accent hover:bg-accent-hot text-bone shadow-lg transition-[background-color,transform] duration-150 motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
   >
-    Talk to our assistant
-  </span>
+    <svg data-sd-icon="closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="size-6" aria-hidden="true"><path d="M21 12c0 4.418-4.03 8-9 8-1.4 0-2.728-.282-3.917-.787L3 20l1.27-3.81C3.473 15.029 3 13.563 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    <svg data-sd-icon="open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6 hidden" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+  </button>
 </div>
+
+<style>
+  /* Pill label next to each action. */
+  .gwu-sd-pill {
+    background: var(--color-primary);
+    color: var(--color-bone);
+    font-family: var(--font-label-caps);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.625rem;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px -8px rgba(15, 15, 15, 0.4);
+  }
+  /* Open state: reveal the action list. */
+  #gwu-speeddial[data-open='true'] #gwu-sd-actions {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Hide GoHighLevel's own launcher bubble so only our button shows. The
+     widget renders a `chat-widget` custom element; its launcher may sit in the
+     light DOM (handled here) or in an open shadow root (handled in script).
+     The chat panel/iframe is intentionally NOT hidden. */
+  chat-widget::part(launcher),
+  chat-widget [class*='launcher' i],
+  chat-widget [class*='bubble' i],
+  #lc_text-widget,
+  [id*='chat-widget-launcher'] {
+    display: none !important;
+  }
+</style>
+
+<script>
+  const root = document.getElementById('gwu-speeddial');
+  const toggle = document.getElementById('gwu-sd-toggle');
+  const actions = document.getElementById('gwu-sd-actions');
+  const iconClosed = toggle?.querySelector('[data-sd-icon="closed"]');
+  const iconOpen = toggle?.querySelector('[data-sd-icon="open"]');
+  const items = Array.from(root?.querySelectorAll('[data-sd-item]') ?? []) as HTMLElement[];
+
+  function setOpen(open: boolean) {
+    if (!root || !toggle) return;
+    root.setAttribute('data-open', String(open));
+    toggle.setAttribute('aria-expanded', String(open));
+    iconClosed?.classList.toggle('hidden', open);
+    iconOpen?.classList.toggle('hidden', !open);
+    // Only make the actions keyboard-reachable while open.
+    items.forEach((el) => el.setAttribute('tabindex', open ? '0' : '-1'));
+  }
+
+  function isOpen() {
+    return root?.getAttribute('data-open') === 'true';
+  }
+
+  toggle?.addEventListener('click', () => {
+    const next = !isOpen();
+    setOpen(next);
+    if (next) items[0]?.focus();
+  });
+
+  // Close on Escape (return focus to the toggle) and on outside click.
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen()) {
+      setOpen(false);
+      toggle?.focus();
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (isOpen() && root && !root.contains(e.target as Node)) setOpen(false);
+  });
+
+  /* ---- GoHighLevel (LeadConnector) chat control ------------------------- */
+
+  // Best-effort programmatic open. The widget is a `chat-widget` custom
+  // element; different builds expose different hooks, so we try a few in
+  // order: public methods, an open prop, then clicking its own launcher
+  // (light DOM or open shadow root).
+  function openGhlChat() {
+    const cw = document.querySelector('chat-widget') as
+      | (HTMLElement & Record<string, unknown>)
+      | null;
+    if (!cw) return false;
+    for (const m of ['openWidget', 'open', 'show', 'loadWidget', 'maximize']) {
+      const fn = cw[m];
+      if (typeof fn === 'function') {
+        try {
+          (fn as () => void).call(cw);
+          return true;
+        } catch {
+          /* try next */
+        }
+      }
+    }
+    try {
+      (cw as Record<string, unknown>).isOpen = true;
+    } catch {
+      /* ignore */
+    }
+    const scopes: (ParentNode | null)[] = [cw.shadowRoot, cw, document];
+    for (const scope of scopes) {
+      if (!scope) continue;
+      const launcher = scope.querySelector(
+        '[class*="launcher" i],[class*="bubble" i],[id*="launcher"],button',
+      ) as HTMLElement | null;
+      if (launcher) {
+        launcher.click();
+        return true;
+      }
+    }
+    return false;
+  }
+
+  document.querySelector('[data-sd-chat]')?.addEventListener('click', () => {
+    openGhlChat();
+    setOpen(false);
+  });
+
+  // If the widget's launcher lives in an open shadow root, page CSS can't
+  // reach it - hide it there once the element mounts.
+  function hideGhlLauncherInShadow() {
+    const cw = document.querySelector('chat-widget') as HTMLElement | null;
+    const sr = cw?.shadowRoot;
+    if (!sr || sr.getElementById('gwu-hide-launcher')) return true;
+    const style = document.createElement('style');
+    style.id = 'gwu-hide-launcher';
+    style.textContent =
+      '[class*="launcher" i],[class*="bubble" i],[id*="launcher"]{display:none !important;}';
+    sr.appendChild(style);
+    return true;
+  }
+  let tries = 0;
+  const poll = setInterval(() => {
+    if (hideGhlLauncherInShadow() && document.querySelector('chat-widget')?.shadowRoot) {
+      clearInterval(poll);
+    }
+    if (++tries > 40) clearInterval(poll); // ~20s cap
+  }, 500);
+</script>
 
 {/* GoHighLevel / LeadConnector chat widget loader. is:inline keeps Astro from
     bundling the tag so the data-* attributes reach the third-party loader
