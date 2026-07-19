@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
+import WelcomeVideo from '../components/home/WelcomeVideo.astro';
 import Feeling from '../components/home/Feeling.astro';
 import Picker from '../components/home/Picker.astro';
 import TestimonialRow from '../components/home/TestimonialRow.astro';
@@ -57,6 +58,8 @@ const schemaGraph = [
       'Up to 12 Guests',
     ]}
   />
+  {/* Welcome-aboard video - immediately below the hero, hero unchanged. */}
+  <WelcomeVideo />
   {/* Section rhythm (Stage 5 - alternation pass): dark hero → bone
        Feeling → teal interrupt → paper Picker → DARK LogbookQuote
        photo interrupt → bone ExploreCards → bone-deep TestimonialRow

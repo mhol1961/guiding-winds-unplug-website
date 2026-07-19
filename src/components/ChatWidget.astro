@@ -1,13 +1,13 @@
 ---
-// Single expanding "speed-dial" launcher that replaces the two overlapping
-// floating buttons (our old coral phone FAB + GoHighLevel's blue chat bubble).
-//
-// One accent (#E5402B) button, bottom-right. Tap it to reveal two actions:
+// Single expanding "speed-dial" launcher. Replaces the two overlapping
+// floating buttons (our old phone FAB + GoHighLevel's blue chat bubble) with
+// one accent (#E5402B) button that expands to two actions:
 //   - Call us       -> tel:+17723103777 (our AI voice line)
 //   - Chat with us  -> opens the GoHighLevel (LeadConnector) chat widget
 //
-// GoHighLevel's own launcher bubble is hidden (CSS + a runtime hook) so only
-// this one button shows. Rendered once from BaseLayout, gated by
+// GoHighLevel's own launcher bubble is fully hidden (global CSS for the
+// light-DOM case + a shadow-root style injection for the shadow-DOM case) so
+// only this one button shows. Rendered once from BaseLayout, gated by
 // !hideFloatingCta; LpLayout and /inquire do not render it. Accessible
 // (keyboard, aria, prefers-reduced-motion). No localStorage / sessionStorage.
 const PHONE_TEL = '+17723103777';
@@ -15,10 +15,9 @@ const PHONE_TEL = '+17723103777';
 
 <div
   id="gwu-speeddial"
-  class="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-3 print:hidden"
+  class="fixed bottom-6 right-6 z-[2147483647] flex flex-col items-end gap-3 print:hidden"
   data-open="false"
 >
-  {/* Revealed actions - stacked above the main button, hidden until open */}
   <div
     id="gwu-sd-actions"
     class="flex flex-col items-end gap-3 opacity-0 translate-y-2 pointer-events-none transition-all duration-200 motion-reduce:transition-none"
@@ -49,7 +48,6 @@ const PHONE_TEL = '+17723103777';
     </button>
   </div>
 
-  {/* Main toggle */}
   <button
     type="button"
     id="gwu-sd-toggle"
@@ -63,8 +61,8 @@ const PHONE_TEL = '+17723103777';
   </button>
 </div>
 
+{/* Scoped styles for OUR elements. */}
 <style>
-  /* Pill label next to each action. */
   .gwu-sd-pill {
     background: var(--color-primary);
     color: var(--color-bone);
@@ -77,17 +75,20 @@ const PHONE_TEL = '+17723103777';
     white-space: nowrap;
     box-shadow: 0 8px 24px -8px rgba(15, 15, 15, 0.4);
   }
-  /* Open state: reveal the action list. */
   #gwu-speeddial[data-open='true'] #gwu-sd-actions {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
   }
+</style>
 
-  /* Hide GoHighLevel's own launcher bubble and its auto-greeting prompt so
-     only our button shows. These are light-DOM classes observed on the live
-     LeadConnector widget. The chat window itself is NOT hidden, so it still
-     opens when we trigger it. */
+{/* GLOBAL styles: hide GoHighLevel's own launcher. is:global is required
+    because Astro scopes component <style> by default, and these target the
+    third-party LeadConnector elements (light-DOM case). The shadow-DOM case is
+    handled by the script below. The chat window itself is a different element
+    and still opens. */}
+<style is:global>
+  #lc_text-widget--btn,
   .lc_text-widget--bubble,
   .lc_text-widget--prompt {
     display: none !important;
@@ -97,7 +98,6 @@ const PHONE_TEL = '+17723103777';
 <script>
   const root = document.getElementById('gwu-speeddial');
   const toggle = document.getElementById('gwu-sd-toggle');
-  const actions = document.getElementById('gwu-sd-actions');
   const iconClosed = toggle?.querySelector('[data-sd-icon="closed"]');
   const iconOpen = toggle?.querySelector('[data-sd-icon="open"]');
   const items = Array.from(root?.querySelectorAll('[data-sd-item]') ?? []) as HTMLElement[];
@@ -108,21 +108,15 @@ const PHONE_TEL = '+17723103777';
     toggle.setAttribute('aria-expanded', String(open));
     iconClosed?.classList.toggle('hidden', open);
     iconOpen?.classList.toggle('hidden', !open);
-    // Only make the actions keyboard-reachable while open.
     items.forEach((el) => el.setAttribute('tabindex', open ? '0' : '-1'));
   }
-
-  function isOpen() {
-    return root?.getAttribute('data-open') === 'true';
-  }
+  const isOpen = () => root?.getAttribute('data-open') === 'true';
 
   toggle?.addEventListener('click', () => {
     const next = !isOpen();
     setOpen(next);
     if (next) items[0]?.focus();
   });
-
-  // Close on Escape (return focus to the toggle) and on outside click.
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && isOpen()) {
       setOpen(false);
@@ -135,37 +129,41 @@ const PHONE_TEL = '+17723103777';
 
   /* ---- GoHighLevel (LeadConnector) chat control ------------------------- */
 
-  // Open the GoHighLevel chat. Preferred path: click the widget's own
-  // launcher bubble (.lc_text-widget--bubble) - its click handler opens the
-  // chat, and a programmatic click fires even though the bubble is hidden via
-  // CSS. Fallbacks cover other widget builds.
+  function ghlWidget() {
+    return document.querySelector('chat-widget') as (HTMLElement & { shadowRoot: ShadowRoot | null }) | null;
+  }
+
+  // The launcher may be in the light DOM or in the widget's shadow root.
+  function findLauncher(): HTMLElement | null {
+    const light = document.getElementById('lc_text-widget--btn') as HTMLElement | null;
+    if (light) return light;
+    const sr = ghlWidget()?.shadowRoot;
+    if (sr) {
+      return (sr.getElementById('lc_text-widget--btn') ||
+        sr.querySelector('.lc_text-widget--bubble')) as HTMLElement | null;
+    }
+    return document.querySelector('.lc_text-widget--bubble') as HTMLElement | null;
+  }
+
   function openGhlChat() {
-    const bubble = document.querySelector('.lc_text-widget--bubble') as HTMLElement | null;
-    if (bubble) {
-      bubble.click();
+    const btn = findLauncher();
+    if (btn) {
+      btn.click();
       return true;
     }
-    const cw = document.querySelector('chat-widget') as
-      | (HTMLElement & Record<string, unknown>)
-      | null;
-    if (!cw) return false;
-    for (const m of ['openWidget', 'open', 'show', 'loadWidget', 'maximize']) {
-      const fn = cw[m];
-      if (typeof fn === 'function') {
-        try {
-          (fn as () => void).call(cw);
-          return true;
-        } catch {
-          /* try next */
+    const cw = ghlWidget() as (HTMLElement & Record<string, unknown>) | null;
+    if (cw) {
+      for (const m of ['openWidget', 'open', 'show', 'loadWidget', 'maximize']) {
+        const fn = cw[m];
+        if (typeof fn === 'function') {
+          try {
+            (fn as () => void).call(cw);
+            return true;
+          } catch {
+            /* try next */
+          }
         }
       }
-    }
-    const fallback = cw.querySelector(
-      '[class*="bubble" i],[class*="launcher" i],button',
-    ) as HTMLElement | null;
-    if (fallback) {
-      fallback.click();
-      return true;
     }
     return false;
   }
@@ -174,6 +172,26 @@ const PHONE_TEL = '+17723103777';
     openGhlChat();
     setOpen(false);
   });
+
+  // If the launcher lives in the widget's shadow root, page CSS can't reach it
+  // - inject a hiding style in there once the element mounts. Idempotent; keeps
+  // polling briefly because the widget mounts and re-renders asynchronously.
+  function hideLauncherInShadow() {
+    const sr = ghlWidget()?.shadowRoot;
+    if (!sr) return;
+    if (!sr.getElementById('gwu-hide-launcher')) {
+      const style = document.createElement('style');
+      style.id = 'gwu-hide-launcher';
+      style.textContent =
+        '#lc_text-widget--btn,.lc_text-widget--bubble,.lc_text-widget--prompt{display:none !important;}';
+      sr.appendChild(style);
+    }
+  }
+  let ticks = 0;
+  const poll = setInterval(() => {
+    hideLauncherInShadow();
+    if (++ticks > 60) clearInterval(poll); // ~30s cap
+  }, 500);
 </script>
 
 {/* GoHighLevel / LeadConnector chat widget loader. is:inline keeps Astro from

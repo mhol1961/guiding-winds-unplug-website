@@ -38,6 +38,10 @@ public/*.jpeg
 !public/img/
 !public/media/
 !public/og/
+# Welcome-video poster is a real production asset, not a review capture.
+!public/welcome-poster.jpg
+# Favicon raster assets are real production assets.
+!public/apple-touch-icon.png
 
 # THIS REPO IS PUBLIC. Keep internal/sensitive material out of it.
 # (gitignore has no inline comments — keep each note on its own line)

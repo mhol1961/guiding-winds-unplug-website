@@ -1,0 +1,79 @@
+---
+// "Welcome aboard" video section - sits immediately below the hero.
+// Lightweight YouTube facade: the poster + a large play button load first, and
+// the youtube-nocookie iframe is injected only on click (privacy + performance).
+// Because it's user-initiated, it autoplays with sound. No localStorage.
+const YT_ID = '-Bpx7BzbfXI';
+---
+
+<section class="bg-paper text-primary py-20 sm:py-28 border-t border-rule">
+  <div class="max-w-[1100px] mx-auto px-7 lg:px-14">
+    <div class="text-center mb-10 lg:mb-12">
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-sun-deep mb-4">
+        Welcome aboard
+      </p>
+      <h2
+        class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
+        style="font-size: clamp(2rem, 3.5vw + 1rem, 3rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
+      >
+        A welcome from Dodie &amp; Clint
+      </h2>
+    </div>
+
+    <figure
+      id="welcome-video"
+      data-yt-id={YT_ID}
+      class="relative mx-auto aspect-video w-full max-w-[880px] overflow-hidden border border-rule bg-primary/5 shadow-[0_18px_60px_-24px_rgba(15,15,15,0.45)]"
+    >
+      <img
+        src="/welcome-poster.jpg"
+        alt="Dodie and Clint aboard, welcoming you to Guiding Winds Unplug"
+        width="1280"
+        height="720"
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+      <button
+        type="button"
+        id="welcome-play"
+        aria-label="Play the welcome video from Dodie and Clint"
+        class="group absolute inset-0 grid cursor-pointer place-items-center focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[-4px]"
+      >
+        <span
+          class="absolute inset-0 bg-primary/25 transition-colors duration-200 group-hover:bg-primary/15 motion-reduce:transition-none"
+          aria-hidden="true"></span>
+        <span
+          class="relative grid size-[4.5rem] place-items-center rounded-full bg-accent text-bone shadow-lg transition-transform duration-150 group-hover:scale-105 motion-reduce:transition-none sm:size-20"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" class="ml-1 size-8 sm:size-9" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+        </span>
+      </button>
+    </figure>
+  </div>
+</section>
+
+<script>
+  const fig = document.getElementById('welcome-video');
+  const playBtn = document.getElementById('welcome-play');
+
+  function loadVideo() {
+    if (!fig) return;
+    const id = fig.getAttribute('data-yt-id');
+    const iframe = document.createElement('iframe');
+    iframe.className = 'absolute inset-0 h-full w-full';
+    // youtube-nocookie + user-initiated autoplay (with sound). rel=0 keeps
+    // related videos to this channel.
+    iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+    iframe.title = 'A welcome from Dodie and Clint';
+    iframe.allow =
+      'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    fig.innerHTML = '';
+    fig.appendChild(iframe);
+    iframe.focus();
+  }
+
+  playBtn?.addEventListener('click', loadVideo);
+</script>
