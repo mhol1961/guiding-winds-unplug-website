@@ -17,6 +17,7 @@ interface Props {
 const { title, description, ogImage } = Astro.props;
 
 // Public business number (from the GHL location record). Update here if it changes.
+import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE } from '../lib/business';
 const PHONE_TEL = '+17723103777';
 const PHONE_DISPLAY = '(772) 310-3777';
 const year = 2026;
@@ -76,7 +77,11 @@ const year = 2026;
           <a href="/privacy" class="hover:text-ink transition-colors">Privacy</a>
           <a href="/terms" class="hover:text-ink transition-colors">Terms</a>
         </nav>
-        <p class="font-body-sm text-[0.75rem] text-ink-mute">© {year} Guiding Winds Unplug LLC</p>
+        <p class="font-body-sm text-[0.75rem] leading-[1.7] text-ink-mute">
+          {BUSINESS.legalName} · {ADDRESS_ONE_LINE}<br />
+          {BOND_ONE_LINE}{BUSINESS.sellerOfTravelRef && ` · Fla. Seller of Travel Ref. No. ${BUSINESS.sellerOfTravelRef}`}
+        </p>
+        <p class="font-body-sm text-[0.75rem] text-ink-mute">© {year} {BUSINESS.legalName}</p>
       </div>
     </footer>
 

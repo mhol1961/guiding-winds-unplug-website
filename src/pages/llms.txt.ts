@@ -6,6 +6,7 @@
 
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE } from '../lib/business';
 
 export const GET: APIRoute = async ({ site }) => {
   const origin = site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
@@ -43,6 +44,13 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('');
   lines.push(`- [Privacy](${origin}/privacy)`);
   lines.push(`- [Terms](${origin}/terms): Booking and voyage terms. We recommend travelers insurance that lets you cancel for any reason.`);
+  lines.push('');
+  lines.push('## Business identity');
+  lines.push('');
+  lines.push(`- Legal name: ${BUSINESS.legalName}`);
+  lines.push(`- Address: ${ADDRESS_ONE_LINE}`);
+  lines.push(`- Bonded: ${BOND_ONE_LINE}`);
+  if (BUSINESS.sellerOfTravelRef) lines.push(`- Fla. Seller of Travel Ref. No. ${BUSINESS.sellerOfTravelRef}`);
   lines.push('');
 
   return new Response(lines.join('\n'), {

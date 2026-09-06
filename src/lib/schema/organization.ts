@@ -3,6 +3,8 @@
 // detail, about, journal, FAQ). Linked-data callers can reference
 // it by its @id rather than re-emitting it.
 
+import { BUSINESS } from '../business';
+
 interface OrgInput {
   baseUrl: string;
 }
@@ -13,8 +15,27 @@ export function organization({ baseUrl }: OrgInput) {
     '@type': ['Organization', 'TravelAgency'],
     '@id': `${root}/#org`,
     name: 'Guiding Winds Unplug',
-    legalName: 'Guiding Winds Unplug, LLC',
+    legalName: BUSINESS.legalName,
     url: `${root}/`,
+    telephone: BUSINESS.phoneTel,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: BUSINESS.address.street,
+      addressLocality: BUSINESS.address.city,
+      addressRegion: BUSINESS.address.region,
+      postalCode: BUSINESS.address.postalCode,
+      addressCountry: BUSINESS.address.country,
+    },
+    identifier: [
+      {
+        '@type': 'PropertyValue',
+        propertyID: `${BUSINESS.bond.type} (${BUSINESS.bond.jurisdiction})`,
+        value: BUSINESS.bond.number,
+      },
+      ...(BUSINESS.sellerOfTravelRef
+        ? [{ '@type': 'PropertyValue', propertyID: 'Florida Seller of Travel Ref. No.', value: BUSINESS.sellerOfTravelRef }]
+        : []),
+    ],
     logo: {
       '@type': 'ImageObject',
       url: `${root}/og/logo.png`,
@@ -44,7 +65,8 @@ export function organization({ baseUrl }: OrgInput) {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Reservations',
-      email: 'guidingwindsunplug@gmail.com',
+      email: BUSINESS.email,
+      telephone: BUSINESS.phoneTel,
       availableLanguage: ['English'],
     },
   };

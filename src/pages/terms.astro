@@ -4,7 +4,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Terms & Conditions · Guiding Winds Unplug';
 const description =
   'Booking, cancellation, and force majeure terms for Guiding Winds Unplug catamaran voyages.';
-const updated = '2026-05-17';
+import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE } from '../lib/business';
+
+const updated = '2026-09-06';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -88,6 +90,16 @@ const updated = '2026-05-17';
         </p>
 
         <h2 class="font-h2 text-primary leading-[1.1] tracking-[-0.02em] font-normal mt-12" style="font-size: 1.75rem; font-variation-settings: 'opsz' 72;">
+          Bonding and business identity
+        </h2>
+        <p>
+          Voyages on this site are sold by {BUSINESS.legalName},
+          {ADDRESS_ONE_LINE}. {BUSINESS.legalName} is bonded in the
+          {BUSINESS.bond.jurisdiction}: {BOND_ONE_LINE}.
+          {BUSINESS.sellerOfTravelRef && ` Fla. Seller of Travel Ref. No. ${BUSINESS.sellerOfTravelRef}.`}
+        </p>
+
+        <h2 class="font-h2 text-primary leading-[1.1] tracking-[-0.02em] font-normal mt-12" style="font-size: 1.75rem; font-variation-settings: 'opsz' 72;">
           Photography
         </h2>
         <p>
@@ -101,7 +113,7 @@ const updated = '2026-05-17';
           Governing law
         </h2>
         <p>
-          These terms are governed by the laws of the State of North Carolina,
+          These terms are governed by the laws of the State of Florida,
           USA, the operator's place of business.
         </p>
       </div>

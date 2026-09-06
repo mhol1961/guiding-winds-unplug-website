@@ -1,5 +1,6 @@
 ---
 import NewsletterSignup from './NewsletterSignup.astro';
+import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE } from '../../lib/business';
 
 const year = new Date().getFullYear();
 
@@ -106,10 +107,22 @@ const navCols = [
       }
     </nav>
 
+    {/* Legal identity + bond line - quiet, above the copyright row. */}
+    <div class="pt-10">
+      <p class="font-body-sm text-[0.8125rem] leading-[1.7] text-ink-mute">
+        {BUSINESS.legalName} · {ADDRESS_ONE_LINE}
+        <span class="hidden sm:inline"> · </span>
+        <span class="block sm:inline">{BOND_ONE_LINE}</span>
+        {BUSINESS.sellerOfTravelRef && (
+          <span class="block sm:inline"> · Fla. Seller of Travel Ref. No. {BUSINESS.sellerOfTravelRef}</span>
+        )}
+      </p>
+    </div>
+
     {/* Bottom - copyright + social */}
-    <div class="pt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+    <div class="pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
       <p class="font-body-sm text-[0.8125rem] text-ink-mute">
-        © {year} Guiding Winds Unplug, LLC. Made on the water.
+        © {year} {BUSINESS.legalName}. Made on the water.
       </p>
       <div class="flex items-center gap-5" aria-label="Social">
         <a

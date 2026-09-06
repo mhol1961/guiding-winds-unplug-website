@@ -2,7 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import InquiryForm from '../components/shared/InquiryForm.astro';
 import PageHero from '../components/shared/PageHero.astro';
-import { Mail, Clock } from 'lucide-react';
+import { Mail, Clock, ShieldCheck } from 'lucide-react';
+import { BUSINESS, BOND_ONE_LINE } from '../lib/business';
 
 const title = 'Book a Quick Zoom Call | Guiding Winds Unplug';
 const description =
@@ -110,6 +111,10 @@ const schemaGraph = [
             <div class="flex items-center gap-3 font-body-md text-[0.9375rem] text-primary/65 py-2">
               <Clock className="size-4 text-sun" strokeWidth={1.5} />
               Replies M-F, usually within 4h
+            </div>
+            <div class="flex items-start gap-3 font-body-md text-[0.9375rem] text-primary/65 py-2">
+              <ShieldCheck className="size-4 text-sun shrink-0 mt-1" strokeWidth={1.5} />
+              <span>Bonded in the {BUSINESS.bond.jurisdiction}. {BOND_ONE_LINE}.</span>
             </div>
           </div>
 

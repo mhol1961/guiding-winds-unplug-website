@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
-import { Anchor } from 'lucide-react';
+import { Anchor, ShieldCheck } from 'lucide-react';
+import { BUSINESS, BOND_ONE_LINE } from '../lib/business';
 
 const title = 'Meet Clint & Dodie Kendall · Guiding Winds Unplug';
 const description =
@@ -37,14 +38,15 @@ const schemaGraph = [
   },
 ];
 
-// Credentials block - kept intentionally generic. Specific cert names,
-// ticket levels, insurance providers, and renewal cadences were removed
-// because they were placeholder copy from the prior pass and would be
-// false claims about real people if shipped. Replace with verified
-// specifics before launch; until then this block describes the kind
-// of coverage in place without inventing details.
+// Credentials block. Specific cert names and insurance providers were
+// removed at Clint's request. The bond line below is real and verified:
+// details supplied by Clint, September 2026 (see src/lib/business.ts).
 const credentials = [
   { Icon: Anchor, label: 'Years of working Florida Keys and Caribbean waters' },
+  {
+    Icon: ShieldCheck,
+    label: `Bonded in the ${BUSINESS.bond.jurisdiction}. ${BOND_ONE_LINE}, issued to ${BUSINESS.bond.principal}.`,
+  },
 ];
 ---
 
