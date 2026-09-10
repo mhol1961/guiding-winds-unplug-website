@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { BUSINESS } from '../../lib/business';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/shared/PageHero.astro';
 import SectionInterrupt from '../../components/shared/SectionInterrupt.astro';
@@ -290,6 +291,9 @@ const schemaGraph = [
           })
         }
       </div>
+      <p class="font-body-sm text-[0.8125rem] leading-[1.55] text-primary/60 mt-8 max-w-2xl">
+        {BUSINESS.cabinOccupancyNote}
+      </p>
     </div>
   </section>
 

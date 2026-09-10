@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { BUSINESS } from '../lib/business';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/shared/PageHero.astro';
 
@@ -154,6 +155,10 @@ const schemaGraph = [
 
       <p id="empty-state" class="hidden text-center py-20 font-body-lg text-primary/70">
         No weeks match this filter.
+      </p>
+
+      <p class="font-body-sm text-[0.8125rem] leading-[1.55] text-primary/60 mt-8 max-w-2xl">
+        {BUSINESS.cabinOccupancyNote}
       </p>
     </div>
   </section>

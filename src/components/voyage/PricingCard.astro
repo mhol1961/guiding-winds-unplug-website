@@ -1,5 +1,6 @@
 ---
 import { Check } from 'lucide-react';
+import { BUSINESS } from '../../lib/business';
 
 interface AvailableWeek {
   start: string;
@@ -36,8 +37,11 @@ function formatWeek(start: string, end: string): string {
     </span>
     <span class="font-body-md text-[1rem] text-primary/65">/ guest</span>
   </div>
-  <p class="font-body-sm text-[0.875rem] text-primary/70 mb-7">
+  <p class="font-body-sm text-[0.875rem] text-primary/70 mb-3">
     Meals, gear, fuel, moorings. No hidden fees.
+  </p>
+  <p class="font-body-sm text-[0.8125rem] leading-[1.55] text-primary/60 mb-7">
+    {BUSINESS.cabinOccupancyNote}
   </p>
 
   <div class="space-y-2.5 mb-7">

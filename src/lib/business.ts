@@ -25,6 +25,10 @@ export const BUSINESS = {
     jurisdiction: 'State of Florida',
     principal: 'Guiding Winds Unplug LLC',
   },
+  // Mandatory two-person cabin occupancy. Printed verbatim wherever a
+  // cabin price or booking commitment appears.
+  cabinOccupancyNote:
+    'Cabins require an occupancy of two people. If you do not have two people, you will still be responsible for the full cabin price.',
   // Florida Seller of Travel registration number (ST#####). Fill in
   // when FDACS issues it; the footer line below will show it
   // automatically once it is not empty.

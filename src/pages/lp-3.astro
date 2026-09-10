@@ -3,6 +3,7 @@
 // Angle: pick a region; limited cabins and weeks. Image-driven.
 import LpLayout from '../layouts/LpLayout.astro';
 import LpQuestionnaire from '../components/lp/LpQuestionnaire.astro';
+import { BUSINESS } from '../lib/business';
 
 const title = 'Three oceans, one catamaran · Guiding Winds Unplug';
 const description =
@@ -72,6 +73,9 @@ const regions = [
           </a>
         ))}
       </div>
+      <p class="font-body-md text-[0.9375rem] leading-[1.6] text-ink-soft mt-8 border-l-2 border-accent pl-5">
+        {BUSINESS.cabinOccupancyNote}
+      </p>
     </div>
   </section>
 

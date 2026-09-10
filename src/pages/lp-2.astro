@@ -3,6 +3,7 @@
 // Angle: one price covers the whole week. Bento inclusions, 3-up proof, how-it-works.
 import LpLayout from '../layouts/LpLayout.astro';
 import LpQuestionnaire from '../components/lp/LpQuestionnaire.astro';
+import { BUSINESS } from '../lib/business';
 
 const title = 'One price. Everything aboard. · Guiding Winds Unplug';
 const description =
@@ -76,6 +77,9 @@ const reviews = [
       </div>
       <p class="font-body-md text-[0.9375rem] text-ink-soft mt-8 border-l-2 border-accent pl-5">
         This is not a party charter. There is no onboard bar and no agenda beyond water, weather, and time.
+      </p>
+      <p class="font-body-md text-[0.9375rem] leading-[1.6] text-ink-soft mt-5 border-l-2 border-accent pl-5">
+        {BUSINESS.cabinOccupancyNote}
       </p>
     </div>
   </section>

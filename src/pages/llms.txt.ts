@@ -23,6 +23,8 @@ export const GET: APIRoute = async ({ site }) => {
     'Brand promise: "unplug." Up to twelve guests per voyage. The same two-person crew sails every voyage personally.',
   );
   lines.push('');
+  lines.push(`Cabin occupancy: ${BUSINESS.cabinOccupancyNote}`);
+  lines.push('');
   lines.push('## Voyages (2027 calendar)');
   lines.push('');
   for (const v of voyages) {

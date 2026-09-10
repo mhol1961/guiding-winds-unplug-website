@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BUSINESS } from '../lib/business';
 import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
 
 const title = 'What is Aboard · All-Inclusive Catamaran Charter Inclusions | Guiding Winds Unplug';
@@ -224,6 +225,9 @@ const lifeAboard = [
               ))
             }
           </ol>
+          <p class="font-body-md text-[0.9375rem] leading-[1.6] text-primary/70 mt-8">
+            {BUSINESS.cabinOccupancyNote}
+          </p>
         </div>
       </div>
     </div>
