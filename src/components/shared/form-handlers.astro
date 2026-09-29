@@ -133,6 +133,10 @@
           submitBtn.disabled = false;
           submitBtn.textContent = 'Subscribe';
         }
+        // Turnstile tokens are single-use; get a fresh one for the next try.
+        const widget = form.querySelector<HTMLElement>('.cf-turnstile');
+        const turnstile = (window as { turnstile?: { reset: (el: HTMLElement) => void } }).turnstile;
+        if (widget && turnstile) turnstile.reset(widget);
       }
     });
   });

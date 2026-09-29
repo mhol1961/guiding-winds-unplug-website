@@ -19,7 +19,7 @@
 import { env as runtimeEnv } from 'cloudflare:workers';
 
 /** Read an env value from the Cloudflare runtime first, then build-time. */
-function envVar(key: string): string | undefined {
+export function envVar(key: string): string | undefined {
   const fromRuntime = runtimeEnv?.[key];
   if (typeof fromRuntime === 'string' && fromRuntime !== '') return fromRuntime;
   const fromBuild = (import.meta.env as Record<string, unknown>)[key];

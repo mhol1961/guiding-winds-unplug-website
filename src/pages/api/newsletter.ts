@@ -3,13 +3,39 @@ export const prerender = false;
 import type { APIRoute } from 'astro';
 import { z } from 'zod';
 import { upsertContact } from '../../lib/ghl/contacts';
+import { envVar } from '../../lib/ghl/client';
 import { rateLimit, clientKey } from '../../lib/utils/rate-limit';
 
 const NewsletterSchema = z.object({
   email: z.string().trim().email().max(254),
   website: z.string().max(0).default(''), // honeypot
-  source: z.string().trim().max(60).optional(),
+  'cf-turnstile-response': z.string().max(2048).optional(),
 });
+
+/** Cloudflare Turnstile server-side check. Fails closed on any error. */
+async function verifyTurnstile(token: string, ip: string | null): Promise<boolean> {
+  const secret = envVar('TURNSTILE_SECRET_KEY');
+  if (!secret) {
+    console.error('[newsletter] TURNSTILE_SECRET_KEY is not set');
+    return false;
+  }
+  const body = new FormData();
+  body.append('secret', secret);
+  body.append('response', token);
+  if (ip) body.append('remoteip', ip);
+  try {
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body,
+    });
+    const outcome = (await res.json()) as { success?: boolean; 'error-codes'?: string[] };
+    if (!outcome.success) console.log('[newsletter] turnstile rejected', outcome['error-codes']);
+    return outcome.success === true;
+  } catch (err) {
+    console.error('[newsletter] turnstile siteverify failed', err);
+    return false;
+  }
+}
 
 function jsonResponse(body: unknown, status = 200, headers: Record<string, string> = {}): Response {
   return new Response(JSON.stringify(body), {
@@ -54,11 +80,19 @@ export const POST: APIRoute = async ({ request }) => {
     return jsonResponse({ ok: true, message: 'Subscribed.' });
   }
 
+  const token = parsed.data['cf-turnstile-response'];
+  if (!token || !(await verifyTurnstile(token, request.headers.get('CF-Connecting-IP')))) {
+    return jsonResponse(
+      { ok: false, error: 'Please complete the security check and try again.' },
+      400,
+    );
+  }
+
   try {
     await upsertContact({
       email: parsed.data.email,
       tags: ['newsletter', 'website-2026'],
-      source: parsed.data.source ?? 'guidingwinds-unplug.com',
+      source: 'Field Notes newsletter',
     });
   } catch (err) {
     console.error('[newsletter] GHL upsert failed', err);
