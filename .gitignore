@@ -55,3 +55,6 @@ public/img/dodie-text-*.png
 
 # claude-mem session artifacts
 src/**/CLAUDE.md
+
+# Raw Croatia trip media (116MB video exceeds GitHub limit); web copies live in public/newsletter/
+croatia-trip-videos-images/
