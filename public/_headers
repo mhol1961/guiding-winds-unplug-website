@@ -35,3 +35,9 @@
 # without a full rebuild.
 /calendar
   Cache-Control: public, max-age=900, s-maxage=900
+
+# Newsletter media is embedded by email clients and GHL's web view, which
+# are other sites. The site-wide same-site CORP would block those loads.
+/newsletter/*
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
