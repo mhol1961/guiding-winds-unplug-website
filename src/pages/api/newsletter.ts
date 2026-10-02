@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { upsertContact } from '../../lib/ghl/contacts';
 import { envVar } from '../../lib/ghl/client';
 import { rateLimit, clientKey } from '../../lib/utils/rate-limit';
+import { allowedHostnames, verifyTurnstile } from '../../lib/turnstile';
 
 const NewsletterSchema = z.object({
   email: z.string().trim().email().max(254),
@@ -12,30 +13,10 @@ const NewsletterSchema = z.object({
   'cf-turnstile-response': z.string().max(2048).optional(),
 });
 
-/** Cloudflare Turnstile server-side check. Fails closed on any error. */
-async function verifyTurnstile(token: string, ip: string | null): Promise<boolean> {
-  const secret = envVar('TURNSTILE_SECRET_KEY');
-  if (!secret) {
-    console.error('[newsletter] TURNSTILE_SECRET_KEY is not set');
-    return false;
-  }
-  const body = new FormData();
-  body.append('secret', secret);
-  body.append('response', token);
-  if (ip) body.append('remoteip', ip);
-  try {
-    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method: 'POST',
-      body,
-    });
-    const outcome = (await res.json()) as { success?: boolean; 'error-codes'?: string[] };
-    if (!outcome.success) console.log('[newsletter] turnstile rejected', outcome['error-codes']);
-    return outcome.success === true;
-  } catch (err) {
-    console.error('[newsletter] turnstile siteverify failed', err);
-    return false;
-  }
-}
+// Tokens must come from our own site. Cloudflare's test keys report
+// example.com, so local dev with those keys still works.
+const TURNSTILE_HOSTS = allowedHostnames(import.meta.env.SITE);
+if (import.meta.env.DEV) TURNSTILE_HOSTS.push('example.com');
 
 function jsonResponse(body: unknown, status = 200, headers: Record<string, string> = {}): Response {
   return new Response(JSON.stringify(body), {
@@ -80,8 +61,13 @@ export const POST: APIRoute = async ({ request }) => {
     return jsonResponse({ ok: true, message: 'Subscribed.' });
   }
 
-  const token = parsed.data['cf-turnstile-response'];
-  if (!token || !(await verifyTurnstile(token, request.headers.get('CF-Connecting-IP')))) {
+  const human = await verifyTurnstile({
+    secret: envVar('TURNSTILE_SECRET_KEY'),
+    token: parsed.data['cf-turnstile-response'],
+    ip: request.headers.get('CF-Connecting-IP'),
+    hostnames: TURNSTILE_HOSTS,
+  });
+  if (!human) {
     return jsonResponse(
       { ok: false, error: 'Please complete the security check and try again.' },
       400,

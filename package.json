@@ -13,7 +13,8 @@
     "typecheck": "astro check",
     "astro": "astro",
     "design:lint": "design.md lint DESIGN.md",
-    "design:export": "node scripts/design-export.mjs"
+    "design:export": "node scripts/design-export.mjs",
+    "test": "node --experimental-strip-types --test \"src/**/*.test.ts\""
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.5.1",
