@@ -58,11 +58,14 @@ export async function latestVideos(): Promise<Video[] | null> {
     const res = await fetch(FEED_URL, {
       signal: AbortSignal.timeout(5000),
       // Cloudflare edge cache for the feed: successes only, never errors.
+      // ponytail: a truncated 200 would sit in this cache up to 15 min (served as a 503 fallback
+      // meanwhile); move to Cache API with post-validation put if that ever happens.
       cf: { cacheTtlByStatus: { '200-299': 900, '300-599': 0 } },
     } as RequestInit);
     if (!res.ok) throw new Error(`feed HTTP ${res.status}`);
     const xml = await res.text();
-    if (!xml.includes('<feed')) throw new Error('feed body is not Atom');
+    // A truncated body would parse as "no videos"; only accept a complete feed.
+    if (!/<feed[\s>][\s\S]*<\/feed>\s*$/.test(xml)) throw new Error('feed body is not a complete Atom document');
     return parseFeed(xml);
   } catch (err) {
     console.error('[youtube] feed fetch failed', err);

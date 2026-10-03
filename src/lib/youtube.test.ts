@@ -1,7 +1,7 @@
 // Run: npm test
-import { test } from 'node:test';
+import { test, mock } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseFeed } from './youtube.ts';
+import { latestVideos, parseFeed } from './youtube.ts';
 
 const entry = (id: string, title: string, published: string) =>
   `<entry><yt:videoId>${id}</yt:videoId><title>${title}</title><published>${published}</published></entry>`;
@@ -42,4 +42,26 @@ test('invalid or missing dates become empty and sort last; bad ids are dropped',
 
 test('garbage input yields no videos', () => {
   assert.deepEqual(parseFeed('<html>error</html>'), []);
+});
+
+test('latestVideos: null (uncacheable) for errors and truncated bodies, [] only for a complete empty feed', async (t) => {
+  const reply = (body: string, status = 200) =>
+    mock.method(globalThis, 'fetch', async () => new Response(body, { status }));
+  const silence = mock.method(console, 'error', () => {});
+  t.after(() => silence.mock.restore());
+
+  const cases: [string, number, unknown][] = [
+    [`<feed>${entry('auqQmiLKYTs', 'Croatia', '2026-10-01T00:00:00Z')}</feed>\n`, 200, 'videos'],
+    ['<feed xmlns="http://www.w3.org/2005/Atom"><title>x</title></feed>', 200, []],
+    ['<feed><entry><title>truncated', 200, null],
+    ['<html>Too Many Requests</html>', 200, null],
+    ['oops', 500, null],
+  ];
+  for (const [body, status, want] of cases) {
+    const f = reply(body, status);
+    const got = await latestVideos();
+    f.mock.restore();
+    if (want === 'videos') assert.equal(got?.[0]?.id, 'auqQmiLKYTs');
+    else assert.deepEqual(got, want, body.slice(0, 30));
+  }
 });

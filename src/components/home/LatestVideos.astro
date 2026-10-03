@@ -2,7 +2,7 @@
 // Latest videos from the YouTube channel. The section shell is static and
 // reserves the cards' space; the cards come from /api/latest-videos (rendered
 // on demand) so new uploads show up without a rebuild. If that request fails,
-// the placeholders are removed and the channel link remains.
+// the reserved space shows a link to the channel instead.
 // Same click-to-load facade as WelcomeVideo: thumbnails first, the
 // youtube-nocookie iframe only on click.
 import { CHANNEL_URL } from '../../lib/youtube';
@@ -37,7 +37,7 @@ import { CHANNEL_URL } from '../../lib/youtube';
     </div>
 
     {/* Placeholders match the cards' size so nothing shifts when they load. */}
-    <ul data-latest-videos aria-busy="true" class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+    <ul data-latest-videos data-channel-url={CHANNEL_URL} aria-busy="true" class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
       {[0, 1, 2].map(() => (
         <li aria-hidden="true">
           <div class="aspect-video w-full border border-rule bg-primary/5"></div>
@@ -53,15 +53,31 @@ import { CHANNEL_URL } from '../../lib/youtube';
   const list = document.querySelector<HTMLElement>('[data-latest-videos]');
 
   if (list) {
+    // Hold the placeholders' height whatever comes back (fewer videos, none,
+    // or an error) so the content below never jumps.
+    list.style.minHeight = `${list.offsetHeight}px`;
     fetch('/api/latest-videos', { headers: { Accept: 'text/html' } })
       .then((res) => (res.ok ? res.text() : Promise.reject(new Error(`HTTP ${res.status}`))))
       .then((html) => {
         const tpl = document.createElement('template');
         tpl.innerHTML = html; // same-origin, server-escaped markup
-        if (!tpl.content.querySelector('li')) throw new Error('no videos');
+        const count = tpl.content.querySelectorAll('li').length;
+        if (!count) throw new Error('no videos');
         list.replaceChildren(tpl.content);
+        if (count >= 3) list.style.minHeight = ''; // full row: no gap to hold
       })
-      .catch(() => list.remove()) // keep heading + "More on YouTube"
+      .catch(() => {
+        const li = document.createElement('li');
+        li.className = 'md:col-span-3 grid place-items-center border border-rule bg-primary/5 text-primary/70 font-body-md';
+        const a = document.createElement('a');
+        a.href = list.dataset.channelUrl ?? '';
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = 'underline hover:text-accent';
+        a.textContent = 'Watch our latest videos on YouTube';
+        li.append(a);
+        list.replaceChildren(li);
+      })
       .finally(() => list.removeAttribute('aria-busy'));
 
     list.addEventListener('click', (e) => {
