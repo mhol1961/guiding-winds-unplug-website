@@ -78,7 +78,7 @@ export const POST: APIRoute = async ({ request }) => {
     await upsertContact({
       email: parsed.data.email,
       tags: ['newsletter', 'website-2026'],
-      source: 'Field Notes newsletter',
+      source: 'Deck Notes newsletter',
     });
   } catch (err) {
     console.error('[newsletter] GHL upsert failed', err);
