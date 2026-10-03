@@ -1,0 +1,81 @@
+---
+// Latest videos from the YouTube channel. The section shell is static and
+// reserves the cards' space; the cards come from /api/latest-videos (rendered
+// on demand) so new uploads show up without a rebuild. If that request fails,
+// the placeholders are removed and the channel link remains.
+// Same click-to-load facade as WelcomeVideo: thumbnails first, the
+// youtube-nocookie iframe only on click.
+import { CHANNEL_URL } from '../../lib/youtube';
+---
+
+<section class="bg-paper text-primary py-20 sm:py-28 border-t border-rule" aria-labelledby="latest-videos-heading">
+  <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10 lg:mb-12">
+      <div>
+        <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-sun-deep mb-4">
+          From the water
+        </p>
+        <h2
+          id="latest-videos-heading"
+          class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
+          style="font-size: clamp(2rem, 3.5vw + 1rem, 3rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
+        >
+          Latest from the boat
+        </h2>
+      </div>
+      <a
+        href={CHANNEL_URL}
+        target="_blank"
+        rel="noopener"
+        class="group inline-flex items-center gap-3 font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold text-primary border-b-2 border-accent pb-1 hover:text-accent transition-colors self-start sm:self-auto"
+      >
+        More on YouTube
+        <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+
+    {/* Placeholders match the cards' size so nothing shifts when they load. */}
+    <ul data-latest-videos aria-busy="true" class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+      {[0, 1, 2].map(() => (
+        <li aria-hidden="true">
+          <div class="aspect-video w-full border border-rule bg-primary/5"></div>
+          <div class="mt-4 min-h-[2.9em] text-[1rem]"></div>
+          <div class="mt-1 min-h-[1.5em] text-[0.5625rem]"></div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<script>
+  const list = document.querySelector<HTMLElement>('[data-latest-videos]');
+
+  if (list) {
+    fetch('/api/latest-videos', { headers: { Accept: 'text/html' } })
+      .then((res) => (res.ok ? res.text() : Promise.reject(new Error(`HTTP ${res.status}`))))
+      .then((html) => {
+        const tpl = document.createElement('template');
+        tpl.innerHTML = html; // same-origin, server-escaped markup
+        if (!tpl.content.querySelector('li')) throw new Error('no videos');
+        list.replaceChildren(tpl.content);
+      })
+      .catch(() => list.remove()) // keep heading + "More on YouTube"
+      .finally(() => list.removeAttribute('aria-busy'));
+
+    list.addEventListener('click', (e) => {
+      const fig = (e.target as Element).closest<HTMLElement>('[data-yt-play]')?.closest<HTMLElement>('figure[data-yt-id]');
+      if (!fig) return;
+      const iframe = document.createElement('iframe');
+      iframe.className = 'absolute inset-0 h-full w-full';
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(fig.dataset.ytId ?? '')}?autoplay=1&rel=0&playsinline=1`;
+      iframe.title = fig.dataset.ytTitle || 'Video from the boat';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      fig.replaceChildren(iframe);
+      iframe.focus();
+    });
+  }
+</script>

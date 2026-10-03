@@ -1,0 +1,56 @@
+---
+// HTML fragment of the newest YouTube videos, fetched by the home page's
+// LatestVideos section. On-demand so new uploads appear without a rebuild.
+export const prerender = false;
+export const partial = true;
+
+import { latestVideos, WELCOME_VIDEO_ID } from '../../lib/youtube';
+
+const all = await latestVideos();
+const videos = (all ?? []).filter((v) => v.id !== WELCOME_VIDEO_ID).slice(0, 3);
+
+if (all === null) {
+  // Feed down: tell the page to keep its fallback, and don't cache the failure.
+  Astro.response.status = 503;
+  Astro.response.headers.set('Cache-Control', 'no-store');
+} else {
+  Astro.response.headers.set('Cache-Control', 'public, max-age=600');
+}
+
+const dateFmt = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+
+{videos.map((v) => (
+  <li>
+    <figure
+      data-yt-id={v.id}
+      data-yt-title={v.title}
+      class="relative aspect-video w-full overflow-hidden border border-rule bg-primary/5"
+    >
+      <img
+        src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
+        alt=""
+        width="480"
+        height="360"
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+      <button
+        type="button"
+        data-yt-play
+        aria-label={`Play video: ${v.title}`}
+        class="group absolute inset-0 grid cursor-pointer place-items-center focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[-4px]"
+      >
+        <span class="absolute inset-0 bg-primary/25 transition-colors duration-200 group-hover:bg-primary/15 motion-reduce:transition-none" aria-hidden="true"></span>
+        <span class="relative grid size-14 place-items-center rounded-full bg-accent text-bone shadow-lg transition-transform duration-150 group-hover:scale-105 motion-reduce:transition-none">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="ml-0.5 size-6" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+        </span>
+      </button>
+    </figure>
+    <p class="mt-4 font-body-md text-[1rem] leading-[1.45] text-primary line-clamp-2 min-h-[2.9em]">{v.title}</p>
+    <p class="mt-1 font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/50 min-h-[1.5em]">
+      {v.published && dateFmt.format(new Date(v.published))}
+    </p>
+  </li>
+))}

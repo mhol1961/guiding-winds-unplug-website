@@ -46,7 +46,7 @@ export function organization({ baseUrl }: OrgInput) {
       'Off-grid all-inclusive catamaran voyages for up to 12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia. From $3,350 per guest, per week.',
     sameAs: [
       'https://www.facebook.com/profile.php?id=61588279383433',
-      'https://youtube.com/@guidingwinds',
+      'https://www.youtube.com/@GuidingWindsCatamaranCharters',
     ],
     founder: [
       { '@type': 'Person', '@id': `${root}/about#clint`, name: 'Clint Kendall' },

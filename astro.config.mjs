@@ -44,7 +44,8 @@ export default defineConfig({
   adapter: cloudflare(),
   integrations: [
     react(),
-    sitemap(),
+    // /api/* are fragments and endpoints, not pages.
+    sitemap({ filter: (page) => !new URL(page).pathname.startsWith('/api/') }),
   ],
   vite: {
     plugins: [tailwindcss()],

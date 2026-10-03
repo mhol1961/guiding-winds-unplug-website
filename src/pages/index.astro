@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import WelcomeVideo from '../components/home/WelcomeVideo.astro';
+import LatestVideos from '../components/home/LatestVideos.astro';
 import Feeling from '../components/home/Feeling.astro';
 import Picker from '../components/home/Picker.astro';
 import TestimonialRow from '../components/home/TestimonialRow.astro';
@@ -126,6 +127,9 @@ const schemaGraph = [
       </div>
     </div>
   </section>
+
+  {/* Paper, between the bone boat section and bone-deep testimonials. */}
+  <LatestVideos />
 
   <TestimonialRow />
   <SectionInterrupt
