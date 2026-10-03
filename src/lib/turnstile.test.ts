@@ -57,3 +57,21 @@ test('allowed hostnames are apex + www whether SITE is apex or www', () => {
   assert.deepEqual(allowedHostnames('https://guidingwinds-unplug.com'), HOSTS);
   assert.deepEqual(allowedHostnames('https://www.guidingwinds-unplug.com'), HOSTS);
 });
+
+test('a stalled siteverify is aborted at the 10s deadline and fails closed', async (t) => {
+  // Fire the deadline after 1ms instead of 10s. (Node's own timeout timer is
+  // unref'd and would let the test exit before it fires.)
+  const timeout = mock.method(AbortSignal, 'timeout', () => {
+    const c = new AbortController();
+    setTimeout(() => c.abort(new DOMException('timed out', 'TimeoutError')), 1);
+    return c.signal;
+  });
+  // A fetch that never answers on its own; it only settles when aborted.
+  const fetch = mock.method(globalThis, 'fetch', (_url: string, init: RequestInit) =>
+    new Promise((_, reject) => init.signal!.addEventListener('abort', () => reject(init.signal!.reason))),
+  );
+  t.after(() => { timeout.mock.restore(); fetch.mock.restore(); });
+
+  assert.equal(await verifyTurnstile(base), false);
+  assert.deepEqual(timeout.mock.calls[0].arguments, [10_000]);
+});
