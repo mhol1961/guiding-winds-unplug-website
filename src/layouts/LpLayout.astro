@@ -1,4 +1,5 @@
 ---
+import { img } from '../lib/img';
 // Minimal landing-page layout for paid-ad traffic.
 // Focused on conversion: a clickable phone (call IS a conversion for charters),
 // one "view full site" credibility link, and a thumb-zone sticky bar on mobile.
@@ -46,10 +47,10 @@ const year = 2026;
           View full site
         </a>
         <img
-          src="/img/brand/logo.png"
+          {...img('/img/brand/logo.png', '64px')}
           alt="Guiding Winds Unplug"
-          width="80"
-          height="80"
+         
+         
           class="size-14 lg:size-16 object-contain shrink-0 sm:absolute sm:left-1/2 sm:-translate-x-1/2"
         />
         <a

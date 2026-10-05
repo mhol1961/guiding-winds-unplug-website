@@ -1,4 +1,5 @@
 ---
+import { img } from '../../lib/img';
 import { getCollection } from 'astro:content';
 import { BUSINESS } from '../../lib/business';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -254,7 +255,7 @@ const schemaGraph = [
               >
                 <div class="relative overflow-hidden aspect-[9/14] mb-5 bg-primary/5">
                   <img
-                    src={voyage.data.heroImage}
+                    {...img(voyage.data.heroImage, '(min-width: 1024px) 33vw, 100vw')}
                     alt={voyage.data.heroImageAlt}
                     loading="lazy"
                     decoding="async"

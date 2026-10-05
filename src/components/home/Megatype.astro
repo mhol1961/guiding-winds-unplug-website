@@ -1,4 +1,5 @@
 ---
+import { img } from '../../lib/img';
 // Brand-promise signature moment. The big UNPLUG type isn't decoration -
 // it's the literal name of the company AND the promise the rest of the
 // page is selling. This rebuild puts it in context: what unplug actually
@@ -10,7 +11,7 @@
 
 <section class="relative bg-surface-warm text-ink overflow-hidden">
   <img
-    src="/img/source/destinations/catamaran-anchorage-sunset-bvi-01.jpg"
+    {...img('/img/source/destinations/catamaran-anchorage-sunset-bvi-01.jpg', '100vw')}
     alt=""
     loading="lazy"
     decoding="async"
@@ -54,15 +55,15 @@
         </p>
       </li>
       <li class="px-6 py-8">
-        <p class="font-display text-[2rem] text-sun leading-none" style="font-variation-settings: 'opsz' 36, 'SOFT' 30, 'WONK' 0;">4 hours</p>
+        <p class="font-display text-[2rem] text-sun leading-none" style="font-variation-settings: 'opsz' 36, 'SOFT' 30, 'WONK' 0;">Two</p>
         <p class="font-label-caps uppercase tracking-[0.2em] text-[0.5625rem] font-semibold text-ink/70 mt-3">
-          Longest passage you'll ever sit through
+          Crew aboard, Clint and Dodie
         </p>
       </li>
       <li class="px-6 py-8">
-        <p class="font-display text-[2rem] text-sun leading-none" style="font-variation-settings: 'opsz' 36, 'SOFT' 30, 'WONK' 0;">Zero</p>
+        <p class="font-display text-[2rem] text-sun leading-none" style="font-variation-settings: 'opsz' 36, 'SOFT' 30, 'WONK' 0;">12</p>
         <p class="font-label-caps uppercase tracking-[0.2em] text-[0.5625rem] font-semibold text-ink/70 mt-3">
-          Items billed once you're aboard
+          Guests at most, never a crowd
         </p>
       </li>
     </ul>

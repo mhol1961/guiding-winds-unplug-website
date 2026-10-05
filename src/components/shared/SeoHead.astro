@@ -29,14 +29,9 @@ const {
 
 const siteOrigin = Astro.site ?? new URL('https://guidingwinds-unplug.com');
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteOrigin).toString();
-// Only emit og:image if the caller provided one. Real OG images get added
-// per-page when Dodie's photography lands. Without them the link preview
-// falls back to text, which is better than a broken image reference.
-const ogImageUrl = ogImage
-  ? ogImage.startsWith('http')
-    ? ogImage
-    : new URL(ogImage, siteOrigin).toString()
-  : undefined;
+// Share image: the page's own (voyages, ad pages) or the branded 1200x630
+// default. Files live in public/og/ (scripts/optimize-images.mjs).
+const ogImageUrl = new URL(ogImage ?? '/og/default.jpg', siteOrigin).toString();
 const siteName = 'Guiding Winds Unplug';
 ---
 
@@ -67,7 +62,10 @@ const siteName = 'Guiding Winds Unplug';
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalUrl} />
-{ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={title} />
 <meta property="og:site_name" content={siteName} />
 <meta property="og:locale" content="en_US" />
 {publishDate && <meta property="article:published_time" content={publishDate} />}
@@ -78,7 +76,7 @@ const siteName = 'Guiding Winds Unplug';
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-{ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+<meta name="twitter:image" content={ogImageUrl} />
 
 <!-- Theme color & viewport behavior -->
 <meta name="theme-color" content="#0A0A0A" />

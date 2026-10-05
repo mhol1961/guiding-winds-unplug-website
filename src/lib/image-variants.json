@@ -1,0 +1,386 @@
+{
+ "/img/boat/boat-bow-trampoline-02.jpg": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ]
+ },
+ "/img/boat/boat-deck-indians-view-05.jpg": {
+  "w": 1600,
+  "h": 1200,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/boat/boat-evening-anchorage-06.jpg": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ]
+ },
+ "/img/boat/boat-foredeck-lounge-01.jpg": {
+  "w": 1600,
+  "h": 1200,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/boat/boat-snorkel-off-stern-04.jpg": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ]
+ },
+ "/img/boat/boat-swim-platform-paddleboards-03.jpg": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ]
+ },
+ "/img/brand/logo.png": {
+  "w": 512,
+  "h": 512,
+  "widths": [
+   480,
+   512
+  ]
+ },
+ "/img/carribean-sea-map-image.png": {
+  "w": 1320,
+  "h": 1070,
+  "widths": [
+   480,
+   960,
+   1200,
+   1320
+  ]
+ },
+ "/img/clint-relaxing-on-boat-islands-background.png": {
+  "w": 1536,
+  "h": 2048,
+  "widths": [
+   480,
+   960,
+   1200,
+   1536
+  ]
+ },
+ "/img/fountaine.pajot.photo..jpg": {
+  "w": 1556,
+  "h": 751,
+  "widths": [
+   480,
+   960,
+   1200,
+   1556
+  ]
+ },
+ "/img/fountaine.pajotpic.website.2.jpg": {
+  "w": 1432,
+  "h": 741,
+  "widths": [
+   480,
+   960,
+   1200,
+   1432
+  ]
+ },
+ "/img/galley.fountaine.pajot.45.jpg": {
+  "w": 1556,
+  "h": 751,
+  "widths": [
+   480,
+   960,
+   1200,
+   1556
+  ]
+ },
+ "/img/source/destinations/bvi-deck-view-headlands.jpg": {
+  "w": 1711,
+  "h": 919,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/source/destinations/catamaran-anchorage-sunset-bvi-01.jpg": {
+  "w": 1440,
+  "h": 1920,
+  "widths": [
+   480,
+   960,
+   1200,
+   1440
+  ]
+ },
+ "/img/source/destinations/catamaran-anchored-green-headland-01.jpg": {
+  "w": 1440,
+  "h": 1920,
+  "widths": [
+   480,
+   960,
+   1200,
+   1440
+  ]
+ },
+ "/img/source/destinations/staircase-down-to-cove-01.webp": {
+  "w": 905,
+  "h": 610,
+  "widths": [
+   480,
+   905
+  ]
+ },
+ "/img/source/hero/01-catamaran-green-headland.jpg": {
+  "w": 1440,
+  "h": 1920,
+  "widths": [
+   480,
+   960,
+   1200,
+   1440
+  ]
+ },
+ "/img/source/hero/03-foredeck-bow-sun-flare.jpg": {
+  "w": 1920,
+  "h": 1440,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/source/hero/04-cockpit-sunrise.jpg": {
+  "w": 1440,
+  "h": 1920,
+  "widths": [
+   480,
+   960,
+   1200,
+   1440
+  ]
+ },
+ "/img/source/people/clint-dodie-deck-selfie-sunset-01.jpg": {
+  "w": 1440,
+  "h": 1920,
+  "widths": [
+   480,
+   960,
+   1200,
+   1440
+  ]
+ },
+ "/img/source/people/clint-peace-sunset-portico-01.jpg": {
+  "w": 1440,
+  "h": 1920,
+  "widths": [
+   480,
+   960,
+   1200,
+   1440
+  ]
+ },
+ "/img/source/people/clint-with-boats-background.jpg": {
+  "w": 1600,
+  "h": 1200,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/source/people/dodie-kendall-beach-portrait.jpg": {
+  "w": 1122,
+  "h": 1402,
+  "widths": [
+   480,
+   960,
+   1122
+  ]
+ },
+ "/img/source/testimonials/frank-zuckero.jpg": {
+  "w": 800,
+  "h": 800,
+  "widths": [
+   480,
+   800
+  ]
+ },
+ "/img/source/testimonials/joe-danielle-steen.jpg": {
+  "w": 1400,
+  "h": 1050,
+  "widths": [
+   480,
+   960,
+   1200,
+   1400
+  ]
+ },
+ "/img/source/testimonials/tommy-alisha.jpg": {
+  "w": 800,
+  "h": 800,
+  "widths": [
+   480,
+   800
+  ]
+ },
+ "/img/stock/destinations/quiet-anchorage-blue-hour-ai.jpg": {
+  "w": 1024,
+  "h": 576,
+  "widths": [
+   480,
+   960,
+   1024
+  ]
+ },
+ "/img/stock/experiences/experiences-hero-ai.jpg": {
+  "w": 1024,
+  "h": 576,
+  "widths": [
+   480,
+   960,
+   1024
+  ]
+ },
+ "/img/stock/hero/hero-bvi-catamaran-turquoise-01.jpg": {
+  "w": 2400,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/stock/hero/hero-sunset-teak-deck-04.jpg": {
+  "w": 2400,
+  "h": 4937,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg": {
+  "w": 2400,
+  "h": 2022,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/stock/voyages/bvi/bvi-the-baths-hero.jpg": {
+  "w": 2400,
+  "h": 3230,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/stock/voyages/croatia/croatia-hvar-harbor-hero.jpg": {
+  "w": 2400,
+  "h": 1599,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/stock/voyages/croatia/gallery/croatia-korcula-walls-01.jpg": {
+  "w": 2400,
+  "h": 1862,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/stock/voyages/greece/greece-island-cove-hero.jpg": {
+  "w": 1600,
+  "h": 900,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/stock/voyages/greece/greece-santorini-caldera-hero.jpg": {
+  "w": 2400,
+  "h": 3000,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/stock/voyages/italy/gallery/italy-positano-01.jpg": {
+  "w": 2400,
+  "h": 1604,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/stock/voyages/italy/italy-amalfi-coast-hero.jpg": {
+  "w": 2400,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200,
+   1600
+  ]
+ },
+ "/img/stock/voyages/voyages-hub-pick-the-water-ai.jpg": {
+  "w": 1024,
+  "h": 576,
+  "widths": [
+   480,
+   960,
+   1024
+  ]
+ },
+ "/welcome-poster.jpg": {
+  "w": 1280,
+  "h": 720,
+  "widths": [
+   480,
+   960,
+   1200,
+   1280
+  ]
+ }
+}

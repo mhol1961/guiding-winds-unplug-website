@@ -1,4 +1,5 @@
 ---
+import { img } from '../lib/img';
 // LP-2 — "Everything's Included" · offer-led, value + trust.
 // Angle: one price covers the whole week. Bento inclusions, 3-up proof, how-it-works.
 import LpLayout from '../layouts/LpLayout.astro';
@@ -24,7 +25,7 @@ const reviews = [
 ];
 ---
 
-<LpLayout title={title} description={description} ogImage="/img/source/hero/02-sunset-catamaran-anchorage.jpg">
+<LpLayout title={title} description={description} ogImage="/og/lp-2.jpg">
   <!-- HERO (split) -->
   <section class="relative">
     <div class="grid lg:grid-cols-2 min-h-[100dvh]">
@@ -53,7 +54,7 @@ const reviews = [
         </div>
       </div>
       <div class="relative order-1 lg:order-2 min-h-[40dvh] lg:min-h-0">
-        <img src="/img/source/hero/03-foredeck-bow-sun-flare.jpg" alt="The catamaran's foredeck and bow in golden-hour light" fetchpriority="high" width="1280" height="1600" class="absolute inset-0 size-full object-cover" />
+        <img {...img('/img/source/hero/03-foredeck-bow-sun-flare.jpg', '(min-width: 1024px) 50vw, 100vw')} alt="The catamaran's foredeck and bow in golden-hour light" fetchpriority="high" class="absolute inset-0 size-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-r from-primary/30 to-transparent lg:from-primary/20" aria-hidden="true"></div>
       </div>
     </div>
@@ -94,7 +95,7 @@ const reviews = [
             <p class="text-sun text-[0.875rem] tracking-[0.2em] mb-4">★★★★★</p>
             <blockquote class="font-serif-quote font-light italic text-ink leading-[1.4]" style="font-size: 1.1875rem;">“{r.q}”</blockquote>
             <figcaption class="mt-5 flex items-center gap-3">
-              <img src={r.img} alt={r.n} width="44" height="44" loading="lazy" class="size-11 object-cover rounded-pill" />
+              <img {...img(r.img, '44px')} alt={r.n} loading="lazy" class="size-11 object-cover rounded-pill" />
               <span class="font-label-caps uppercase tracking-[0.18em] text-[0.625rem] font-semibold text-ink-soft">{r.n} · {r.l}</span>
             </figcaption>
           </figure>

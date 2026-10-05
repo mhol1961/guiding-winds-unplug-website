@@ -1,4 +1,5 @@
 ---
+import { img } from '../lib/img';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import WelcomeVideo from '../components/home/WelcomeVideo.astro';
@@ -87,7 +88,7 @@ const schemaGraph = [
         <div class="lg:col-span-7">
           <figure class="relative aspect-[16/9] overflow-hidden bg-primary/5">
             <img
-              src="/img/fountaine.pajotpic.website.2.jpg"
+              {...img('/img/fountaine.pajotpic.website.2.jpg', '(min-width: 1024px) 58vw, 100vw')}
               alt="Guiding Winds catamaran at anchor"
               loading="lazy"
               decoding="async"

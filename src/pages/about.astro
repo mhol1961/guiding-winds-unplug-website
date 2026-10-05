@@ -1,4 +1,5 @@
 ---
+import { img } from '../lib/img';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
 import { Anchor, ShieldCheck } from 'lucide-react';
@@ -58,7 +59,7 @@ const credentials = [
       dark headline column clears AA without darkening the daytime image. */}
   <section class="relative bg-bone text-primary overflow-hidden min-h-[88dvh] flex flex-col">
     <img
-      src="/img/clint-relaxing-on-boat-islands-background.png"
+      {...img('/img/clint-relaxing-on-boat-islands-background.png', '100vw')}
       alt="Clint Kendall relaxing in the cockpit of the catamaran, a British Virgin Islands headland behind him"
       class="absolute inset-0 w-full h-full object-cover object-[center_35%]"
       fetchpriority="high"
@@ -92,7 +93,7 @@ const credentials = [
               aspect-[3/2] with object-cover centered - minimal side crop. */}
           <figure class="relative aspect-[3/2] overflow-hidden bg-primary/5">
             <img
-              src="/img/source/people/clint-with-boats-background.jpg"
+              {...img('/img/source/people/clint-with-boats-background.jpg', '(min-width: 1024px) 50vw, 100vw')}
               alt="Clint Kendall aboard the catamaran on a sunny day, a British Virgin Islands anchorage full of moored sailboats behind him"
               loading="lazy"
               decoding="async"
@@ -177,7 +178,7 @@ const credentials = [
               aspect-[4/5] cleanly). */}
           <figure class="relative aspect-[4/5] overflow-hidden bg-primary/5">
             <img
-              src="/img/source/people/dodie-kendall-beach-portrait.jpg"
+              {...img('/img/source/people/dodie-kendall-beach-portrait.jpg', '(min-width: 1024px) 50vw, 100vw')}
               alt="Dodie Kendall smiling on the beach, the Caribbean surf behind her"
               loading="lazy"
               decoding="async"

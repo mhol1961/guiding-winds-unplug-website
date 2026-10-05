@@ -1,4 +1,5 @@
 ---
+import { img } from '../../lib/img';
 // Full-bleed cinematic hero. Crossfades 4 Seedance 2 video reels with
 // real-photo poster fallbacks. Honors prefers-reduced-motion (videos
 // don't autoplay; the first scene's poster image is shown still).
@@ -88,7 +89,7 @@ const {
             </video>
           ) : (
             <img
-              src={scene.posterSrc}
+              {...img(scene.posterSrc, '100vw')}
               alt=""
               loading={i === 0 ? 'eager' : 'lazy'}
               decoding="async"

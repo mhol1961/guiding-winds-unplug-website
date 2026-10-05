@@ -1,4 +1,5 @@
 ---
+import { img } from '../../lib/img';
 // Editorial split - 17:10 horizontal photo on the left, narrative on the
 // right. Modeled on Black Tomato's "What we do" / "Pursuit of Feeling"
 // alternating split-image sections. The aspect-ratio break from the
@@ -13,7 +14,7 @@ import { Image } from 'astro:assets';
       <div class="lg:col-span-7 order-2 lg:order-1">
         <figure class="relative aspect-[17/10] overflow-hidden bg-primary/5">
           <img
-            src="/img/source/hero/04-cockpit-sunrise.jpg"
+            {...img('/img/source/hero/04-cockpit-sunrise.jpg', '(min-width: 1024px) 50vw, 100vw')}
             alt="Coffee on the cockpit bench of a catamaran as the sun comes up over the anchorage"
             loading="lazy"
             decoding="async"

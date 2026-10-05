@@ -1,4 +1,5 @@
 ---
+import { img } from '../lib/img';
 // LP-3 — "Choose Your Waters" · destination-led, visual + genuine scarcity.
 // Angle: pick a region; limited cabins and weeks. Image-driven.
 import LpLayout from '../layouts/LpLayout.astro';
@@ -16,15 +17,15 @@ const regions = [
 ];
 ---
 
-<LpLayout title={title} description={description} ogImage="/img/source/destinations/catamaran-anchored-green-headland-01.jpg">
+<LpLayout title={title} description={description} ogImage="/og/lp-3.jpg">
   <!-- HERO -->
   <section class="relative min-h-[100dvh] flex items-end overflow-hidden">
     <img
-      src="/img/source/destinations/catamaran-anchored-green-headland-01.jpg"
+      {...img('/img/source/destinations/catamaran-anchored-green-headland-01.jpg', '100vw')}
       alt="A catamaran anchored in bright turquoise water below a green island headland under a blue sky"
       fetchpriority="high"
-      width="1920"
-      height="1280"
+     
+     
       class="absolute inset-0 size-full object-cover"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-bone/90 via-bone/45 via-45% to-transparent" aria-hidden="true"></div>
@@ -61,7 +62,7 @@ const regions = [
       <div class="grid gap-6 md:grid-cols-3">
         {regions.map((r) => (
           <a href="#start" class="group block relative overflow-hidden aspect-[3/4] ring-1 ring-transparent transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:ring-accent/60 hover:shadow-[0_20px_65px_-20px_rgba(229,64,43,0.55)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-            <img src={r.img} alt={r.h} width="800" height="1066" loading="lazy" class="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img {...img(r.img, '(min-width: 768px) 33vw, 100vw')} alt={r.h} loading="lazy" class="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent" aria-hidden="true"></div>
             <div class="absolute inset-x-0 bottom-0 p-7">
               <h3 class="font-h3 text-ink leading-[1.1]" style="font-size: 1.5rem;">{r.h}</h3>

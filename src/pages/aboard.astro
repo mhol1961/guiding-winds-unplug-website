@@ -1,4 +1,5 @@
 ---
+import { img } from '../lib/img';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { BUSINESS } from '../lib/business';
 import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
@@ -60,7 +61,7 @@ const lifeAboard = [
   {/* Image hero with full-bleed real boat photo */}
   <section class="relative bg-primary text-ink overflow-hidden min-h-[80dvh] flex flex-col">
     <img
-      src="/img/fountaine.pajotpic.website.2.jpg"
+      {...img('/img/fountaine.pajotpic.website.2.jpg', '100vw')}
       alt="Guiding Winds catamaran at anchor"
       class="absolute inset-0 w-full h-full object-cover"
       fetchpriority="high"
@@ -116,7 +117,7 @@ const lifeAboard = [
             <li class="flex flex-col">
               <figure class="relative aspect-[16/10] overflow-hidden bg-primary/5">
                 <img
-                  src={src}
+                  {...img(src, '(min-width: 1024px) 33vw, 100vw')}
                   alt={alt}
                   loading="lazy"
                   decoding="async"
@@ -161,7 +162,7 @@ const lifeAboard = [
             <li class={`flex flex-col ${span}`}>
               <figure class={`relative ${aspect} overflow-hidden bg-primary/5`}>
                 <img
-                  src={src}
+                  {...img(src, '(min-width: 1024px) 33vw, 100vw')}
                   alt={alt}
                   loading="lazy"
                   decoding="async"

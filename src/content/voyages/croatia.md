@@ -11,11 +11,8 @@ shortDescription: 'Split to Dubrovnik through the Dalmatian island chain. Hvar, 
 heroImage: /img/stock/voyages/croatia/croatia-hvar-harbor-hero.jpg
 heroImageAlt: Stone harbor town on the Dalmatian coast of Croatia
 galleryImages:
-  - { src: /img/stock/voyages/croatia/croatia-hvar-harbor-hero.jpg, alt: Hvar town and the Pakleni Islands archipelago }
-  - { src: /img/stock/voyages/croatia/gallery/croatia-vis.jpg, alt: Vis, the furthest offshore island in the Dalmatian chain }
-  - { src: /img/stock/voyages/croatia/gallery/croatia-korcula-walls-01.jpg, alt: Stone walls of Korcula seen from the sea }
-  - { src: /img/stock/voyages/croatia/gallery/croatia-mljet.jpg, alt: Mljet National Park and its saltwater lakes }
-  - { src: /img/stock/voyages/croatia/gallery/croatia-elaphites.jpg, alt: Šipan or Lopud in the Elaphite Islands }
+  - { src: /img/stock/voyages/croatia/croatia-hvar-harbor-hero.jpg, alt: 'Hvar town and the Pakleni Islands archipelago' }
+  - { src: /img/stock/voyages/croatia/gallery/croatia-korcula-walls-01.jpg, alt: 'Stone walls of Korcula seen from the sea' }
 availableWeeks:
   - { start: '2027-08-14', end: '2027-08-21', cabinsAvailable: 6 }
 itinerary:

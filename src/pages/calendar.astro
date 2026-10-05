@@ -1,4 +1,5 @@
 ---
+import { img } from '../lib/img';
 import { getCollection } from 'astro:content';
 import { BUSINESS } from '../lib/business';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -112,7 +113,7 @@ const schemaGraph = [
                 class="grid grid-cols-12 gap-4 lg:gap-6 items-center py-5 border-b border-rule group"
               >
                 <a href={`/voyages/${row.voyageSlug}`} class="col-span-3 sm:col-span-2 block aspect-[16/10] overflow-hidden bg-primary/5 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3">
-                  <img src={row.heroImage} alt={row.voyageName} loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]" />
+                  <img {...img(row.heroImage, '240px')} alt={row.voyageName} loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]" />
                 </a>
                 <div class="col-span-9 sm:col-span-3">
                   <p class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/70">

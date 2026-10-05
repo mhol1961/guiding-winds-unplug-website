@@ -1,4 +1,5 @@
 ---
+import { img } from '../lib/img';
 // LP-1 — "The Unplug" · emotional reframe, editorial/text-led.
 // Angle: escape the always-on life. Single goal: the questionnaire.
 import LpLayout from '../layouts/LpLayout.astro';
@@ -9,15 +10,15 @@ const description =
   'All-inclusive catamaran charters in the BVI, Bahamas, and Mediterranean. Owner-run, a small group, nothing on the schedule but water and weather.';
 ---
 
-<LpLayout title={title} description={description} ogImage="/img/stock/hero/hero-bvi-catamaran-turquoise-01.jpg">
+<LpLayout title={title} description={description} ogImage="/og/lp-1.jpg">
   <!-- HERO -->
   <section class="relative min-h-[100dvh] flex items-end overflow-hidden">
     <img
-      src="/img/stock/hero/hero-bvi-catamaran-turquoise-01.jpg"
+      {...img('/img/stock/hero/hero-bvi-catamaran-turquoise-01.jpg', '100vw')}
       alt="A white catamaran on bright turquoise Caribbean water under a clear blue sky"
       fetchpriority="high"
-      width="1920"
-      height="1280"
+     
+     
       class="absolute inset-0 size-full object-cover"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-bone/90 via-bone/45 via-45% to-transparent" aria-hidden="true"></div>
@@ -99,7 +100,7 @@ const description =
         and soaking up every bit of the sun. Dodie and Clint have truly mastered the art of hospitality.”
       </p>
       <div class="mt-8 flex items-center justify-center gap-4">
-        <img src="/img/source/testimonials/joe-danielle-steen.jpg" alt="Joe and Danielle Steen aboard" width="56" height="56" loading="lazy" class="size-14 object-cover rounded-pill" />
+        <img {...img('/img/source/testimonials/joe-danielle-steen.jpg', '56px')} alt="Joe and Danielle Steen aboard" loading="lazy" class="size-14 object-cover rounded-pill" />
         <span class="font-label-caps uppercase tracking-[0.22em] text-[0.6875rem] font-semibold text-ink-soft">Joe &amp; Danielle Steen · St. Augustine, FL</span>
       </div>
     </div>

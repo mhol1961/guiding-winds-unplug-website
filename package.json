@@ -14,7 +14,8 @@
     "astro": "astro",
     "design:lint": "design.md lint DESIGN.md",
     "design:export": "node scripts/design-export.mjs",
-    "test": "node --experimental-strip-types --test \"src/**/*.test.ts\""
+    "test": "node --experimental-strip-types --test \"src/**/*.test.ts\"",
+    "images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.3.3",

@@ -11,11 +11,7 @@ shortDescription: 'Hope Town, Tilloo Cay, Man-o-War. Pink-sand spits, shallow wa
 heroImage: /img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg
 heroImageAlt: Hope Town candy-striped lighthouse rising above the Abacos waterfront
 galleryImages:
-  - { src: /img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg, alt: Hope Town candy-striped lighthouse rising above the Abacos waterfront }
-  - { src: /img/stock/voyages/bahamas/gallery/bahamas-tilloo-cay.jpg, alt: Tilloo Cay and Sandy Cay, low reef-fringed islands in the Abacos }
-  - { src: /img/stock/voyages/bahamas/gallery/bahamas-man-o-war-cay.jpg, alt: Man-o-War Cay, a boat-building village with no cars }
-  - { src: /img/stock/voyages/bahamas/gallery/bahamas-guana-cay.jpg, alt: Guana Cay, a long beach on the Atlantic side of the Abacos }
-  - { src: /img/stock/voyages/bahamas/gallery/bahamas-treasure-cay.jpg, alt: Treasure Cay, one of the most photographed bays in the Abacos chain }
+  - { src: /img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg, alt: 'Hope Town candy-striped lighthouse rising above the Abacos waterfront' }
 availableWeeks:
   - { start: '2027-04-10', end: '2027-04-17', cabinsAvailable: 6 }
 itinerary:

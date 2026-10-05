@@ -38,9 +38,9 @@ export function organization({ baseUrl }: OrgInput) {
     ],
     logo: {
       '@type': 'ImageObject',
-      url: `${root}/og/logo.png`,
-      width: 600,
-      height: 600,
+      url: `${root}/img/brand/logo.png`,
+      width: 512,
+      height: 512,
     },
     description:
       'Off-grid all-inclusive catamaran voyages for up to 12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia. From $3,350 per guest, per week.',

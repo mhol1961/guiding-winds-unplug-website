@@ -1,4 +1,5 @@
 ---
+import { img } from '../../lib/img';
 import NewsletterSignup from './NewsletterSignup.astro';
 import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE } from '../../lib/business';
 
@@ -50,10 +51,10 @@ const navCols = [
           aria-label="Guiding Winds Unplug - home"
         >
           <img
-            src="/img/brand/logo.png"
+            {...img('/img/brand/logo.png', '80px')}
             alt=""
-            width="80"
-            height="80"
+           
+           
             class="size-16 lg:size-20 object-contain mb-5 group-hover:opacity-85 transition-opacity"
             decoding="async"
             loading="lazy"

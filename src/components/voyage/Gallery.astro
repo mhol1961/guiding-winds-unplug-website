@@ -1,4 +1,5 @@
 ---
+import { img } from '../../lib/img';
 interface Image {
   src: string;
   alt: string;
@@ -13,8 +14,11 @@ const { images } = Astro.props;
 // 5-tile asymmetric grid - featured 2x2 left, four small tiles right.
 // Real photography required; fallback gradient is no longer used since
 // every voyage now has galleryImages populated.
-const hasImages = images.length > 0;
+// Fewer than 2 photos isn't a gallery (it would repeat the hero), so hide
+// it; exactly 2 sit side by side; 3+ use the bento grid.
+const hasImages = images.length > 1;
 const tiles = hasImages ? images.slice(0, 5) : [];
+const pair = tiles.length === 2;
 ---
 
 {hasImages && (
@@ -37,7 +41,7 @@ const tiles = hasImages ? images.slice(0, 5) : [];
         </p>
       </div>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 grid-rows-2 gap-3 lg:gap-4 aspect-[5/4] lg:aspect-[3/2]">
+      <div class:list={['grid gap-3 lg:gap-4', pair ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-2 lg:grid-cols-4 grid-rows-2 aspect-[5/4] lg:aspect-[3/2]']}>
         {
           tiles.map((tile, i) => {
             const isFeatured = i === 0;
@@ -45,11 +49,11 @@ const tiles = hasImages ? images.slice(0, 5) : [];
               <figure
                 class:list={[
                   'relative overflow-hidden group',
-                  isFeatured ? 'col-span-2 row-span-2' : '',
+                  pair ? 'aspect-[4/3]' : isFeatured ? 'col-span-2 row-span-2' : '',
                 ]}
               >
                 <img
-                  src={tile.src}
+                  {...img(tile.src, '(min-width: 1024px) 50vw, 100vw')}
                   alt={tile.alt}
                   loading="lazy"
                   decoding="async"

@@ -7,15 +7,12 @@ heroEyebrow: 'Athens · Aegean'
 nights: 7
 nightsLabel: '5 to 7'
 pricePerGuestUSD: 3650
-shortDescription: 'Mykonos at the start, Santorini at the end, three quiet Cyclades in between - the chain at the pace it was meant to be sailed.'
+shortDescription: 'Athens to Santorini by way of Kythnos, Serifos, Sifnos, Folegandros and Ios, the chain at the pace it was meant to be sailed.'
 heroImage: /img/stock/voyages/greece/greece-santorini-caldera-hero.jpg
 heroImageAlt: Whitewashed Cycladic village above the Santorini caldera at sunset
 galleryImages:
-  - { src: /img/stock/voyages/greece/greece-santorini-caldera-hero.jpg, alt: Whitewashed Cycladic village above the Santorini caldera at sunset }
-  - { src: /img/stock/voyages/greece/greece-island-cove-hero.jpg, alt: Kolona, the twin-bay sandbar anchorage at Kythnos }
-  - { src: /img/stock/voyages/greece/gallery/greece-sifnos.jpg, alt: Sifnos, with the hill town of Apollonia above the harbor at Kamares }
-  - { src: /img/stock/voyages/greece/gallery/greece-folegandros.jpg, alt: Folegandros, whitewashed Chora set on a cliff edge above the Aegean }
-  - { src: /img/stock/voyages/greece/gallery/greece-ios.jpg, alt: Ios and the anchorage at Manganari }
+  - { src: /img/stock/voyages/greece/greece-santorini-caldera-hero.jpg, alt: 'Whitewashed Cycladic village above the Santorini caldera at sunset' }
+  - { src: /img/stock/voyages/greece/greece-island-cove-hero.jpg, alt: 'Kolona, the twin-bay sandbar anchorage at Kythnos' }
 availableWeeks:
   - { start: '2027-07-17', end: '2027-07-24', cabinsAvailable: 6 }
 itinerary:
@@ -59,18 +56,18 @@ faq:
     a: 'Seven nights, one-way from Athens (Alimos) to Santorini through the Cyclades. Specific weeks are available - see the calendar.'
 seo:
   title: 'Greece Catamaran Charter 2027 · Cyclades | Guiding Winds'
-  description: 'Kea, Sifnos, Folegandros, Santorini. Seven nights on a private catamaran for up to 12 guests through the quiet Cyclades. Starts at $3,650 per guest, all-inclusive.'
+  description: 'Athens to Santorini via Kythnos, Serifos, Sifnos, Folegandros and Ios on a private catamaran for up to 12 guests. From $3,650 per guest, all-inclusive.'
   keywords:
     - Greek islands catamaran trip
     - Cyclades catamaran charter all-inclusive
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Greek islands catamaran trip sails one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a private catamaran for up to 12 guests. The route threads Kea, Kythnos, Sifnos, Folegandros, Ios, and Santorini - the chain at sailboat pace, not ferry pace. Starts at **$3,650 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our 7-night Greek islands catamaran trip sails one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a private catamaran for up to 12 guests. The route threads Kythnos, Serifos, Sifnos, Folegandros, Ios, and Santorini - the chain at sailboat pace, not ferry pace. Starts at **$3,650 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
 
 ## The shape of a week
 
-You fly into Athens and transfer to Alimos by mid-afternoon. The first night we stay tied up at the marina so everyone can settle aboard; the next morning the city drops behind you and Kea is ahead. From there the week opens out island by island - short legs most days, one longer crossing, never more than five or six hours under sail. The Cyclades sit in a loose chain that the catamaran reads naturally: lift the anchor after breakfast, drop it again before lunch, swim, eat, walk a hill town in the late afternoon, sit down to dinner as the wind dies. The Greek islands catamaran trip you book on a ferry-and-hotel itinerary covers the same map at a third of the depth. The water in between is most of what you came for.
+You fly into Athens and transfer to Alimos by mid-afternoon. The first night we stay tied up at the marina so everyone can settle aboard; the next morning the city drops behind you and Kythnos is ahead. From there the week opens out island by island - short legs most days, one longer crossing, never more than five or six hours under sail. The Cyclades sit in a loose chain that the catamaran reads naturally: lift the anchor after breakfast, drop it again before lunch, swim, eat, walk a hill town in the late afternoon, sit down to dinner as the wind dies. The Greek islands catamaran trip you book on a ferry-and-hotel itinerary covers the same map at a third of the depth. The water in between is most of what you came for.
 
 Ferries connect the famous islands and skip everything else. Cruise ships dock at two of them and disgorge four thousand people at a time. The catamaran sits in coves neither of them reach - Kythnos's Kolona, Folegandros's cliffside anchorages, a quiet morning at Manganari before the day boats arrive. You'll see Santorini at the end, like everyone else. You'll get there a different way.
 

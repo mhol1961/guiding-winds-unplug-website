@@ -1,4 +1,5 @@
 ---
+import { img } from '../../lib/img';
 // Full-bleed destination photo hero with editorial overlay. The hero
 // img is REQUIRED - every voyage now has a real photo (BVI: Dodie's,
 // others: licensed stock). No gradient fallback; this section just shows
@@ -31,7 +32,7 @@ const {
 
 <section class="relative bg-primary text-ink overflow-hidden min-h-[88dvh] flex flex-col">
   <img
-    src={heroImage}
+    {...img(heroImage, '100vw')}
     alt={heroImageAlt}
     class="absolute inset-0 w-full h-full object-cover"
     fetchpriority="high"

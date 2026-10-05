@@ -11,11 +11,7 @@ shortDescription: 'Capri at sunrise, Positano on the water, the volcanic Aeolian
 heroImage: /img/stock/voyages/italy/italy-amalfi-coast-hero.jpg
 heroImageAlt: Pastel houses of an Amalfi coast village seen from the water
 galleryImages:
-  - { src: /img/stock/voyages/italy/gallery/italy-positano-01.jpg, alt: Positano cliffs and pastel houses rising above the Tyrrhenian }
-  - { src: /img/stock/voyages/italy/gallery/italy-capri.jpg, alt: Capri and the grottos at Marina Piccola }
-  - { src: /img/stock/voyages/italy/gallery/italy-stromboli.jpg, alt: Stromboli volcano lit up at night in the Aeolian Islands }
-  - { src: /img/stock/voyages/italy/gallery/italy-panarea.jpg, alt: Panarea, the smallest and most chic of the Aeolian islands }
-  - { src: /img/stock/voyages/italy/gallery/italy-lipari.jpg, alt: Lipari harbor in the Aeolian Islands }
+  - { src: /img/stock/voyages/italy/gallery/italy-positano-01.jpg, alt: 'Positano cliffs and pastel houses rising above the Tyrrhenian' }
 availableWeeks:
   - { start: '2027-07-03', end: '2027-07-10', cabinsAvailable: 6 }
 itinerary:

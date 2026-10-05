@@ -11,11 +11,8 @@ shortDescription: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Quiet ancho
 heroImage: /img/stock/voyages/bvi/bvi-the-baths-hero.jpg
 heroImageAlt: Granite boulders of The Baths at Virgin Gorda, BVI
 galleryImages:
-  - { src: /carribean-sea-map-image.png, alt: Map of the British Virgin Islands showing the anchorages sailed on this voyage }
-  - { src: /img/stock/voyages/bvi/bvi-the-baths-hero.jpg, alt: Granite boulders of The Baths at Virgin Gorda }
-  - { src: /img/stock/voyages/bvi/gallery/bvi-norman-island.jpg, alt: Norman Island, home to the Caves and the Indians snorkel site }
-  - { src: /img/stock/voyages/bvi/gallery/bvi-anegada.jpg, alt: Anegada, the only coral atoll in the British Virgin Islands chain }
-  - { src: /img/stock/voyages/bvi/gallery/bvi-jost-van-dyke.jpg, alt: Jost Van Dyke, home to White Bay and the Soggy Dollar Bar }
+  - { src: /img/carribean-sea-map-image.png, alt: 'Map of the British Virgin Islands showing the anchorages sailed on this voyage' }
+  - { src: /img/stock/voyages/bvi/bvi-the-baths-hero.jpg, alt: 'Granite boulders of The Baths at Virgin Gorda' }
 availableWeeks:
   - { start: '2027-01-09', end: '2027-01-16', cabinsAvailable: 6 }
   - { start: '2027-02-06', end: '2027-02-13', cabinsAvailable: 6 }
