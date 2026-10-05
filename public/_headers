@@ -1,20 +1,6 @@
-# Cloudflare Pages native security headers. Loaded automatically at deploy
-# time — no Worker required.
-#
-# Per Codex security audit pre-launch: HSTS, X-Frame-Options, CSP, MIME-
-# sniff prevention, Referrer-Policy, Permissions-Policy.
-# Reviewed for the Astro 6 + inline-script + Plausible + GHL setup we
-# actually run.
-
-/*
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Cross-Origin-Opener-Policy: same-origin
-  Cross-Origin-Resource-Policy: same-site
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://plausible.io https://connect.facebook.net https://widgets.leadconnectorhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://widgets.leadconnectorhq.com; img-src 'self' data: https: https://widgets.leadconnectorhq.com https://*.leadconnectorhq.com; media-src 'self' https:; font-src 'self' data: https://widgets.leadconnectorhq.com; connect-src 'self' https://plausible.io https://www.facebook.com https://connect.facebook.net https://services.leadconnectorhq.com https://backend.leadconnectorhq.com https://*.leadconnectorhq.com wss://*.leadconnectorhq.com https://static.cloudflareinsights.com; frame-src 'self' https://challenges.cloudflare.com https://widgets.leadconnectorhq.com https://*.leadconnectorhq.com https://www.youtube-nocookie.com https://www.youtube.com; child-src 'self' https://challenges.cloudflare.com https://widgets.leadconnectorhq.com https://*.leadconnectorhq.com https://www.youtube-nocookie.com https://www.youtube.com; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+# Security headers (HSTS, CSP, nosniff, framing, CORP) are set on every
+# response by src/worker.ts (rules in src/lib/edge.ts), so they also cover
+# API routes and redirects. This file only sets caching.
 
 # Long-cache the immutable build hashes.
 /_astro/*
@@ -35,9 +21,3 @@
 # without a full rebuild.
 /calendar
   Cache-Control: public, max-age=900, s-maxage=900
-
-# Newsletter media is embedded by email clients and GHL's web view, which
-# are other sites. The site-wide same-site CORP would block those loads.
-/newsletter/*
-  ! Cross-Origin-Resource-Policy
-  Cross-Origin-Resource-Policy: cross-origin

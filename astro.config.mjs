@@ -44,15 +44,22 @@ export default defineConfig({
   adapter: cloudflare(),
   integrations: [
     react(),
-    // /api/* are fragments and endpoints, not pages.
-    sitemap({ filter: (page) => !new URL(page).pathname.startsWith('/api/') }),
+    // Only indexable pages: no API routes, ad landing pages, thank-you page,
+    // or /experiences (noindex until its content arrives).
+    sitemap({
+      filter: (page) =>
+        !/^\/(api|lp-\d+|inquire\/thank-you|experiences)(\/|$)/.test(new URL(page).pathname),
+    }),
   ],
   vite: {
     plugins: [tailwindcss()],
   },
   trailingSlash: 'never',
   build: {
-    format: 'directory',
+    // about.html (not about/index.html): /about answers 200 directly and
+    // src/worker.ts 301s /about/ to it. Canonicals, sitemap and links all
+    // use the no-slash form.
+    format: 'file',
   },
   security: {
     // Validate Origin header on all POST/PUT/PATCH/DELETE — blocks the

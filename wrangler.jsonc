@@ -1,0 +1,24 @@
+// Cloudflare Worker config. Astro's adapter merges this with its own defaults
+// at build time (output: dist/server/wrangler.json). Deploys happen through
+// Workers Builds on push to main; never run `wrangler deploy` by hand.
+{
+  "name": "guiding-winds-unplug-website",
+  // Wraps Astro's handler with the canonical-URL redirects and security headers.
+  "main": "./src/worker.ts",
+  "compatibility_date": "2026-10-01",
+  // The site lives only at guidingwinds-unplug.com. These stay off on every deploy.
+  "workers_dev": false,
+  "preview_urls": false,
+  // Every request (including prerendered pages) runs src/worker.ts first, so
+  // http/www/trailing-slash redirects happen before the asset is served.
+  "assets": { "binding": "ASSETS", "run_worker_first": true },
+  "d1_databases": [
+    {
+      "binding": "LEAD_DB",
+      "database_name": "gwu-lead-limits",
+      "database_id": "762bdea7-2cdb-49c3-a27f-e374859bda01",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "observability": { "enabled": true }
+}
