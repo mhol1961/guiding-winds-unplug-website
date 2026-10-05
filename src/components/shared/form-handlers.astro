@@ -41,8 +41,37 @@
     el.classList.add('text-accent');
   }
 
+  // Ad source kept by FormScripts.astro for this session (utm_*, fbclid).
+  function attribution(): Record<string, string> {
+    try {
+      return JSON.parse(sessionStorage.getItem('gw_attr') ?? '{}');
+    } catch {
+      return {};
+    }
+  }
+
+  // Turnstile tokens are single-use; get a fresh one after every attempt.
+  function resetTurnstile(form: HTMLFormElement) {
+    const widget = form.querySelector<HTMLElement>('.cf-turnstile');
+    const turnstile = (window as { turnstile?: { reset: (el: HTMLElement) => void } }).turnstile;
+    if (widget && turnstile) turnstile.reset(widget);
+  }
+
+  // Swap a button to a busy label, and return a function that restores its own label.
+  function busy(btn: HTMLButtonElement | null, label: string): () => void {
+    if (!btn) return () => {};
+    const original = [...btn.childNodes].map((n) => n.cloneNode(true));
+    btn.disabled = true;
+    btn.textContent = label;
+    return () => {
+      btn.disabled = false;
+      btn.replaceChildren(...original);
+    };
+  }
+
   async function postForm(form: HTMLFormElement, endpoint: string): Promise<Response> {
     const data = new FormData(form);
+    for (const [k, v] of Object.entries(attribution())) if (!data.has(k)) data.set(k, String(v));
     return fetch(endpoint, {
       method: 'POST',
       headers: { Accept: 'application/json' },
@@ -54,12 +83,8 @@
   document.querySelectorAll<HTMLFormElement>('form[data-inquiry-form]').forEach((form) => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
       const status = form.querySelector<HTMLElement>('[data-inquiry-status]');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending…';
-      }
+      const restore = busy(form.querySelector<HTMLButtonElement>('button[type="submit"]'), 'Sending…');
       clearStatus(status);
 
       try {
@@ -92,10 +117,8 @@
           'mailto:guidingwindsunplug@gmail.com?subject=Inquiry',
         );
       } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Inquiry';
-        }
+        restore();
+        resetTurnstile(form);
       }
     });
   });
@@ -104,12 +127,8 @@
   document.querySelectorAll<HTMLFormElement>('form[data-newsletter]').forEach((form) => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
       const status = form.querySelector<HTMLElement>('[data-newsletter-status]');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Subscribing…';
-      }
+      const restore = busy(form.querySelector<HTMLButtonElement>('button[type="submit"]'), 'Subscribing…');
       clearStatus(status);
 
       try {
@@ -129,14 +148,8 @@
       } catch {
         setStatusText(status, 'Network issue. Try again in a moment.', 'err');
       } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Subscribe';
-        }
-        // Turnstile tokens are single-use; get a fresh one for the next try.
-        const widget = form.querySelector<HTMLElement>('.cf-turnstile');
-        const turnstile = (window as { turnstile?: { reset: (el: HTMLElement) => void } }).turnstile;
-        if (widget && turnstile) turnstile.reset(widget);
+        restore();
+        resetTurnstile(form);
       }
     });
   });

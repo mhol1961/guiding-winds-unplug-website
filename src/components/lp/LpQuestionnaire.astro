@@ -1,4 +1,6 @@
 ---
+import Turnstile from '../shared/Turnstile.astro';
+import { PARTY_SIZES } from '../../lib/business';
 // Shared lead questionnaire for the ad landing pages.
 // Progressive enhancement: with JS it's a 3-step wizard; without JS (or if the
 // script fails to load) it degrades to a single scrollable form that still
@@ -46,7 +48,7 @@ const regions = [
     <form method="POST" action="/api/inquire" data-inquiry-form data-lp-quiz class="mt-10 relative">
       <input type="hidden" name="source" value={source} />
       {/* Honeypot — must stay empty; bots fill it and get silently dropped */}
-      <input type="text" name="website" tabindex="-1" autocomplete="off" class="absolute -left-[9999px] h-0 w-0 opacity-0" aria-hidden="true" />
+      <input type="text" name="hp_check" tabindex="-1" autocomplete="off" class="absolute -left-[9999px] h-0 w-0 opacity-0" aria-hidden="true" />
 
       <!-- progress (JS-only chrome) -->
       <div data-js-only class="mb-8">
@@ -79,13 +81,7 @@ const regions = [
           <label class={labelCls} for={`party-${source}`}>How many in your party? <span class="text-accent">*</span></label>
           <select id={`party-${source}`} name="partySize" required class={inputCls}>
             <option value="" disabled selected>Choose a size</option>
-            <option>Just me</option>
-            <option>2 (couple)</option>
-            <option>3–4</option>
-            <option>5–6</option>
-            <option>7–8</option>
-            <option>9–12</option>
-            <option>Whole boat / not sure yet</option>
+            {PARTY_SIZES.map((p) => <option>{p}</option>)}
           </select>
         </div>
 
@@ -133,7 +129,8 @@ const regions = [
           <input id={`phone-${source}`} name="phone" type="tel" autocomplete="tel" maxlength="40" class={inputCls} />
         </div>
 
-        <div class="mt-9 flex items-center gap-3">
+        <Turnstile class="mt-7" />
+        <div class="mt-7 flex items-center gap-3">
           <button type="button" data-back data-js-only class="cursor-pointer text-primary/60 hover:text-primary font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold px-4 py-[18px] transition-colors">← Back</button>
           <button type="submit" class="flex-1 inline-flex items-center justify-center gap-2 cursor-pointer bg-accent text-primary font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-8 py-[18px] hover:bg-accent-hot transition-colors">
             Send my request

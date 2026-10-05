@@ -7,6 +7,7 @@
 import '../styles/global.css';
 import SeoHead from '../components/shared/SeoHead.astro';
 import MetaPixel from '../components/shared/MetaPixel.astro';
+import FormScripts from '../components/shared/FormScripts.astro';
 import FormHandlers from '../components/shared/form-handlers.astro';
 
 interface Props {
@@ -28,6 +29,7 @@ const year = 2026;
   <head>
     <SeoHead title={title} description={description} ogImage={ogImage} noindex={true} />
     <MetaPixel />
+    <FormScripts />
   </head>
   <body class="bg-primary text-ink min-h-screen flex flex-col antialiased">
     <a

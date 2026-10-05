@@ -36,7 +36,6 @@ export const GET: APIRoute = ({ site }) => {
     lines.push(`User-agent: ${bot}`);
     lines.push('Allow: /');
     lines.push('Disallow: /api/');
-    lines.push('Disallow: /inquire/thank-you');
     lines.push('');
   }
 
@@ -44,7 +43,6 @@ export const GET: APIRoute = ({ site }) => {
   lines.push('User-agent: *');
   lines.push('Allow: /');
   lines.push('Disallow: /api/');
-  lines.push('Disallow: /inquire/thank-you');
   lines.push('');
 
   lines.push(`Sitemap: ${origin}/sitemap-index.xml`);

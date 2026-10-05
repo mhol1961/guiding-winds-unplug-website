@@ -4,8 +4,10 @@
 import astro from '@astrojs/cloudflare/entrypoints/server';
 import { canonicalRedirect, securityHeaders } from './lib/edge';
 
+type AstroFetch = typeof astro.fetch;
+
 export default {
-  async fetch(request: Request, env: unknown, ctx: ExecutionContext): Promise<Response> {
+  async fetch(request: Request, env: Parameters<AstroFetch>[1], ctx: Parameters<AstroFetch>[2]): Promise<Response> {
     const to = canonicalRedirect(request.url);
     // 301 for page loads; 308 keeps the method and body for form posts.
     const res = to
@@ -13,7 +15,7 @@ export default {
           status: request.method === 'GET' || request.method === 'HEAD' ? 301 : 308,
           headers: { Location: to },
         })
-      : await astro.fetch(request as never, env as never, ctx);
+      : await astro.fetch(request as Parameters<AstroFetch>[0], env, ctx);
 
     const out = new Response(res.body, res);
     for (const [k, v] of Object.entries(securityHeaders(new URL(request.url).pathname))) {
@@ -21,4 +23,4 @@ export default {
     }
     return out;
   },
-} satisfies ExportedHandler;
+};

@@ -1,0 +1,46 @@
+---
+// Head scripts every layout with a form needs:
+// 1. Ad attribution: keep utm_* and fbclid from the landing URL for this
+//    browser session, so a lead who browses a few pages before sending a form
+//    still carries the ad that brought them (form-handlers adds them).
+// 2. Turnstile api.js, loaded only when a form comes near the viewport or
+//    gets focus, so it costs nothing on first paint.
+---
+
+<script is:inline>
+  (function () {
+    try {
+      var p = new URLSearchParams(location.search), a = {}, found = false;
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'].forEach(function (k) {
+        var v = p.get(k);
+        if (v) { a[k] = v.slice(0, 300); found = true; }
+      });
+      if (found) sessionStorage.setItem('gw_attr', JSON.stringify(a));
+    } catch (e) {}
+  })();
+</script>
+<script is:inline>
+  (function () {
+    var loaded = false;
+    function load() {
+      if (loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      s.async = true;
+      document.head.appendChild(s);
+    }
+    document.addEventListener('focusin', function (e) {
+      if (e.target && e.target.closest && e.target.closest('form')) load();
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      var widgets = document.querySelectorAll('.cf-turnstile');
+      if (!widgets.length) return;
+      if (!('IntersectionObserver' in window)) return load();
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { load(); io.disconnect(); }
+      }, { rootMargin: '600px' });
+      widgets.forEach(function (w) { io.observe(w); });
+    });
+  })();
+</script>

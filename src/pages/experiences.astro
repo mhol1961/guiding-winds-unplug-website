@@ -23,7 +23,8 @@ const schemaGraph = [
 ];
 ---
 
-<BaseLayout title={title} description={description} transparentNav schema={schemaGraph}>
+{/* noindex and out of the menus until the two experiences are written (AEO-10). */}
+<BaseLayout title={title} description={description} transparentNav schema={schemaGraph} noindex>
   <PageHero
     eyebrow="Optional experiences"
     headlinePrefix="Two ways to shape"

@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SeoHead from '../components/shared/SeoHead.astro';
 import MetaPixel from '../components/shared/MetaPixel.astro';
+import FormScripts from '../components/shared/FormScripts.astro';
 import Nav from '../components/shared/Nav.astro';
 import Footer from '../components/shared/Footer.astro';
 import ChatWidget from '../components/ChatWidget.astro';
@@ -35,6 +36,7 @@ const { transparentNav = false, hideFloatingCta = false, ...seoProps } = Astro.p
   <head>
     <SeoHead {...seoProps} />
     <MetaPixel />
+    <FormScripts />
   </head>
   <body class="bg-bone text-primary min-h-screen flex flex-col">
     <a

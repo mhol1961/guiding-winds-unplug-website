@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import Turnstile from './Turnstile.astro';
+import { PARTY_SIZES } from '../../lib/business';
 
 interface Props {
   region?: 'bvi' | 'bahamas' | 'mediterranean';
@@ -14,12 +16,13 @@ const weekOptions = voyages
   .flatMap((v) =>
     v.data.availableWeeks.map((w) => ({
       value: `${v.data.slug}|${w.start}`,
-      label: `${v.data.name} · ${new Date(`${w.start}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}-${new Date(`${w.end}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })} · ${w.cabinsAvailable === 0 ? 'Sold out' : `${w.cabinsAvailable} cabins left`}`,
+      start: w.start,
+      label: `${v.data.name} · ${new Date(`${w.start}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })} to ${new Date(`${w.end}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })} · ${w.cabinsAvailable === 0 ? 'Sold out' : 'Open'}`,
       disabled: w.cabinsAvailable === 0,
       defaultSelected: voyageSlug ? v.data.slug === voyageSlug : false,
     })),
   )
-  .sort((a, b) => a.value.localeCompare(b.value));
+  .sort((a, b) => a.start.localeCompare(b.start));
 
 const isEmbedded = variant === 'embedded';
 ---
@@ -87,11 +90,7 @@ const isEmbedded = variant === 'embedded';
         style="background-image: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1L6 6L11 1' stroke='%23E5402B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>&quot;);"
       >
         <option value="">Select…</option>
-        <option value="1 (solo)">1 (solo)</option>
-        <option value="2 (couple)">2 (couple)</option>
-        <option value="3-4">3-4</option>
-        <option value="5-8">5-8</option>
-        <option value="9-12 (whole boat)">9-12 (whole boat)</option>
+        {PARTY_SIZES.map((p) => <option value={p}>{p}</option>)}
       </select>
     </div>
   </div>
@@ -127,11 +126,13 @@ const isEmbedded = variant === 'embedded';
   </div>
 
   <input
-    type="text" name="website" tabindex={-1} autocomplete="off" aria-hidden="true"
+    type="text" name="hp_check" tabindex={-1} autocomplete="off" aria-hidden="true"
     class="absolute opacity-0 pointer-events-none size-0"
   />
 
-  <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-5">
+  <Turnstile class="mt-8" />
+
+  <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-5">
     <button
       type="submit"
       class="group cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3 inline-flex items-center gap-3"
@@ -148,3 +149,26 @@ const isEmbedded = variant === 'embedded';
 
   <p class="mt-5 font-body-sm text-[0.875rem] text-accent" data-inquiry-status aria-live="polite"></p>
 </form>
+
+<script>
+  // /inquire is prerendered, so ?voyage= (from "Book a call" on a voyage or
+  // the calendar) is applied here in the browser: preselect the region and
+  // that voyage's first open week.
+  const REGION: Record<string, string> = {
+    'british-virgin-islands': 'bvi',
+    bahamas: 'bahamas',
+    italy: 'mediterranean',
+    greece: 'mediterranean',
+    croatia: 'mediterranean',
+  };
+  const slug = new URLSearchParams(location.search).get('voyage') ?? '';
+  if (REGION[slug]) {
+    document.querySelectorAll<HTMLFormElement>('form[data-inquiry-form]').forEach((form) => {
+      const region = form.querySelector<HTMLInputElement>('input[name="region"]');
+      if (region && !region.value) region.value = REGION[slug];
+      const week = form.querySelector<HTMLSelectElement>('select[name="week"]');
+      const opt = week && [...week.options].find((o) => o.value.startsWith(`${slug}|`) && !o.disabled);
+      if (week && opt && week.value === 'flexible') week.value = opt.value;
+    });
+  }
+</script>

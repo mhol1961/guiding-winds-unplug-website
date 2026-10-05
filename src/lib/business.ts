@@ -40,3 +40,6 @@ export const ADDRESS_ONE_LINE = `${BUSINESS.address.street}, ${BUSINESS.address.
 export const BOND_ONE_LINE = `${BUSINESS.bond.type} No. ${BUSINESS.bond.number}, ${BUSINESS.bond.jurisdiction}`;
 
 export const BONDED_SHORT = `Bonded in the ${BUSINESS.bond.jurisdiction}`;
+
+/** Party-size choices, shared by every inquiry form so GHL gets one set of values. */
+export const PARTY_SIZES = ['Just me', '2 (couple)', '3-4', '5-6', '7-8', '9-12', 'Whole boat / not sure yet'];

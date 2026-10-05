@@ -63,3 +63,10 @@ export async function verifyTurnstile({ secret, token, ip, hostnames }: VerifyOp
     return false;
   }
 }
+
+/** Hostnames a real token may come from: the site's apex + www. Cloudflare's
+ *  test keys report example.com, so local dev with those keys still works. */
+export function siteTurnstileHostnames(): string[] {
+  const hosts = allowedHostnames(import.meta.env.SITE);
+  return import.meta.env.DEV ? [...hosts, 'example.com'] : hosts;
+}
