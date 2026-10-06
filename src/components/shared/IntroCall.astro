@@ -95,7 +95,9 @@ import { INTRO_CALL } from '../../lib/business';
       const tokenInput = () => form.querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]')?.value;
       for (let waited = 0; !tokenInput() && waited < 20000; waited += 250) await new Promise((r) => setTimeout(r, 250));
       if (!tokenInput()) {
-        status.textContent = 'The security check did not load. Please call (772) 310-3777 or email guidingwindsunplug@gmail.com.';
+        status.textContent = (window as { turnstile?: unknown }).turnstile
+          ? 'Please complete the security check above, then book again.'
+          : 'The security check did not load. Please call (772) 310-3777 or email guidingwindsunplug@gmail.com.';
         submit.disabled = !start.value;
         return;
       }

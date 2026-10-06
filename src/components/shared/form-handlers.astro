@@ -82,7 +82,12 @@
     return null;
   }
 
-  const NO_CHECK = 'The security check did not load. Please call (772) 310-3777 or email guidingwindsunplug@gmail.com.';
+  // Loaded but no token = the visitor still has to tick the box; not loaded = offer phone/email.
+  function noTokenMessage(): string {
+    return (window as { turnstile?: unknown }).turnstile
+      ? 'Please complete the security check above, then send again.'
+      : 'The security check did not load. Please call (772) 310-3777 or email guidingwindsunplug@gmail.com.';
+  }
 
   async function postForm(form: HTMLFormElement, endpoint: string): Promise<Response> {
     const data = new FormData(form);
@@ -102,7 +107,7 @@
       const restore = busy(form.querySelector<HTMLButtonElement>('button[type="submit"]'), 'Sending…');
       clearStatus(status);
       if ((await turnstileToken(form)) === null) {
-        setStatusWithMailto(status, NO_CHECK, 'mailto:guidingwindsunplug@gmail.com?subject=Inquiry');
+        setStatusWithMailto(status, noTokenMessage(), 'mailto:guidingwindsunplug@gmail.com?subject=Inquiry');
         restore();
         return;
       }
@@ -160,7 +165,7 @@
       const restore = busy(form.querySelector<HTMLButtonElement>('button[type="submit"]'), 'Subscribing…');
       clearStatus(status);
       if ((await turnstileToken(form)) === null) {
-        setStatusText(status, NO_CHECK, 'err');
+        setStatusText(status, noTokenMessage(), 'err');
         restore();
         return;
       }
