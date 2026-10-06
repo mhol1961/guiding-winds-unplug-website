@@ -6,7 +6,7 @@ import type { APIRoute } from 'astro';
 import { z } from 'zod';
 import { INTRO_CALL } from '../../lib/business';
 import { freeDays, bookAppointment } from '../../lib/ghl/calendars';
-import { upsertContact, saveAttribution } from '../../lib/ghl/contacts';
+import { upsertContact, saveAttribution, tagContact } from '../../lib/ghl/contacts';
 import { json, readBody, rejectBots } from '../../lib/form-guard';
 import { isOffered } from '../../lib/intro-call';
 import { pickAttribution } from '../../lib/attribution';
@@ -33,7 +33,7 @@ const BookingSchema = z.object({
 export const POST: APIRoute = async ({ request }) => {
   if (!INTRO_CALL.enabled) return off();
   const payload = await readBody(request);
-  if (!payload) return json({ ok: false, error: 'Bad request body.' }, 400);
+  if (payload instanceof Response) return payload;
   const parsed = BookingSchema.safeParse(payload);
   if (!parsed.success) return json({ ok: false, error: 'Please add your first name, email and a time.' }, 422);
 
@@ -47,7 +47,8 @@ export const POST: APIRoute = async ({ request }) => {
     if (!isOffered(days, startTime)) {
       return json({ ok: false, error: 'That time was just taken. Please pick another.' }, 409);
     }
-    const { contact } = await upsertContact({ email, firstName, tags: ['intro-call-booked', 'website-2026'], source: 'Intro call (website)' });
+    // No tags yet: the contact is only marked booked once the booking exists.
+    const { contact } = await upsertContact({ email, firstName, source: 'Intro call (website)' });
     await bookAppointment({
       calendarId: INTRO_CALL.calendarId,
       contactId: contact.id,
@@ -55,6 +56,12 @@ export const POST: APIRoute = async ({ request }) => {
       minutes: INTRO_CALL.minutes,
       title: `Intro call: ${firstName}`,
     });
+    // Booked. From here on a failure must not tell the guest it didn't work.
+    try {
+      await tagContact(contact.id, ['intro-call-booked', 'website-2026']);
+    } catch (err) {
+      console.error('[intro-call] booked but tagging failed; tag contact by hand', contact.id, err);
+    }
     await saveAttribution(contact.id, pickAttribution(payload));
   } catch (err) {
     console.error('[intro-call] booking failed', err);

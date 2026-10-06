@@ -12,7 +12,7 @@ const NewsletterSchema = z.object({
 
 export const POST: APIRoute = async ({ request }) => {
   const payload = await readBody(request);
-  if (!payload) return json({ ok: false, error: 'Bad request body.' }, 400);
+  if (payload instanceof Response) return payload;
 
   const parsed = NewsletterSchema.safeParse(payload);
   if (!parsed.success) {

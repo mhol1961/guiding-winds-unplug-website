@@ -36,7 +36,7 @@ const FIELD_LABELS: Record<string, string> = {
 
 export const POST: APIRoute = async ({ request }) => {
   const payload = await readBody(request);
-  if (!payload) return json({ ok: false, error: 'Bad request body.' }, 400);
+  if (payload instanceof Response) return payload;
 
   const parsed = InquirySchema.safeParse(payload);
   if (!parsed.success) {

@@ -1,5 +1,7 @@
-// Bot defences shared by every form route: honeypot, Turnstile, then the
-// per-visitor limit (after Turnstile, so bots never spend D1 writes).
+// Bot defences shared by every form route, cheapest first: body size cap,
+// honeypot, a loose per-visitor attempt limit (so junk with fake tokens can't
+// make us call Turnstile forever), Turnstile, then the strict per-visitor
+// limit on submissions that passed it.
 import { envVar } from './ghl/client';
 import { verifyTurnstile, siteTurnstileHostnames } from './turnstile';
 import { overLimit } from './visitor-limit';
@@ -12,14 +14,26 @@ export function json(body: unknown, status = 200, headers: Record<string, string
   return new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', ...headers } });
 }
 
-/** Form or JSON body as a plain object; null if it can't be read. */
-export async function readBody(request: Request): Promise<Record<string, unknown> | null> {
+/** Our forms send well under 4KB; anything past this is not a real visitor. */
+export const MAX_BODY_BYTES = 16 * 1024;
+const ATTEMPTS_PER_HOUR = 30;
+const SUBMISSIONS_PER_HOUR = 5;
+
+/** Form or JSON body as a plain object, or the error Response to send back. */
+export async function readBody(request: Request): Promise<Record<string, unknown> | Response> {
+  if (Number(request.headers.get('content-length') ?? 0) > MAX_BODY_BYTES) {
+    await request.body?.cancel().catch(() => {}); // discard it unread, cleanly
+    return json({ ok: false, error: 'That submission is too large.' }, 413);
+  }
   try {
-    return (request.headers.get('content-type') ?? '').includes('application/json')
-      ? ((await request.json()) as Record<string, unknown>)
-      : Object.fromEntries(await request.formData());
+    const buf = await request.arrayBuffer(); // length header can be absent or wrong
+    if (buf.byteLength > MAX_BODY_BYTES) return json({ ok: false, error: 'That submission is too large.' }, 413);
+    const type = request.headers.get('content-type') ?? '';
+    return type.includes('application/json')
+      ? (JSON.parse(new TextDecoder().decode(buf)) as Record<string, unknown>)
+      : Object.fromEntries(await new Response(buf, { headers: { 'content-type': type } }).formData());
   } catch {
-    return null;
+    return json({ ok: false, error: 'Bad request body.' }, 400);
   }
 }
 
@@ -32,6 +46,7 @@ export async function rejectBots(request: Request, payload: Record<string, unkno
     // somehow filled the hidden field still has a way to reach us.
     return json({ ok: false, error: `We couldn't send that automatically. Please email ${EMAIL} and we'll reply within 24 hours.`, mailto: `mailto:${EMAIL}` });
   }
+  if (await overLimit(request, `${route}:try`, ATTEMPTS_PER_HOUR)) return tooMany();
   const token = payload['cf-turnstile-response'];
   const human = await verifyTurnstile({
     secret: envVar('TURNSTILE_SECRET_KEY'),
@@ -40,8 +55,10 @@ export async function rejectBots(request: Request, payload: Record<string, unkno
     hostnames: siteTurnstileHostnames(),
   });
   if (!human) return json({ ok: false, error: 'Please complete the security check and try again.' }, 400);
-  if (await overLimit(request, route)) {
-    return json({ ok: false, error: `Too many requests from this connection. Try again in an hour, or email ${EMAIL}.` }, 429, { 'Retry-After': '3600' });
-  }
+  if (await overLimit(request, route, SUBMISSIONS_PER_HOUR)) return tooMany();
   return null;
+}
+
+function tooMany(): Response {
+  return json({ ok: false, error: `Too many requests from this connection. Try again in an hour, or email ${EMAIL}.` }, 429, { 'Retry-After': '3600' });
 }

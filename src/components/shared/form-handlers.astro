@@ -69,6 +69,21 @@
     };
   }
 
+  // Resolve with the Turnstile token, waiting (and loading the widget if a
+  // fast visitor got here first) for up to 20s; null if it never arrives.
+  async function turnstileToken(form: HTMLFormElement): Promise<string | null> {
+    if (!form.querySelector('.cf-turnstile')) return '';
+    (window as { gwLoadTurnstile?: () => void }).gwLoadTurnstile?.();
+    for (let waited = 0; waited < 20000; waited += 250) {
+      const v = form.querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]')?.value;
+      if (v) return v;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+    return null;
+  }
+
+  const NO_CHECK = 'The security check did not load. Please call (772) 310-3777 or email guidingwindsunplug@gmail.com.';
+
   async function postForm(form: HTMLFormElement, endpoint: string): Promise<Response> {
     const data = new FormData(form);
     for (const [k, v] of Object.entries(attribution())) if (!data.has(k)) data.set(k, String(v));
@@ -86,6 +101,11 @@
       const status = form.querySelector<HTMLElement>('[data-inquiry-status]');
       const restore = busy(form.querySelector<HTMLButtonElement>('button[type="submit"]'), 'Sending…');
       clearStatus(status);
+      if ((await turnstileToken(form)) === null) {
+        setStatusWithMailto(status, NO_CHECK, 'mailto:guidingwindsunplug@gmail.com?subject=Inquiry');
+        restore();
+        return;
+      }
 
       try {
         const res = await postForm(form, form.action);
@@ -139,6 +159,11 @@
       const status = form.querySelector<HTMLElement>('[data-newsletter-status]');
       const restore = busy(form.querySelector<HTMLButtonElement>('button[type="submit"]'), 'Subscribing…');
       clearStatus(status);
+      if ((await turnstileToken(form)) === null) {
+        setStatusText(status, NO_CHECK, 'err');
+        restore();
+        return;
+      }
 
       try {
         const res = await postForm(form, '/api/newsletter');

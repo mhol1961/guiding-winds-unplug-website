@@ -90,6 +90,15 @@ import { INTRO_CALL } from '../../lib/business';
       e.preventDefault();
       submit.disabled = true;
       status.textContent = 'Booking…';
+      // Wait for the security check (loading it if needed) before sending.
+      (window as { gwLoadTurnstile?: () => void }).gwLoadTurnstile?.();
+      const tokenInput = () => form.querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]')?.value;
+      for (let waited = 0; !tokenInput() && waited < 20000; waited += 250) await new Promise((r) => setTimeout(r, 250));
+      if (!tokenInput()) {
+        status.textContent = 'The security check did not load. Please call (772) 310-3777 or email guidingwindsunplug@gmail.com.';
+        submit.disabled = !start.value;
+        return;
+      }
       const body = new FormData(form);
       try {
         for (const [k, v] of Object.entries(JSON.parse(sessionStorage.getItem('gw_attr') ?? '{}'))) body.set(k, String(v));

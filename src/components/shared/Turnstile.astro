@@ -11,3 +11,12 @@ if (!siteKey) throw new Error('PUBLIC_TURNSTILE_SITE_KEY is not set for this bui
 ---
 
 <div class:list={['cf-turnstile', Astro.props.class]} data-sitekey={siteKey} data-theme="light" data-size="flexible"></div>
+<noscript>
+  {/* The security check needs JavaScript; without it the server must refuse the form. */}
+  <style>form:has(.cf-turnstile) button[type="submit"] { display: none !important; }</style>
+  <p class="mt-4 font-body-sm text-[0.875rem] text-primary/80">
+    This form needs JavaScript for its security check. Please call
+    <a href="tel:+17723103777" class="text-accent underline">(772) 310-3777</a> or email
+    <a href="mailto:guidingwindsunplug@gmail.com" class="text-accent underline">guidingwindsunplug@gmail.com</a>.
+  </p>
+</noscript>

@@ -22,6 +22,8 @@
 <script is:inline>
   (function () {
     var loaded = false;
+    // form-handlers calls this if someone submits before the widget loaded.
+    window.gwLoadTurnstile = load;
     function load() {
       if (loaded) return;
       loaded = true;

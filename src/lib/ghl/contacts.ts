@@ -21,13 +21,15 @@ interface UpsertResponse {
 }
 
 /**
- * Upsert a contact in GHL. The upsert endpoint deduplicates on email - if
- * the email already exists in the subaccount, it returns the existing
- * contact and merges tags + customFields instead of creating a duplicate.
- * See https://highlevel.stoplight.io/docs/integrations/contacts-upsert
+ * Upsert a contact in GHL (deduplicated on email), then ADD `tags`.
+ * Tags never go in the upsert body: GHL's upsert "will overwrite all current
+ * tags associated with the contact", which wiped existing contacts' tags.
+ * The separate add-tags call only adds. If tagging fails this throws, so the
+ * route shows its email fallback instead of silently skipping the workflows
+ * those tags trigger (re-adding a tag on retry is harmless).
  */
 export async function upsertContact(payload: ContactPayload): Promise<UpsertResponse> {
-  return ghl<UpsertResponse>('/contacts/upsert', {
+  const res = await ghl<UpsertResponse>('/contacts/upsert', {
     method: 'POST',
     body: {
       locationId: locationId(),
@@ -36,10 +38,11 @@ export async function upsertContact(payload: ContactPayload): Promise<UpsertResp
       lastName: payload.lastName,
       email: payload.email,
       phone: payload.phone,
-      tags: payload.tags,
       customFields: payload.customFields?.length ? await byId(payload.customFields) : undefined,
     },
   });
+  if (payload.tags?.length && res?.contact?.id) await tagContact(res.contact.id, payload.tags);
+  return res;
 }
 
 let fieldIdCache: Promise<Map<string, string>> | null = null;

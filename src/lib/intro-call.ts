@@ -20,3 +20,8 @@ export function isOffered(days: DaySlots[], start: string): boolean {
   if (Number.isNaN(t)) return false;
   return days.some((d) => d.slots.some((s) => Date.parse(s) === t));
 }
+
+/** Does `events` contain this contact's appointment starting at `start`? */
+export function matchesAppointment(events: { contactId?: string; startTime?: string }[], contactId: string, start: Date): boolean {
+  return events.some((e) => e.contactId === contactId && e.startTime !== undefined && Date.parse(e.startTime) === start.getTime());
+}
