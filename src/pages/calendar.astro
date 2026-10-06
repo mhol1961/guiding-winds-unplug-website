@@ -7,7 +7,7 @@ import PageHero from '../components/shared/PageHero.astro';
 
 const title = '2027 Sailing Calendar · Guiding Winds Unplug';
 const description =
-  'Weeks aboard across the year. Pick a region, pick a week, and book a quick call.';
+  'Every 2027 week aboard in one place: the British Virgin Islands, Bahamas, Greece, Italy and Croatia. Pick a region and a week, then book a quick call.';
 
 const voyages = await getCollection('voyages');
 
@@ -55,7 +55,6 @@ function formatWeek(start: string, end: string) {
 
 const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
 const schemaGraph = [
-  { '@type': 'EventSeries', name: '2027 Sailing Calendar - Guiding Winds Unplug', description },
   {
     '@type': 'BreadcrumbList',
     itemListElement: [

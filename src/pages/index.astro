@@ -15,17 +15,12 @@ import GoBlock from '../components/home/GoBlock.astro';
 import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
 import { organization } from '../lib/schema/organization';
 import { breadcrumbList } from '../lib/schema/breadcrumb';
-import { getCollection } from 'astro:content';
 
-const title = 'Off-Grid Catamaran Charters · BVI, Bahamas, Mediterranean | Guiding Winds Unplug';
+const title = 'Guiding Winds Unplug · Crewed Catamaran Charters';
 const description =
   'Off-grid all-inclusive catamaran voyages for up to 12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia.';
 
 const baseUrl = Astro.site?.toString() ?? 'https://guidingwinds-unplug.com';
-const reviews = await getCollection('reviews');
-const ratingAvg = reviews.length
-  ? reviews.reduce((s, r) => s + r.data.rating, 0) / reviews.length
-  : 5;
 
 const schemaGraph = [
   organization({ baseUrl }),
@@ -36,13 +31,6 @@ const schemaGraph = [
     name: 'Guiding Winds Unplug',
     publisher: { '@id': `${baseUrl.replace(/\/$/, '')}/#org` },
     inLanguage: 'en-US',
-  },
-  {
-    '@type': 'AggregateRating',
-    itemReviewed: { '@id': `${baseUrl.replace(/\/$/, '')}/#org` },
-    ratingValue: ratingAvg.toFixed(1),
-    bestRating: 5,
-    reviewCount: reviews.length,
   },
   breadcrumbList([{ name: 'Home', url: baseUrl.replace(/\/$/, '') + '/' }]),
 ];

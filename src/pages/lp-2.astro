@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { img } from '../lib/img';
 // LP-2 — "Everything's Included" · offer-led, value + trust.
 // Angle: one price covers the whole week. Bento inclusions, 3-up proof, how-it-works.
@@ -23,6 +24,7 @@ const reviews = [
   { q: 'An unbelievable experience. We loved the balance of relaxing in the sun and getting some fishing in.', n: 'Tommy Lyn & Alisha', l: 'Tennessee', img: '/img/source/testimonials/tommy-alisha.jpg' },
   { q: "I've done a fair share of traveling, but this trip stands out. The views were incredible.", n: 'Frank Zuckero', l: 'Michigan', img: '/img/source/testimonials/frank-zuckero.jpg' },
 ];
+const reviewCount = (await getCollection('reviews')).length;
 ---
 
 <LpLayout title={title} description={description} ogImage="/og/lp-2.jpg">
@@ -50,7 +52,7 @@ const reviews = [
               Call (772) 310-3777
             </a>
           </div>
-          <p class="font-body-sm text-[0.875rem] text-ink-soft mt-5"><span class="text-sun">★★★★★</span> 5.0 across every guest</p>
+          <p class="font-body-sm text-[0.875rem] text-ink-soft mt-5"><span class="text-sun">★★★★★</span> 5.0 from {reviewCount} guest reviews</p>
         </div>
       </div>
       <div class="relative order-1 lg:order-2 min-h-[40dvh] lg:min-h-0">
@@ -88,7 +90,7 @@ const reviews = [
   <!-- PROOF 3-up -->
   <section class="bg-primary border-t border-hairline">
     <div class="mx-auto max-w-6xl px-7 py-20 lg:py-24">
-      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-accent mb-10">5.0 · what guests say</p>
+      <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-accent mb-10">5.0 from {reviewCount} guest reviews</p>
       <div class="grid gap-8 md:grid-cols-3">
         {reviews.map((r) => (
           <figure>

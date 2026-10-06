@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { img } from '../lib/img';
 // LP-1 — "The Unplug" · emotional reframe, editorial/text-led.
 // Angle: escape the always-on life. Single goal: the questionnaire.
@@ -8,6 +9,7 @@ import LpQuestionnaire from '../components/lp/LpQuestionnaire.astro';
 const title = 'A week off the grid · Guiding Winds Unplug';
 const description =
   'All-inclusive catamaran charters in the BVI, Bahamas, and Mediterranean. Owner-run, a small group, nothing on the schedule but water and weather.';
+const reviewCount = (await getCollection('reviews')).length;
 ---
 
 <LpLayout title={title} description={description} ogImage="/og/lp-1.jpg">
@@ -53,7 +55,7 @@ const description =
         </a>
       </div>
       <p class="font-body-sm text-[0.875rem] text-primary/70 mt-5">
-        <span class="text-sun">★★★★★</span> 5.0 · every guest who has sailed with us
+        <span class="text-sun">★★★★★</span> 5.0 from {reviewCount} guest reviews
       </p>
     </div>
   </section>

@@ -56,7 +56,7 @@ faq:
   - q: How long is the trip?
     a: 'Seven nights, Saturday to Saturday, from the Marsh Harbour / Treasure Cay area. Specific weeks are available - see the calendar.'
 seo:
-  title: 'Bahamas All-Inclusive Catamaran Charter · Abacos 2027 | Guiding Winds'
+  title: 'Bahamas Catamaran Charter · Abacos 2027 | Guiding Winds'
   description: 'Hope Town, Tilloo, Man-o-War, Guana. Seven nights for up to 12 guests on a private catamaran in the Abacos. Starts at $3,350 per guest, all-inclusive.'
   keywords:
     - Bahamas catamaran charter all-inclusive

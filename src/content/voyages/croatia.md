@@ -55,7 +55,7 @@ faq:
   - q: How long is the trip?
     a: 'Seven nights, one-way from Split to Dubrovnik through the Dalmatian island chain. Specific weeks are available - see the calendar.'
 seo:
-  title: 'Croatia Catamaran Charter 2027 · Split to Dubrovnik | Guiding Winds'
+  title: 'Croatia Catamaran Charter 2027 · Split to Dubrovnik'
   description: 'Hvar, Vis, Korčula, Mljet. Seven nights aboard a private catamaran for up to 12 guests through the Dalmatian chain. Starts at $3,650 per guest, all-inclusive.'
   keywords:
     - Croatian coast sailing charter

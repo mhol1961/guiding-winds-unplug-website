@@ -67,7 +67,7 @@ faq:
   - q: Is there Wi-Fi?
     a: 'We don''t provide onboard internet. Wi-Fi can be purchased for an additional charge, and the connection can be unreliable at times. Most guests embrace the unplug.'
 seo:
-  title: 'BVI All-Inclusive Catamaran Charter 2027 · 7 Nights | Guiding Winds'
+  title: 'BVI All-Inclusive Catamaran Charter 2027 | Guiding Winds'
   description: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Seven nights for up to 12 guests on a private catamaran. Starts at $3,350 per guest, all-inclusive.'
   keywords:
     - BVI all-inclusive catamaran charter

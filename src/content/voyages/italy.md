@@ -54,8 +54,8 @@ faq:
   - q: How does Italy compare to BVI?
     a: 'Less swimming-pool turquoise, more "you''re in a postcard." Longer passages, more shore time, more dinners ashore. Higher price reflects Mediterranean dockage and provisioning costs.'
 seo:
-  title: 'Italy Catamaran Charter 2027 · Amalfi & Aeolian | Guiding Winds'
-  description: 'Capri, Positano, Stromboli, Panarea. Seven nights aboard a private catamaran for up to 12 guests on the Tyrrhenian coast. Starts at $3,650 per guest, all-inclusive.'
+  title: 'Italy Catamaran Charter · Amalfi & Aeolian | Guiding Winds'
+  description: 'Capri, Positano, Stromboli, Panarea. A private catamaran for up to 12 guests on the Tyrrhenian coast. From $3,650 per guest, all-inclusive.'
   keywords:
     - Amalfi coast catamaran charter
     - Italy wellness sailing
