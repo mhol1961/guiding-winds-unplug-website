@@ -54,6 +54,10 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  // Astro 7 defaults to JSX whitespace rules ('jsx'), which drop the line
+  // break between a word and an inline element ("actually<span>rest") across
+  // the site. `true` is the Astro 6 lossless behaviour the markup was written for.
+  compressHTML: true,
   trailingSlash: 'never',
   build: {
     // about.html (not about/index.html): /about answers 200 directly and

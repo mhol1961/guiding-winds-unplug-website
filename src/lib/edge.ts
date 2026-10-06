@@ -41,7 +41,7 @@ export const CSP = [
   // from several hosts we can't enumerate; tighten if the chat widget goes away.
   `img-src 'self' data: blob: https:${FB_IMG}`,
   "media-src 'self'",
-  `connect-src 'self' https://*.leadconnectorhq.com wss://*.leadconnectorhq.com https://cloudflareinsights.com https://static.cloudflareinsights.com${FB}${FB_IMG}`,
+  `connect-src 'self' https://*.leadconnectorhq.com wss://*.leadconnectorhq.com https://*.msgsndr.com https://cloudflareinsights.com https://static.cloudflareinsights.com${FB}${FB_IMG}`,
   `frame-src ${FRAMES}`,
   `child-src ${FRAMES}`,
   "frame-ancestors 'none'",
