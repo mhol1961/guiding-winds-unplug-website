@@ -1,7 +1,7 @@
 // Run: npm test
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { canonicalRedirect, securityHeaders, CSP } from './edge.ts';
+import { canonicalRedirect, canonicalPath, securityHeaders, CSP } from './edge.ts';
 
 const A = 'https://guidingwinds-unplug.com';
 
@@ -38,4 +38,13 @@ test('security headers: newsletter media is cross-origin, everything else same-s
   assert.match(securityHeaders('/')['Strict-Transport-Security'], /max-age=63072000/);
   assert.ok(!CSP.includes('facebook') && !CSP.includes('plausible'));
   assert.ok(CSP.includes("frame-ancestors 'none'") && CSP.includes('https://static.cloudflareinsights.com'));
+});
+
+test('canonicalPath: file paths of prerendered pages map to their public URL', () => {
+  assert.equal(canonicalPath('/index.html'), '/');
+  assert.equal(canonicalPath('/about.html'), '/about');
+  assert.equal(canonicalPath('/voyages/croatia.html'), '/voyages/croatia');
+  assert.equal(canonicalPath('/voyages/index.html'), '/voyages');
+  assert.equal(canonicalPath('/inquire/thank-you'), '/inquire/thank-you');
+  assert.equal(canonicalPath('/'), '/');
 });

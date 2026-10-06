@@ -1,4 +1,5 @@
 ---
+import { canonicalPath } from '../../lib/edge';
 import { img } from '../../lib/img';
 const links = [
   { label: 'Voyages', href: '/voyages' },
@@ -19,7 +20,8 @@ const { transparent = false } = Astro.props;
 
 // Current-page detection for visible active state. Compare path prefix so
 // /voyages, /voyages/bahamas, and /voyages/italy all light "Voyages".
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+// Prerendered pages see their file path (about.html); compare on the public URL.
+const currentPath = canonicalPath(Astro.url.pathname);
 function isActive(href: string): boolean {
   if (href === '/') return currentPath === '/';
   return currentPath === href || currentPath.startsWith(href + '/');

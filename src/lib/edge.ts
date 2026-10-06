@@ -4,6 +4,15 @@
 export const CANONICAL_HOST = 'guidingwinds-unplug.com';
 const OUR_HOSTS = new Set([CANONICAL_HOST, `www.${CANONICAL_HOST}`]);
 
+/** Canonical path: no `.html`, no `/index`, no trailing slash ('/' stays '/'). */
+export function canonicalPath(pathname: string): string {
+  let path = pathname;
+  if (path.endsWith('/index.html')) path = path.slice(0, -'index.html'.length);
+  else if (path.endsWith('.html')) path = path.slice(0, -'.html'.length);
+  if (path.length > 1) path = path.replace(/\/+$/, '') || '/';
+  return path;
+}
+
 /**
  * The canonical URL for a request, or null when it already is canonical.
  * Canonical = https, no www, no trailing slash, no `.html`/`/index.html`.
@@ -17,11 +26,7 @@ export function canonicalRedirect(input: string): string | null {
     url.hostname = CANONICAL_HOST;
     url.port = '';
   }
-  let path = url.pathname;
-  if (path.endsWith('/index.html')) path = path.slice(0, -'index.html'.length);
-  else if (path.endsWith('.html')) path = path.slice(0, -'.html'.length);
-  if (path.length > 1) path = path.replace(/\/+$/, '') || '/';
-  url.pathname = path;
+  url.pathname = canonicalPath(url.pathname);
   return url.href === new URL(input).href ? null : url.href;
 }
 

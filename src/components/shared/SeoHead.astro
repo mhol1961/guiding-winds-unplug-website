@@ -1,5 +1,6 @@
 ---
 import SchemaScript from './SchemaScript.astro';
+import { canonicalPath } from '../../lib/edge';
 
 interface Props {
   title: string;
@@ -28,7 +29,8 @@ const {
 } = Astro.props;
 
 const siteOrigin = Astro.site ?? new URL('https://guidingwinds-unplug.com');
-const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteOrigin).toString();
+// Prerendered pages see their file path (about.html, index.html); the public URL has neither.
+const canonicalUrl = canonical ?? new URL(canonicalPath(Astro.url.pathname), siteOrigin).toString();
 // Share image: the page's own (voyages, ad pages) or the branded 1200x630
 // default. Files live in public/og/ (scripts/optimize-images.mjs).
 const ogImageUrl = new URL(ogImage ?? '/og/default.jpg', siteOrigin).toString();
