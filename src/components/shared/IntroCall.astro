@@ -1,0 +1,107 @@
+---
+// Intro-call picker for the thank-you page (CRO-3). Rendered only when
+// INTRO_CALL.enabled; slots come live from /api/intro-call (GHL calendar),
+// so the page itself stays static. Name/email are prefilled from the
+// inquiry the visitor just sent (sessionStorage, this tab only).
+import Turnstile from './Turnstile.astro';
+import { INTRO_CALL } from '../../lib/business';
+---
+
+<section class="bg-paper text-primary border-t border-rule py-16 sm:py-20" data-intro-call data-tz={INTRO_CALL.timezone}>
+  <div class="max-w-2xl mx-auto px-7 lg:px-0">
+    <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-accent mb-4">Skip the back and forth</p>
+    <h2 class="font-display font-light leading-[1.05] tracking-[-0.025em]" style="font-size: clamp(1.75rem, 3vw + 1rem, 2.5rem);">
+      Pick a time for a {INTRO_CALL.minutes}-minute call with Clint &amp; Dodie
+    </h2>
+    <p class="font-body-md text-[0.9375rem] text-primary/65 mt-3">Times shown in Eastern time.</p>
+
+    <form class="mt-8" novalidate>
+      <div data-days class="flex flex-wrap gap-2" role="group" aria-label="Day"></div>
+      <div data-times class="mt-5 flex flex-wrap gap-2" role="group" aria-label="Time"></div>
+      <input type="hidden" name="startTime" />
+      <div class="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <label class="block">
+          <span class="block font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70 mb-2">First name</span>
+          <input name="firstName" required maxlength="60" autocomplete="given-name" class="w-full bg-white border-b border-primary/25 focus:border-accent px-1 py-3 focus:outline-none" />
+        </label>
+        <label class="block">
+          <span class="block font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70 mb-2">Email</span>
+          <input name="email" type="email" required maxlength="254" autocomplete="email" class="w-full bg-white border-b border-primary/25 focus:border-accent px-1 py-3 focus:outline-none" />
+        </label>
+      </div>
+      <input type="text" name="hp_check" tabindex="-1" autocomplete="off" aria-hidden="true" class="absolute opacity-0 pointer-events-none size-0" />
+      <Turnstile class="mt-6" />
+      <button type="submit" disabled class="mt-6 cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-accent transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+        Book this time
+      </button>
+      <p data-status class="mt-4 font-body-sm text-[0.875rem] text-accent" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-intro-call]');
+  if (root) {
+    const tz = root.dataset.tz!;
+    const form = root.querySelector('form')!;
+    const daysEl = root.querySelector<HTMLElement>('[data-days]')!;
+    const timesEl = root.querySelector<HTMLElement>('[data-times]')!;
+    const status = root.querySelector<HTMLElement>('[data-status]')!;
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const start = form.querySelector<HTMLInputElement>('input[name="startTime"]')!;
+    const chip = 'cursor-pointer border border-primary/25 px-4 py-2 font-body-sm text-[0.875rem] aria-pressed:bg-primary aria-pressed:text-bone hover:border-accent transition-colors';
+
+    try {
+      const lead = JSON.parse(sessionStorage.getItem('gw_lead') ?? '{}');
+      if (lead.firstName) (form.elements.namedItem('firstName') as HTMLInputElement).value = lead.firstName;
+      if (lead.email) (form.elements.namedItem('email') as HTMLInputElement).value = lead.email;
+    } catch {}
+
+    const button = (label: string, onClick: () => void) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = chip;
+      b.textContent = label;
+      b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', () => {
+        b.parentElement!.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        onClick();
+      });
+      return b;
+    };
+    const day = (d: string) => new Date(`${d}T12:00:00Z`).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' });
+    const time = (iso: string) => new Date(iso).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: tz });
+
+    fetch('/api/intro-call', { headers: { Accept: 'application/json' } })
+      .then((r) => r.json())
+      .then((data: { ok: boolean; error?: string; days?: { date: string; slots: string[] }[] }) => {
+        if (!data.ok || !data.days?.length) throw new Error(data.error ?? 'No times');
+        for (const d of data.days) {
+          daysEl.append(button(day(d.date), () => {
+            timesEl.replaceChildren(...d.slots.map((s) => button(time(s), () => { start.value = s; submit.disabled = false; })));
+            start.value = '';
+            submit.disabled = true;
+          }));
+        }
+      })
+      .catch(() => root.remove()); // nothing to offer: the rest of the page stands on its own
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submit.disabled = true;
+      status.textContent = 'Booking…';
+      const body = new FormData(form);
+      try {
+        for (const [k, v] of Object.entries(JSON.parse(sessionStorage.getItem('gw_attr') ?? '{}'))) body.set(k, String(v));
+      } catch {}
+      const res = await fetch('/api/intro-call', { method: 'POST', headers: { Accept: 'application/json' }, body }).catch(() => null);
+      const json = (await res?.json().catch(() => ({}))) ?? {};
+      status.textContent = json.ok ? json.message : (json.error ?? 'Something went wrong. Call (772) 310-3777.');
+      if (json.ok) form.querySelectorAll('button').forEach((b) => (b.disabled = true));
+      else submit.disabled = !start.value;
+      const t = (window as { turnstile?: { reset: (el: HTMLElement) => void } }).turnstile;
+      const w = form.querySelector<HTMLElement>('.cf-turnstile');
+      if (t && w) t.reset(w);
+    });
+  }
+</script>

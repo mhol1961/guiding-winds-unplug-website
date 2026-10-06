@@ -1,12 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { BUSINESS, INTRO_CALL } from '../../lib/business';
+import IntroCall from '../../components/shared/IntroCall.astro';
 
 const title = 'Inquiry received · Guiding Winds Unplug';
 const description =
   'Thanks for reaching out to Guiding Winds Unplug. Dodie or Clint will reply within 24 hours to confirm cabin availability and set up a quick call.';
 ---
 
-<BaseLayout title={title} description={description} noindex>
+{/* No floating CTA here: it sent people who had just inquired back to the form. */}
+<BaseLayout title={title} description={description} noindex hideFloatingCta>
   <section class="bg-bone text-primary min-h-[60dvh] grid place-items-center">
     <div class="max-w-2xl px-7 lg:px-0 text-center py-20">
       <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-accent mb-6">
@@ -16,13 +19,17 @@ const description =
         class="font-display text-primary leading-[1] tracking-[-0.025em] font-light text-balance"
         style="font-size: clamp(2rem, 4vw + 1rem, 3.5rem); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;"
       >
-        Thanks - we will be in touch within
+        Thanks, we will be in touch within
         <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;">twenty-four hours.</span>
       </h1>
       <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-primary/65 mt-8 max-w-xl mx-auto">
         Either Dodie or Clint will reply with availability for your preferred
-        week and the next steps. While you wait - here's a 3-minute look at a
+        week and the next steps. While you wait, here's a 3-minute look at a
         day aboard.
+      </p>
+      <p class="font-body-md text-[1rem] text-primary/70 mt-5">
+        Prefer to talk sooner? Call
+        <a href={`tel:${BUSINESS.phoneTel}`} class="text-accent border-b border-accent/40 hover:border-accent transition-colors whitespace-nowrap">{BUSINESS.phoneDisplay}</a>.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
@@ -40,6 +47,7 @@ const description =
       </div>
     </div>
   </section>
+  {INTRO_CALL.enabled && <IntroCall />}
   <script is:inline>
     // Meta Pixel Lead conversion — idempotent. Only fires when the form's
     // success handler set the one-time flag (real submission), then clears it,

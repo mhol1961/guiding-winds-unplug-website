@@ -97,6 +97,15 @@
         };
 
         if (res.ok && json.ok !== false) {
+          // Prefills the intro-call picker on the thank-you page (this tab
+          // only). Read before reset() clears the fields.
+          const sent = new FormData(form);
+          try {
+            sessionStorage.setItem('gw_lead', JSON.stringify({
+              firstName: String(sent.get('firstName') ?? ''),
+              email: String(sent.get('email') ?? ''),
+            }));
+          } catch {}
           form.reset();
           // One-time flag the thank-you page consumes to fire the Meta Pixel
           // Lead exactly once per real submission (not on refresh/back/direct visit).

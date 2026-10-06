@@ -1,6 +1,7 @@
 ---
 import Turnstile from '../shared/Turnstile.astro';
-import { PARTY_SIZES } from '../../lib/business';
+import { getCollection } from 'astro:content';
+import { PARTY_SIZES, BUSINESS, BOND_ONE_LINE } from '../../lib/business';
 // Shared lead questionnaire for the ad landing pages.
 // Progressive enhancement: with JS it's a 3-step wizard; without JS (or if the
 // script fails to load) it degrades to a single scrollable form that still
@@ -16,13 +17,20 @@ interface Props {
 const {
   source,
   heading = 'Find your week aboard',
-  sub = 'Three quick questions. Dodie or Clint replies within 24 hours — no call center, no hard sell.',
+  sub = 'Three quick questions. Dodie or Clint replies within 24 hours. No call center, no hard sell.',
 } = Astro.props;
 
 const inputCls =
   'w-full bg-white text-primary font-body-md text-[1rem] border-b border-primary/25 focus:border-accent transition-colors px-1 py-3 focus:outline-none';
 const labelCls =
   'block font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70 mb-2';
+// The 2027 weeks, shown above the form so "See available weeks" lands on them.
+const fmt = (d: string, o: Intl.DateTimeFormatOptions) =>
+  new Date(`${d}T12:00:00Z`).toLocaleDateString('en-US', { timeZone: 'UTC', ...o });
+const weeks = (await getCollection('voyages'))
+  .flatMap((v) => v.data.availableWeeks.map((w) => ({ name: v.data.name, slug: v.data.slug, ...w })))
+  .sort((a, b) => a.start.localeCompare(b.start));
+
 const regions = [
   { value: 'bvi', label: 'British Virgin Islands', note: 'Turquoise water, the Baths, Anegada' },
   { value: 'bahamas', label: 'The Bahamas', note: 'Pink sand, the slow Caribbean' },
@@ -44,6 +52,25 @@ const regions = [
       {heading}
     </h2>
     <p class="font-body-lg text-[1.0625rem] leading-[1.6] text-primary/70 mt-4">{sub}</p>
+
+    <div class="mt-9">
+      <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70 mb-3">2027 weeks</p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {weeks.map((w) => (
+          <li class="flex items-baseline justify-between gap-3 border border-primary/15 bg-white/60 px-4 py-3">
+            <span class="font-body-md text-[0.9375rem] text-primary">
+              {w.name}
+              <span class="block font-body-sm text-[0.8125rem] text-primary/65">
+                {fmt(w.start, { month: 'short', day: 'numeric' })} to {fmt(w.end, { month: 'short', day: 'numeric', year: 'numeric' })}
+              </span>
+            </span>
+            <span class:list={['font-label-caps uppercase tracking-[0.2em] text-[0.5625rem] font-semibold shrink-0', w.cabinsAvailable === 0 ? 'text-primary/40' : 'text-accent']}>
+              {w.cabinsAvailable === 0 ? 'Sold out' : 'Open'}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
 
     <form method="POST" action="/api/inquire" data-inquiry-form data-lp-quiz class="mt-10 relative">
       <input type="hidden" name="source" value={source} />
@@ -138,6 +165,9 @@ const regions = [
         </div>
         <p class="mt-4 font-body-sm text-[0.75rem] text-primary/50 text-center">
           No spam, no call center. A reply from Dodie or Clint within 24 hours.
+        </p>
+        <p class="mt-2 font-body-sm text-[0.75rem] text-primary/50 text-center">
+          {BUSINESS.legalName} · {BOND_ONE_LINE}
         </p>
       </div>
 

@@ -43,3 +43,15 @@ export const BONDED_SHORT = `Bonded in the ${BUSINESS.bond.jurisdiction}`;
 
 /** Party-size choices, shared by every inquiry form so GHL gets one set of values. */
 export const PARTY_SIZES = ['Just me', '2 (couple)', '3-4', '5-6', '7-8', '9-12', 'Whole boat / not sure yet'];
+
+/** Intro-call booking on the thank-you page (CRO-3). Built but OFF until Clint
+ *  and Dodie confirm the call length and hours; while off, /api/intro-call
+ *  answers 404 and the thank-you page shows nothing. Calendar: "Guiding Winds
+ *  Charters and Bookings" in the GWU GHL subaccount. */
+export const INTRO_CALL = {
+  enabled: false,
+  calendarId: 'BAz1az3m9cIFhFCBQHjt',
+  minutes: 30,
+  timezone: 'America/New_York',
+  daysAhead: 14,
+};

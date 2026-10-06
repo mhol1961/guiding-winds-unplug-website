@@ -13,7 +13,7 @@ const description =
 
 const inclusions = [
   { h: 'Your private cabin', b: 'A cabin with an ensuite head, AC on shore power, linens and towels provided.' },
-  { h: 'Meals aboard, every day', b: 'Breakfast, lunch, and dinner — the menu shifts with the destination.' },
+  { h: 'Meals aboard, every day', b: 'Breakfast, lunch, and dinner, with a menu that shifts with the destination.' },
   { h: 'Fuel & moorings', b: 'No itemized fuel surcharge. Mooring fees covered at every overnight.' },
   { h: 'Snorkel gear', b: 'Masks, fins, and snorkels in every size. Reefs and wrecks on tap.' },
   { h: 'Crew', b: 'An experienced crew runs the boat, the galley, and the experience.' },
@@ -32,7 +32,7 @@ const reviewCount = (await getCollection('reviews')).length;
   <section class="relative">
     <div class="grid lg:grid-cols-2 min-h-[100dvh]">
       <div class="flex items-center order-2 lg:order-1">
-        <div class="px-7 lg:px-14 py-20 pt-28 lg:py-0 max-w-xl">
+        <div class="px-7 lg:px-14 pt-9 pb-14 lg:py-0 max-w-xl">
           <p class="font-label-caps uppercase tracking-[0.32em] text-[0.6875rem] font-semibold text-accent mb-6">
             All-inclusive · up to 12 guests
           </p>
@@ -55,10 +55,13 @@ const reviewCount = (await getCollection('reviews')).length;
           <p class="font-body-sm text-[0.875rem] text-ink-soft mt-5"><span class="text-sun">★★★★★</span> 5.0 from {reviewCount} guest reviews</p>
         </div>
       </div>
-      <div class="relative order-1 lg:order-2 min-h-[40dvh] lg:min-h-0">
-        <img {...img('/img/source/hero/03-foredeck-bow-sun-flare.jpg', '(min-width: 1024px) 50vw, 100vw')} alt="The catamaran's foredeck and bow in golden-hour light" fetchpriority="high" class="absolute inset-0 size-full object-cover" />
+      <figure class="relative order-1 lg:order-2 min-h-[34dvh] lg:min-h-0 m-0">
+        <img {...img('/img/source/hero/03-foredeck-bow-sun-flare.jpg', '(min-width: 1024px) 50vw, 100vw')} alt="Clint and Dodie Kendall smiling aboard at sea, the evening sky behind them" fetchpriority="high" class="absolute inset-0 size-full object-cover object-[center_70%]" />
         <div class="absolute inset-0 bg-gradient-to-r from-primary/30 to-transparent lg:from-primary/20" aria-hidden="true"></div>
-      </div>
+        <figcaption class="absolute left-5 bottom-4 lg:left-8 lg:bottom-7 bg-primary/75 text-ink font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold px-3 py-2">
+          Clint &amp; Dodie, your hosts
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -111,7 +114,7 @@ const reviewCount = (await getCollection('reviews')).length;
     <div class="mx-auto max-w-5xl px-7 py-20 lg:py-24">
       <div class="grid gap-4 lg:gap-5 sm:grid-cols-3">
         {[
-          { n: '01', h: 'Tell us your week', b: 'Answer three quick questions below — region, party size, timing.' },
+          { n: '01', h: 'Tell us your week', b: 'Answer three quick questions below: region, party size, timing.' },
           { n: '02', h: 'Book a quick call', b: 'We speak with every guest before booking. We talk through the open weeks, no public checkout.' },
           { n: '03', h: 'Come aboard', b: 'Show up. We handle the rest, from the galley to the anchorages.' },
         ].map((s) => (

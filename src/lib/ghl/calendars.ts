@@ -1,42 +1,39 @@
-import { ghl } from './client';
+import { ghl, locationId } from './client';
+import { toDays, type DaySlots } from '../intro-call';
 
-export interface FreeSlot {
-  startTime: string; // ISO
-  endTime: string;
-}
+const CAL_VERSION = { Version: '2021-04-15' };
 
-interface FreeSlotsResponse {
-  // GHL returns a date-keyed object of slots arrays.
-  [date: string]: { slots: string[] };
-}
-
-export async function getFreeSlots(
-  calendarId: string,
-  startDate: string,
-  endDate: string,
-): Promise<FreeSlot[]> {
-  if (!calendarId) return [];
+/** Free slots for `calendarId` over the next `days` days, grouped by day. */
+export async function freeDays(calendarId: string, days: number, timezone: string): Promise<DaySlots[]> {
+  const now = Date.now();
   const qs = new URLSearchParams({
-    startDate: new Date(startDate).getTime().toString(),
-    endDate: new Date(endDate).getTime().toString(),
+    startDate: String(now),
+    endDate: String(now + days * 86_400_000),
+    timezone,
   });
-  const res = await ghl<FreeSlotsResponse>(
-    `/calendars/${calendarId}/free-slots?${qs.toString()}`,
-    { method: 'GET' },
-  );
-  // Flatten the date-keyed shape into a flat array.
-  const slots: FreeSlot[] = [];
-  for (const [, value] of Object.entries(res)) {
-    if (value?.slots) {
-      for (const slotIso of value.slots) {
-        const start = new Date(slotIso);
-        slots.push({
-          startTime: start.toISOString(),
-          endTime: new Date(start.getTime() + 60 * 60 * 1000).toISOString(),
-        });
-      }
-    }
-  }
-  return slots;
+  return toDays(await ghl<Record<string, unknown>>(`/calendars/${calendarId}/free-slots?${qs}`, { headers: CAL_VERSION }));
 }
 
+/** Book `minutes` starting at `startTime` for an existing contact. */
+export async function bookAppointment(opts: {
+  calendarId: string;
+  contactId: string;
+  startTime: string;
+  minutes: number;
+  title: string;
+}): Promise<void> {
+  const start = new Date(opts.startTime);
+  await ghl('/calendars/events/appointments', {
+    method: 'POST',
+    headers: CAL_VERSION,
+    body: {
+      calendarId: opts.calendarId,
+      locationId: locationId(),
+      contactId: opts.contactId,
+      startTime: start.toISOString(),
+      endTime: new Date(start.getTime() + opts.minutes * 60_000).toISOString(),
+      title: opts.title,
+      appointmentStatus: 'confirmed',
+    },
+  });
+}
