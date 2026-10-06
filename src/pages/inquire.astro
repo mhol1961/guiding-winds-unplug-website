@@ -5,7 +5,7 @@ import PageHero from '../components/shared/PageHero.astro';
 import { Mail, Clock, ShieldCheck } from 'lucide-react';
 import { BUSINESS, BOND_ONE_LINE } from '../lib/business';
 
-const title = 'Book a Quick Zoom Call | Guiding Winds Unplug';
+const title = 'Book a Quick Call | Guiding Winds Unplug';
 const description =
   'We speak with every guest before booking. Tell us which week and book a quick call. Dodie or Clint reply within 24 hours.';
 
@@ -26,7 +26,7 @@ const schemaGraph = [
 <BaseLayout title={title} description={description} schema={schemaGraph} hideFloatingCta transparentNav>
   <PageHero
     compact
-    eyebrow="Book a quick Zoom call"
+    eyebrow="Book a quick call"
     headlinePrefix="Tell us which week, and"
     headlineEmphasis="let's book a quick call."
     subline="We speak with every guest before booking. Send the form or book a quick call, and Dodie or Clint will reply within 24 hours with availability and the next step."
@@ -110,7 +110,7 @@ const schemaGraph = [
             </a>
             <div class="flex items-center gap-3 font-body-md text-[0.9375rem] text-primary/65 py-2">
               <Clock className="size-4 text-sun" strokeWidth={1.5} />
-              Replies M-F, usually within 4h
+              Replies within 24 hours
             </div>
             <div class="flex items-start gap-3 font-body-md text-[0.9375rem] text-primary/65 py-2">
               <ShieldCheck className="size-4 text-sun shrink-0 mt-1" strokeWidth={1.5} />

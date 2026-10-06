@@ -13,9 +13,11 @@ interface Props {
   availableWeeks: AvailableWeek[];
   voyageName: string;
   voyageSlug: string;
+  /** This voyage's own inclusions; the card shows the first three. */
+  inclusions: string[];
 }
 
-const { pricePerGuestUSD, availableWeeks, voyageSlug } = Astro.props;
+const { pricePerGuestUSD, availableWeeks, voyageSlug, inclusions } = Astro.props;
 
 function formatWeek(start: string, end: string): string {
   const s = new Date(`${start}T12:00:00Z`);
@@ -46,7 +48,7 @@ function formatWeek(start: string, end: string): string {
 
   <div class="space-y-2.5 mb-7">
     {
-      ['All meals aboard, cooked fresh', 'Snorkel + paddleboards + kayaks', 'Private cabin with ensuite head'].map(
+      inclusions.slice(0, 3).map(
         (item) => (
           <div class="flex items-start gap-2.5">
             <Check className="size-4 text-sun shrink-0 mt-[3px]" strokeWidth={2} />

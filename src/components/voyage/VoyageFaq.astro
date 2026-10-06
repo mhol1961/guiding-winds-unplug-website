@@ -1,5 +1,6 @@
 ---
 import Faq from '../shared/Faq.astro';
+import { FAQ_COUNT } from '../../lib/faq';
 
 interface QA { q: string; a: string }
 interface Props {
@@ -25,7 +26,7 @@ const { faq } = Astro.props;
           </span>
         </h2>
         <p class="mt-7 font-body-md text-[1rem] leading-[1.65] text-primary/65">
-          The full <a href="/faq" class="text-accent border-b border-accent/40 hover:border-accent transition-colors">23-question FAQ</a> covers everything. If something isn't there, <a href="/inquire" class="text-accent border-b border-accent/40 hover:border-accent transition-colors">just ask</a>.
+          The full <a href="/faq" class="text-accent border-b border-accent/40 hover:border-accent transition-colors">{FAQ_COUNT}-question FAQ</a> covers everything. If something isn't there, <a href="/inquire" class="text-accent border-b border-accent/40 hover:border-accent transition-colors">just ask</a>.
         </p>
       </div>
 
