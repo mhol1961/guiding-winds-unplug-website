@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Terms & Conditions · Guiding Winds Unplug';
 const description =
   'Booking, cancellation, travel insurance and force majeure terms for Guiding Winds Unplug catamaran voyages. Questions? We talk them through on a call.';
-import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE } from '../lib/business';
+import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE } from '../lib/business';
 
 const updated = '2026-09-06';
 ---
@@ -101,7 +101,7 @@ const updated = '2026-09-06';
           Voyages on this site are sold by {BUSINESS.legalName},
           {ADDRESS_ONE_LINE}. {BUSINESS.legalName} is bonded in the
           {BUSINESS.bond.jurisdiction}: {BOND_ONE_LINE}.
-          {BUSINESS.sellerOfTravelRef && ` Fla. Seller of Travel Ref. No. ${BUSINESS.sellerOfTravelRef}.`}
+          {SELLER_OF_TRAVEL_DISCLOSURE}
         </p>
 
         <h2 class="font-h2 text-primary leading-[1.1] tracking-[-0.02em] font-normal mt-12" style="font-size: 1.75rem; font-variation-settings: 'opsz' 72;">

@@ -29,11 +29,13 @@ export const BUSINESS = {
   // cabin price or booking commitment appears.
   cabinOccupancyNote:
     'Cabins require an occupancy of two people. If you do not have two people, you will still be responsible for the full cabin price.',
-  // Florida Seller of Travel registration number (ST#####). Fill in
-  // when FDACS issues it; the footer line below will show it
-  // automatically once it is not empty.
-  sellerOfTravelRef: '',
+  // Florida Seller of Travel registration number, issued by FDACS.
+  sellerOfTravelRef: 'ST150174',
 } as const;
+
+/** The disclosure Fla. Stat. 559.928(5) requires, word for word. Used in the
+ *  footer of every page, /terms, /inquire, the ad pages and llms.txt. */
+export const SELLER_OF_TRAVEL_DISCLOSURE = `${BUSINESS.legalName} is registered with the State of Florida as a Seller of Travel. Registration No. ${BUSINESS.sellerOfTravelRef}.`;
 
 export const ADDRESS_ONE_LINE = `${BUSINESS.address.street}, ${BUSINESS.address.city}, ${BUSINESS.address.region} ${BUSINESS.address.postalCode}`;
 

@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import InquiryForm from '../components/shared/InquiryForm.astro';
 import PageHero from '../components/shared/PageHero.astro';
 import { Mail, Clock, ShieldCheck } from 'lucide-react';
-import { BUSINESS, BOND_ONE_LINE } from '../lib/business';
+import { BUSINESS, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE } from '../lib/business';
 
 const title = 'Book a Quick Call | Guiding Winds Unplug';
 const description =
@@ -114,7 +114,7 @@ const schemaGraph = [
             </div>
             <div class="flex items-start gap-3 font-body-md text-[0.9375rem] text-primary/65 py-2">
               <ShieldCheck className="size-4 text-sun shrink-0 mt-1" strokeWidth={1.5} />
-              <span>Bonded in the {BUSINESS.bond.jurisdiction}. {BOND_ONE_LINE}.</span>
+              <span>Bonded in the {BUSINESS.bond.jurisdiction}. {BOND_ONE_LINE}. {SELLER_OF_TRAVEL_DISCLOSURE}</span>
             </div>
           </div>
 

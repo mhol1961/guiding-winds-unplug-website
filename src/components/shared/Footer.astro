@@ -1,7 +1,7 @@
 ---
 import { img } from '../../lib/img';
 import NewsletterSignup from './NewsletterSignup.astro';
-import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE } from '../../lib/business';
+import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE } from '../../lib/business';
 
 const year = new Date().getFullYear();
 
@@ -113,10 +113,8 @@ const navCols = [
         {BUSINESS.legalName} · {ADDRESS_ONE_LINE}
         <span class="hidden sm:inline"> · </span>
         <span class="block sm:inline">{BOND_ONE_LINE}</span>
-        {BUSINESS.sellerOfTravelRef && (
-          <span class="block sm:inline"> · Fla. Seller of Travel Ref. No. {BUSINESS.sellerOfTravelRef}</span>
-        )}
       </p>
+      <p class="font-body-sm text-[0.8125rem] leading-[1.7] text-ink-mute mt-1">{SELLER_OF_TRAVEL_DISCLOSURE}</p>
     </div>
 
     {/* Bottom - copyright + social */}

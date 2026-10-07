@@ -1,7 +1,7 @@
 ---
 import Turnstile from '../shared/Turnstile.astro';
 import { getCollection } from 'astro:content';
-import { PARTY_SIZES, BUSINESS, BOND_ONE_LINE } from '../../lib/business';
+import { PARTY_SIZES, BUSINESS, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE } from '../../lib/business';
 // Shared lead questionnaire for the ad landing pages.
 // Progressive enhancement: with JS it's a 3-step wizard; without JS (or if the
 // script fails to load) it degrades to a single scrollable form that still
@@ -167,7 +167,8 @@ const regions = [
           No spam, no call center. A reply from Dodie or Clint within 24 hours.
         </p>
         <p class="mt-2 font-body-sm text-[0.75rem] text-primary/50 text-center">
-          {BUSINESS.legalName} · {BOND_ONE_LINE}
+          {BUSINESS.legalName} · {BOND_ONE_LINE}<br />
+          {SELLER_OF_TRAVEL_DISCLOSURE}
         </p>
       </div>
 

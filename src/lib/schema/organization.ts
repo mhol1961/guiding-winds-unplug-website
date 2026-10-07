@@ -32,9 +32,7 @@ export function organization({ baseUrl }: OrgInput) {
         propertyID: `${BUSINESS.bond.type} (${BUSINESS.bond.jurisdiction})`,
         value: BUSINESS.bond.number,
       },
-      ...(BUSINESS.sellerOfTravelRef
-        ? [{ '@type': 'PropertyValue', propertyID: 'Florida Seller of Travel Ref. No.', value: BUSINESS.sellerOfTravelRef }]
-        : []),
+      { '@type': 'PropertyValue', propertyID: 'Florida Seller of Travel Registration No.', value: BUSINESS.sellerOfTravelRef },
     ],
     logo: {
       '@type': 'ImageObject',
