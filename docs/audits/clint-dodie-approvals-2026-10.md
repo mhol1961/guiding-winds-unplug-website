@@ -33,23 +33,19 @@ Once you answer, switching it on is a one-line change on our side.
 
 ---
 
-## 3. The AI phone receptionist: draft greeting (not changed)
+## 3. The AI phone receptionist: greeting updated (done, October 7)
 
-What we found, read-only:
+(772) 310-3777 is answered by the GHL Voice AI agent **"Guiding Winds Reception"**. Its greeting now tells callers they are speaking with an AI assistant and that the call may be recorded:
 
-- (772) 310-3777 is answered by the GHL Voice AI agent **"Guiding Winds Reception"**.
-- Its greeting today is: *"Thanks for calling Guiding Winds Unplug, this is the charter assistant. How can I help you plan your sailing trip today?"*
-- **It does not say it is an AI.** It does not say the call is recorded. It does save a summary of every call to the contact in GHL.
+> "Thanks for calling Guiding Winds Unplug. I'm Clint and Dodie's AI assistant, and this call may be recorded. How can I help you plan your sailing trip today?"
 
-Florida law generally requires that everyone on a call agree before it is recorded. Telling callers at the start, and letting them continue, is the usual way to get that agreement. Please confirm with your attorney.
+Before, it said: *"Thanks for calling Guiding Winds Unplug, this is the charter assistant. How can I help you plan your sailing trip today?"*, which mentioned neither the AI nor recording.
 
-**Draft greeting (pick one or edit):**
+Only the welcome message was changed; the agent's instructions, voice and phone number are the same. The agent still saves a summary of every call to the contact in GHL.
 
-> A. "Thanks for calling Guiding Winds Unplug. I'm Clint and Dodie's AI assistant, and this call is recorded so we can follow up with you. How can I help you plan your sailing trip today?"
+Florida law generally requires that everyone on a call agree before it is recorded. Telling callers at the start, and letting them continue, is the usual way to get that agreement. Please confirm with your attorney that this wording covers you.
 
-> B. "Hi, you've reached Guiding Winds Unplug. You're speaking with our AI assistant, and this call is recorded. If you'd rather talk with Clint or Dodie, just say so and we'll set that up. How can I help?"
-
-Where to change it, once you approve: GHL → Guiding Winds Unplug LLC → AI Agents → Voice AI → "Guiding Winds Reception" → Welcome message.
+To change it later: GHL → Guiding Winds Unplug LLC → AI Agents → Voice AI → "Guiding Winds Reception" → Welcome message (190 characters max).
 
 ---
 
