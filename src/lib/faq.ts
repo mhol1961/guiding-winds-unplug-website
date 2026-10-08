@@ -73,7 +73,7 @@ export const FAQ_GROUPS = [
       },
       {
         q: 'Are solo travelers welcome?',
-        a: 'Yes. Roughly a quarter of our guests come solo. Solo travelers book a cabin to themselves at the per-guest rate × 2 (effectively a single supplement).',
+        a: 'Yes. Roughly a quarter of our guests come solo. Solo travelers book a cabin to themselves and are responsible for the full cabin price, which Clint and Dodie include in the quote.',
       },
       {
         q: 'Is alcohol included?',
