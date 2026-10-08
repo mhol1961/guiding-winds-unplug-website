@@ -57,3 +57,6 @@ export const INTRO_CALL = {
   timezone: 'America/New_York',
   daysAhead: 14,
 };
+
+/** Shown wherever a voyage price used to appear (owner request, Oct 2026: no prices for now). */
+export const PRICE_NOTE = 'Price depends on duration and season.';

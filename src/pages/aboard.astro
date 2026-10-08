@@ -12,17 +12,13 @@ const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwin
 
 const schemaGraph = [
   {
-    '@type': 'Product',
+    // A Service, not a Product: Google requires a price on a Product, and
+    // prices are off the site for now.
+    '@type': 'Service',
     name: 'All-Inclusive Catamaran Voyage - Aboard',
     description,
     image: `${baseUrl}/img/source/hero/04-cockpit-sunrise.jpg`,
-    brand: { '@type': 'Brand', name: 'Guiding Winds Unplug' },
-    offers: {
-      '@type': 'AggregateOffer',
-      priceCurrency: 'USD',
-      lowPrice: 3350,
-      highPrice: 3650,
-    },
+    provider: { '@id': `${baseUrl}/#org` },
   },
   {
     '@type': 'BreadcrumbList',

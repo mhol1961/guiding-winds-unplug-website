@@ -1,7 +1,7 @@
 ---
 import { img } from '../../lib/img';
 import { getCollection } from 'astro:content';
-import { BUSINESS } from '../../lib/business';
+import { BUSINESS, PRICE_NOTE } from '../../lib/business';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/shared/PageHero.astro';
 import SectionInterrupt from '../../components/shared/SectionInterrupt.astro';
@@ -100,7 +100,6 @@ type WeekRow = {
   country: string;
   nights: number;
   nightsLabel?: string;
-  price: number;
   start: string;
   end: string;
   cabinsAvailable: number;
@@ -112,7 +111,6 @@ type VoyageGroup = {
   country: string;
   nights: number;
   nightsLabel?: string;
-  price: number;
   weeks: WeekRow[];
 };
 
@@ -147,7 +145,6 @@ const regionGroups: RegionGroup[] = regionKeys.map((key) => {
           country: v.data.country,
           nights: v.data.nights,
           nightsLabel: v.data.nightsLabel,
-          price: v.data.pricePerGuestUSD,
           start: w.start,
           end: w.end,
           cabinsAvailable: w.cabinsAvailable,
@@ -159,7 +156,6 @@ const regionGroups: RegionGroup[] = regionKeys.map((key) => {
         country: v.data.country,
         nights: v.data.nights,
         nightsLabel: v.data.nightsLabel,
-        price: v.data.pricePerGuestUSD,
         weeks,
       };
     })
@@ -279,7 +275,7 @@ const schemaGraph = [
                   {voyage.data.name}
                 </h2>
                 <p class="font-body-md text-[0.9375rem] text-primary/65 mt-3 leading-[1.5]">
-                  Starts at ${voyage.data.pricePerGuestUSD.toLocaleString()} per guest
+                  {PRICE_NOTE}
                 </p>
                 <span class="mt-4 inline-flex items-center gap-2 font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-accent group-hover:gap-3 transition-all">
                   Explore voyage
@@ -382,7 +378,7 @@ const schemaGraph = [
                             {voyage.name}
                           </h4>
                           <p class="font-label-caps uppercase tracking-[0.24em] text-[0.625rem] font-semibold text-primary/70 mt-2">
-                            {voyage.country} · {voyage.nightsLabel ?? voyage.nights} nights · Starts at ${voyage.price.toLocaleString()}
+                            {voyage.country} · {voyage.nightsLabel ?? voyage.nights} nights · {PRICE_NOTE}
                           </p>
                         </div>
                         <a
@@ -429,7 +425,7 @@ const schemaGraph = [
                                 </div>
 
                                 {/* Date - primary content */}
-                                <div class="col-span-7 sm:col-span-4 order-2">
+                                <div class="col-span-7 sm:col-span-6 order-2">
                                   <p
                                     class={`font-display text-[1.25rem] lg:text-[1.375rem] leading-[1.1] tabular-nums text-primary ${soldOut ? 'line-through decoration-1' : 'group-hover:text-accent transition-colors'}`}
                                     style="font-variation-settings: 'opsz' 36, 'SOFT' 30;"
@@ -440,17 +436,6 @@ const schemaGraph = [
                                     {weekdayLabel(week.start)} → {weekdayLabel(week.end)} · {voyage.nightsLabel ?? voyage.nights} nights
                                   </p>
                                 </div>
-
-                                {/* Price */}
-                                <div class="hidden sm:block sm:col-span-2 order-3">
-                                  <p class="font-body-md text-[0.9375rem] text-primary/70 tabular-nums">
-                                    ${week.price.toLocaleString()}
-                                  </p>
-                                  <p class="font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary/45 mt-1">
-                                    per guest
-                                  </p>
-                                </div>
-
                                 {/* Cabin status */}
                                 <div class="col-span-4 sm:col-span-3 order-4 flex items-center gap-2 justify-end sm:justify-start">
                                   <span

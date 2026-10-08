@@ -6,7 +6,6 @@ country: Croatia
 heroEyebrow: 'Split · Adriatic'
 nights: 7
 nightsLabel: '5 to 7'
-pricePerGuestUSD: 3650
 shortDescription: 'Split to Dubrovnik through the Dalmatian island chain. Hvar, Vis, Korčula - quiet coves with Roman ruins above and clear water below.'
 heroImage: /img/stock/voyages/croatia/croatia-hvar-harbor-hero.jpg
 heroImageAlt: Stone harbor town on the Dalmatian coast of Croatia
@@ -56,14 +55,14 @@ faq:
     a: 'Seven nights, one-way from Split to Dubrovnik through the Dalmatian island chain. Specific weeks are available - see the calendar.'
 seo:
   title: 'Croatia Catamaran Charter 2027 · Split to Dubrovnik'
-  description: 'Hvar, Vis, Korčula, Mljet. Seven nights aboard a private catamaran for up to 12 guests through the Dalmatian chain. Starts at $3,650 per guest, all-inclusive.'
+  description: 'Hvar, Vis, Korčula, Mljet. A private catamaran for up to 12 guests through the Dalmatian chain. All-inclusive. Price depends on duration and season.'
   keywords:
     - Croatian coast sailing charter
     - Dalmatian Coast sailing
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Croatian coast sailing charter runs one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a private catamaran for up to 12 guests. The route threads the Dalmatian chain - Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites - and finishes with a transfer to Dubrovnik for the flight home. Starts at **$3,650 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our 7-night Croatian coast sailing charter runs one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a private catamaran for up to 12 guests. The route threads the Dalmatian chain - Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites - and finishes with a transfer to Dubrovnik for the flight home. All-inclusive. **Price depends on duration and season.** Run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
 
 ## The Dalmatian coast is not a beach coast
 

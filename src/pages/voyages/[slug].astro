@@ -1,4 +1,5 @@
 ---
+import { PRICE_NOTE } from '../../lib/business';
 import { img } from '../../lib/img';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -55,8 +56,6 @@ const touristTrip = {
   })),
   offers: voyage.data.availableWeeks.map((week) => ({
     '@type': 'Offer',
-    price: voyage.data.pricePerGuestUSD,
-    priceCurrency: 'USD',
     availability:
       week.cabinsAvailable > 0
         ? 'https://schema.org/InStock'
@@ -206,7 +205,6 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
     heroImage={voyage.data.heroImage}
     heroImageAlt={voyage.data.heroImageAlt}
     emphasis={emphasis[voyage.data.slug] ?? 'Seven nights off the grid.'}
-    pricePerGuestUSD={voyage.data.pricePerGuestUSD}
     nights={voyage.data.nights}
     nightsLabel={voyage.data.nightsLabel}
   />
@@ -265,7 +263,6 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
 
         <div class="lg:col-span-4">
           <PricingCard
-            pricePerGuestUSD={voyage.data.pricePerGuestUSD}
             availableWeeks={voyage.data.availableWeeks}
             voyageName={voyage.data.name}
             voyageSlug={voyage.data.slug}
@@ -344,7 +341,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
                 </span>
               </div>
               <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70">
-                {sibling.data.nightsLabel ?? sibling.data.nights} nights · Starts at ${sibling.data.pricePerGuestUSD.toLocaleString()}
+                {sibling.data.nightsLabel ?? sibling.data.nights} nights · {PRICE_NOTE}
               </p>
               <h3 class="font-display text-[1.5rem] leading-[1.1] tracking-[-0.015em] font-normal mt-2 group-hover:text-accent transition-colors" style="font-variation-settings: 'opsz' 36;">
                 {sibling.data.name}

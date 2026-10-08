@@ -1,6 +1,6 @@
 // Explicit AI-bot allowlist per ADR-010. The marketing math here is the
 // opposite of a publisher's - being cited by ChatGPT / Claude / Perplexity
-// / Google AI Overviews drives qualified leads for a $3,000+/week
+// / Google AI Overviews drives qualified leads for a week-long all-inclusive
 // purchase. We invite the crawl.
 
 import type { APIRoute } from 'astro';

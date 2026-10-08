@@ -1,4 +1,5 @@
 ---
+import { PRICE_NOTE } from '../../lib/business';
 import { img } from '../../lib/img';
 // Full-bleed destination photo hero with editorial overlay. The hero
 // img is REQUIRED - every voyage now has a real photo (BVI: Dodie's,
@@ -13,7 +14,6 @@ interface Props {
   heroImage: string;
   heroImageAlt: string;
   emphasis: string;
-  pricePerGuestUSD: number;
   nights: number;
   nightsLabel?: string;
 }
@@ -24,7 +24,6 @@ const {
   heroImage,
   heroImageAlt,
   emphasis,
-  pricePerGuestUSD,
   nights,
   nightsLabel,
 } = Astro.props;
@@ -86,8 +85,8 @@ const {
           </div>
           <span class="block size-1 bg-sun rounded-full self-center mt-3" aria-hidden="true"></span>
           <div>
-            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-ink-soft">Starts at</p>
-            <p class="font-display text-[1.5rem] leading-none text-ink mt-1.5 tabular-nums" style="font-variation-settings: 'opsz' 36;">${pricePerGuestUSD.toLocaleString()}<span class="text-ink/60 text-[0.875rem] font-body-md ml-1.5">/ guest</span></p>
+            <p class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-ink-soft">Price</p>
+            <p class="font-body-md text-[0.9375rem] leading-[1.3] text-ink mt-1.5 max-w-[14rem]">{PRICE_NOTE}</p>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@
 
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE } from '../lib/business';
+import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE, PRICE_NOTE } from '../lib/business';
 
 export const GET: APIRoute = async ({ site }) => {
   const origin = site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
@@ -16,7 +16,7 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('# Guiding Winds Unplug');
   lines.push('');
   lines.push(
-    '> Crewed, all-inclusive catamaran voyages for up to 12 guests in the British Virgin Islands, the Bahamas, Greece, Italy and Croatia. From $3,350 per guest, per week. Owner-run by Clint and Dodie Kendall.',
+    '> Crewed, all-inclusive catamaran voyages for up to 12 guests in the British Virgin Islands, the Bahamas, Greece, Italy and Croatia. Owner-run by Clint and Dodie Kendall. Price depends on duration and season.',
   );
   lines.push('');
   lines.push(
@@ -30,7 +30,7 @@ export const GET: APIRoute = async ({ site }) => {
   for (const v of voyages) {
     const weeks = v.data.availableWeeks.length;
     lines.push(
-      `- [${v.data.name}](${origin}/voyages/${v.data.slug}): ${v.data.shortDescription} ${weeks} ${weeks === 1 ? 'week' : 'weeks'} open in 2027. From $${v.data.pricePerGuestUSD.toLocaleString()} per guest, all-inclusive.`,
+      `- [${v.data.name}](${origin}/voyages/${v.data.slug}): ${v.data.shortDescription} ${weeks} ${weeks === 1 ? 'week' : 'weeks'} open in 2027. All-inclusive. ${PRICE_NOTE}`,
     );
   }
   lines.push('');

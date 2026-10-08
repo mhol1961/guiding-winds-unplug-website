@@ -6,7 +6,6 @@ country: Italy
 heroEyebrow: 'Salerno · Tyrrhenian Sea'
 nights: 7
 nightsLabel: '5 to 7'
-pricePerGuestUSD: 3650
 shortDescription: 'Capri at sunrise, Positano on the water, the volcanic Aeolian chain - dinners ashore that ruin you for hotel restaurants forever.'
 heroImage: /img/stock/voyages/italy/italy-amalfi-coast-hero.jpg
 heroImageAlt: Pastel houses of an Amalfi coast village seen from the water
@@ -52,10 +51,10 @@ exclusions:
   - Off-boat dining (we cover one shore dinner; others on you)
 faq:
   - q: How does Italy compare to BVI?
-    a: 'Less swimming-pool turquoise, more "you''re in a postcard." Longer passages, more shore time, more dinners ashore. Higher price reflects Mediterranean dockage and provisioning costs.'
+    a: 'Less swimming-pool turquoise, more "you''re in a postcard." Longer passages, more shore time, more dinners ashore. Mediterranean dockage and provisioning cost more, and the all-inclusive quote covers them.'
 seo:
   title: 'Italy Catamaran Charter · Amalfi & Aeolian | Guiding Winds'
-  description: 'Capri, Positano, Stromboli, Panarea. A private catamaran for up to 12 guests on the Tyrrhenian coast. From $3,650 per guest, all-inclusive.'
+  description: 'Capri, Positano, Stromboli, Panarea. A private catamaran for up to 12 guests on the Tyrrhenian coast. All-inclusive. Price depends on duration and season.'
   keywords:
     - Amalfi coast catamaran charter
     - Italy wellness sailing
@@ -63,7 +62,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a private catamaran for up to 12 guests. The route threads the Amalfi coast - Amalfi, Positano, Capri - then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. Starts at **$3,650 per guest, all-inclusive** - run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a private catamaran for up to 12 guests. The route threads the Amalfi coast - Amalfi, Positano, Capri - then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. All-inclusive. **Price depends on duration and season.** Run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
 
 ## The arc no one else sails in a week
 
@@ -79,9 +78,9 @@ The long sail south to Stromboli is the day people remember. The volcano puts on
 
 A catamaran in the Tyrrhenian solves two problems a monohull does not. First, dockage anxiety: Italian marinas are tight, the swell finds its way into half of them, and a cat's shallow draft and twin engines turn a stressful Med-moor into a routine arrival. We can take a stern-to slip in Lipari or anchor off Fornillo without negotiating which way the keel will swing. Second, the Stromboli passage is roughly 120 nautical miles of open Tyrrhenian water - long enough that stability stops being a comfort question and starts being a sleep question. On the cat, the off-watch guests sleep. On a monohull at the same heel angle, they don't.
 
-## What the higher price actually pays for
+## What all-inclusive covers in the Mediterranean
 
-The Italy voyage runs $3,650 per guest - $300 more than the Caribbean weeks. Mediterranean dockage costs roughly four times what a BVI mooring ball costs, provisioning at a Salerno market runs materially higher than at a Tortola IGA, and Sicilian fuel sits at a different price tier altogether. The Italy wellness sailing market mostly hides those costs in an a-la-carte structure that tacks them onto your final invoice. We don't. The price you see is the price you pay; the only money you'll spend ashore is on the shore dinners we don't cover and whatever you decide to bring home.
+Mediterranean dockage costs roughly four times what a BVI mooring ball costs, provisioning at a Salerno market runs materially higher than at a Tortola IGA, and Sicilian fuel sits at a different price tier altogether. The Italy wellness sailing market mostly hides those costs in an a-la-carte structure that tacks them onto your final invoice. We don't. The quote you get is what you pay; the only money you'll spend ashore is on the shore dinners we don't cover and whatever you decide to bring home.
 
 > The Amalfi coast from a hotel terrace is a view. From the foredeck at six in the morning, it is a place.
 

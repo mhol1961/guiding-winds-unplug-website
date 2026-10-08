@@ -17,7 +17,6 @@ const voyages = defineCollection({
     nights: z.number().default(7),
     /** Human-facing nights range, e.g. "5 to 7". Falls back to `nights` when unset. */
     nightsLabel: z.string().optional(),
-    pricePerGuestUSD: z.number(),
     /** Short narrative card description used on the home ExploreCards row. */
     shortDescription: z.string().max(280),
     /** Hero image path under /public or absolute URL. Falls back gracefully
