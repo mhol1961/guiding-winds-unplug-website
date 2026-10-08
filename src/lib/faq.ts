@@ -15,7 +15,7 @@ export const FAQ_GROUPS = [
       },
       {
         q: 'Can we book the whole boat?',
-        a: 'Yes. Booking the whole boat is the same per-cabin price with two perks: a fully tailored itinerary, and one extra shore dinner on us. We need 6+ months notice for a private-charter week; less if the date is already open on the public calendar.',
+        a: 'Yes. Booking the whole boat comes with two perks: a fully tailored itinerary, and one extra shore dinner on us. We need 6+ months notice for a private-charter week; less if the date is already open on the public calendar.',
       },
       {
         q: 'Do I have to book a cabin for two?',
