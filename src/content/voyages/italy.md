@@ -4,8 +4,6 @@ region: mediterranean
 name: Italy · Amalfi & Aeolian
 country: Italy
 heroEyebrow: 'Salerno · Tyrrhenian Sea'
-nights: 7
-nightsLabel: '5 to 7'
 shortDescription: 'Capri at sunrise, Positano on the water, the volcanic Aeolian chain - dinners ashore that ruin you for hotel restaurants forever.'
 heroImage: /img/stock/voyages/italy/italy-amalfi-coast-hero.jpg
 heroImageAlt: Pastel houses of an Amalfi coast village seen from the water
@@ -40,11 +38,11 @@ itinerary:
     label: Saturday
     title: Disembarkation · Milazzo
 inclusions:
-  - All meals aboard, cooked fresh (Italian-leaning galley menu)
+  - All meals aboard, prepared together (Italian-leaning menu)
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and moorings
-  - Crew
+  - Hosted by Clint
 exclusions:
   - Flights to Naples (NAP) / from Catania (CTA)
   - Travel insurance
@@ -62,7 +60,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Italy voyage runs one-way from Salerno to Milazzo aboard a private catamaran for up to 12 guests. The route threads the Amalfi coast - Amalfi, Positano, Capri - then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. All-inclusive. **Price depends on duration and season.** Run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our Italy voyage typically runs 7 days, one-way from Salerno to Milazzo aboard a private catamaran for up to 12 guests. The route threads the Amalfi coast - Amalfi, Positano, Capri - then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. All-inclusive. Shorter charters are available. **Price depends on duration and season.** Hosted by Clint Kendall; Dodie joins many charters. Weeks available across 2027 - see the calendar.
 
 ## The arc no one else sails in a week
 
@@ -86,4 +84,4 @@ Mediterranean dockage costs roughly four times what a BVI mooring ball costs, pr
 
 ## The galley, and dinners that take three hours
 
-The galley follows the regions we sail through - Campanian seafood at Positano, Aeolian capers and swordfish at Panarea, Sicilian flavors on the last night in Lipari. Dinners on deck run to three hours. Weeks are available across 2027 - see the calendar. We speak with every guest before booking, so book a quick call and we'll talk it through before you commit anything.
+Meals aboard follow the regions we sail through, and guests help prepare them together - Campanian seafood at Positano, Aeolian capers and swordfish at Panarea, Sicilian flavors on the last night in Lipari. Dinners on deck run to three hours. Weeks are available across 2027 - see the calendar. We speak with every guest before booking, so book a 30-minute intro call and we'll talk it through before you commit anything.

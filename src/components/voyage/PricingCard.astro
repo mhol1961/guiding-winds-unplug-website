@@ -1,6 +1,6 @@
 ---
 import { Check } from 'lucide-react';
-import { BUSINESS, PRICE_NOTE } from '../../lib/business';
+import { BUSINESS, PRICE_NOTE, TRIP_LENGTH_NOTE, BOOKING_TERMS } from '../../lib/business';
 
 interface AvailableWeek {
   start: string;
@@ -36,7 +36,10 @@ function formatWeek(start: string, end: string): string {
     {PRICE_NOTE}
   </p>
   <p class="font-body-sm text-[0.875rem] text-primary/70 mb-3">
-    Meals, gear, fuel, moorings. No hidden fees.
+    Meals, gear, fuel, moorings. No hidden fees. {TRIP_LENGTH_NOTE}
+  </p>
+  <p class="font-body-sm text-[0.8125rem] leading-[1.55] text-primary/60 mb-3">
+    {BOOKING_TERMS}
   </p>
   <p class="font-body-sm text-[0.8125rem] leading-[1.55] text-primary/60 mb-7">
     {BUSINESS.cabinOccupancyNote}
@@ -88,7 +91,7 @@ function formatWeek(start: string, end: string): string {
     href={`/inquire?voyage=${voyageSlug}`}
     class="block w-full text-center cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-6 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
   >
-    See available weeks and Book a quick call
+    See available weeks and Book a 30-minute intro call
   </a>
   <p class="font-body-sm text-[0.75rem] text-primary/70 mt-4 leading-relaxed text-center">
     We speak with every guest before booking. No public checkout.

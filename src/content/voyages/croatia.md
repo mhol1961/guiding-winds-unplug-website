@@ -4,8 +4,6 @@ region: mediterranean
 name: Croatia · Dalmatian Coast
 country: Croatia
 heroEyebrow: 'Split · Adriatic'
-nights: 7
-nightsLabel: '5 to 7'
 shortDescription: 'Split to Dubrovnik through the Dalmatian island chain. Hvar, Vis, Korčula - quiet coves with Roman ruins above and clear water below.'
 heroImage: /img/stock/voyages/croatia/croatia-hvar-harbor-hero.jpg
 heroImageAlt: Stone harbor town on the Dalmatian coast of Croatia
@@ -41,18 +39,18 @@ itinerary:
     label: Saturday
     title: Disembarkation · Dubrovnik (ACI Marina)
 inclusions:
-  - All meals aboard, cooked fresh (Croatian-leaning galley menu)
+  - All meals aboard, prepared together (Croatian-leaning menu)
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and moorings
-  - Crew
+  - Hosted by Clint
 exclusions:
   - Flights to Split (SPU) / from Dubrovnik (DBV)
   - Travel insurance
   - Off-boat dining (we cover two shore dinners; others on you)
 faq:
   - q: How long is the trip?
-    a: 'Seven nights, one-way from Split to Dubrovnik through the Dalmatian island chain. Specific weeks are available - see the calendar.'
+    a: 'Charters typically run 7 days, one-way from Split to Dubrovnik through the Dalmatian island chain. Shorter charters are available. Specific weeks are available - see the calendar.'
 seo:
   title: 'Croatia Catamaran Charter 2027 · Split to Dubrovnik'
   description: 'Hvar, Vis, Korčula, Mljet. A private catamaran for up to 12 guests through the Dalmatian chain. All-inclusive. Price depends on duration and season.'
@@ -62,7 +60,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Croatian coast sailing charter runs one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a private catamaran for up to 12 guests. The route threads the Dalmatian chain - Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites - and finishes with a transfer to Dubrovnik for the flight home. All-inclusive. **Price depends on duration and season.** Run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our Croatian coast sailing charter typically runs 7 days, one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a private catamaran for up to 12 guests. The route threads the Dalmatian chain - Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites - and finishes with a transfer to Dubrovnik for the flight home. All-inclusive. Shorter charters are available. **Price depends on duration and season.** Hosted by Clint Kendall; Dodie joins many charters. Weeks available across 2027 - see the calendar.
 
 ## The Dalmatian coast is not a beach coast
 
@@ -82,8 +80,8 @@ Mljet closes the chain. The western third of the island is a national park built
 
 ## The galley, and one shore dinner we cover
 
-The galley runs a Croatian-leaning menu through the week. The Adriatic shellfish - oysters from Ston on the Pelješac peninsula, scampi from off Vis - show up in the first half, alongside produce and cheeses sourced from the islands we provision at as we go. One of the seven dinners is ashore on us at a konoba - a family-run tavern - that Clint and Dodie have learned to trust. The other shore nights are yours; we make the reservation and you cover the bill.
+Meals aboard lean Croatian through the week, and guests help prepare them together. The Adriatic shellfish - oysters from Ston on the Pelješac peninsula, scampi from off Vis - show up in the first half, alongside produce and cheeses sourced from the islands we provision at as we go. One dinner is ashore on us at a konoba - a family-run tavern - that Clint and Dodie have learned to trust. The other shore nights are yours; we make the reservation and you cover the bill.
 
 ## Why one-way Split to Dubrovnik
 
-The Dalmatian Coast sailing route works best as a one-way south. You cover real ground rather than retracing your wake, and the chain narrows as you go, so the final two days are the most dramatic stretch. The logistics sound heavier than they are: Split (SPU) takes direct flights from most of Europe, Dubrovnik (DBV) takes them back, and both marinas are inside thirty minutes of their airports. Weeks are available across 2027 - see the calendar. We speak with every guest before booking, so book a quick call and we'll talk it through before you commit anything.
+The Dalmatian Coast sailing route works best as a one-way south. You cover real ground rather than retracing your wake, and the chain narrows as you go, so the final two days are the most dramatic stretch. The logistics sound heavier than they are: Split (SPU) takes direct flights from most of Europe, Dubrovnik (DBV) takes them back, and both marinas are inside thirty minutes of their airports. Weeks are available across 2027 - see the calendar. We speak with every guest before booking, so book a 30-minute intro call and we'll talk it through before you commit anything.

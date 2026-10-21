@@ -9,14 +9,14 @@ import { BUSINESS } from '../lib/business';
 
 const title = 'One price. Everything aboard. · Guiding Winds Unplug';
 const description =
-  'All-inclusive catamaran charters: cabin, meals, fuel, moorings, and snorkel gear, with a private crew. Up to 12 guests. BVI, Bahamas, Mediterranean.';
+  'All-inclusive catamaran charters: cabin, meals, fuel, moorings, and snorkel gear, hosted by Clint. Up to 12 guests. BVI, Bahamas, Mediterranean.';
 
 const inclusions = [
   { h: 'Your private cabin', b: 'A cabin with an ensuite head, AC on shore power, linens and towels provided.' },
-  { h: 'Meals aboard, every day', b: 'Breakfast, lunch, and dinner, with a menu that shifts with the destination.' },
+  { h: 'Meals aboard, every day', b: 'Breakfast, lunch, and dinner, prepared together aboard, with a menu that shifts with the destination.' },
   { h: 'Fuel & moorings', b: 'No itemized fuel surcharge. Mooring fees covered at every overnight.' },
   { h: 'Snorkel gear', b: 'Masks, fins, and snorkels in every size. Reefs and wrecks on tap.' },
-  { h: 'Crew', b: 'An experienced crew runs the boat, the galley, and the experience.' },
+  { h: 'Your host', b: 'Clint hosts every charter and runs the boat. Dodie joins many of them.' },
   { h: 'The right to unplug', b: 'No agenda, no upsells. The week is built around slowing down.' },
 ];
 const reviews = [
@@ -41,8 +41,8 @@ const reviewCount = (await getCollection('reviews')).length;
             <span class="italic text-accent">rest.</span>
           </h1>
           <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.55] text-ink-soft mt-7">
-            Cabin, meals, fuel, moorings, and snorkel gear - all in. A private catamaran with a
-            crew, in the BVI, the Bahamas, or the Mediterranean.
+            Cabin, meals, fuel, moorings, and snorkel gear - all in. A private catamaran hosted by
+            Clint, in the BVI, the Bahamas, or the Mediterranean.
           </p>
           <div class="mt-9 flex flex-col sm:flex-row sm:items-center gap-4">
             <a href="#start" class="inline-flex items-center justify-center gap-2 bg-accent text-primary font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold px-9 py-[20px] min-h-[52px] hover:bg-accent-hot transition-colors">
@@ -59,7 +59,7 @@ const reviewCount = (await getCollection('reviews')).length;
         <img {...img('/img/source/hero/03-foredeck-bow-sun-flare.jpg', '(min-width: 1024px) 50vw, 100vw')} alt="Clint and Dodie Kendall smiling aboard at sea, the evening sky behind them" fetchpriority="high" class="absolute inset-0 size-full object-cover object-[center_70%]" />
         <div class="absolute inset-0 bg-gradient-to-r from-primary/30 to-transparent lg:from-primary/20" aria-hidden="true"></div>
         <figcaption class="absolute left-5 bottom-4 lg:left-8 lg:bottom-7 bg-primary/75 text-ink font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold px-3 py-2">
-          Clint &amp; Dodie, your hosts
+          Clint &amp; Dodie Kendall
         </figcaption>
       </figure>
     </div>
@@ -115,8 +115,8 @@ const reviewCount = (await getCollection('reviews')).length;
       <div class="grid gap-4 lg:gap-5 sm:grid-cols-3">
         {[
           { n: '01', h: 'Tell us your week', b: 'Answer three quick questions below: region, party size, timing.' },
-          { n: '02', h: 'Book a quick call', b: 'We speak with every guest before booking. We talk through the open weeks, no public checkout.' },
-          { n: '03', h: 'Come aboard', b: 'Show up. We handle the rest, from the galley to the anchorages.' },
+          { n: '02', h: 'Book a 30-minute intro call', b: 'We speak with every guest before booking. We talk through the open weeks, no public checkout.' },
+          { n: '03', h: 'Come aboard', b: 'Show up. We handle the route and the anchorages, and we cook together aboard.' },
         ].map((s) => (
           <div class="group relative bg-primary border border-hairline p-8 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_14px_55px_-18px_rgba(229,64,43,0.5)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
             <p class="font-display text-accent" style="font-size: 2.5rem; line-height:1;">{s.n}</p>

@@ -1,12 +1,12 @@
 ---
 import { img } from '../lib/img';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { BUSINESS } from '../lib/business';
+import { BUSINESS, BOAT_NOTE, BOOKING_TERMS } from '../lib/business';
 import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
 
 const title = "What's Aboard Our All-Inclusive Catamaran | Guiding Winds";
 const description =
-  'All meals cooked fresh aboard, snorkel gear, private cabins with ensuite heads, fuel and moorings. Everything is in. Bring a swimsuit.';
+  'All meals aboard, prepared together, plus snorkel gear, private cabins with ensuite heads, fuel and moorings. Everything is in. Bring a swimsuit.';
 
 const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
 
@@ -35,10 +35,11 @@ const notIncluded: Array<string | { label: string; href: string }> = [
   'Off-boat dining and excursions you arrange independently',
 ];
 
-// The three real catamaran photos (Fountaine Pajot) for the interior gallery.
+// Interior photos of a catamaran we have sailed. The boat for each charter is
+// confirmed closer to departure, so nothing here names a model.
 const boatInterior = [
-  { src: '/img/fountaine.pajot.photo..jpg', alt: 'Catamaran salon and galley' },
-  { src: '/img/galley.fountaine.pajot.45.jpg', alt: 'Catamaran main salon and cockpit' },
+  { src: '/img/catamaran-salon.jpg', alt: 'Catamaran salon and galley' },
+  { src: '/img/catamaran-salon-cockpit.jpg', alt: 'Catamaran main salon and cockpit' },
 ];
 
 // Real photos from real weeks aboard - owner-supplied, July 2026. Spans
@@ -57,8 +58,8 @@ const lifeAboard = [
   {/* Image hero with full-bleed real boat photo */}
   <section class="relative bg-primary text-ink overflow-hidden min-h-[80dvh] flex flex-col">
     <img
-      {...img('/img/fountaine.pajotpic.website.2.jpg', '100vw')}
-      alt="Guiding Winds catamaran at anchor"
+      {...img('/img/catamaran-at-anchor.jpg', '100vw')}
+      alt="A catamaran at anchor"
       class="absolute inset-0 w-full h-full object-cover"
       fetchpriority="high"
       decoding="async"
@@ -80,17 +81,17 @@ const lifeAboard = [
             </span>
           </h1>
           <p class="font-body-lg text-[1.0625rem] lg:text-[1.1875rem] leading-[1.6] text-ink/85 mt-8 max-w-3xl">
-            All-inclusive on this boat means what it says. One number covers
-            meals, snorkel equipment, fuel, moorings, and the crew.
+            All-inclusive means what it says. One number covers meals,
+            snorkel equipment, fuel, moorings, and Clint as your host. Guests
+            help prepare meals together aboard.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  {/* The boat - real Fountaine Pajot interior gallery. Exterior at anchor
-       leads the page hero above; these two interior shots show the salon
-       and galley living space. */}
+  {/* The boat - interior gallery. These two shots show the kind of salon
+       and galley living space we sail with, not a promised vessel. */}
   <section class="bg-teal-mist text-primary py-28 lg:py-36 border-t border-hairline">
     <div class="max-w-[1400px] mx-auto px-7 lg:px-14">
       <div class="mb-16 lg:mb-20 max-w-3xl">
@@ -106,6 +107,10 @@ const lifeAboard = [
             where the week happens.
           </span>
         </h2>
+        <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-primary/70 mt-6">
+          Private cabins with ensuite heads, a shared salon, and a galley where
+          we cook together. {BOAT_NOTE}
+        </p>
       </div>
       <ul class="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6">
         {
@@ -223,7 +228,7 @@ const lifeAboard = [
             }
           </ol>
           <p class="font-body-md text-[0.9375rem] leading-[1.6] text-primary/70 mt-8">
-            {BUSINESS.cabinOccupancyNote}
+            {BOOKING_TERMS} {BUSINESS.cabinOccupancyNote}
           </p>
         </div>
       </div>
@@ -236,8 +241,8 @@ const lifeAboard = [
     eyebrow="The numbers"
     headline="Up to 12 guests"
     headlineItalic="· comfortably aboard"
-    body="We've found the sweet spot of sailing. We're not a crowded charter where the experience gets diluted, and we're not a cramped boat that cuts corners on dinner. Our catamaran is sized perfectly: it has the galley power to host a proper feast, but the soul to keep us all connected."
-    ctaLabel="See available weeks and Book a quick call"
+    body="We've found the sweet spot of sailing. We're not a crowded charter where the experience gets diluted, and we're not a cramped boat that cuts corners on dinner. Twelve guests is enough to cook a proper feast together and small enough to keep us all connected."
+    ctaLabel="See available weeks and Book a 30-minute intro call"
     ctaHref="/inquire"
   />
 
@@ -260,7 +265,7 @@ const lifeAboard = [
           </span>
         </h2>
         <p class="font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.65] text-primary/75 max-w-2xl mx-auto mb-10 text-balance">
-          Book a quick call and we'll walk you through the open weeks, answer
+          Book a 30-minute intro call and we'll walk you through the open weeks, answer
           your questions, and send the private booking link after we talk.
         </p>
         <div class="flex justify-center items-center">
@@ -268,7 +273,7 @@ const lifeAboard = [
             href="/inquire"
             class="group inline-flex items-center justify-center gap-3 cursor-pointer bg-primary text-ink font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-surface-warm transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
           >
-            See available weeks and Book a quick call
+            See available weeks and Book a 30-minute intro call
             <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>

@@ -3,11 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import InquiryForm from '../components/shared/InquiryForm.astro';
 import PageHero from '../components/shared/PageHero.astro';
 import { Mail, Clock, ShieldCheck } from 'lucide-react';
-import { BUSINESS, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE } from '../lib/business';
+import { BUSINESS, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE, BOOKING_TERMS } from '../lib/business';
 
-const title = 'Book a Quick Call | Guiding Winds Unplug';
+const title = 'Book a 30-Minute Intro Call | Guiding Winds Unplug';
 const description =
-  'We speak with every guest before booking. Tell us which week and book a quick call. Dodie or Clint reply within 24 hours.';
+  'We speak with every guest before booking. Tell us which week and book a 30-minute intro call. Dodie or Clint reply within 24 hours.';
 
 
 const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
@@ -26,10 +26,10 @@ const schemaGraph = [
 <BaseLayout title={title} description={description} schema={schemaGraph} hideFloatingCta transparentNav>
   <PageHero
     compact
-    eyebrow="Book a quick call"
+    eyebrow="Book a 30-minute intro call"
     headlinePrefix="Tell us which week, and"
-    headlineEmphasis="let's book a quick call."
-    subline="We speak with every guest before booking. Send the form or book a quick call, and Dodie or Clint will reply within 24 hours with availability and the next step."
+    headlineEmphasis="let's book a 30-minute intro call."
+    subline="We speak with every guest before booking. Send the form or book a 30-minute intro call, and Dodie or Clint will reply within 24 hours with availability and the next step."
     heroImage="/img/stock/hero/hero-bvi-catamaran-turquoise-01.jpg"
     heroImageAlt="Aerial view of a small green island ringed by turquoise reef water in the British Virgin Islands"
   />
@@ -51,13 +51,13 @@ const schemaGraph = [
               href="tel:+17723103777"
               class="group inline-flex items-center justify-center gap-3 w-full cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-6 py-[16px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
             >
-              Book a quick call
+              Call {BUSINESS.phoneDisplay}
               <svg viewBox="0 0 16 16" class="size-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M1 8h13M9 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
             <p class="font-body-sm text-[0.8125rem] text-primary/65 mt-3 text-center">
-              (772) 310-3777 · we speak with every guest before booking
+              Or send the form to book a 30-minute intro call
             </p>
           </div>
 
@@ -69,8 +69,8 @@ const schemaGraph = [
               {
                 [
                   { title: 'You send the inquiry', body: 'Takes 60 seconds. Tell us your preferred week, or "flexible - recommend one."' },
-                  { title: 'We reply within 24 hours', body: 'Email or text, your choice. We confirm cabin availability and set up a quick call.' },
-                  { title: 'We talk it through', body: 'We speak with every guest before booking. On a quick call we answer your questions and, once you decide, send the private booking link.' },
+                  { title: 'We reply within 24 hours', body: 'Email or text, your choice. We confirm cabin availability and set up a 30-minute intro call.' },
+                  { title: 'We talk it through', body: 'We speak with every guest before booking. On a 30-minute intro call we answer your questions and, once you decide, send the private booking link.' },
                 ].map((step, i) => (
                   <li class="flex gap-5 pb-7 border-b border-rule last:border-0">
                     <span class="font-display text-[1.75rem] text-sun-deep shrink-0 leading-none tabular-nums" style="font-variation-settings: 'opsz' 36;">
@@ -86,6 +86,15 @@ const schemaGraph = [
                 ))
               }
             </ol>
+          </div>
+
+          <div class="border border-rule p-6">
+            <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-primary/70 mb-4">
+              Booking terms
+            </p>
+            <p class="font-body-md text-[0.9375rem] leading-[1.6] text-primary/75">
+              {BOOKING_TERMS}
+            </p>
           </div>
 
           <div class="border border-rule p-6">
@@ -145,8 +154,8 @@ const schemaGraph = [
             <dl class="space-y-7">
               {
                 [
-                  { q: 'Cancellation?', a: 'We recommend travelers insurance that lets you cancel for any reason and get a full refund: trawickinternational.com/?agent=21057.' },
-                  { q: 'How do we book?', a: 'We speak with every guest before booking. After a quick call we send you a private booking link.' },
+                  { q: 'Cancellation?', a: `${BOOKING_TERMS} We recommend travelers insurance that lets you cancel for any reason and get a full refund: trawickinternational.com/?agent=21057.` },
+                  { q: 'How do we book?', a: 'We speak with every guest before booking. After a 30-minute intro call we send you a private booking link.' },
                   { q: 'Kids welcome?', a: 'Yes, especially on whole-boat charters. The boat sleeps 12 comfortably; this is an adult-pace trip.' },
                 ].map((item) => (
                   <div>

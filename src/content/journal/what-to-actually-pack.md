@@ -55,7 +55,7 @@ Here's how it works. On disembark morning, we leave a blank card and a pen on th
 
 ## A note on luggage
 
-One soft-sided duffel and one daypack. That's the right kit for a catamaran charter packing list, and it's how the crew packs too. Hard suitcases will not fit in the cabin storage - the under-berth and overhead spaces are sized for fabric that compresses, and a wheeled hardshell will spend the week wedged in the salon or strapped to the foredeck where it'll catch spray. Soft duffels fold flat, slide under the bed, and disappear by lunch on day one. A 60- to 80-liter duffel is the sweet spot for a week. Patagonia Black Hole, Yeti Panga, and the L.L. Bean Adventure Duffel are all proven on our boat.
+One soft-sided duffel and one daypack. That's the right kit for a catamaran charter packing list, and it's how we pack too. Hard suitcases will not fit in the cabin storage - the under-berth and overhead spaces are sized for fabric that compresses, and a wheeled hardshell will spend the week wedged in the salon or strapped to the foredeck where it'll catch spray. Soft duffels fold flat, slide under the bed, and disappear by lunch on day one. A 60- to 80-liter duffel is the sweet spot for a week. Patagonia Black Hole, Yeti Panga, and the L.L. Bean Adventure Duffel are all proven on our boat.
 
 Pack to the size of what you'll bring home, not what you brought. By Friday you'll have a bottle of Pusser's rum from Soper's Hole, a sarong from the Anegada market, a small ceramic from Spanish Town, and a phone full of photos. Leave room. The trip back is always heavier than the trip out - and that's worth a quarter of your duffel held open on the way down.
 

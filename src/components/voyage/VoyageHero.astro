@@ -1,5 +1,5 @@
 ---
-import { PRICE_NOTE } from '../../lib/business';
+import { PRICE_NOTE, TRIP_LENGTH } from '../../lib/business';
 import { img } from '../../lib/img';
 // Full-bleed destination photo hero with editorial overlay. The hero
 // img is REQUIRED - every voyage now has a real photo (BVI: Dodie's,
@@ -14,8 +14,6 @@ interface Props {
   heroImage: string;
   heroImageAlt: string;
   emphasis: string;
-  nights: number;
-  nightsLabel?: string;
 }
 const {
   region,
@@ -24,8 +22,6 @@ const {
   heroImage,
   heroImageAlt,
   emphasis,
-  nights,
-  nightsLabel,
 } = Astro.props;
 ---
 
@@ -76,7 +72,7 @@ const {
         <div class="mt-10 lg:mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-3 max-w-3xl">
           <div>
             <p class="font-label-caps uppercase tracking-[0.24em] text-[0.5625rem] font-semibold text-ink-soft">Length</p>
-            <p class="font-display text-[1.5rem] leading-none text-ink mt-1.5" style="font-variation-settings: 'opsz' 36;">{nightsLabel ?? nights} nights</p>
+            <p class="font-display text-[1.5rem] leading-none text-ink mt-1.5" style="font-variation-settings: 'opsz' 36;">{TRIP_LENGTH}</p>
           </div>
           <span class="block size-1 bg-sun rounded-full self-center mt-3" aria-hidden="true"></span>
           <div>

@@ -3,10 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Terms & Conditions · Guiding Winds Unplug';
 const description =
-  'Booking, cancellation, travel insurance and force majeure terms for Guiding Winds Unplug catamaran voyages. Questions? We talk them through on a call.';
-import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE } from '../lib/business';
+  'Booking, deposit, cancellation, travel insurance and force majeure terms for Guiding Winds Unplug catamaran voyages. We talk them through on a call.';
+import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE, BOOKING_TERMS, TRIP_LENGTH_NOTE } from '../lib/business';
 
-const updated = '2026-09-06';
+const updated = '2026-10-21';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -34,6 +34,16 @@ const updated = '2026-09-06';
         </p>
 
         <h3 class="font-h3 text-primary leading-[1.2] tracking-[-0.01em] font-normal mt-10" style="font-size: 1.25rem; font-variation-settings: 'opsz' 48;">
+          Deposit and balance
+        </h3>
+        <p>{BOOKING_TERMS}</p>
+
+        <h3 class="font-h3 text-primary leading-[1.2] tracking-[-0.01em] font-normal mt-10" style="font-size: 1.25rem; font-variation-settings: 'opsz' 48;">
+          Charter length
+        </h3>
+        <p>{TRIP_LENGTH_NOTE}</p>
+
+        <h3 class="font-h3 text-primary leading-[1.2] tracking-[-0.01em] font-normal mt-10" style="font-size: 1.25rem; font-variation-settings: 'opsz' 48;">
           Cabin occupancy
         </h3>
         <p>{BUSINESS.cabinOccupancyNote}</p>
@@ -42,7 +52,7 @@ const updated = '2026-09-06';
           Cancellation
         </h2>
         <p>
-          We strongly recommend travelers insurance that lets you cancel for
+          The $500 deposit is non-refundable. We strongly recommend travelers insurance that lets you cancel for
           any reason and receive a full refund. We can point you to a policy
           at <a href="https://trawickinternational.com/?agent=21057" target="_blank" rel="noopener noreferrer" class="underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors">trawickinternational.com</a>.
           We talk through cancellation details with you on a call before you
@@ -67,8 +77,8 @@ const updated = '2026-09-06';
           Guest conduct
         </h2>
         <p>
-          The crew has full authority over guest conduct aboard. Behavior
-          that endangers the boat, the crew, or other guests - including
+          The host has full authority over guest conduct aboard. Behavior
+          that endangers the boat, the host, or other guests - including
           intoxication that requires intervention or aggressive disregard of
           safety briefings - is grounds for disembarkation at the next safe
           port without refund. We have not had to invoke this rule and do not
@@ -108,7 +118,7 @@ const updated = '2026-09-06';
           Photography
         </h2>
         <p>
-          Photos taken aboard by the crew or host may occasionally be
+          Photos taken aboard by the host may occasionally be
           used in marketing. Tell us at the start of the week if you do not
           want to appear in any image we share; we will respect that
           unconditionally.

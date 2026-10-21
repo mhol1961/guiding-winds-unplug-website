@@ -4,8 +4,6 @@ region: mediterranean
 name: Greece · Cyclades
 country: Greece
 heroEyebrow: 'Athens · Aegean'
-nights: 7
-nightsLabel: '5 to 7'
 shortDescription: 'Athens to Santorini by way of Kythnos, Serifos, Sifnos, Folegandros and Ios, the chain at the pace it was meant to be sailed.'
 heroImage: /img/stock/voyages/greece/greece-santorini-caldera-hero.jpg
 heroImageAlt: Whitewashed Cycladic village above the Santorini caldera at sunset
@@ -41,18 +39,18 @@ itinerary:
     label: Saturday
     title: Disembarkation · Santorini
 inclusions:
-  - All meals aboard, cooked fresh (Greek-leaning galley menu)
+  - All meals aboard, prepared together (Greek-leaning menu)
   - Snorkel gear, paddleboards
   - Private cabin with ensuite head
   - Fuel and moorings
-  - Crew
+  - Hosted by Clint
 exclusions:
   - Flights to Athens (ATH) / from Santorini (JTR)
   - Travel insurance
   - Off-boat dining (we cover two shore dinners; others on you)
 faq:
   - q: How long is the trip?
-    a: 'Seven nights, one-way from Athens (Alimos) to Santorini through the Cyclades. Specific weeks are available - see the calendar.'
+    a: 'Charters typically run 7 days, one-way from Athens (Alimos) to Santorini through the Cyclades. Shorter charters are available. Specific weeks are available - see the calendar.'
 seo:
   title: 'Greece Catamaran Charter 2027 · Cyclades | Guiding Winds'
   description: 'Athens to Santorini via Kythnos, Serifos, Sifnos, Folegandros and Ios, for up to 12 guests. All-inclusive. Price depends on duration and season.'
@@ -62,7 +60,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Greek islands catamaran trip sails one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a private catamaran for up to 12 guests. The route threads Kythnos, Serifos, Sifnos, Folegandros, Ios, and Santorini - the chain at sailboat pace, not ferry pace. All-inclusive. **Price depends on duration and season.** Run by Clint and Dodie Kendall. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our Greek islands catamaran trip typically runs 7 days, one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a private catamaran for up to 12 guests. The route threads Kythnos, Serifos, Sifnos, Folegandros, Ios, and Santorini - the chain at sailboat pace, not ferry pace. All-inclusive. Shorter charters are available. **Price depends on duration and season.** Hosted by Clint Kendall; Dodie joins many charters. Weeks available across 2027 - see the calendar.
 
 ## The shape of a week
 
@@ -80,8 +78,8 @@ Folegandros is the dramatic note in the middle of the week. Smaller and steeper 
 
 ## The galley
 
-The galley runs a Greek-leaning menu through the week - provisioned at each island as we go, which means the lamb is from one place, the cheese from another, and the tomatoes from the village we anchored at this morning. Two of the seven dinners are ashore on us at tavernas Clint and Dodie have learned to trust over years in the chain. The other five are on the boat at anchor, served on the aft deck as the sun goes down behind whichever cliff you happen to be tucked under that night.
+Meals aboard lean Greek through the week, and guests help prepare them together - provisioned at each island as we go, which means the lamb is from one place, the cheese from another, and the tomatoes from the village we anchored at this morning. Two dinners are ashore on us at tavernas Clint and Dodie have learned to trust over years in the chain. The rest are on the boat at anchor, cooked together and served on the aft deck as the sun goes down behind whichever cliff you happen to be tucked under that night.
 
 ## Why one-way, why the Cyclades
 
-The Cyclades catamaran charter all-inclusive itinerary is built around a one-way: in to Athens, out from Santorini. It sounds like more logistics than it is - JTR has direct flights to Athens and onward to most of Europe, and the routing means you cover real ground rather than retracing your wake. Weeks are available across 2027 - see the calendar. We speak with every guest before booking, so book a quick call and we'll talk it through before you commit anything.
+The Cyclades catamaran charter all-inclusive itinerary is built around a one-way: in to Athens, out from Santorini. It sounds like more logistics than it is - JTR has direct flights to Athens and onward to most of Europe, and the routing means you cover real ground rather than retracing your wake. Weeks are available across 2027 - see the calendar. We speak with every guest before booking, so book a 30-minute intro call and we'll talk it through before you commit anything.

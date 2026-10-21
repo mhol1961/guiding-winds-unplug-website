@@ -17,7 +17,7 @@ interface Props {
 const {
   source,
   heading = 'Find your week aboard',
-  sub = 'Three quick questions. Dodie or Clint replies within 24 hours. No call center, no hard sell.',
+  sub = 'Three quick questions. Clint or Dodie will reach out to every inquiry.',
 } = Astro.props;
 
 const inputCls =
@@ -46,7 +46,7 @@ const regions = [
 <section id="start" class="bg-bone text-primary scroll-mt-6">
   <div class="mx-auto max-w-2xl px-6 py-16 lg:py-24">
     <p class="font-label-caps uppercase tracking-[0.28em] text-[0.6875rem] font-semibold text-accent mb-4">
-      Book a quick call
+      Book a 30-minute intro call
     </p>
     <h2 class="font-display font-light leading-[1.02] tracking-[-0.025em]" style="font-size: clamp(1.9rem, 4vw + 1rem, 3rem);">
       {heading}
@@ -164,7 +164,7 @@ const regions = [
           </button>
         </div>
         <p class="mt-4 font-body-sm text-[0.75rem] text-primary/50 text-center">
-          No spam, no call center. A reply from Dodie or Clint within 24 hours.
+          No spam. Clint or Dodie will reach out to every inquiry, within 24 hours.
         </p>
         <p class="mt-2 font-body-sm text-[0.75rem] text-primary/50 text-center">
           {BUSINESS.legalName} · {BOND_ONE_LINE}<br />

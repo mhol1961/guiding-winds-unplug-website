@@ -60,3 +60,12 @@ export const INTRO_CALL = {
 
 /** Shown wherever a voyage price used to appear (owner request, Oct 2026: no prices for now). */
 export const PRICE_NOTE = 'Price depends on duration and season.';
+
+// Owner answers, 21 Oct 2026. One wording each, printed wherever the topic comes up.
+export const TRIP_LENGTH = 'Typically 7 days';
+export const TRIP_LENGTH_NOTE = 'Charters typically run 7 days. Shorter charters are available.';
+export const BOOKING_TERMS =
+  'A $500 non-refundable deposit is due at booking. The balance is due one month before the charter.';
+export const BOAT_NOTE = 'The catamaran for each charter is confirmed closer to the departure date.';
+export const HOSTS_NOTE = 'Clint hosts every charter, and Dodie joins many of them.';
+export const MEALS_NOTE = 'Guests help prepare meals together aboard.';

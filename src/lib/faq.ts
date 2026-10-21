@@ -1,5 +1,5 @@
 // FAQ content: /faq renders it; the voyage pages link to it with the live count.
-import { BUSINESS } from './business';
+import { BUSINESS, BOOKING_TERMS, TRIP_LENGTH_NOTE, BOAT_NOTE, HOSTS_NOTE, MEALS_NOTE } from './business';
 
 export const FAQ_GROUPS = [
   {
@@ -7,7 +7,15 @@ export const FAQ_GROUPS = [
     items: [
       {
         q: 'How do I book?',
-        a: 'We speak with every guest before booking. Send the inquiry form or book a quick call. We talk through the open weeks and your questions, and once you decide, we send you a private booking link. No public checkout.',
+        a: 'We speak with every guest before booking. Send the inquiry form or book a 30-minute intro call. We talk through the open weeks and your questions, and once you decide, we send you a private booking link. No public checkout.',
+      },
+      {
+        q: 'Booking terms.',
+        a: BOOKING_TERMS,
+      },
+      {
+        q: 'How long is a charter?',
+        a: TRIP_LENGTH_NOTE,
       },
       {
         q: "What if my preferred dates aren't listed?",
@@ -23,7 +31,7 @@ export const FAQ_GROUPS = [
       },
       {
         q: 'Cancellation policy.',
-        a: 'We recommend travelers insurance that lets you cancel for any reason and get a full refund: trawickinternational.com/?agent=21057. We talk you through the details on a quick call before you book.',
+        a: `${BOOKING_TERMS} We recommend travelers insurance that lets you cancel for any reason and get a full refund: trawickinternational.com/?agent=21057. We talk you through the details on a 30-minute intro call before you book.`,
       },
       {
         q: 'Do you require travel insurance?',
@@ -36,7 +44,7 @@ export const FAQ_GROUPS = [
     items: [
       {
         q: 'What does a cabin look like?',
-        a: 'Each cabin has an ensuite head (toilet + separate shower stall) and a hatch over the bed for stars at night. Our catamarans are chosen for cabin volume.',
+        a: `Each cabin has an ensuite head (toilet + separate shower stall) and a hatch over the bed for stars at night. ${BOAT_NOTE}`,
       },
       {
         q: 'Is there air conditioning?',
@@ -48,7 +56,7 @@ export const FAQ_GROUPS = [
       },
       {
         q: 'How many guests does the boat actually hold?',
-        a: 'We host up to 12 guests, plus two crew (Clint and Dodie). Twelve is the comfortable maximum.',
+        a: `We host up to 12 guests. Twelve is the comfortable maximum. ${HOSTS_NOTE}`,
       },
     ],
   },
@@ -57,7 +65,7 @@ export const FAQ_GROUPS = [
     items: [
       {
         q: 'Do I need to know how to sail?',
-        a: 'No. Clint handles every helm decision and crew task. If you want to learn - trimming, helming, anchoring - he will teach you under his eye. If you want to read a book on the trampoline, the boat sails itself with him at the helm.',
+        a: 'No. Clint handles every helm decision and runs the boat. If you want to learn - trimming, helming, anchoring - he will teach you under his eye. If you want to read a book on the trampoline, the boat sails itself with him at the helm.',
       },
       {
         q: 'How flexible is the itinerary?',
@@ -69,7 +77,7 @@ export const FAQ_GROUPS = [
       },
       {
         q: 'Can we bring kids?',
-        a: 'Yes. The boat sleeps 12 and kids stack in cabins easily. Two notes: this is an adult-pace trip (long dinners, no kids menu), and there is no formal childcare. If you want a family week, book the whole boat and we will tailor the schedule - earlier dinners, more swim time, fewer long passages.',
+        a: 'Yes. The boat sleeps 12 and kids stack in cabins easily. Two notes: this is an adult-pace trip (long dinners, no separate kids menu), and there is no formal childcare. If you want a family week, book the whole boat and we will tailor the schedule - earlier dinners, more swim time, fewer long passages.',
       },
       {
         q: 'Are solo travelers welcome?',
@@ -81,7 +89,7 @@ export const FAQ_GROUPS = [
       },
       {
         q: 'Dietary needs and allergies?',
-        a: 'Dodie has run weeks with vegetarian, gluten-free, dairy-free, kosher, halal, low-carb, and serious shellfish allergies on the same boat at the same week. Tell us at inquiry - she shops accordingly.',
+        a: `${MEALS_NOTE} We have planned weeks around vegetarian, gluten-free, dairy-free, kosher, halal, low-carb, and serious shellfish allergies on the same boat at the same week. Tell us at inquiry and we provision accordingly.`,
       },
     ],
   },
@@ -111,7 +119,7 @@ export const FAQ_GROUPS = [
     items: [
       {
         q: 'Who runs the boat?',
-        a: 'Clint runs the boat and Dodie runs the galley. Together they have years of experience sailing the Caribbean chain, and the same team is with you from embarkation to disembarkation.',
+        a: `${HOSTS_NOTE} Clint runs the boat and has years of experience sailing the Caribbean chain, and he is with you from embarkation to disembarkation.`,
       },
       {
         q: 'Emergency procedures?',

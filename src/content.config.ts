@@ -14,9 +14,6 @@ const voyages = defineCollection({
     country: z.string(),
     /** Three-line hero stat (e.g., "Tortola · BVI") */
     heroEyebrow: z.string(),
-    nights: z.number().default(7),
-    /** Human-facing nights range, e.g. "5 to 7". Falls back to `nights` when unset. */
-    nightsLabel: z.string().optional(),
     /** Short narrative card description used on the home ExploreCards row. */
     shortDescription: z.string().max(280),
     /** Hero image path under /public or absolute URL. Falls back gracefully

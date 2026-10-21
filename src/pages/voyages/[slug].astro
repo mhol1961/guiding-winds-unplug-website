@@ -1,5 +1,5 @@
 ---
-import { PRICE_NOTE } from '../../lib/business';
+import { PRICE_NOTE, TRIP_LENGTH } from '../../lib/business';
 import { img } from '../../lib/img';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -204,9 +204,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
     heroEyebrow={voyage.data.heroEyebrow}
     heroImage={voyage.data.heroImage}
     heroImageAlt={voyage.data.heroImageAlt}
-    emphasis={emphasis[voyage.data.slug] ?? 'Seven nights off the grid.'}
-    nights={voyage.data.nights}
-    nightsLabel={voyage.data.nightsLabel}
+    emphasis={emphasis[voyage.data.slug] ?? 'A week off the grid.'}
   />
 
   {/* Overview + sticky PricingCard - bone bg, dark text */}
@@ -293,7 +291,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
       image={voyage.data.heroImage}
       imageAlt={voyage.data.heroImageAlt}
       attribution={`${voyageReviewForInterrupt.data.author} · ${voyageReviewForInterrupt.data.location} · ${voyage.data.name}`}
-      ctaLabel="See available weeks and Book a quick call"
+      ctaLabel="See available weeks and Book a 30-minute intro call"
       ctaHref="/inquire"
     />
   )}
@@ -309,7 +307,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
       headline={statCopy.headline}
       headlineItalic={statCopy.italic}
       body={statCopy.body}
-      ctaLabel="See available weeks and Book a quick call"
+      ctaLabel="See available weeks and Book a 30-minute intro call"
       ctaHref="/inquire"
     />
   )}
@@ -341,7 +339,7 @@ const voyageReviewForInterrupt = voyageReviews[0] ?? null;
                 </span>
               </div>
               <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-primary/70">
-                {sibling.data.nightsLabel ?? sibling.data.nights} nights · {PRICE_NOTE}
+                {TRIP_LENGTH} · {PRICE_NOTE}
               </p>
               <h3 class="font-display text-[1.5rem] leading-[1.1] tracking-[-0.015em] font-normal mt-2 group-hover:text-accent transition-colors" style="font-variation-settings: 'opsz' 36;">
                 {sibling.data.name}

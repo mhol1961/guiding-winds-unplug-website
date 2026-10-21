@@ -3,11 +3,11 @@ import { img } from '../lib/img';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
 import { Anchor, ShieldCheck } from 'lucide-react';
-import { BUSINESS, BOND_ONE_LINE } from '../lib/business';
+import { BUSINESS, BOND_ONE_LINE, BOAT_NOTE } from '../lib/business';
 
 const title = 'Meet Clint & Dodie Kendall · Guiding Winds Unplug';
 const description =
-  'Meet Clint and Dodie Kendall, the husband-and-wife crew behind Guiding Winds Unplug: Clint at the helm, Dodie running the galley. Based in Stuart, Florida.';
+  'Meet Clint and Dodie Kendall, the husband-and-wife team behind Guiding Winds Unplug. Clint hosts every charter and Dodie joins many. Based in Stuart, Florida.';
 
 const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
 
@@ -26,11 +26,11 @@ const schemaGraph = [
     '@type': 'Person',
     '@id': `${baseUrl}/about#dodie`,
     name: 'Dodie Kendall',
-    jobTitle: 'Galley Lead',
+    jobTitle: 'Co-owner',
     worksFor: { '@id': `${baseUrl}/#org` },
     image: `${baseUrl}/img/source/people/dodie-kendall-beach-portrait.jpg`,
     birthPlace: 'Fort Lauderdale, Florida',
-    knowsAbout: ['Galley provisioning', 'Wellness curation', 'Guest experience'],
+    knowsAbout: ['Wellness curation', 'Guest experience'],
   },
   {
     '@type': 'BreadcrumbList',
@@ -142,10 +142,10 @@ const credentials = [
   {/* Interrupt A1 - teal break between Clint and Dodie sections */}
   <SectionInterrupt
     variant="teal"
-    eyebrow="The crew"
-    headline="Two people."
-    headlineItalic="One boat."
-    body="Clint reads the weather and the chart. Dodie reads the guests and the galley. The week works because neither of us is doing the other's job."
+    eyebrow="Your hosts"
+    headline="Clint every week."
+    headlineItalic="Dodie on many."
+    body="Clint hosts every charter and reads the weather and the chart. Dodie joins many of them and reads the guests. Meals are shared work: everyone helps prepare them together aboard."
   />
 
   {/* Dodie - right image, left text (alternating). bg-paper to break the
@@ -155,7 +155,7 @@ const credentials = [
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <div class="lg:col-span-6 order-2 lg:order-1">
           <p class="font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold text-sun-deep mb-5">
-            In the galley
+            Aboard many weeks
           </p>
           <h2
             class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance"
@@ -209,14 +209,13 @@ const credentials = [
           >
             Spacious catamarans,
             <span class="italic block" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">
-              40 to 60 feet.
+              chosen for each charter.
             </span>
           </h2>
           <p class="mt-7 font-body-lg text-[1.0625rem] leading-[1.7] text-primary/80">
-            Our adventures take place on spacious catamarans between 40 and
-            60 feet. Private ensuite cabins. Full galley. A salon for long
-            dinners. Every boat we sail is chosen so guests can live aboard
-            comfortably for a week.
+            Our adventures take place on spacious catamarans. Private ensuite
+            cabins. A full galley where we cook together. A salon for long
+            dinners. {BOAT_NOTE}
           </p>
           <a
             href="/aboard"
@@ -237,7 +236,7 @@ const credentials = [
         >
           <video
             class="absolute inset-0 w-full h-full object-cover"
-            src="/media/about/boat-lagoon50-establishing.mp4"
+            src="/media/about/boat-establishing.mp4"
             poster="/img/source/destinations/catamaran-anchored-green-headland-01.jpg"
             autoplay
             muted
@@ -313,7 +312,7 @@ const credentials = [
           href="/inquire"
           class="inline-flex items-center justify-center cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
         >
-          See available weeks and Book a quick call
+          See available weeks and Book a 30-minute intro call
         </a>
       </div>
     </div>

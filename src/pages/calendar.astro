@@ -7,7 +7,7 @@ import PageHero from '../components/shared/PageHero.astro';
 
 const title = '2027 Sailing Calendar · Guiding Winds Unplug';
 const description =
-  'Every 2027 week aboard in one place: the British Virgin Islands, Bahamas, Greece, Italy and Croatia. Pick a region and a week, then book a quick call.';
+  'Every 2027 week aboard in one place: the British Virgin Islands, Bahamas, Greece, Italy and Croatia. Pick a region and a week, then book a 30-minute intro call.';
 
 const voyages = await getCollection('voyages');
 
@@ -68,7 +68,7 @@ const schemaGraph = [
     eyebrow="2027 Calendar"
     headlinePrefix="The 2027 weeks."
     headlineEmphasis="Up to 12 guests each."
-    subline="Pick a region, pick a week, and book a quick call. We speak with every guest before booking."
+    subline="Pick a region, pick a week, and book a 30-minute intro call. We speak with every guest before booking."
     heroImage="/img/stock/hero/hero-bvi-catamaran-turquoise-01.jpg"
     heroImageAlt="Our catamaran at anchor in bright turquoise water, the kind of week the calendar holds"
   />
@@ -139,7 +139,7 @@ const schemaGraph = [
                       href={`/inquire?voyage=${row.voyageSlug}`}
                       class="inline-flex items-center gap-2 cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.625rem] font-semibold px-4 py-2.5 hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
                     >
-                      Book a call
+                      Book a 30-minute intro call
                     </a>
                   )}
                 </div>
@@ -181,7 +181,7 @@ const schemaGraph = [
           href="/inquire"
           class="inline-flex items-center justify-center cursor-pointer bg-primary text-bone font-label-caps uppercase tracking-[0.22em] text-[0.75rem] font-semibold px-9 py-[18px] hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3"
         >
-          See available weeks and Book a quick call
+          See available weeks and Book a 30-minute intro call
         </a>
       </div>
     </div>

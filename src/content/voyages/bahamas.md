@@ -4,8 +4,6 @@ region: bahamas
 name: The Bahamas
 country: The Bahamas
 heroEyebrow: 'Marsh Harbour · Abacos'
-nights: 7
-nightsLabel: '5 to 7'
 shortDescription: 'Hope Town, Tilloo Cay, Man-o-War. Pink-sand spits, shallow water you can stand up in a half-mile from shore, the slow side of the Caribbean.'
 heroImage: /img/stock/voyages/bahamas/bahamas-hope-town-lighthouse-hero.jpg
 heroImageAlt: Hope Town candy-striped lighthouse rising above the Abacos waterfront
@@ -40,11 +38,11 @@ itinerary:
     label: Saturday
     title: Disembarkation · Marsh Harbour
 inclusions:
-  - All meals aboard, cooked fresh in the galley
+  - All meals aboard, prepared together in the galley
   - Snorkel gear, paddleboards, kayaks
   - Private cabin with ensuite head
   - Fuel and moorings
-  - Crew
+  - Hosted by Clint
 exclusions:
   - Flights to/from Marsh Harbour (MHH)
   - Travel insurance
@@ -53,10 +51,10 @@ faq:
   - q: How does Bahamas compare to BVI?
     a: 'Calmer water, lower density, more pink-sand beaches, fewer charter boats. The Abacos read as a quieter version of the BVI - same Caribbean palette, half the traffic at anchor.'
   - q: How long is the trip?
-    a: 'Seven nights, Saturday to Saturday, from the Marsh Harbour / Treasure Cay area. Specific weeks are available - see the calendar.'
+    a: 'Charters typically run 7 days, Saturday to Saturday, from the Marsh Harbour / Treasure Cay area. Shorter charters are available. Specific weeks are available - see the calendar.'
 seo:
   title: 'Bahamas Catamaran Charter · Abacos 2027 | Guiding Winds'
-  description: 'Hope Town, Tilloo, Man-o-War, Guana. Seven nights for up to 12 guests on a private catamaran in the Abacos. All-inclusive. Price depends on duration and season.'
+  description: 'Hope Town, Tilloo, Man-o-War, Guana. Typically 7 days for up to 12 guests on a catamaran in the Abacos. All-inclusive. Price depends on duration and season.'
   keywords:
     - Bahamas catamaran charter all-inclusive
     - Abacos sailing trip
@@ -65,7 +63,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our 7-night Bahamas catamaran charter sails the Abacos - a private catamaran for up to 12 guests, all-inclusive. **Price depends on duration and season.** Saturday-to-Saturday from the Marsh Harbour / Treasure Cay area, with named anchorages at Hope Town, Tilloo Cay, Man-o-War Cay, Guana Cay, and Little Harbour. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our Bahamas catamaran charter sails the Abacos - a private catamaran for up to 12 guests, all-inclusive. Charters typically run 7 days; shorter charters are available. **Price depends on duration and season.** Saturday-to-Saturday from the Marsh Harbour / Treasure Cay area, with named anchorages at Hope Town, Tilloo Cay, Man-o-War Cay, Guana Cay, and Little Harbour. Weeks available across 2027 - see the calendar.
 
 ## Why the Abacos, not the Exumas
 
@@ -85,10 +83,10 @@ Saturday morning, brunch aboard. Off the boat by 11.
 
 ## The wellness angle
 
-This is the slowest trip we run. Shorter passages, fewer bar stops, fewer named landmarks to tick off. The pace gives you room to actually unplug - a swim before breakfast, an afternoon of nothing in particular. There's no onboard internet aboard; Wi-Fi can be purchased for an extra charge but is unreliable, and most guests stop reaching for the phone within a day or two. The galley runs taverna-style: long mezze, things off the grill, something cold to drink on the way. There is no schedule. There is no list of things you'll have missed.
+This is the slowest trip we run. Shorter passages, fewer bar stops, fewer named landmarks to tick off. The pace gives you room to actually unplug - a swim before breakfast, an afternoon of nothing in particular. There's no onboard internet aboard; Wi-Fi can be purchased for an extra charge but is unreliable, and most guests stop reaching for the phone within a day or two. Meals run taverna-style, and everyone lends a hand in the galley: long mezze, things off the grill, something cold to drink on the way. There is no schedule. There is no list of things you'll have missed.
 
 > The Abacos don't ask you to chase a postcard. They ask you to sit still long enough to notice the water change color.
 
 ## Booking
 
-Weeks are available across 2027 - each Saturday to Saturday. Price depends on duration and season. See the calendar for open weeks. We speak with every guest before booking, so book a quick call and we'll talk it through. If you want the whole boat for a private group, ask - we run private-charter weeks at the same rate with a tailored itinerary.
+Weeks are available across 2027 - most run Saturday to Saturday, and shorter charters are available. Price depends on duration and season. See the calendar for open weeks. We speak with every guest before booking, so book a 30-minute intro call and we'll talk it through. If you want the whole boat for a private group, ask - we run private-charter weeks at the same rate with a tailored itinerary.
