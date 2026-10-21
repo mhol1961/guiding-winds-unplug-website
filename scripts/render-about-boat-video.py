@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render the establishing video for the "The Boat" section of about.astro
 via fal.ai Seedance v1 Pro (text-to-video). One 16:9 1080p clip of a
-Lagoon 50 catamaran at anchor with cinematic dolly motion, no people.
+catamaran at anchor with cinematic dolly motion, no people.
 
 Run from project root:
     python3 scripts/render-about-boat-video.py
