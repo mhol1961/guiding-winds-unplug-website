@@ -34,10 +34,10 @@ FALLBACK_ENV_PATHS = [
 ]
 
 SCENE = {
-    'name': 'boat-lagoon50-establishing',
+    'name': 'boat-establishing',
     'prompt': (
-        "Slow cinematic dolly-in from 60 feet alongside a 50-foot white "
-        "Lagoon catamaran at anchor in turquoise Caribbean water, late "
+        "Slow cinematic dolly-in from 60 feet alongside a white "
+        "catamaran at anchor in turquoise Caribbean water, late "
         "afternoon golden hour, sun low behind the camera. Twin hulls "
         "slicing clean shadows on white sand visible beneath the shallow "
         "water. Sails furled tight, mast vertical, hull paint clean and "

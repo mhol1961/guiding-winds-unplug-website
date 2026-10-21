@@ -51,7 +51,7 @@ Here's where most BVI packing list articles go wrong - they pad the bag with thi
 
 Your first night in the cabin, on the pillow, you'll find a hand-written index card. It's from the guest who slept in your bed on the previous voyage - one sentence on what their best moment of the week was. Sometimes it's a sentence about a meal. Sometimes it's a sunrise at Cooper Island. Sometimes it's the swim at the Indians before the day boats arrived. We started doing it after our third charter, when a guest left a thank-you note tucked into the cabin mirror and we realized it had set the tone for the entire week that followed.
 
-Here's how it works. On disembark morning, we leave a blank card and a pen on the chart table. Anyone who wants to writes one - most do, a few don't, both are fine. Dodie sorts them by cabin and tucks them in for the next voyage. You'll never know who wrote yours. You'll never be asked to write one. But if you do, your sentence travels to a stranger you'll never meet, and that's the part nobody expects to love. Bring the version of yourself who'd write a good one.
+Here's how it works. On disembark morning, we leave a blank card and a pen on the chart table. Anyone who wants to writes one - most do, a few don't, both are fine. We sort them by cabin and tuck them in for the next voyage. You'll never know who wrote yours. You'll never be asked to write one. But if you do, your sentence travels to a stranger you'll never meet, and that's the part nobody expects to love. Bring the version of yourself who'd write a good one.
 
 ## A note on luggage
 
