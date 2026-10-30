@@ -27,20 +27,28 @@ export function matchesAppointment(events: { contactId?: string; startTime?: str
 }
 
 /**
- * Remember `load()`'s result for `ttlMs`, sharing one in-flight call between
- * concurrent callers. Failures are not remembered. clear() forgets the value.
+ * Remember `load()`'s result for `ttlMs` after it resolves. One load at a time:
+ * concurrent callers share it however long it takes. Failures are not kept.
+ * clear() forgets the value, and a load already in flight is not saved.
  */
 export function shortCache<T>(ttlMs: number, load: () => Promise<T>, now = () => Date.now()) {
-  let hit: { at: number; value: Promise<T> } | null = null;
+  let value: { at: number; v: T } | null = null;
+  let pending: Promise<T> | null = null;
+  let gen = 0;
+  const fresh = () => value !== null && now() - value.at < ttlMs;
   return {
-    fresh: () => hit !== null && now() - hit.at < ttlMs,
+    /** True when get() would not call load(). */
+    fresh: () => fresh() || pending !== null,
     get(): Promise<T> {
-      if (hit && now() - hit.at < ttlMs) return hit.value;
-      const value = load();
-      const mine = (hit = { at: now(), value });
-      value.catch(() => { if (hit === mine) hit = null; });
-      return value;
+      if (fresh()) return Promise.resolve(value!.v);
+      if (pending) return pending;
+      const g = gen;
+      pending = load().then(
+        (v) => { if (g === gen) { value = { at: now(), v }; pending = null; } return v; },
+        (e) => { if (g === gen) pending = null; throw e; },
+      );
+      return pending;
     },
-    clear: () => { hit = null; },
+    clear: () => { gen++; value = null; pending = null; },
   };
 }

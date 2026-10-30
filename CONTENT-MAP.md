@@ -45,7 +45,7 @@ Page-by-page content plan: purpose, target audience, copy outline, primary/secon
 
 **SEO**
 - `<title>`: "Off-Grid Catamaran Charters · BVI, Bahamas, Mediterranean | Guiding Winds Unplug"
-- `<meta description>`: "All-inclusive wellness catamaran voyages for 8–12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia. From $3,550 per guest, per week."
+- `<meta description>`: "All-inclusive wellness catamaran voyages for groups of 8 to 12 aboard, hosts included, in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia. Price depends on duration and season."
 - Schema: `Organization`, `TravelAgency`, `AggregateRating`, `BreadcrumbList`.
 - Target keywords (primary): "all-inclusive catamaran charter BVI 2027", "wellness catamaran charter", "off-grid catamaran vacation"
 - Target queries (AI-search): "best small-group catamaran charter BVI 2027", "wellness catamaran charter for couples", "all-inclusive catamaran with private cabins"
@@ -79,7 +79,7 @@ Page-by-page content plan: purpose, target audience, copy outline, primary/secon
 
 **Sections:**
 
-1. **Hero** — destination-specific imagery. Breadcrumb (Home / Voyages / British Virgin Islands). Eyebrow with region + dates + nights. H1 ("British Virgin Islands. *Eight cabins, one catamaran, a week off the grid.*"). Stats row: 7 days · 10+ anchorages · 8–12 guests · $3,550 per guest, all-inclusive.
+1. **Hero** — destination-specific imagery. Breadcrumb (Home / Voyages / British Virgin Islands). Eyebrow with region + dates + nights. H1 ("British Virgin Islands. *One catamaran, 8 to 12 aboard, a week off the grid.*"). Stats row: typically 7 days · 10+ anchorages · 8 to 12 aboard, hosts included · Price depends on duration and season.
 2. **Overview + sticky pricing aside** — left column: eyebrow, h2 (e.g., "Quiet mornings on glass water. Long afternoons in places the day-trippers never reach."), 3 paragraphs of narrative, inclusion chips. Right column (sticky on desktop): pricing card showing big price, "All-inclusive · No hidden fees," available weeks list with cabins-left badges, CTA "Hold a Cabin," legal "No deposit required to hold."
 3. **Day-by-day itinerary timeline** — 8 entries (Day 1 through Day 8 / disembark). Vertical rail with coral dots. Each entry: day + weekday eyebrow, h3 (anchorage name), 3-sentence body.
 4. **Gallery** — 5-tile asymmetric grid. Large square left (`col-span-2 row-span-2`), four small squares right.
@@ -91,7 +91,7 @@ Page-by-page content plan: purpose, target audience, copy outline, primary/secon
 
 **SEO** (BVI example — adapt per destination)
 - `<title>`: "British Virgin Islands · 7-Day All-Inclusive Catamaran Charter 2027 | Guiding Winds"
-- `<meta description>`: "Norman Island, The Baths, Anegada, Jost Van Dyke. Seven nights aboard a private catamaran for 8–12 guests. From $3,550 per guest, all-inclusive. 2027 dates available."
+- `<meta description>`: "Norman Island, The Baths, Anegada, Jost Van Dyke. Typically 7 days aboard a private catamaran, 8 to 12 aboard including hosts. All-inclusive. Price depends on duration and season. 2027 dates available."
 - Schema: `TouristTrip`, `Event` (per available week), `Offer`, `FAQPage`, `Review` + `AggregateRating`, `BreadcrumbList`.
 - Target keywords: "BVI all-inclusive catamaran charter 2027", "BVI 7-day catamaran trip", "private cabin BVI sailing charter"
 

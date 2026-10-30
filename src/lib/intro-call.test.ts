@@ -41,3 +41,27 @@ test('shortCache: one load per window, shared while in flight, failures not kept
   fail = false; assert.equal(await c.get(), 4);
   assert.equal(c.fresh(), true);
 });
+
+test('shortCache: a slow load is never re-fired, and its TTL starts when it resolves', async () => {
+  let t = 0, calls = 0, release!: (v: number) => void;
+  const c = shortCache(60_000, () => { calls++; return new Promise<number>((r) => { release = r; }); }, () => t);
+  const first = c.get();
+  t = 120_000; // GHL still hasn't answered, two TTLs later
+  assert.equal(c.fresh(), true);
+  const second = c.get();
+  assert.equal(calls, 1);
+  release(7);
+  assert.deepEqual(await Promise.all([first, second]), [7, 7]);
+  t = 179_999; assert.equal(await c.get(), 7); // 60 s from resolve, not from start
+  assert.equal(calls, 1);
+});
+
+test('shortCache: a load in flight when clear() runs is not saved', async () => {
+  let calls = 0, release!: (v: number) => void;
+  const c = shortCache(60_000, () => { calls++; return new Promise<number>((r) => { release = r; }); }, () => 0);
+  const stale = c.get();
+  c.clear();
+  release(1); await stale;
+  assert.equal(c.fresh(), false);
+  void c.get(); assert.equal(calls, 2);
+});
