@@ -8,15 +8,25 @@ import { INTRO_CALL } from '../../lib/business';
 import { freeDays, bookAppointment } from '../../lib/ghl/calendars';
 import { upsertContact, saveAttribution, tagContact } from '../../lib/ghl/contacts';
 import { json, readBody, rejectBots } from '../../lib/form-guard';
-import { isOffered } from '../../lib/intro-call';
+import { isOffered, shortCache } from '../../lib/intro-call';
+import { overLimit } from '../../lib/visitor-limit';
 import { pickAttribution } from '../../lib/attribution';
 
 const off = () => new Response('Not found', { status: 404 });
 
-export const GET: APIRoute = async () => {
+// Open times are public, so visitors share one GHL lookup per minute; a bot
+// hammering this route can't spend Dodie's GHL API quota.
+// ponytail: per-isolate cache, move to the Cache API if traffic ever spans many isolates.
+const slots = shortCache(60_000, () => freeDays(INTRO_CALL.calendarId, INTRO_CALL.daysAhead, INTRO_CALL.timezone));
+
+export const GET: APIRoute = async ({ request }) => {
   if (!INTRO_CALL.enabled) return off();
+  // Only lookups that would reach GHL count against the visitor.
+  if (!slots.fresh() && (await overLimit(request, 'intro-call:slots', 30))) {
+    return json({ ok: false, error: 'Too many requests. Call (772) 310-3777 or reply to our email.' }, 429, { 'Retry-After': '3600' });
+  }
   try {
-    const days = await freeDays(INTRO_CALL.calendarId, INTRO_CALL.daysAhead, INTRO_CALL.timezone);
+    const days = await slots.get();
     return json({ ok: true, minutes: INTRO_CALL.minutes, timezone: INTRO_CALL.timezone, days }, 200, { 'Cache-Control': 'no-store' });
   } catch (err) {
     console.error('[intro-call] free slots failed', err);
@@ -57,6 +67,7 @@ export const POST: APIRoute = async ({ request }) => {
       title: `Intro call: ${firstName}`,
     });
     // Booked. From here on a failure must not tell the guest it didn't work.
+    slots.clear();
     try {
       await tagContact(contact.id, ['intro-call-booked', 'website-2026']);
     } catch (err) {

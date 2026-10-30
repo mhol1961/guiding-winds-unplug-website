@@ -25,3 +25,22 @@ export function isOffered(days: DaySlots[], start: string): boolean {
 export function matchesAppointment(events: { contactId?: string; startTime?: string }[], contactId: string, start: Date): boolean {
   return events.some((e) => e.contactId === contactId && e.startTime !== undefined && Date.parse(e.startTime) === start.getTime());
 }
+
+/**
+ * Remember `load()`'s result for `ttlMs`, sharing one in-flight call between
+ * concurrent callers. Failures are not remembered. clear() forgets the value.
+ */
+export function shortCache<T>(ttlMs: number, load: () => Promise<T>, now = () => Date.now()) {
+  let hit: { at: number; value: Promise<T> } | null = null;
+  return {
+    fresh: () => hit !== null && now() - hit.at < ttlMs,
+    get(): Promise<T> {
+      if (hit && now() - hit.at < ttlMs) return hit.value;
+      const value = load();
+      const mine = (hit = { at: now(), value });
+      value.catch(() => { if (hit === mine) hit = null; });
+      return value;
+    },
+    clear: () => { hit = null; },
+  };
+}

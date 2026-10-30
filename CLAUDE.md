@@ -151,6 +151,8 @@ This project touches **two different GoHighLevel subaccounts**. Keep them mental
 
 Wellness + luxury + slow-living catamaran charters. Black-Tomato-adjacent positioning: cinematic, restrained, opinionated, mildly literary. Headlines lean reframe-style ("You don't need another vacation. You need a week off the grid."). Body copy is short, declarative, slightly poetic. Never use exclamation marks. Never use marketing-urgency tropes ("Time is ticking!"). Never the word "luxurious" — earn it instead. CTAs prefer "See available weeks and Book a quick call" over "Book Now." The site is **call-first** (owner decision, July 2026): every guest speaks with Clint & Dodie before booking; the booking link is sent privately after the call. There is no self-serve hold, no public checkout — never rebuild the old "Hold a Cabin" / 72-hour-hold flow (the spec docs PRD.md / TECH-SPEC.md / CONTENT-MAP.md / GHL-INTEGRATION.md still describe it; they predate this decision).
 
+Booking terms (owners, 29 Oct 2026) live in `src/lib/business.ts`: adults 18+ only; two guests per cabin, one may book alone; groups usually 8 to 12 including hosts; $500 non-refundable deposit, balance one month before; no refunds from Guiding Winds after booking; cancel for any reason travel insurance required (never write "full refund"); drug and smoke free, "This is not a booze cruise"; boat chartered per trip, never named; guests pay their own travel; Clint hosts every charter, Dodie joins many. Older spec docs that disagree are stale.
+
 The brand promise is **"unplug."** Every word, every image, every interaction either supports that promise or contradicts it.
 
 ## 6. Media direction

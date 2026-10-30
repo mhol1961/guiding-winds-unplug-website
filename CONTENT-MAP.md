@@ -5,6 +5,8 @@ Page-by-page content plan: purpose, target audience, copy outline, primary/secon
 **Companion to:** `PRD.md` (scope), `DESIGN.md` (voice principles), `TECH-SPEC.md` (schema markup).
 **Last updated:** 2026-05-17
 
+> **Booking terms changed (owners, 29 Oct 2026).** Where this file disagrees, `src/lib/business.ts` (`BOOKING_TERMS`, `ADULTS_NOTE`, `GROUP_NOTE`, `CABIN_NOTE`, `INSURANCE_NOTE`, `CONDUCT_NOTE`, `TRAVEL_NOTE`, `HOSTS_NOTE`) is the source of truth: adults 18+ only, two guests per cabin (one may book alone), groups of 8 to 12 including hosts, $500 non-refundable deposit, balance one month before, no refunds from Guiding Winds after booking, cancel for any reason insurance required. Never write "full refund". The 72-hour hold flow below is also retired (call-first).
+
 ---
 
 ## Voice principles (reminder)
@@ -81,7 +83,7 @@ Page-by-page content plan: purpose, target audience, copy outline, primary/secon
 2. **Overview + sticky pricing aside** — left column: eyebrow, h2 (e.g., "Quiet mornings on glass water. Long afternoons in places the day-trippers never reach."), 3 paragraphs of narrative, inclusion chips. Right column (sticky on desktop): pricing card showing big price, "All-inclusive · No hidden fees," available weeks list with cabins-left badges, CTA "Hold a Cabin," legal "No deposit required to hold."
 3. **Day-by-day itinerary timeline** — 8 entries (Day 1 through Day 8 / disembark). Vertical rail with coral dots. Each entry: day + weekday eyebrow, h3 (anchorage name), 3-sentence body.
 4. **Gallery** — 5-tile asymmetric grid. Large square left (`col-span-2 row-span-2`), four small squares right.
-5. **FAQ accordion** — 6 questions: Do I need to know how to sail? · What does the cabin look like? · What if I get seasick? · Cancellation policy · Can we bring kids? · Is there WiFi?
+5. **FAQ accordion** — 6 questions: Do I need to know how to sail? · What does the cabin look like? · What if I get seasick? · Cancellation policy · Can we bring kids? (no: adults 18+ only) · Is there WiFi?
 6. **Inquiry form** — full inquiry form pre-tagged for this destination.
 7. **Footer**
 
@@ -190,7 +192,7 @@ Page-by-page content plan: purpose, target audience, copy outline, primary/secon
 1. **Hero (minimal)** — H1 ("Tell us which week and we'll hold a cabin for 72 hours."). Sub: "No payment required. Dodie or Clint will reply within 24 hours."
 2. **Inquiry form** — name (first + last), email, phone, preferred week, party size, notes.
 3. **What happens next** — 3-step list ("Submit your inquiry" → "Dodie or Clint replies within 24h" → "We hold a cabin for 72h while you decide").
-4. **FAQ shortcut** — 3 most common Q&A inline (Cancellation? Payment options? Kids?).
+4. **FAQ shortcut** — 3 most common Q&A inline (Cancellation? How do we book? Who can come?).
 5. **Footer**
 
 ---
@@ -216,7 +218,7 @@ Page-by-page content plan: purpose, target audience, copy outline, primary/secon
 
 - **Before booking** — How do I book? What if my dates aren't listed? Can we book the whole boat? Cancellation policy. Travel insurance.
 - **The boat & cabins** — Cabin layout. AC. Wifi/Starlink. Capacity.
-- **The experience** — Skill level required. Itinerary flexibility. Seasickness. Kids. Solo travelers. Alcohol. Dietary needs.
+- **The experience** — Skill level required. Itinerary flexibility. Seasickness. Kids (adults 18+ only). Solo travelers. Alcohol. Dietary needs.
 - **Logistics** — Embarkation port. Flights. Transfers. What to pack. Currency. Tipping.
 - **Safety** — Captain credentials. Insurance. Emergency procedures. Weather contingency.
 
@@ -228,7 +230,7 @@ Each Q&A: 1-paragraph answer, 60–120 words.
 
 ## `/privacy` and `/terms`
 
-Standard legal pages. Mark generates from template; Dodie reviews. Privacy must reference GHL data flow and Plausible analytics. Terms must reference the 25 % deposit, cancellation policy (90+ days full refund, 90–45 days 50%, <45 days no refund but rebook-able if availability allows), and force majeure / weather contingencies.
+Standard legal pages. Mark generates from template; Dodie reviews. Privacy must reference GHL data flow and Plausible analytics. Terms must reference the owners' booking terms in `src/lib/business.ts` ($500 non-refundable deposit, balance one month before the charter, no refunds from Guiding Winds after booking, cancel for any reason travel insurance required, adults 18+ only), and force majeure / weather contingencies.
 
 ---
 

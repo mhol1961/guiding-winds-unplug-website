@@ -1,7 +1,7 @@
 // Run: npm test
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { toDays, isOffered, matchesAppointment } from './intro-call.ts';
+import { toDays, isOffered, matchesAppointment, shortCache } from './intro-call.ts';
 
 const res = {
   '2026-10-07': { slots: ['2026-10-07T08:00:00-04:00', '2026-10-07T08:30:00-04:00'] },
@@ -29,4 +29,15 @@ test('matchesAppointment finds only this contact at this exact start (lost-respo
   ];
   assert.equal(matchesAppointment(events, 'me', start), false);
   assert.equal(matchesAppointment([...events, { contactId: 'me', startTime: '2026-10-07T08:30:00-04:00' }], 'me', start), true);
+});
+
+test('shortCache: one load per window, shared while in flight, failures not kept', async () => {
+  let t = 0, calls = 0, fail = false;
+  const c = shortCache(60_000, async () => { calls++; if (fail) throw new Error('x'); return calls; }, () => t);
+  assert.deepEqual(await Promise.all([c.get(), c.get()]), [1, 1]);
+  t = 59_999; assert.equal(await c.get(), 1);
+  t = 60_000; assert.equal(await c.get(), 2);
+  c.clear(); fail = true; await assert.rejects(c.get());
+  fail = false; assert.equal(await c.get(), 4);
+  assert.equal(c.fresh(), true);
 });
