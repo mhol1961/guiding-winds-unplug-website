@@ -6,7 +6,7 @@ import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
 
 const title = "What's Aboard Our All-Inclusive Catamaran | Guiding Winds";
 const description =
-  'All meals aboard, prepared together, plus snorkel gear, private cabins with ensuite heads, fuel and moorings. Everything is in. Bring a swimsuit.';
+  'All meals aboard, prepared together, plus snorkel gear, private cabins with their own bathroom, linens and towels, fuel and moorings. Bring a swimsuit.';
 
 const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
 
@@ -30,8 +30,8 @@ const schemaGraph = [
 ];
 
 const notIncluded: Array<string | { label: string; href: string }> = [
-  'Flights to and from the embarkation port',
-  { label: 'Travel insurance, cancel for any reason for a full refund (click for quotes)', href: 'https://trawickinternational.com/?agent=21057' },
+  'Your travel to and from the boat, flights included',
+  { label: 'Cancel for any reason travel insurance, required at booking (click for quotes)', href: 'https://trawickinternational.com/?agent=21057' },
   'Off-boat dining and excursions you arrange independently',
 ];
 
@@ -108,8 +108,10 @@ const lifeAboard = [
           </span>
         </h2>
         <p class="font-body-lg text-[1.0625rem] leading-[1.65] text-primary/70 mt-6">
-          Private cabins with ensuite heads, a shared salon, and a galley where
-          we cook together. {BOAT_NOTE}
+          Cabins with a bed for two, a private bathroom, storage and your own
+          lights and outlets, with sheets and towels waiting. Some boats have a
+          bunk cabin or two. Around them, a shared salon and a galley where we
+          cook together. {BOAT_NOTE}
         </p>
       </div>
       <ul class="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6">
@@ -228,7 +230,7 @@ const lifeAboard = [
             }
           </ol>
           <p class="font-body-md text-[0.9375rem] leading-[1.6] text-primary/70 mt-8">
-            {BOOKING_TERMS} {BUSINESS.cabinOccupancyNote}
+            {BOOKING_TERMS} No refunds from us after booking; your required travel insurance is your refund protection. {BUSINESS.cabinOccupancyNote}
           </p>
         </div>
       </div>
@@ -239,9 +241,9 @@ const lifeAboard = [
   <SectionInterrupt
     variant="stat"
     eyebrow="The numbers"
-    headline="Up to 12 guests"
-    headlineItalic="· comfortably aboard"
-    body="We've found the sweet spot of sailing. We're not a crowded charter where the experience gets diluted, and we're not a cramped boat that cuts corners on dinner. Twelve guests is enough to cook a proper feast together and small enough to keep us all connected."
+    headline="8 to 12 people"
+    headlineItalic="· hosts included"
+    body="We've found the sweet spot of sailing. We're not a crowded charter where the experience gets diluted, and we're not a cramped boat that cuts corners on dinner. Eight to twelve people is enough to cook a proper feast together and small enough to keep us all connected. Every guest is an adult, and the boat is drug free and smoke free. This is not a booze cruise."
     ctaLabel="See available weeks and Book a 30-minute intro call"
     ctaHref="/inquire"
   />

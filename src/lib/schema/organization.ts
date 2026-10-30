@@ -41,7 +41,7 @@ export function organization({ baseUrl }: OrgInput) {
       height: 512,
     },
     description:
-      'Off-grid all-inclusive catamaran voyages for up to 12 guests in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia.',
+      'Off-grid all-inclusive catamaran voyages for adult groups of 8 to 12 in the British Virgin Islands, Bahamas, Italy, Greece, and Croatia.',
     sameAs: [
       'https://www.facebook.com/profile.php?id=61588279383433',
       'https://www.youtube.com/@GuidingWindsCatamaranCharters',

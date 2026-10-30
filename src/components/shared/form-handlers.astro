@@ -181,6 +181,8 @@
         if (res.ok && json.ok !== false) {
           form.reset();
           setStatusText(status, json.message ?? 'Subscribed.', 'ok');
+          // Meta Pixel Lead, once per confirmed sign-up. No personal data sent.
+          (window as { fbq?: (...a: unknown[]) => void }).fbq?.('track', 'Lead');
         } else {
           setStatusText(status, json.error ?? 'Subscription failed. Try again.', 'err');
         }

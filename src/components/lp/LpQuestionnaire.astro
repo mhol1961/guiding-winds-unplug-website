@@ -5,7 +5,7 @@ import { PARTY_SIZES, BUSINESS, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE } fro
 // Shared lead questionnaire for the ad landing pages.
 // Progressive enhancement: with JS it's a 3-step wizard; without JS (or if the
 // script fails to load) it degrades to a single scrollable form that still
-// submits — so paid traffic can never hit a dead end.
+// submits - so paid traffic can never hit a dead end.
 // Posts to /api/inquire via the global form-handlers (which, on success, sets
 // gw_inquiry_lead → fires the Meta Pixel Lead on /inquire/thank-you).
 // `source` attributes the lead to the specific LP variant in GHL.
@@ -74,7 +74,7 @@ const regions = [
 
     <form method="POST" action="/api/inquire" data-inquiry-form data-lp-quiz class="mt-10 relative">
       <input type="hidden" name="source" value={source} />
-      {/* Honeypot — must stay empty; bots fill it and get silently dropped */}
+      {/* Honeypot - must stay empty; bots fill it and get silently dropped */}
       <input type="text" name="hp_check" tabindex="-1" autocomplete="off" class="absolute -left-[9999px] h-0 w-0 opacity-0" aria-hidden="true" />
 
       <!-- progress (JS-only chrome) -->
@@ -87,7 +87,7 @@ const regions = [
         </div>
       </div>
 
-      <!-- STEP 1 — where + who -->
+      <!-- STEP 1 - where + who -->
       <div data-step>
         <fieldset>
           <legend class={labelCls}>Which waters? <span class="text-accent">*</span></legend>
@@ -117,7 +117,7 @@ const regions = [
         </button>
       </div>
 
-      <!-- STEP 2 — when -->
+      <!-- STEP 2 - when -->
       <div data-step class="mt-7">
         <label class={labelCls} for={`week-${source}`}>When would you like to sail?</label>
         <input id={`week-${source}`} name="week" type="text" maxlength="120" placeholder="A month, a season, or specific dates" class={inputCls} />
@@ -135,7 +135,7 @@ const regions = [
         </div>
       </div>
 
-      <!-- STEP 3 — who you are -->
+      <!-- STEP 3 - who you are -->
       <div data-step class="mt-7">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>

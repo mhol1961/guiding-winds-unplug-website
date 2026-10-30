@@ -49,7 +49,7 @@ const description =
   </section>
   {INTRO_CALL.enabled && <IntroCall />}
   <script is:inline>
-    // Meta Pixel Lead conversion — idempotent. Only fires when the form's
+    // Meta Pixel Lead conversion - idempotent. Only fires when the form's
     // success handler set the one-time flag (real submission), then clears it,
     // so refresh / back-forward / direct or bookmarked visits never re-fire.
     // No-op when the pixel is disabled (PUBLIC_FB_PIXEL_ID unset → no window.fbq).

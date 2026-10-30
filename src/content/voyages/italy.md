@@ -45,14 +45,14 @@ inclusions:
   - Hosted by Clint
 exclusions:
   - Flights to Naples (NAP) / from Catania (CTA)
-  - Travel insurance
+  - Travel insurance (required; cancel for any reason)
   - Off-boat dining (we cover one shore dinner; others on you)
 faq:
   - q: How does Italy compare to BVI?
     a: 'Less swimming-pool turquoise, more "you''re in a postcard." Longer passages, more shore time, more dinners ashore. Mediterranean dockage and provisioning cost more, and the all-inclusive quote covers them.'
 seo:
   title: 'Italy Catamaran Charter · Amalfi & Aeolian | Guiding Winds'
-  description: 'Capri, Positano, Stromboli, Panarea. A private catamaran for up to 12 guests on the Tyrrhenian coast. All-inclusive. Price depends on duration and season.'
+  description: 'Capri, Positano, Stromboli, Panarea. A private catamaran for 8 to 12 on the Tyrrhenian coast. All-inclusive. Price depends on duration and season.'
   keywords:
     - Amalfi coast catamaran charter
     - Italy wellness sailing
@@ -60,7 +60,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our Italy voyage typically runs 7 days, one-way from Salerno to Milazzo aboard a private catamaran for up to 12 guests. The route threads the Amalfi coast - Amalfi, Positano, Capri - then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. All-inclusive. Shorter charters are available. **Price depends on duration and season.** Hosted by Clint Kendall; Dodie joins many charters. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our Italy voyage typically runs 7 days, one-way from Salerno to Milazzo aboard a private catamaran with a group of 8 to 12. The route threads the Amalfi coast - Amalfi, Positano, Capri - then makes the long passage south to the Aeolian volcanoes: Stromboli, Panarea, and a final night in Lipari. All-inclusive. Shorter charters are available. **Price depends on duration and season.** Hosted by Clint Kendall; Dodie joins many charters. Weeks available across 2027 - see the calendar.
 
 ## The arc no one else sails in a week
 

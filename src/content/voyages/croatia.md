@@ -46,21 +46,21 @@ inclusions:
   - Hosted by Clint
 exclusions:
   - Flights to Split (SPU) / from Dubrovnik (DBV)
-  - Travel insurance
+  - Travel insurance (required; cancel for any reason)
   - Off-boat dining (we cover two shore dinners; others on you)
 faq:
   - q: How long is the trip?
     a: 'Charters typically run 7 days, one-way from Split to Dubrovnik through the Dalmatian island chain. Shorter charters are available. Specific weeks are available - see the calendar.'
 seo:
   title: 'Croatia Catamaran Charter 2027 · Split to Dubrovnik'
-  description: 'Hvar, Vis, Korčula, Mljet. A private catamaran for up to 12 guests through the Dalmatian chain. All-inclusive. Price depends on duration and season.'
+  description: 'Hvar, Vis, Korčula, Mljet. A private catamaran, 8 to 12 aboard, through the Dalmatian chain. All-inclusive. Price depends on duration and season.'
   keywords:
     - Croatian coast sailing charter
     - Dalmatian Coast sailing
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our Croatian coast sailing charter typically runs 7 days, one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a private catamaran for up to 12 guests. The route threads the Dalmatian chain - Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites - and finishes with a transfer to Dubrovnik for the flight home. All-inclusive. Shorter charters are available. **Price depends on duration and season.** Hosted by Clint Kendall; Dodie joins many charters. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our Croatian coast sailing charter typically runs 7 days, one-way from Split (ACI Marina) to Dubrovnik (ACI Marina) aboard a private catamaran with 8 to 12 people, hosts included. The route threads the Dalmatian chain - Hvar and the Pakleni archipelago, Vis, Korčula, Mljet's national park, and the Elaphites - and finishes with a transfer to Dubrovnik for the flight home. All-inclusive. Shorter charters are available. **Price depends on duration and season.** Hosted by Clint Kendall; Dodie joins many charters. Weeks available across 2027 - see the calendar.
 
 ## The Dalmatian coast is not a beach coast
 

@@ -1,5 +1,8 @@
 // FAQ content: /faq renders it; the voyage pages link to it with the live count.
-import { BUSINESS, BOOKING_TERMS, TRIP_LENGTH_NOTE, BOAT_NOTE, HOSTS_NOTE, MEALS_NOTE } from './business';
+import {
+  BUSINESS, BOOKING_TERMS, TRIP_LENGTH_NOTE, BOAT_NOTE, HOSTS_NOTE, MEALS_NOTE,
+  ADULTS_NOTE, GROUP_NOTE, CABIN_NOTE, INSURANCE_NOTE, CONDUCT_NOTE, TRAVEL_NOTE,
+} from './business';
 
 export const FAQ_GROUPS = [
   {
@@ -26,16 +29,20 @@ export const FAQ_GROUPS = [
         a: 'Yes. Booking the whole boat comes with two perks: a fully tailored itinerary, and one extra shore dinner on us. We need 6+ months notice for a private-charter week; less if the date is already open on the public calendar.',
       },
       {
+        q: 'Who can come?',
+        a: `${ADULTS_NOTE} Come with a spouse, a friend or an adult child, or come on your own and meet someone new.`,
+      },
+      {
         q: 'Do I have to book a cabin for two?',
         a: BUSINESS.cabinOccupancyNote,
       },
       {
         q: 'Cancellation policy.',
-        a: `${BOOKING_TERMS} We recommend travelers insurance that lets you cancel for any reason and get a full refund: trawickinternational.com/?agent=21057. We talk you through the details on a 30-minute intro call before you book.`,
+        a: `${BOOKING_TERMS} ${INSURANCE_NOTE} One option is trawickinternational.com/?agent=21057. We talk you through the details on a 30-minute intro call before you book.`,
       },
       {
         q: 'Do you require travel insurance?',
-        a: 'Not required, strongly recommended. We have seen guests need it for weather diversions, missed flights, and a few medical situations. A policy usually costs a few hundred dollars; the price depends on how much of the trip cost you insure.',
+        a: 'Yes. Buy a cancel for any reason policy when you book. It is your refund protection if plans change, and we have seen guests need it for weather diversions, missed flights and a few medical situations. The price depends on how much of the trip cost you insure.',
       },
     ],
   },
@@ -44,7 +51,7 @@ export const FAQ_GROUPS = [
     items: [
       {
         q: 'What does a cabin look like?',
-        a: `Each cabin has an ensuite head (toilet + separate shower stall) and a hatch over the bed for stars at night. ${BOAT_NOTE}`,
+        a: `${CABIN_NOTE} ${BOAT_NOTE}`,
       },
       {
         q: 'Is there air conditioning?',
@@ -55,8 +62,8 @@ export const FAQ_GROUPS = [
         a: 'We don\'t provide onboard internet. Guests can purchase Wi-Fi for an additional charge, and even then the connection can be unreliable at times - patchy or slow in many anchorages. Unplugging is part of the point.',
       },
       {
-        q: 'How many guests does the boat actually hold?',
-        a: `We host up to 12 guests. Twelve is the comfortable maximum. ${HOSTS_NOTE}`,
+        q: 'How many people are aboard?',
+        a: `${GROUP_NOTE} ${HOSTS_NOTE}`,
       },
     ],
   },
@@ -77,15 +84,15 @@ export const FAQ_GROUPS = [
       },
       {
         q: 'Can we bring kids?',
-        a: 'Yes. The boat sleeps 12 and kids stack in cabins easily. Two notes: this is an adult-pace trip (long dinners, no separate kids menu), and there is no formal childcare. If you want a family week, book the whole boat and we will tailor the schedule - earlier dinners, more swim time, fewer long passages.',
+        a: 'No. Every guest must be 18 or older, including on whole-boat charters. Adult children are welcome to come with you.',
       },
       {
         q: 'Are solo travelers welcome?',
-        a: 'Yes. Roughly a quarter of our guests come solo. Solo travelers book a cabin to themselves and are responsible for the full cabin price, which Clint and Dodie include in the quote.',
+        a: 'Yes. Roughly a quarter of our guests come solo. One guest may book a cabin alone and is responsible for the full cabin price, which Clint and Dodie include in the quote. Come on your own and meet someone new.',
       },
       {
         q: 'Is alcohol included?',
-        a: 'We don\'t provide or sell alcohol aboard - Guiding Winds is not a booze cruise, and we don\'t encourage drinking on the boat. If you\'d like a drink, you\'re welcome to enjoy one responsibly while ashore on the islands. If a bar-focused, party-style charter is what you\'re looking for, we\'re honestly probably not the right fit - and we\'d rather say so kindly up front so your week is everything you hoped it would be.',
+        a: `We don\'t provide or sell alcohol aboard. ${CONDUCT_NOTE} If a bar-focused, party-style charter is what you\'re looking for, we\'re honestly probably not the right fit, and we\'d rather say so kindly up front so your week is everything you hoped it would be.`,
       },
       {
         q: 'Dietary needs and allergies?',
@@ -102,7 +109,7 @@ export const FAQ_GROUPS = [
       },
       {
         q: 'How do transfers work?',
-        a: 'Airport transfers to and from the marina are the guest\'s responsibility and aren\'t included. They\'re straightforward - a short ferry or taxi at each embarkation point - and we\'re glad to point you to the right option, but booking and paying for transfers is on you.',
+        a: `${TRAVEL_NOTE} That includes flights and the airport transfer to the marina. Transfers are straightforward, usually a short ferry or taxi at each embarkation point, and we\'re glad to point you to the right option.`,
       },
       {
         q: 'What should I pack?',
@@ -131,7 +138,7 @@ export const FAQ_GROUPS = [
       },
       {
         q: 'Weather contingency?',
-        a: 'Clint plans every week with three potential routes depending on weather. If a tropical system threatens during a Caribbean or Bahamas week, we will reroute to the safest anchorage or, in the rare worst case, postpone - full refund or rebook. We have never lost a guest day to weather; we have re-routed plenty.',
+        a: 'Clint plans every week with three potential routes depending on weather. If a tropical system threatens during a Caribbean or Bahamas week, we will reroute to the safest anchorage or, in the rare worst case, postpone. Refund protection comes through your cancel for any reason travel insurance. We have never lost a guest day to weather; we have re-routed plenty.',
       },
     ],
   },

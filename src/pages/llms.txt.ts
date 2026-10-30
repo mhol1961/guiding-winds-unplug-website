@@ -6,7 +6,7 @@
 
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE, PRICE_NOTE, TRIP_LENGTH_NOTE, BOOKING_TERMS, BOAT_NOTE, HOSTS_NOTE, MEALS_NOTE } from '../lib/business';
+import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE, PRICE_NOTE, TRIP_LENGTH_NOTE, BOOKING_TERMS, BOAT_NOTE, HOSTS_NOTE, MEALS_NOTE, ADULTS_NOTE, GROUP_NOTE, CABIN_NOTE, INSURANCE_NOTE, CONDUCT_NOTE, TRAVEL_NOTE } from '../lib/business';
 
 export const GET: APIRoute = async ({ site }) => {
   const origin = site?.toString().replace(/\/$/, '') ?? 'https://guidingwinds-unplug.com';
@@ -16,14 +16,16 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('# Guiding Winds Unplug');
   lines.push('');
   lines.push(
-    `> Hosted, all-inclusive catamaran voyages for up to 12 guests in the British Virgin Islands, the Bahamas, Greece, Italy and Croatia. Owner-run by Clint and Dodie Kendall. ${TRIP_LENGTH_NOTE} ${PRICE_NOTE}`,
+    `> Hosted, all-inclusive, adults-only catamaran voyages for groups of 8 to 12 in the British Virgin Islands, the Bahamas, Greece, Italy and Croatia. Owner-run by Clint and Dodie Kendall. ${TRIP_LENGTH_NOTE} ${PRICE_NOTE}`,
   );
   lines.push('');
   lines.push(
-    `Brand promise: "unplug." Up to twelve guests per voyage. ${HOSTS_NOTE} ${MEALS_NOTE}`,
+    `Brand promise: "unplug." ${GROUP_NOTE} ${HOSTS_NOTE} ${MEALS_NOTE}`,
   );
   lines.push('');
-  lines.push(`Cabin occupancy: ${BUSINESS.cabinOccupancyNote}`);
+  lines.push(`Who can come: ${ADULTS_NOTE}`);
+  lines.push('');
+  lines.push(`Cabins: ${BUSINESS.cabinOccupancyNote} ${CABIN_NOTE}`);
   lines.push('');
   lines.push('## Voyages (2027 calendar)');
   lines.push('');
@@ -37,7 +39,7 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('## Plan');
   lines.push('');
   lines.push(`- [About: Clint & Dodie Kendall](${origin}/about): Owner-run by a husband-and-wife team. ${HOSTS_NOTE} Based in Stuart, Florida.`);
-  lines.push(`- [Aboard: what's included](${origin}/aboard): All meals aboard, prepared together with guests, snorkel gear and paddleboards (plus kayaks in the BVI and Bahamas), a private cabin with ensuite head, fuel and moorings. Up to 12 guests. ${BOAT_NOTE}`);
+  lines.push(`- [Aboard: what's included](${origin}/aboard): All meals aboard, prepared together with guests, snorkel gear and paddleboards (plus kayaks in the BVI and Bahamas), a private cabin with its own bathroom, linens and towels, fuel and moorings. ${TRAVEL_NOTE} ${BOAT_NOTE}`);
   lines.push(`- [Calendar](${origin}/calendar): 2027 weeks across the BVI, Bahamas, Greece, Italy and Croatia. Most weeks run Saturday to Saturday; shorter charters are available.`);
   lines.push(`- [FAQ](${origin}/faq): Booking, the boat, the experience, logistics, and safety.`);
   lines.push(`- [Book a 30-minute intro call](${origin}/inquire): We speak with every guest before booking. Dodie or Clint reply within 24 hours.`);
@@ -47,7 +49,8 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('- We speak with every guest before booking. Send the inquiry form or book a 30-minute intro call; Dodie or Clint reply within 24 hours.');
   lines.push('- After the call, if you decide to go, we send you a private booking link. There is no public checkout.');
   lines.push(`- ${BOOKING_TERMS}`);
-  lines.push(`- ${HOSTS_NOTE} Up to 12 guests aboard.`);
+  lines.push(`- ${INSURANCE_NOTE}`);
+  lines.push(`- ${CONDUCT_NOTE}`);
   lines.push('');
   lines.push('## Contact');
   lines.push('');
@@ -58,7 +61,7 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('## Fine print');
   lines.push('');
   lines.push(`- [Privacy](${origin}/privacy)`);
-  lines.push(`- [Terms](${origin}/terms): Booking and voyage terms. The $500 deposit is non-refundable; we recommend travelers insurance that lets you cancel for any reason.`);
+  lines.push(`- [Terms](${origin}/terms): Booking and voyage terms. The $500 deposit is non-refundable, and cancel for any reason travel insurance is required.`);
   lines.push('');
   lines.push('## Business identity');
   lines.push('');

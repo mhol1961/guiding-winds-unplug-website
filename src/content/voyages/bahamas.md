@@ -45,7 +45,7 @@ inclusions:
   - Hosted by Clint
 exclusions:
   - Flights to/from Marsh Harbour (MHH)
-  - Travel insurance
+  - Travel insurance (required; cancel for any reason)
   - Off-boat dining and excursions
 faq:
   - q: How does Bahamas compare to BVI?
@@ -54,7 +54,7 @@ faq:
     a: 'Charters typically run 7 days, Saturday to Saturday, from the Marsh Harbour / Treasure Cay area. Shorter charters are available. Specific weeks are available - see the calendar.'
 seo:
   title: 'Bahamas Catamaran Charter · Abacos 2027 | Guiding Winds'
-  description: 'Hope Town, Tilloo, Man-o-War, Guana. Typically 7 days for up to 12 guests on a catamaran in the Abacos. All-inclusive. Price depends on duration and season.'
+  description: 'Hope Town, Tilloo, Man-o-War, Guana. Typically 7 days for a group of 8 to 12 on a catamaran in the Abacos. All-inclusive. Price depends on duration and season.'
   keywords:
     - Bahamas catamaran charter all-inclusive
     - Abacos sailing trip
@@ -63,7 +63,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our Bahamas catamaran charter sails the Abacos - a private catamaran for up to 12 guests, all-inclusive. Charters typically run 7 days; shorter charters are available. **Price depends on duration and season.** Saturday-to-Saturday from the Marsh Harbour / Treasure Cay area, with named anchorages at Hope Town, Tilloo Cay, Man-o-War Cay, Guana Cay, and Little Harbour. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our Bahamas catamaran charter sails the Abacos - a private catamaran for an adults-only group of 8 to 12, hosts included, all-inclusive. Charters typically run 7 days; shorter charters are available. **Price depends on duration and season.** Saturday-to-Saturday from the Marsh Harbour / Treasure Cay area, with named anchorages at Hope Town, Tilloo Cay, Man-o-War Cay, Guana Cay, and Little Harbour. Weeks available across 2027 - see the calendar.
 
 ## Why the Abacos, not the Exumas
 

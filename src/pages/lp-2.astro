@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { img } from '../lib/img';
-// LP-2 — "Everything's Included" · offer-led, value + trust.
+// LP-2 - "Everything's Included" · offer-led, value + trust.
 // Angle: one price covers the whole week. Bento inclusions, 3-up proof, how-it-works.
 import LpLayout from '../layouts/LpLayout.astro';
 import LpQuestionnaire from '../components/lp/LpQuestionnaire.astro';
@@ -9,10 +9,10 @@ import { BUSINESS } from '../lib/business';
 
 const title = 'One price. Everything aboard. · Guiding Winds Unplug';
 const description =
-  'All-inclusive catamaran charters: cabin, meals, fuel, moorings, and snorkel gear, hosted by Clint. Up to 12 guests. BVI, Bahamas, Mediterranean.';
+  'All-inclusive catamaran charters: cabin, meals, fuel, moorings, and snorkel gear, hosted by Clint. Groups of 8 to 12. BVI, Bahamas, Mediterranean.';
 
 const inclusions = [
-  { h: 'Your private cabin', b: 'A cabin with an ensuite head, AC on shore power, linens and towels provided.' },
+  { h: 'Your private cabin', b: 'A bed for two, your own bathroom, storage, linens and towels provided.' },
   { h: 'Meals aboard, every day', b: 'Breakfast, lunch, and dinner, prepared together aboard, with a menu that shifts with the destination.' },
   { h: 'Fuel & moorings', b: 'No itemized fuel surcharge. Mooring fees covered at every overnight.' },
   { h: 'Snorkel gear', b: 'Masks, fins, and snorkels in every size. Reefs and wrecks on tap.' },
@@ -34,7 +34,7 @@ const reviewCount = (await getCollection('reviews')).length;
       <div class="flex items-center order-2 lg:order-1">
         <div class="px-7 lg:px-14 pt-9 pb-14 lg:py-0 max-w-xl">
           <p class="font-label-caps uppercase tracking-[0.32em] text-[0.6875rem] font-semibold text-accent mb-6">
-            All-inclusive · up to 12 guests
+            All-inclusive · 8 to 12 aboard
           </p>
           <h1 class="font-display font-light text-ink leading-[1] tracking-[-0.03em] text-balance" style="font-size: clamp(2.4rem, 4.5vw + 1rem, 4.25rem);">
             One price. Everything aboard. A week you actually

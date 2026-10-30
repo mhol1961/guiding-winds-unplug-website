@@ -157,7 +157,7 @@ Mirror them locally in `.env.local` (gitignored).
 | `PUBLIC_SITE_URL` | Canonical origin. Baked into every `<link rel="canonical">` and into the sitemap. **If this is wrong, every canonical tag on the site points at the wrong host.** Must be the `https://` custom domain. |
 | `PUBLIC_BUSINESS_NAME` | Business name for metadata |
 | `PUBLIC_CONTACT_EMAIL` | Contact address surfaced in metadata |
-| `PUBLIC_FB_PIXEL_ID` | Meta Pixel identifier. The pixel component renders nothing when this is unset, so the site is safe to ship without it. |
+| `PUBLIC_FB_PIXEL_ID` | Meta Pixel identifier. **Exception: set in the committed `.env.production`** (public value, same as dodiekendall.com), not in the dashboard. A dashboard Build variable of the same name would override it. Blank renders nothing. Update `/privacy` in the same commit if tracking changes. |
 | `NODE_VERSION` | Pins the build runtime |
 
 `astro.config.mjs` guards `PUBLIC_SITE_URL`: a production build fails

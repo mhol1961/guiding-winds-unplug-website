@@ -46,21 +46,21 @@ inclusions:
   - Hosted by Clint
 exclusions:
   - Flights to Athens (ATH) / from Santorini (JTR)
-  - Travel insurance
+  - Travel insurance (required; cancel for any reason)
   - Off-boat dining (we cover two shore dinners; others on you)
 faq:
   - q: How long is the trip?
     a: 'Charters typically run 7 days, one-way from Athens (Alimos) to Santorini through the Cyclades. Shorter charters are available. Specific weeks are available - see the calendar.'
 seo:
   title: 'Greece Catamaran Charter 2027 · Cyclades | Guiding Winds'
-  description: 'Athens to Santorini via Kythnos, Serifos, Sifnos, Folegandros and Ios, for up to 12 guests. All-inclusive. Price depends on duration and season.'
+  description: 'Athens to Santorini via Kythnos, Serifos, Sifnos, Folegandros and Ios, for a group of 8 to 12. All-inclusive. Price depends on duration and season.'
   keywords:
     - Greek islands catamaran trip
     - Cyclades catamaran charter all-inclusive
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our Greek islands catamaran trip typically runs 7 days, one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a private catamaran for up to 12 guests. The route threads Kythnos, Serifos, Sifnos, Folegandros, Ios, and Santorini - the chain at sailboat pace, not ferry pace. All-inclusive. Shorter charters are available. **Price depends on duration and season.** Hosted by Clint Kendall; Dodie joins many charters. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our Greek islands catamaran trip typically runs 7 days, one-way through the Cyclades, embarking at Athens (Alimos marina) on Saturday and disembarking at Santorini the following Saturday. The boat is a private catamaran, chartered for the trip, with 8 to 12 aboard including your hosts. The route threads Kythnos, Serifos, Sifnos, Folegandros, Ios, and Santorini - the chain at sailboat pace, not ferry pace. All-inclusive. Shorter charters are available. **Price depends on duration and season.** Hosted by Clint Kendall; Dodie joins many charters. Weeks available across 2027 - see the calendar.
 
 ## The shape of a week
 

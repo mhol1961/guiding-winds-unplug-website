@@ -48,26 +48,26 @@ inclusions:
   - Hosted by Clint
 exclusions:
   - Flights to/from Beef Island (EIS)
-  - Travel insurance
+  - Travel insurance (required; cancel for any reason)
   - Off-boat dining and excursions
 faq:
   - q: Do I need to know how to sail?
     a: 'No. Clint handles every helm decision. If you want to learn or take the wheel under his eye, he''ll teach. If you want to read a book, the boat sails itself with him at the helm.'
   - q: What does the cabin look like?
-    a: 'Each cabin has an ensuite head (toilet + shower) and a hatch over the bed for stars at night. Air conditioning on shore power; fans underway. The catamaran for each charter is confirmed closer to the departure date.'
+    a: 'A bed for two, your own bathroom with shower and toilet, storage, and your own lights and outlets. Sheets and towels are on board when you arrive; a few cabins may have bunks, depending on the boat. We charter a catamaran for each trip, so the exact boat is confirmed closer to departure.'
   - q: What if I get seasick?
     a: 'Catamarans are dramatically more stable than monohulls - most people who get seasick on cruise ships are fine on this boat. Guests should purchase seasickness remedies such as scopolamine patches, Bonine, or ginger on their own and bring them along. The BVI is also one of the most protected sailing grounds on earth - you''re almost never out of sight of an island.'
   - q: Cancellation policy?
-    a: 'A $500 non-refundable deposit is due at booking, and the balance is due one month before the charter. We recommend travelers insurance that lets you cancel for any reason and get a full refund: trawickinternational.com/?agent=21057. We talk through the details with you on a 30-minute intro call before you book.'
+    a: 'A $500 non-refundable deposit is due at booking, and the balance is due one month before the charter. We don''t refund after booking, so cancel for any reason travel insurance is required when you book; that policy is your refund protection: trawickinternational.com/?agent=21057. We talk through the details with you on a 30-minute intro call before you book.'
   - q: Can we bring kids?
-    a: 'Yes. The boat sleeps 12 and kids stack in cabins easily. Two notes: this is an adult-pace trip (long dinners, no kids'' menu), and there''s no formal childcare. If you want a family week, book the whole boat and let us tailor the itinerary.'
+    a: 'This is an adults-only week: every guest is 18 or older. Grown children are welcome to sail with you.'
   - q: How long is the trip?
     a: 'Charters typically run 7 days. Shorter charters are available. Specific weeks are available - see the calendar.'
   - q: Is there Wi-Fi?
     a: 'We don''t provide onboard internet. Wi-Fi can be purchased for an additional charge, and the connection can be unreliable at times. Most guests embrace the unplug.'
 seo:
   title: 'BVI All-Inclusive Catamaran Charter 2027 | Guiding Winds'
-  description: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Typically 7 days for up to 12 guests on a catamaran. All-inclusive. Price depends on duration and season.'
+  description: 'Norman Island, The Baths, Anegada, Jost Van Dyke. Typically 7 days for 8 to 12 people on a catamaran. All-inclusive. Price depends on duration and season.'
   keywords:
     - BVI all-inclusive catamaran charter
     - British Virgin Islands sailing charter
@@ -76,7 +76,7 @@ seo:
 publishedAt: 2026-05-17
 ---
 
-**TL;DR:** Our BVI all-inclusive catamaran charter typically runs 7 days, Saturday to Saturday, from Nanny Cay, Tortola, aboard a private catamaran for up to 12 guests. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. All-inclusive. Shorter charters are available. **Price depends on duration and season.** Hosted by Clint Kendall; Dodie joins many charters. Weeks available across 2027 - see the calendar.
+**TL;DR:** Our BVI all-inclusive catamaran charter typically runs 7 days, Saturday to Saturday, from Nanny Cay, Tortola, aboard a private catamaran with a group of 8 to 12, hosts included. The route covers Norman Island and the Caves, The Baths at Virgin Gorda, an overnight passage to Anegada, Jost Van Dyke, Sandy Spit, and a final night at Cooper Island. All-inclusive. Shorter charters are available. **Price depends on duration and season.** Hosted by Clint Kendall; Dodie joins many charters. Weeks available across 2027 - see the calendar.
 
 ## The shape of a week
 

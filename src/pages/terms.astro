@@ -3,10 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Terms & Conditions · Guiding Winds Unplug';
 const description =
-  'Booking, deposit, cancellation, travel insurance and force majeure terms for Guiding Winds Unplug catamaran voyages. We talk them through on a call.';
-import { BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE, BOOKING_TERMS, TRIP_LENGTH_NOTE } from '../lib/business';
+  'Booking, guest age, deposit, cancellation, required travel insurance, conduct and force majeure terms for Guiding Winds Unplug catamaran voyages. We talk them through on a 30-minute intro call.';
+import {
+  BUSINESS, ADDRESS_ONE_LINE, BOND_ONE_LINE, SELLER_OF_TRAVEL_DISCLOSURE, BOOKING_TERMS, TRIP_LENGTH_NOTE,
+  ADULTS_NOTE, CONDUCT_NOTE, TRAVEL_NOTE, BOAT_NOTE,
+} from '../lib/business';
 
-const updated = '2026-10-21';
+const updated = '2026-10-29';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -34,6 +37,11 @@ const updated = '2026-10-21';
         </p>
 
         <h3 class="font-h3 text-primary leading-[1.2] tracking-[-0.01em] font-normal mt-10" style="font-size: 1.25rem; font-variation-settings: 'opsz' 48;">
+          Who can sail
+        </h3>
+        <p>{ADULTS_NOTE}</p>
+
+        <h3 class="font-h3 text-primary leading-[1.2] tracking-[-0.01em] font-normal mt-10" style="font-size: 1.25rem; font-variation-settings: 'opsz' 48;">
           Deposit and balance
         </h3>
         <p>{BOOKING_TERMS}</p>
@@ -48,15 +56,21 @@ const updated = '2026-10-21';
         </h3>
         <p>{BUSINESS.cabinOccupancyNote}</p>
 
+        <h3 class="font-h3 text-primary leading-[1.2] tracking-[-0.01em] font-normal mt-10" style="font-size: 1.25rem; font-variation-settings: 'opsz' 48;">
+          The boat and getting there
+        </h3>
+        <p>{BOAT_NOTE} {TRAVEL_NOTE}</p>
+
         <h2 class="font-h2 text-primary leading-[1.1] tracking-[-0.02em] font-normal mt-12" style="font-size: 1.75rem; font-variation-settings: 'opsz' 72;">
           Cancellation
         </h2>
         <p>
-          The $500 deposit is non-refundable. We strongly recommend travelers insurance that lets you cancel for
-          any reason and receive a full refund. We can point you to a policy
-          at <a href="https://trawickinternational.com/?agent=21057" target="_blank" rel="noopener noreferrer" class="underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors">trawickinternational.com</a>.
-          We talk through cancellation details with you on a call before you
-          book.
+          The $500 deposit is non-refundable, and Guiding Winds does not give
+          refunds after booking. Cancel for any reason travel insurance is
+          required when you book, and any refund comes through that policy. We
+          can point you to one at <a href="https://trawickinternational.com/?agent=21057" target="_blank" rel="noopener noreferrer" class="underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors">trawickinternational.com</a>.
+          We talk through cancellation details with you on a 30-minute intro call
+          before you book.
         </p>
 
         <h2 class="font-h2 text-primary leading-[1.1] tracking-[-0.02em] font-normal mt-12" style="font-size: 1.75rem; font-variation-settings: 'opsz' 72;">
@@ -67,8 +81,8 @@ const updated = '2026-10-21';
           shorten, or extend a leg of the voyage at our sole discretion to
           ensure safety. If a tropical system, hurricane, government
           restriction, or other force majeure event forces the cancellation
-          of an entire voyage, we will issue a full refund or rebook you for
-          a future week of your choice. We are not responsible for
+          of an entire voyage, we will rebook you for a future week of your
+          choice. Any refund comes through your travel insurance. We are not responsible for
           weather-related itinerary changes that fall short of voyage
           cancellation.
         </p>
@@ -77,7 +91,8 @@ const updated = '2026-10-21';
           Guest conduct
         </h2>
         <p>
-          The host has full authority over guest conduct aboard. Behavior
+          {CONDUCT_NOTE} The host has full authority over guest conduct
+          aboard. Behavior
           that endangers the boat, the host, or other guests - including
           intoxication that requires intervention or aggressive disregard of
           safety briefings - is grounds for disembarkation at the next safe
@@ -99,9 +114,10 @@ const updated = '2026-10-21';
           Insurance
         </h2>
         <p>
-          Guest trip cancellation, lost baggage, and personal medical care
-          are not covered by us - for those, please carry travel insurance.
-          We can refer a broker.
+          Cancel for any reason travel insurance is required (see Cancellation
+          above). Lost baggage and personal medical care are not covered by us
+          either, so choose a policy that covers them too. We can refer a
+          broker.
         </p>
 
         <h2 class="font-h2 text-primary leading-[1.1] tracking-[-0.02em] font-normal mt-12" style="font-size: 1.75rem; font-variation-settings: 'opsz' 72;">
