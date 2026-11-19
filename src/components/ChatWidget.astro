@@ -192,6 +192,22 @@ const PHONE_TEL = '+17723103777';
     hideLauncherInShadow();
     if (++ticks > 60) clearInterval(poll); // ~30s cap
   }, 500);
+
+  // Phones only (max-lg): stay out of sight while a [data-chat-avoid] button
+  // (the home hero CTA) is on screen. There's no gap between that button and
+  // the sticky booking bar wide enough for the 56px launcher.
+  const avoid = document.querySelectorAll('[data-chat-avoid]');
+  if (root && avoid.length && 'IntersectionObserver' in window) {
+    const onScreen = new Set<Element>();
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) onScreen.add(e.target);
+        else onScreen.delete(e.target);
+      }
+      root.classList.toggle('max-lg:invisible', onScreen.size > 0);
+    });
+    avoid.forEach((el) => io.observe(el));
+  }
 </script>
 
 {/* GoHighLevel / LeadConnector chat widget loader. is:inline keeps Astro from
