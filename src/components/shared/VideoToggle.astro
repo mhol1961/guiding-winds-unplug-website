@@ -1,0 +1,30 @@
+---
+// Small pause/play pill for background videos (WCAG 2.2.2). Same pill style
+// as the "Aboard · establishing reel" tag on /about. Hidden until the page's
+// script wires it with wireToggle() from src/lib/video-toggle.ts, so no-JS
+// and reduced-motion visitors (no motion to pause) never see a dead button.
+interface Props {
+  class?: string;
+  [key: `data-${string}`]: string | boolean;
+}
+const { class: cls, ...rest } = Astro.props;
+---
+
+<button
+  type="button"
+  hidden
+  aria-label="Pause background video"
+  class:list={[
+    'group inline-flex items-center gap-2 rounded-pill bg-bone/85 backdrop-blur-md px-3 py-1.5 font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary cursor-pointer hover:bg-bone transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3',
+    cls,
+  ]}
+  {...rest}
+>
+  <svg viewBox="0 0 16 16" class="size-2.5 group-data-[paused=true]:hidden" fill="currentColor" aria-hidden="true">
+    <rect x="3" y="2" width="3.5" height="12" rx="0.5" /><rect x="9.5" y="2" width="3.5" height="12" rx="0.5" />
+  </svg>
+  <svg viewBox="0 0 16 16" class="size-2.5 hidden group-data-[paused=true]:block" fill="currentColor" aria-hidden="true">
+    <path d="M4 2.2v11.6a.6.6 0 0 0 .9.5l9.2-5.8a.6.6 0 0 0 0-1L4.9 1.7a.6.6 0 0 0-.9.5Z" />
+  </svg>
+  <span data-label>Pause</span>
+</button>

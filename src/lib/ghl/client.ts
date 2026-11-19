@@ -18,11 +18,25 @@
 
 import { env as runtimeEnv } from 'cloudflare:workers';
 
-/** Read an env value from the Cloudflare runtime first, then build-time. */
+// Build-time fallbacks, NON-SECRET keys only, each named statically. A dynamic
+// `import.meta.env[key]` makes the build inline every env value it can see
+// (including .dev.vars secrets) into dist/server. Secrets (GHL_PRIVATE_TOKEN,
+// GHL_LOCATION_ID, TURNSTILE_SECRET_KEY) come from the runtime env only.
+// DRY_RUN_GHL is runtime-only too (.dev.vars locally): a build variable must
+// never bake "fake success, no lead created" into the deployed site.
+const BUILD_FALLBACK: Record<string, string | undefined> = {
+  GHL_API_BASE: import.meta.env.GHL_API_BASE,
+  GHL_API_VERSION: import.meta.env.GHL_API_VERSION,
+  GHL_CALENDAR_ID_BVI: import.meta.env.GHL_CALENDAR_ID_BVI,
+  GHL_CALENDAR_ID_BAHAMAS: import.meta.env.GHL_CALENDAR_ID_BAHAMAS,
+  GHL_CALENDAR_ID_MED: import.meta.env.GHL_CALENDAR_ID_MED,
+};
+
+/** Read an env value from the Cloudflare runtime first, then (non-secrets only) build-time. */
 export function envVar(key: string): string | undefined {
   const fromRuntime = runtimeEnv?.[key];
   if (typeof fromRuntime === 'string' && fromRuntime !== '') return fromRuntime;
-  const fromBuild = (import.meta.env as Record<string, unknown>)[key];
+  const fromBuild = BUILD_FALLBACK[key];
   return typeof fromBuild === 'string' && fromBuild !== '' ? fromBuild : undefined;
 }
 

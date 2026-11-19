@@ -20,6 +20,7 @@ pnpm-debug.log*
 # cloudflare adapter / wrangler
 .wrangler/
 .dev.vars
+.dev.vars.*
 
 # macOS-specific files
 .DS_Store
@@ -54,6 +55,7 @@ public/img/dodie-text-*.png
 
 # claude-mem session artifacts
 src/**/CLAUDE.md
+public/**/CLAUDE.md
 
 # Raw Croatia trip media (116MB video exceeds GitHub limit); web copies live in public/newsletter/
 croatia-trip-videos-images/

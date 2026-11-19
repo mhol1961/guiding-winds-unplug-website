@@ -1,5 +1,6 @@
 ---
 import { img } from '../../lib/img';
+import VideoToggle from '../shared/VideoToggle.astro';
 // Full-bleed cinematic hero. Crossfades 4 Seedance 2 video reels with
 // real-photo poster fallbacks. Honors prefers-reduced-motion (videos
 // don't autoplay; the first scene's poster image is shown still).
@@ -63,6 +64,15 @@ const {
 // Each Seedance reel is ~5s. The crossfade is driven from the <script>
 // below (not CSS timing) so every clip plays once from frame 0 and never
 // loops mid-window. Keep SCENE_MS there in sync with the clip length.
+
+// First scene's still: a real <img> (WebP srcset, high priority) under the
+// video instead of a poster= JPG, which can't be resized or prioritised.
+// Portrait screens crop a landscape photo to full height, so they need
+// (width/height x 100)vh of image, and get WebP only. Wider screens may still
+// pick the original JPG at high pixel density, so desktop looks unchanged.
+// Later scenes' posters load only when their clip is pre-warmed (script).
+const first = img(scenes[0].posterSrc);
+const portraitVh = first.width && first.height ? Math.ceil((100 * first.width) / first.height) : 100;
 ---
 
 <section class="hero relative w-full min-h-[100dvh] overflow-hidden bg-bone text-primary">
@@ -73,13 +83,32 @@ const {
           class:list={['hero-scene absolute inset-0', { 'is-active': i === 0 }]}
           data-hero-scene
         >
+          {scene.videoSrc && i === 0 && (
+            <picture>
+              {first.srcset && (
+                <source media="(max-aspect-ratio: 1/1)" type="image/webp" srcset={first.srcset} sizes={`${portraitVh}vh`} />
+              )}
+              <img
+                src={scene.posterSrc}
+                srcset={first.srcset ? `${first.srcset}, ${scene.posterSrc} ${first.width}w` : undefined}
+                sizes="100vw"
+                width={first.width}
+                height={first.height}
+                alt=""
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+            </picture>
+          )}
           {scene.videoSrc ? (
             <video
               muted
               playsinline
               preload={i === 0 ? 'auto' : 'metadata'}
-              poster={scene.posterSrc}
-              class="absolute inset-0 w-full h-full object-cover"
+              data-poster={i === 0 ? undefined : scene.posterSrc}
+              class:list={['absolute inset-0 w-full h-full object-cover', { 'opacity-0': i === 0 }]}
               data-hero-video
             >
               {scene.videoSrcPortrait && (
@@ -102,6 +131,10 @@ const {
     }
     <div class="absolute inset-0 bg-gradient-to-t from-bone/95 via-bone/60 via-45% to-transparent"></div>
   </div>
+
+  {/* Below the fixed header (96px, 112px at lg) and above the eyebrow, which
+      never starts higher than the content's 128px top padding. */}
+  <VideoToggle class="absolute top-[98px] lg:top-28 right-7 lg:right-14 z-20" data-hero-toggle />
 
   <div class="relative z-10 min-h-[100dvh] flex flex-col">
     <div class="flex-1 flex items-end pb-24 lg:pb-32 px-7 lg:px-14 pt-32">
@@ -185,6 +218,7 @@ const {
 </style>
 
 <script>
+  import { wireToggle } from '../../lib/video-toggle';
   // Drive the hero crossfade in sync with playback: only the active scene's
   // video plays, always from frame 0, exactly once - then we fade to the
   // next. This eliminates the mid-window loop restart that made every clip
@@ -199,8 +233,13 @@ const {
     let i = 0;
     let timer = 0;
 
+    // Scene 0's video stays invisible until it really plays, so its <img>
+    // still shows (as the old poster did) when motion is reduced or blocked.
+    videos[0]?.addEventListener('playing', () => videos[0]?.classList.remove('opacity-0'), { once: true });
+
     const warm = (k: number) => {
       const v = videos[k];
+      if (v?.dataset.poster && !v.getAttribute('poster')) v.poster = v.dataset.poster;
       if (v && v.preload !== 'auto') {
         v.preload = 'auto';
         try { v.load(); } catch {}
@@ -239,17 +278,31 @@ const {
       scenes.forEach((s, k) => s.classList.toggle('is-active', k === 0));
     };
 
-    if (reduce.matches) showStatic();
+    // Pause button (WCAG 2.2.2). Shown only while motion is allowed.
+    let userPaused = false;
+    const toggle = document.querySelector<HTMLButtonElement>('[data-hero-toggle]');
+    if (toggle) {
+      wireToggle(toggle, (paused) => {
+        userPaused = paused;
+        if (paused) stop();
+        else start();
+      });
+    }
+
+    if (reduce.matches) { showStatic(); if (toggle) toggle.hidden = true; }
     else start();
 
     reduce.addEventListener?.('change', (e) => {
-      if (e.matches) showStatic();
-      else { i = 0; start(); }
+      if (e.matches) { showStatic(); if (toggle) toggle.hidden = true; }
+      else {
+        if (toggle) toggle.hidden = false;
+        if (!userPaused) { i = 0; start(); }
+      }
     });
 
     // Pause cycling while the tab is hidden (battery + keeps clips in sync).
     document.addEventListener('visibilitychange', () => {
-      if (reduce.matches) return;
+      if (reduce.matches || userPaused) return;
       if (document.hidden) stop();
       else start();
     });

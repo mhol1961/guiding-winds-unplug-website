@@ -2,6 +2,7 @@
 import { img } from '../lib/img';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionInterrupt from '../components/shared/SectionInterrupt.astro';
+import VideoToggle from '../components/shared/VideoToggle.astro';
 import { Anchor, ShieldCheck } from 'lucide-react';
 import { BUSINESS, BOND_ONE_LINE, BOAT_NOTE } from '../lib/business';
 
@@ -248,6 +249,7 @@ const credentials = [
           <span class="absolute top-5 right-5 inline-flex items-center rounded-pill bg-bone/85 backdrop-blur-md px-3 py-1.5 font-label-caps uppercase tracking-[0.22em] text-[0.5625rem] font-semibold text-primary">
             Aboard · establishing reel
           </span>
+          <VideoToggle class="absolute bottom-5 right-5" data-film-toggle />
         </figure>
       </div>
     </div>
@@ -318,3 +320,20 @@ const credentials = [
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  // Pause/play for the looping establishing reel (WCAG 2.2.2). The button
+  // follows the video's real state, so it reads "Play" if autoplay is blocked.
+  import { wireToggle } from '../lib/video-toggle';
+  const film = document.querySelector<HTMLVideoElement>('#film video');
+  const btn = document.querySelector<HTMLButtonElement>('[data-film-toggle]');
+  if (film && btn) {
+    const set = wireToggle(btn, (paused) => {
+      if (paused) film.pause();
+      else film.play().catch(() => set(true));
+    });
+    film.addEventListener('pause', () => set(true));
+    film.addEventListener('play', () => set(false));
+    set(film.paused);
+  }
+</script>

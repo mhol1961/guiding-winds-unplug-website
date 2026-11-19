@@ -30,6 +30,18 @@
   // contact info there).
   const bar = document.querySelector<HTMLElement>('[data-mobile-cta]');
   const footer = document.querySelector('footer');
+
+  // Publish the bar's visible height as --mobile-cta-h so the floating chat
+  // button (ChatWidget.astro) sits above it instead of covering "Book a call".
+  // offsetHeight is 0 when the bar is hidden at lg+, so desktop is unaffected.
+  let tucked = false;
+  const sync = () =>
+    document.documentElement.style.setProperty('--mobile-cta-h', !bar || tucked ? '0px' : `${bar.offsetHeight}px`);
+  if (bar) {
+    sync();
+    if ('ResizeObserver' in window) new ResizeObserver(sync).observe(bar);
+  }
+
   if (bar && footer && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -39,6 +51,8 @@
           } else {
             bar.style.transform = '';
           }
+          tucked = entry.isIntersecting;
+          sync();
         }
       },
       { threshold: 0.1 },

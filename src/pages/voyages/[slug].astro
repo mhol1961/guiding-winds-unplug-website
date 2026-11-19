@@ -87,40 +87,28 @@ const breadcrumbs = {
   ],
 };
 
-// Per-voyage reviews → Review + AggregateRating schema (Codex review crit #3).
 const allReviews = await getCollection('reviews');
 const voyageReviews = allReviews.filter((r) => r.data.voyage === voyage.data.slug);
-const reviewSchemas = voyageReviews.map((r) => ({
-  '@type': 'Review',
-  itemReviewed: { '@id': `${pageUrl}#trip` },
-  reviewRating: {
-    '@type': 'Rating',
-    ratingValue: r.data.rating,
-    bestRating: 5,
-  },
-  author: { '@type': 'Person', name: r.data.author },
-  reviewBody: r.data.quote,
-  datePublished: r.data.date.toISOString().split('T')[0],
-}));
-// Only surface AggregateRating when we have meaningful sample size. Single-
-// digit reviewCount on a perfect 5.0 reads as a spam signal to Google's
-// product-results algorithm (per Codex review).
-const aggregateRating =
-  voyageReviews.length >= 3
-    ? {
-        '@type': 'AggregateRating',
-        itemReviewed: { '@id': `${pageUrl}#trip` },
-        ratingValue:
-          voyageReviews.reduce((s, r) => s + r.data.rating, 0) / voyageReviews.length,
-        bestRating: 5,
-        reviewCount: voyageReviews.length,
-      }
-    : null;
+
+// Quote interrupt, lands between Timeline and Gallery. Hidden if no review
+// for this voyage exists.
+const voyageReviewForInterrupt = voyageReviews[0] ?? null;
+
+// Review schema describes only what the page shows: the one quote and the
+// guest's name. No stars, dates, unshown reviews or AggregateRating, since
+// structured data must match visible content (audit 2026-11-18, SD-1).
+const reviewSchema = voyageReviewForInterrupt
+  ? {
+      '@type': 'Review',
+      itemReviewed: { '@id': `${pageUrl}#trip` },
+      author: { '@type': 'Person', name: voyageReviewForInterrupt.data.author },
+      reviewBody: voyageReviewForInterrupt.data.quote,
+    }
+  : null;
 
 const schemaGraph: object[] = [touristTrip, breadcrumbs];
 if (faqSchema) schemaGraph.push(faqSchema);
-for (const r of reviewSchemas) schemaGraph.push(r);
-if (aggregateRating) schemaGraph.push(aggregateRating);
+if (reviewSchema) schemaGraph.push(reviewSchema);
 
 // Cross-link to sibling voyages.
 const allVoyages = await getCollection('voyages');
@@ -185,10 +173,6 @@ const statCopyByRegion: Record<string, { headline: string; italic: string; body:
   },
 };
 const statCopy = statCopyByRegion[voyage.data.region];
-
-// Quote interrupt, lands between Timeline and Gallery. Hidden if no review
-// for this voyage exists.
-const voyageReviewForInterrupt = voyageReviews[0] ?? null;
 ---
 
 <BaseLayout

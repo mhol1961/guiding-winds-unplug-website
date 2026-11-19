@@ -26,13 +26,17 @@ const weeksWithLowAvailability = allWeeks.filter(
         <p class="font-label-caps uppercase tracking-[0.28em] text-[0.625rem] font-semibold text-accent-hot mb-6">
           2027 calendar · Real availability, no countdown timer
         </p>
-        <h2
-          class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance text-primary"
-          style="font-size: clamp(2rem, 4vw + 1rem, 3.25rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
-        >
-          Some 2027 weeks are
-          <span class="italic" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">already filling up.</span>
-        </h2>
+        {/* Urgency headline only when it's true: hidden while every week
+            still has more than 2 cabins open (audit 2026-11-18, CC-1). */}
+        {weeksWithLowAvailability > 0 && (
+          <h2
+            class="font-display font-light leading-[1.05] tracking-[-0.025em] text-balance text-primary"
+            style="font-size: clamp(2rem, 4vw + 1rem, 3.25rem); font-variation-settings: 'opsz' 96, 'SOFT' 30, 'WONK' 0;"
+          >
+            Some 2027 weeks are
+            <span class="italic" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1;">already filling up.</span>
+          </h2>
+        )}
         <p class="font-body-lg text-[1.0625rem] lg:text-[1.125rem] leading-[1.7] text-primary/75 mt-7 max-w-xl">
           {weeksWithLowAvailability === 1
             ? 'One week is already nearly full. '

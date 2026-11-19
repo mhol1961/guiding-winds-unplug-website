@@ -4,6 +4,23 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
+import { rmSync } from 'node:fs';
+
+// The Cloudflare Vite plugin copies the local secrets file (.dev.vars) into
+// dist/server/ for `astro preview`, with no option to turn it off. Delete it
+// after every build so no secret sits in the build output.
+/** @type {URL | undefined} */
+let serverDir;
+/** @type {import('astro').AstroIntegration} */
+const dropDevVars = {
+  name: 'drop-dev-vars',
+  hooks: {
+    'astro:config:done': ({ config }) => { serverDir = config.build.server; },
+    'astro:build:done': () => {
+      if (serverDir) rmSync(new URL('.dev.vars', serverDir), { force: true });
+    },
+  },
+};
 
 // `site` is baked into the sitemap and into every canonical URL at build
 // time. A wrong value (localhost in production, or a stale prod URL in dev)
@@ -43,6 +60,7 @@ export default defineConfig({
   site,
   adapter: cloudflare(),
   integrations: [
+    dropDevVars,
     react(),
     // Only indexable pages: no API routes, ad landing pages, thank-you page,
     // or /experiences (noindex until its content arrives).

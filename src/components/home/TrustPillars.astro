@@ -4,6 +4,10 @@
 // - five line-art SVG icons (small, sub-scale) paired with text labels
 // and a 1-line body, divided by hairlines.
 import { Star, Wallet, Clock, LifeBuoy, Waves } from 'lucide-react';
+import { getCollection } from 'astro:content';
+
+// Same honest count the ad pages use (lp-1.astro): no "100%" claims.
+const reviewCount = (await getCollection('reviews')).length;
 
 const pillars = [
   {
@@ -58,7 +62,7 @@ const pillars = [
 
     <div class="mt-12 text-center">
       <p class="font-body-md text-[0.9375rem] text-primary/70">
-        100% five-star reviews
+        5.0 from {reviewCount} guest reviews
       </p>
     </div>
   </div>
